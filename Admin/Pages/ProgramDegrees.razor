@@ -135,13 +135,13 @@
         {   
             DALProgramDegree.SaveProgramDegree(_ModelProgramDegree);
             nm.NavigateTo("/programdegree/{CategoryID}");
-            LaodEmployee();
+            LaodProgramDegree();
          
         }
         else
         {   DALProgramDegree.UpdateProgramDegree(_ModelProgramDegree);
             nm.NavigateTo("/programdegree/{CategoryID}"); 
-            LaodEmployee();
+             LaodProgramDegree();
             
             
         }
