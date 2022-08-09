@@ -1,0 +1,61 @@
+﻿@page "/institutes"
+@inject NavigationManager nm;
+
+
+<h3>InstitutesComponent</h3>
+
+<a href="institute/0" class="btn btn-dark bt-sm">Add institutes</a>
+<table class="table table-striped"> 
+    
+    @foreach (var emp in instituteList)
+    {
+        <tr>
+            <td>@emp.InstituteId</td>
+            <td>@emp.Title</td>
+            <td>@emp.Email</td>
+            <td>@emp.Phone</td>
+            <td>@emp.Logo</td>
+            <td>@emp.UserName</td>
+            <td>@emp.Password</td>
+            <td>@emp.CreatedOn</td>
+            <td>@emp.IsActive</td>
+            <td>@emp.CityId</td>
+            <td>@emp.TypeOfId</td>
+            <td>@emp.Location</td>
+            <td>@emp.AdminId</td>
+
+            
+            <td>
+                <button @onclick="(e => OnDelete(emp.InstituteId))" class="btn btn-warning bt-sm">Del</button>
+               <a href="institute/@emp.InstituteId" class="btn btn-warning bt-sm">Edit</a>
+            </td>
+        </tr>
+
+    }
+
+</table>
+
+@code {
+
+
+    private List<EntInstitutes> instituteList;
+
+
+    protected override void OnInitialized()
+    {
+        LaodInstitute();
+
+    }
+
+    private void OnDelete(string id)
+    {
+        DalInstitutes.DeleteInstitutes(id);
+        LaodInstitute();
+
+    }
+
+    private void LaodInstitute()
+    {
+        this.instituteList = DalInstitutes.GetInstitutes();
+    }
+}

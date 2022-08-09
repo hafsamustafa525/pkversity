@@ -1,0 +1,77 @@
+﻿@page "/programcategory/{CategoryID}"
+@using ClassLibraryDAL
+@using ClassLibraryEntities
+@inject NavigationManager nm
+
+<h2>@title</h2>
+<EditForm Model="_ModelProgramCategory" OnSubmit="SubmintForm">
+    <table>
+        <tr>
+            <td>
+                SSN
+            </td>
+            <td>
+                <InputText name="ID" @bind-Value="_ModelProgramCategory.ProgramCategoryId" disabled></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Category Name
+            </td>
+            <td>
+                <InputText name="Name" @bind-Value="_ModelProgramCategory.CategoryName"></InputText>
+            </td>
+        </tr>
+
+       <tr>
+            <td>
+            </td>
+            <td>
+                <button type="submit" class="btn btn-primary">@title</button>
+            </td>
+        </tr>
+
+       
+    </table>
+
+
+</EditForm>
+
+@code {
+    
+
+    private EntProgramCategory _ModelProgramCategory { get; set; }
+    private string? title { get; set; }
+    [Parameter] public string CategoryID{get;set;}
+        protected override void OnInitialized()
+    {
+        if (CategoryID=="0")
+        {
+            _ModelProgramCategory = new EntProgramCategory();
+            title = "Create New Category";
+        }
+        else
+        {
+            _ModelProgramCategory = DALProgramCategory.GetProgramCategoryById(CategoryID);
+            title = "Update Category";
+        }
+    }
+
+    private void SubmintForm()
+    {
+        if (CategoryID=="0")
+        {
+            DALProgramCategory.SaveProgramCategory(_ModelProgramCategory);
+            nm.NavigateTo("/programcategories");
+        }
+        else
+        {
+            DALProgramCategory.UpdateProgramCategory(_ModelProgramCategory);
+            nm.NavigateTo("/programcategories");
+        }
+
+    }
+
+
+
+}

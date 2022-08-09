@@ -1,0 +1,175 @@
+﻿@page "/institute/{insid}"
+
+@inject NavigationManager nm;
+
+
+<h3>@title</h3>
+
+<h3>InstituteComponent</h3>
+@insid
+
+
+
+
+
+<EditForm Model="_ModelInstitute" OnSubmit="SubmintForm">
+    <table>
+        <tr>
+            <td>
+                InstituteId
+            </td>
+            <td>
+                <InputText name="ID" @bind-Value="_ModelInstitute.InstituteId" Disabled></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+               Title
+            </td>
+            <td>
+                <InputText name="ID" @bind-Value="_ModelInstitute.Title"></InputText>
+            </td>
+        </tr>
+          <tr>
+            <td>
+               Email
+            </td>
+            <td>
+                <InputText name="Email" @bind-Value="_ModelInstitute.Email"></InputText>
+            </td>
+        </tr>
+          <tr>
+            <td>
+               Phone
+            </td>
+            <td>
+                <InputText name="Phone" @bind-Value="_ModelInstitute.Phone"></InputText>
+            </td>
+        </tr>
+          <tr>
+            <td>
+              Logo
+            </td>
+            <td>
+                <InputText name="Logo" @bind-Value="_ModelInstitute.Logo"></InputText>
+            </td>
+        </tr>
+          <tr>
+            <td>
+               UserName
+            </td>
+            <td>
+                <InputText name="UserName" @bind-Value="_ModelInstitute.UserName"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+               Password
+            </td>
+            <td>
+                <InputText name="Password" @bind-Value="_ModelInstitute.Password"></InputText>
+            </td>
+        </tr>
+          <tr>
+            <td>
+               CreatedOn
+            </td>
+            <td>
+                <InputText name="CreatedOn" @bind-Value="_ModelInstitute.CreatedOn"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+               IsActive
+            </td>
+            <td>
+                <InputText name="IsActive" @bind-Value="_ModelInstitute.IsActive"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+               CityId
+            </td>
+            <td>
+                <InputText name="CityId" @bind-Value="_ModelInstitute.CityId"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+               TypeOfId
+            </td>
+            <td>
+                <InputText name="TypeOfId" @bind-Value="_ModelInstitute.TypeOfId"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+               Location
+            </td>
+            <td>
+                <InputText name="Location" @bind-Value="_ModelInstitute.Location"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+               AdminId
+            </td>
+            <td>
+                <InputText name="AdminId" @bind-Value="_ModelInstitute.AdminId"></InputText>
+            </td>
+        </tr>
+        
+        
+        <tr>
+            <td>
+            </td>
+            <td>
+                <button type="submit" class="btn btn-primary">@title</button>
+            </td>
+        </tr>
+    </table>
+
+
+</EditForm>
+@code {
+         
+    private EntInstitutes _ModelInstitute { get; set; }
+
+    private string? title { get; set; }
+
+    [Parameter] public string insid {get;set;}
+    
+
+    protected override void OnInitialized()
+    {
+        if (insid == "0")
+        {
+            _ModelInstitute = new EntInstitutes();
+            title = " New Institute";
+        }
+        else
+        {
+            _ModelInstitute = DalInstitutes.GetInstituteBtId(insid);
+            title = "Update Institute";
+        }
+    }
+
+    private void SubmintForm()
+    {
+        if (insid == "0")
+        {
+            DalInstitutes.SaveInstitutes(_ModelInstitute);
+            nm.NavigateTo("/institutes");
+        }
+        else
+        {
+            DalInstitutes.UpdateInstitutes(_ModelInstitute);
+            nm.NavigateTo("/institutes");
+        }
+
+    }
+
+
+}
+
+

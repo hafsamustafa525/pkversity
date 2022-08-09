@@ -1,0 +1,49 @@
+﻿@page "/cities"
+@inject NavigationManager nm;
+
+
+<h3>CitiesComponent</h3>
+
+<a href="/city/0" class="btn btn-dark bt-sm">Add City</a>
+<table class="table table-striped"> 
+    
+    @foreach (var emp in CitiesList)
+    {
+        <tr>
+            <td>@emp.CityId</td>
+            <td>@emp.CityName</td>
+            <td>@emp.CityCode</td>
+            <td>
+                <button @onclick="(e => OnDelete(emp.CityId))" class="btn btn-warning bt-sm">Del</button>
+               <a href="city/@emp.CityId" class="btn btn-warning bt-sm">Edit</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@code {
+
+
+    private List<EntCities> CitiesList;
+
+   
+
+    protected override void OnInitialized()
+    {
+        LaodCity();
+
+    }
+
+    private void OnDelete(string id)
+    {
+        DalCities.DeleteCities(id);
+        LaodCity();
+
+    }
+
+    private void LaodCity()
+    {
+        this.CitiesList = DalCities.GetCities();
+    }
+}

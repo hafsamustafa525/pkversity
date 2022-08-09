@@ -1,0 +1,86 @@
+﻿@page "/typeof/{typeid}" 
+@inject NavigationManager nm;
+
+
+<h3>@title</h3>
+<h3>TypeofComponent</h3>
+
+@typeid
+
+
+<EditForm Model="@_ModelTypeof" OnSubmit="SubmintForm">
+    <table>
+        <tr>
+            <td>
+                City ID
+            </td>
+            <td>
+                <InputText DisplayName="TypeOfId" @bind-Value="_ModelTypeof.TypeOfId"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+               City Name
+            </td>
+            <td>
+                <InputText DisplayName="Type" @bind-Value="_ModelTypeof.Type"></InputText>
+            </td>
+        </tr>
+        
+        
+        <tr>
+            <td>
+            </td>
+            <td>
+                <button type="submit" class="btn btn-primary">@title</button>
+            </td>
+        </tr>
+    </table>
+
+
+</EditForm>
+
+
+
+
+@code  {
+         
+    private EntTypes? _ModelTypeof { get; set; }
+    
+    private string? title { get; set; }
+
+
+    [Parameter] public string? typeid {get;set;}
+
+
+    protected override void OnInitialized()
+    {
+        if (typeid == "0")
+        {
+            _ModelTypeof = new EntTypes();
+            title = " New Type";
+        }
+        else
+        {
+            _ModelTypeof = DalTypes.GetTypeById(typeid);
+            title = "Update Type";
+        }
+    }
+
+    private void SubmintForm()
+    {
+        if (typeid == "0")
+        {
+            DalTypes.SaveTypeOfs(_ModelTypeof);
+            nm.NavigateTo("/typeofs");
+        }
+        else
+        {
+            DalTypes.UpdateTypesOfs(_ModelTypeof);
+            nm.NavigateTo("/typeofs");
+        }
+
+    }
+
+
+}

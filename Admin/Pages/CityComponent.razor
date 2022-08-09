@@ -1,0 +1,93 @@
+﻿@page "/city/{cityid}"
+@inject NavigationManager nm;
+
+<h3>@title</h3>
+
+<h3>CityComponent</h3>
+
+
+
+<EditForm Model="_ModelCity" OnSubmit="SubmintForm">
+    <table>
+        <tr>
+            <td>
+                City ID
+            </td>
+            <td>
+                <InputText DisplayName="CityId" @bind-Value="_ModelCity.CityId"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+               City Name
+            </td>
+            <td>
+                <InputText DisplayName="CityName" @bind-Value="_ModelCity.CityName"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                City Code
+            </td>
+            <td>
+                <InputText DisplayName="CityCode" @bind-Value="_ModelCity.CityCode"></InputText>
+            </td>
+        </tr>
+
+        
+        <tr>
+            <td>
+            </td>
+            <td>
+                <button type="submit" class="btn btn-primary">@title</button>
+            </td>
+        </tr>
+    </table>
+
+
+</EditForm>
+
+
+@code {
+         
+    private EntCities? _ModelCity { get; set; }
+    
+    private string? title { get; set; }
+
+
+    [Parameter] public string? cityid {get;set;}
+
+
+    protected override void OnInitialized()
+    {
+        if (cityid == "0")
+        {
+            _ModelCity = new EntCities();
+            title = " New City";
+        }
+        else
+        {
+            _ModelCity = DalCities.GetCityById(cityid);
+            title = "Update City";
+        }
+    }
+
+    private void SubmintForm()
+    {
+        if (cityid == "0")
+        {
+            DalCities.SaveCities(_ModelCity);
+            nm.NavigateTo("/cities");
+        }
+        else
+        {
+            DalCities.UpdateCities(_ModelCity);
+            nm.NavigateTo("/cities");
+        }
+
+    }
+
+
+}
+
+

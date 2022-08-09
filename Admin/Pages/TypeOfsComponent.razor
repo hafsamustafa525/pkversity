@@ -1,0 +1,50 @@
+﻿@page "/typeofs"
+@inject NavigationManager nm;
+
+
+<h3>TypeOfsComponent</h3>
+
+<a href="/typeof/0" class="btn btn-dark bt-sm">Add Type Ofs</a>
+<table class="table table-striped"> 
+    
+    @foreach (var emp in TypesList)
+    {
+        <tr>
+            <td>@emp.TypeOfId</td>
+            <td>@emp.Type</td>
+            <td>
+                <button @onclick="(e => OnDelete(emp.TypeOfId))" class="btn btn-warning bt-sm">Del</button>
+               <a href="typeof/@emp.TypeOfId" class="btn btn-warning bt-sm">Edit</a>
+            </td>
+        </tr>
+
+    }
+
+</table>
+
+@code {
+
+
+    private List<EntTypes> TypesList;
+
+
+
+    protected override void OnInitialized()
+    {
+        LaodTypeOfs();
+
+    }
+
+    private void OnDelete(string id)
+    {
+        DalTypes.DeleteTypeOfs((id));
+        LaodTypeOfs();
+
+    }
+
+    private void LaodTypeOfs()
+    {
+        this.TypesList = DalTypes.GetTypeOfs();
+    }
+}
+

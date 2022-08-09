@@ -1,0 +1,57 @@
+﻿@page "/programcategories"
+@using ClassLibraryDAL
+@using ClassLibraryEntities
+<h3>ProgramCategory</h3>
+
+<a href="/programcategory/0" class="btn btn-dark">Create Program Category</a>
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Category Name</th>
+        
+    </tr>
+
+    @foreach (var emp in @ProgramCategoriesList)
+    {
+        <tr>
+            <td>
+                @emp.ProgramCategoryId
+            </td>
+            <td>@emp.CategoryName</td>
+            <td>
+
+             
+                <button @onclick="(e => OnDelete(emp.ProgramCategoryId))" class="btn btn-warning bt-sm">Del</button>
+                <a href="programcategory/@emp.ProgramCategoryId" class="btn btn-warning bt-sm">Edit</a>
+                <a href="programdegree/@emp.ProgramCategoryId" class="btn btn-warning bt-sm">Add Prorgrame Degrees</a>
+            </td>
+        </tr>
+    }
+
+
+
+</table>
+
+@code {
+
+    private List<EntProgramCategory>?ProgramCategoriesList;
+  
+    protected override void OnInitialized()
+    {
+        LaodEmployee();
+
+    }
+
+    private void OnDelete(string id)
+    {
+        DALProgramCategory.DeleteProgramCategory(id);
+        LaodEmployee();
+
+    }
+
+    private void LaodEmployee()
+    {
+        this.ProgramCategoriesList = DALProgramCategory.GetProgramCategory();
+    }
+}
+

@@ -1,0 +1,84 @@
+﻿
+
+
+@page "/programdegreedetails"
+@using ClassLibraryDAL
+
+@using ClassLibraryEntities
+<h3>ProgramDegreeDetail</h3>
+
+<a href="/programdegreedetail/0" class="btn btn-dark">Create Program Category</a>
+<table class="table table-striped">
+    <tr>
+        <th>PDI</th>
+        <th>Duration</th>
+        <th>TSem</th>
+        <th>TFee</th>
+        <th>SFee</th>
+        <th>ABI</th>
+        <th>CId</th>
+        <th>Morning</th>
+        <th>Evening</th>
+        <th>Weekened</th>
+        <th>PDG</th>
+        <th>PDI</th>
+        <th>IId</th>
+        <th>Percentge</th>
+    </tr>
+
+    @foreach (var emp in @ProgramDegreeDetailsList)
+    {
+        <tr>
+            <td>
+                @emp.ProgramDegreeDetailsId
+            </td>
+            <td>@emp.Duration</td>
+            <td>@emp.TotalSemesters</td>
+            <td>@emp.TotalFee</td>
+            <td>@emp.SemesterFee</td>
+            <td>@emp.ApprovedById</td>
+            <td>@emp.CityId</td>
+            <td>@emp.Morning</td>
+            <td>@emp.Evening</td>
+            <td>@emp.Weekened</td>
+            <td>@emp.PassingDegreeGroups</td>
+            <td>@emp.ProgramDegreeId</td>
+            <td>@emp.InstituteId</td>
+            <td>@emp.Percentage</td>
+            <td>
+
+             
+                <button @onclick="(e => OnDelete(emp.ProgramDegreeDetailsId))" class="btn btn-warning bt-sm">Del</button>
+                <a href="programdegreedetail/@emp.ProgramDegreeDetailsId" class="btn btn-warning bt-sm">Edit</a>
+            </td>
+        </tr>
+
+    }
+
+
+
+</table>
+
+@code {
+
+    private List<EntProgramDegreeDetails>?ProgramDegreeDetailsList;
+
+    protected override void OnInitialized()
+    {
+        LaodEmployee();
+
+    }
+
+    private void OnDelete(string id)
+    {
+        
+        DALProgramDegreeDetails.DeleteProgramDegreeDetails(id);
+        LaodEmployee();
+
+    }
+
+    private void LaodEmployee()
+    {
+        this.ProgramDegreeDetailsList = DALProgramDegreeDetails.GetProgramDegreeDetails();
+    }
+}
