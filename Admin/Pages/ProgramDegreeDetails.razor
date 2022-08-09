@@ -65,7 +65,7 @@
 
     protected override void OnInitialized()
     {
-        LaodEmployee();
+        LaodProgramDegreeDetails();
 
     }
 
@@ -73,11 +73,11 @@
     {
         
         DALProgramDegreeDetails.DeleteProgramDegreeDetails(id);
-        LaodEmployee();
+        LaodProgramDegreeDetails();
 
     }
 
-    private void LaodEmployee()
+    private void LaodProgramDegreeDetails()
     {
         this.ProgramDegreeDetailsList = DALProgramDegreeDetails.GetProgramDegreeDetails();
     }

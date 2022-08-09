@@ -82,7 +82,7 @@
     bool var = true;
     protected override void OnInitialized()
     {
-        LaodEmployee();
+        LaodProgramDegree();
 
         if (var==true)
         {   
@@ -107,11 +107,11 @@
     private void OnDelete(string id)
     {
         DALProgramDegree.DeleteProgramDegree(id);
-        LaodEmployee();
+        LaodProgramDegree();
 
     }
 
-    private void LaodEmployee()
+    private void LaodProgramDegree()
     {
         this.ProgramDegreeList = DALProgramDegree.GetProgramDegree();
     }

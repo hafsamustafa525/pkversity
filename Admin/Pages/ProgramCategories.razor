@@ -38,18 +38,18 @@
   
     protected override void OnInitialized()
     {
-        LaodEmployee();
+        LaodProgramCategories();
 
     }
 
     private void OnDelete(string id)
     {
         DALProgramCategory.DeleteProgramCategory(id);
-        LaodEmployee();
+        LaodProgramCategories();
 
     }
 
-    private void LaodEmployee()
+    private void LaodProgramCategories()
     {
         this.ProgramCategoriesList = DALProgramCategory.GetProgramCategory();
     }
