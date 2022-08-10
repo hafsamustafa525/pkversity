@@ -10,8 +10,6 @@
 
 
 
-
-
 <EditForm Model="_ModelInstitute" OnSubmit="SubmintForm">
     <table>
         <tr>
@@ -24,102 +22,77 @@
         </tr>
         <tr>
             <td>
-               Title
+                Title
             </td>
             <td>
                 <InputText name="ID" @bind-Value="_ModelInstitute.Title"></InputText>
             </td>
         </tr>
-          <tr>
+        <tr>
             <td>
-               Email
+                Email
             </td>
             <td>
                 <InputText name="Email" @bind-Value="_ModelInstitute.Email"></InputText>
             </td>
         </tr>
-          <tr>
+        <tr>
             <td>
-               Phone
+                Phone
             </td>
             <td>
                 <InputText name="Phone" @bind-Value="_ModelInstitute.Phone"></InputText>
             </td>
         </tr>
-          <tr>
-            <td>
-              Logo
-            </td>
-            <td>
-                <InputText name="Logo" @bind-Value="_ModelInstitute.Logo"></InputText>
-            </td>
-        </tr>
-          <tr>
-            <td>
-               UserName
-            </td>
-            <td>
-                <InputText name="UserName" @bind-Value="_ModelInstitute.UserName"></InputText>
-            </td>
-        </tr>
+
+
         <tr>
             <td>
-               Password
+                Password
             </td>
             <td>
                 <InputText name="Password" @bind-Value="_ModelInstitute.Password"></InputText>
             </td>
         </tr>
-          <tr>
+
+
+        <tr>
             <td>
-               CreatedOn
+                CityId
             </td>
             <td>
-                <InputText name="CreatedOn" @bind-Value="_ModelInstitute.CreatedOn"></InputText>
+                <select @bind="@cityid">
+                    <option value="0">--Select City---</option>
+                    <option value="42">Lahore</option>
+                    <option value="51">Islamabad</option>
+                </select>
+
             </td>
         </tr>
         <tr>
             <td>
-               IsActive
+                TypeOfId
             </td>
             <td>
-                <InputText name="IsActive" @bind-Value="_ModelInstitute.IsActive"></InputText>
-            </td>
-        </tr>
-        <tr>
-            <td>
-               CityId
-            </td>
-            <td>
-                <InputText name="CityId" @bind-Value="_ModelInstitute.CityId"></InputText>
+                <select @bind="@typeid">
+                    <option value="0">--Select Type---</option>
+                    <option value="1">School</option>
+                    <option value="4">Institute</option>
+                </select>
+
             </td>
         </tr>
         <tr>
             <td>
-               TypeOfId
-            </td>
-            <td>
-                <InputText name="TypeOfId" @bind-Value="_ModelInstitute.TypeOfId"></InputText>
-            </td>
-        </tr>
-        <tr>
-            <td>
-               Location
+                Location
             </td>
             <td>
                 <InputText name="Location" @bind-Value="_ModelInstitute.Location"></InputText>
             </td>
         </tr>
-        <tr>
-            <td>
-               AdminId
-            </td>
-            <td>
-                <InputText name="AdminId" @bind-Value="_ModelInstitute.AdminId"></InputText>
-            </td>
-        </tr>
-        
-        
+
+
+
         <tr>
             <td>
             </td>
@@ -131,14 +104,23 @@
 
 
 </EditForm>
+@if (check)
+{
+    <MessageComponent CustomMessage="@message"></MessageComponent>
+}
 @code {
-         
+
     private EntInstitutes _ModelInstitute { get; set; }
 
     private string? title { get; set; }
 
-    [Parameter] public string insid {get;set;}
-    
+    [Parameter] public string insid { get; set; }
+
+    private string? cityid { get; set; }
+    private string? typeid { get; set; }
+
+    bool check = false;
+    private string? message { get; set; }
 
     protected override void OnInitialized()
     {
@@ -158,18 +140,42 @@
     {
         if (insid == "0")
         {
-            DalInstitutes.SaveInstitutes(_ModelInstitute);
-            nm.NavigateTo("/institutes");
+            if (typeid != "0" && cityid != "0" && typeid != null && cityid != null)
+            {
+                _ModelInstitute.CityId = cityid;
+                _ModelInstitute.TypeOfId = typeid;
+                DalInstitutes.SaveInstitutes(_ModelInstitute);
+                nm.NavigateTo("/institutes");
+            }
+            else
+            {
+                check = true;
+                message = "Select city and typeid";
+            }
+
         }
         else
         {
-            DalInstitutes.UpdateInstitutes(_ModelInstitute);
-            nm.NavigateTo("/institutes");
+            if (typeid != "0" && cityid != "0" && typeid != null && cityid != null)
+            {
+
+                _ModelInstitute.CityId = cityid;
+                _ModelInstitute.TypeOfId = typeid;
+                DalInstitutes.UpdateInstitutes(_ModelInstitute);
+                nm.NavigateTo("/institutes");
+            }
+            else
+            {
+                check = true;
+                message = "Select city and typeid";
+            }
         }
 
-    }
-
-
+    } 
 }
+
+
+
+
 
 

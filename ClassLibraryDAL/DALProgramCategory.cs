@@ -32,9 +32,6 @@ namespace ClassLibraryDAL
             return ProgramCategoryList;
         }
 
-
-
-
         public static void SaveProgramCategory(EntProgramCategory ee)
         {
             SqlConnection con = DBHelper.GetConnection();
@@ -59,6 +56,7 @@ namespace ClassLibraryDAL
             cmd.ExecuteNonQuery();
             con.Close();
         }
+
         public static void UpdateProgramCategory(EntProgramCategory ee)
         {
             SqlConnection con = DBHelper.GetConnection();
@@ -72,6 +70,7 @@ namespace ClassLibraryDAL
             con.Close();
 
         }
+
         public static EntProgramCategory GetProgramCategoryById(string CategoryID)
         {
             SqlConnection con = DBHelper.GetConnection();

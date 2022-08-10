@@ -3,118 +3,130 @@
 @using ClassLibraryEntities
 @inject NavigationManager nm
 
+<div><h3>Program Degrees</h3></div>
+<div>
+    <EditForm Model="_ModelProgramDegree" OnSubmit="SubmintForm">
+        <table>
+            <tr>
 
+                <td>
+
+                    <InputText PlaceHolder="DID" name="ID" @bind-Value="_ModelProgramDegree.ProgramDegreeId" disabled></InputText>
+                </td>
+
+
+                <td>
+                    <InputText PlaceHolder="PCategoryID" name="Name" @bind-Value="_ModelProgramDegree.ProgramCategoryid" disabled></InputText>
+                </td>
+                <td>
+
+
+                    <InputText PlaceHolder="DegreeName" name="Name" @bind-Value="_ModelProgramDegree.DegreeName"></InputText>
+                </td>
+
+
+                <td>
+                    <button type="submit" class="btn btn-primary">@ButtonName</button>
+                </td>
+            </tr>
+
+
+        </table>
+
+
+    </EditForm>
+</div>
 
 <table class="table table-striped">
     <tr>
         <th>ID</th>
+         <th>Category ID</th>
         <th>Degree Name</th>
-        <th>Category ID</th>
+       
     </tr>
-    
-    @foreach (var emp in @ProgramDegreeList)
-    {  if(CategoryID==emp.ProgramCategoryid){
-        <tr>
-            <td>
-                @emp.ProgramDegreeId
-            </td>
-            <td>@emp.DegreeName</td>
-            <td>@emp.ProgramCategoryid</td>
-            <td>
 
-             
-                <button @onclick="(e => OnDelete(emp.ProgramDegreeId))" class="btn btn-warning bt-sm">Del</button>
-                <button @onclick="(e=>EditFun(emp.ProgramDegreeId))" class="btn btn-warning bt-sm">Edit</button>
+    @foreach (var emp in @ProgramDegreeList)
+    {
+        if (CategoryID == emp.ProgramCategoryid)
+        {
+            <tr>
+                <td>
+                    @emp.ProgramDegreeId
+                </td>
                 
-               
-            </td>
-        </tr>
-    }
+                <td>@emp.ProgramCategoryid</td>
+                <td>@emp.DegreeName</td>
+                <td>
+
+
+                    <button @onclick="(e => OnDelete(emp.ProgramDegreeId))" class="btn btn-warning bt-sm">Del</button>
+                    <button @onclick="(e=>EditDegree(emp.ProgramCategoryid,emp.DegreeName,emp.ProgramDegreeId))" class="btn btn-warning bt-sm">Edit</button>
+
+
+                </td>
+            </tr>
+        }
     }
 
 
 
 </table>
-<h2>@title</h2>
-<EditForm Model="_ModelProgramDegree" OnSubmit="SubmintForm">
-    <table>
-        <tr>
-            <td>
-                DID
-            </td>
-            <td>
-                <InputText name="ID" @bind-Value="_ModelProgramDegree.ProgramDegreeId" disabled></InputText>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                DegreeName
-            </td>
-            <td>
-                <InputText name="Name" @bind-Value="_ModelProgramDegree.DegreeName"></InputText>
-            </td>
-        </tr>
-       <tr>
-            <td>
-                PCategoryID
-            </td>
-            <td>
-                <InputText name="Name" @bind-Value="_ModelProgramDegree.ProgramCategoryid"></InputText>
-            </td>
-        </tr>
-         <tr>
-            
-            <td>
-                <button type="submit" class="btn btn-primary">@title</button>
-            </td>
-        </tr>
 
-       
-    </table>
-
-
-</EditForm>
 
 @code {
 
-    private List<EntProgramDegree>?ProgramDegreeList;
+    private List<EntProgramDegree>? ProgramDegreeList;
     [Parameter] public string? CategoryID { get; set; }
-    bool var = true;
+    private EntProgramDegree? _ModelProgramDegree { get; set; }
+    private string? ButtonName { get; set; }
     protected override void OnInitialized()
     {
-        LaodProgramDegree();
+        _ModelProgramDegree = new EntProgramDegree();
+        LaodEmployee();
 
-        if (var==true)
-        {   
+    }
+    private void LaodEmployee()
+    {
+        this.ProgramDegreeList = DALProgramDegree.GetProgramDegree();
+        ButtonName = "Save";
+    }
+    private void SubmintForm()
+    {
+        if (ButtonName == "Save")
+        {
+            _ModelProgramDegree.ProgramCategoryid = CategoryID;
+            DALProgramDegree.SaveProgramDegree(_ModelProgramDegree);
             _ModelProgramDegree = new EntProgramDegree();
-            title = "CreateNew";
+            LaodEmployee();
 
         }
         else
         {
-            _ModelProgramDegree = DALProgramDegree.GetProgramDegreeById(CategoryID);
-            title = "Update Degree";
+
+            DALProgramDegree.UpdateProgramDegree(_ModelProgramDegree);
+            _ModelProgramDegree = new EntProgramDegree();
+            LaodEmployee();
+
 
         }
 
     }
-    private void  EditFun(string id)
+
+    private void EditDegree(string id, string degreename,string pid)
     {
-        var = false;
-        _ModelProgramDegree = DALProgramDegree.GetProgramDegreeById(id);
-            title = "Update";        
+
+        _ModelProgramDegree.DegreeName = degreename;
+        _ModelProgramDegree.ProgramCategoryid = id;
+        _ModelProgramDegree.ProgramDegreeId = pid;
+        ButtonName = "Update";
     }
     private void OnDelete(string id)
     {
         DALProgramDegree.DeleteProgramDegree(id);
-        LaodProgramDegree();
+        LaodEmployee();
 
     }
 
-    private void LaodProgramDegree()
-    {
-        this.ProgramDegreeList = DALProgramDegree.GetProgramDegree();
-    }
 
 
 
@@ -124,29 +136,10 @@
 
 
 
-    private EntProgramDegree? _ModelProgramDegree { get; set; }
-    private string? title { get; set; }
-    
-  
 
-    private void SubmintForm()
-    {
-        if (var==true)
-        {   
-            DALProgramDegree.SaveProgramDegree(_ModelProgramDegree);
-            nm.NavigateTo("/programdegree/{CategoryID}");
-            LaodProgramDegree();
-         
-        }
-        else
-        {   DALProgramDegree.UpdateProgramDegree(_ModelProgramDegree);
-            nm.NavigateTo("/programdegree/{CategoryID}"); 
-             LaodProgramDegree();
-            
-            
-        }
 
-    }
+
+
 
 
 

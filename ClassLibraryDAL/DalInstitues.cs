@@ -80,16 +80,14 @@ namespace ClassLibraryDAL
             cmd.Parameters.AddWithValue("@Title", ee.Title);
             cmd.Parameters.AddWithValue("@Email", ee.Email);
             cmd.Parameters.AddWithValue("@Phone", ee.Phone);
-            cmd.Parameters.AddWithValue("@Logo", ee.Logo);
-            
-            cmd.Parameters.AddWithValue("@UserName", ee.UserName);
+  
             cmd.Parameters.AddWithValue("@Password", ee.Password);
-            cmd.Parameters.AddWithValue("@CreatedOn", ee.CreatedOn);
-            cmd.Parameters.AddWithValue("@IsActive", ee.IsActive);
+   
+       
             cmd.Parameters.AddWithValue("@CityId", ee.CityId);
             cmd.Parameters.AddWithValue("@TypeOfId", ee.TypeOfId);
             cmd.Parameters.AddWithValue("@Location", ee.Location);
-            cmd.Parameters.AddWithValue("@AdminId", ee.AdminId);
+            cmd.Parameters.AddWithValue("@AdminId", 1234);
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.ExecuteNonQuery();

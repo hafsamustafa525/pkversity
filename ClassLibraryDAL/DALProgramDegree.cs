@@ -10,9 +10,7 @@ namespace ClassLibraryDAL
 {
     public class DALProgramDegree
     {
-       // public string? ProgramDegreeId { get; set; }
-       // public string? DegreeName { get; set; }
-       // public string? ProgramCategoryid { get; set; }
+    
         public static List<EntProgramDegree> GetProgramDegree()
         {
             SqlConnection con = DBHelper.GetConnection();
@@ -35,8 +33,6 @@ namespace ClassLibraryDAL
         }
 
 
-
-
         public static void SaveProgramDegree(EntProgramDegree ee)
         {
             SqlConnection con = DBHelper.GetConnection();
@@ -51,6 +47,7 @@ namespace ClassLibraryDAL
 
         }
 
+
         public static void DeleteProgramDegree(string ProgramDegreeId)
         {
             SqlConnection con = DBHelper.GetConnection();
@@ -61,6 +58,8 @@ namespace ClassLibraryDAL
             cmd.ExecuteNonQuery();
             con.Close();
         }
+        
+
         public static void UpdateProgramDegree(EntProgramDegree ee)
         {
             SqlConnection con = DBHelper.GetConnection();
@@ -75,6 +74,8 @@ namespace ClassLibraryDAL
             con.Close();
 
         }
+
+
         public static EntProgramDegree GetProgramDegreeById(string id)
         {
             SqlConnection con = DBHelper.GetConnection();
