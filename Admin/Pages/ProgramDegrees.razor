@@ -85,10 +85,11 @@
         LaodProgramDegree();
 
         if (var==true)
-        {   
+        { 
+           
             _ModelProgramDegree = new EntProgramDegree();
             title = "CreateNew";
-
+            
         }
         else
         {
@@ -117,26 +118,21 @@
     }
 
 
-
-
-
-
-
-
-
     private EntProgramDegree? _ModelProgramDegree { get; set; }
     private string? title { get; set; }
     
   
-
     private void SubmintForm()
     {
         if (var==true)
         {   
+            if(_ModelProgramDegree.ProgramCategoryid == CategoryID)
+            {
             DALProgramDegree.SaveProgramDegree(_ModelProgramDegree);
             nm.NavigateTo("/programdegree/{CategoryID}");
-            LaodProgramDegree();
-         
+           // LaodProgramDegree();
+
+           }  
         }
         else
         {   DALProgramDegree.UpdateProgramDegree(_ModelProgramDegree);
