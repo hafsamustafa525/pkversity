@@ -49,9 +49,9 @@
 
 
 @code {
-         
+
     private EntCities? _ModelCity { get; set; }
-    
+
     private string? title { get; set; }
 
 
@@ -77,13 +77,19 @@
 
         if (cityid == "0")
         {
-            DalCities.SaveCities(_ModelCity);
-            nm.NavigateTo("/cities");
+            if (!string.IsNullOrEmpty(_ModelCity.CityName as string))
+            {
+                DalCities.SaveCities(_ModelCity);
+                nm.NavigateTo("/cities");
+            }
         }
         else
         {
-            DalCities.UpdateCities(_ModelCity);
-            nm.NavigateTo("/cities");
+            if (!string.IsNullOrEmpty(_ModelCity.CityName as string))
+            {
+                DalCities.UpdateCities(_ModelCity);
+                nm.NavigateTo("/cities");
+            }
         }
 
     }

@@ -94,18 +94,31 @@
     {
         if (ButtonName == "Save")
         {
-            _ModelProgramDegree.ProgramCategoryid = CategoryID;
-            DALProgramDegree.SaveProgramDegree(_ModelProgramDegree);
-            _ModelProgramDegree = new EntProgramDegree();
-            LaodEmployee();
+            if (_ModelProgramDegree.DegreeName != null && _ModelProgramDegree.DegreeName!="")
+            {
+                _ModelProgramDegree.ProgramCategoryid = CategoryID;
+                DALProgramDegree.SaveProgramDegree(_ModelProgramDegree);
+                _ModelProgramDegree = new EntProgramDegree();
+                LaodEmployee();
+            }
+            else
+            {
+
+            }
 
         }
         else
         {
-
-            DALProgramDegree.UpdateProgramDegree(_ModelProgramDegree);
-            _ModelProgramDegree = new EntProgramDegree();
-            LaodEmployee();
+            if (_ModelProgramDegree.DegreeName != null && _ModelProgramDegree.DegreeName!="")
+            {
+                DALProgramDegree.UpdateProgramDegree(_ModelProgramDegree);
+                _ModelProgramDegree = new EntProgramDegree();
+                LaodEmployee();
+            }
+            else
+            {
+                
+            }
 
 
         }
