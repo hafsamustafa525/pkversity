@@ -23,7 +23,7 @@
             </td>
         </tr>
 
-       <tr>
+        <tr>
             <td>
             </td>
             <td>
@@ -31,21 +31,21 @@
             </td>
         </tr>
 
-       
+
     </table>
 
 
 </EditForm>
 
 @code {
-    
+
 
     private EntProgramCategory _ModelProgramCategory { get; set; }
     private string? title { get; set; }
-    [Parameter] public string CategoryID{get;set;}
-        protected override void OnInitialized()
+    [Parameter] public string CategoryID { get; set; }
+    protected override void OnInitialized()
     {
-        if (CategoryID=="0")
+        if (CategoryID == "0")
         {
             _ModelProgramCategory = new EntProgramCategory();
             title = "Create New Category";
@@ -59,15 +59,30 @@
 
     private void SubmintForm()
     {
-        if (CategoryID=="0")
+        if (CategoryID == "0")
         {
-            DALProgramCategory.SaveProgramCategory(_ModelProgramCategory);
-            nm.NavigateTo("/programcategories");
+            if (_ModelProgramCategory.CategoryName != "" && _ModelProgramCategory.CategoryName != null)
+            {
+                DALProgramCategory.SaveProgramCategory(_ModelProgramCategory);
+                nm.NavigateTo("/programcategories");
+            }
+            else
+            {
+                nm.NavigateTo("/programcategories");
+            }
+
         }
         else
         {
-            DALProgramCategory.UpdateProgramCategory(_ModelProgramCategory);
-            nm.NavigateTo("/programcategories");
+            if (_ModelProgramCategory.CategoryName != "" && _ModelProgramCategory.CategoryName != null)
+            {
+                DALProgramCategory.UpdateProgramCategory(_ModelProgramCategory);
+                nm.NavigateTo("/programcategories");
+            }
+            else
+            {
+                nm.NavigateTo("/programcategories");
+            }
         }
 
     }
