@@ -22,7 +22,7 @@
                City Name
             </td>
             <td>
-                <InputText DisplayName="CityName" @bind-Value="_ModelCity.CityName"></InputText>
+                <InputText DisplayName="CityName" @bind-Value="_ModelCity.CityName" required ></InputText>
             </td>
         </tr>
         <tr>
@@ -30,7 +30,7 @@
                 City Code
             </td>
             <td>
-                <InputText DisplayName="CityCode" @bind-Value="_ModelCity.CityCode"></InputText>
+                <InputText DisplayName="CityCode" @bind-Value="_ModelCity.CityCode" required ></InputText>
             </td>
         </tr>
 
@@ -74,6 +74,7 @@
 
     private void SubmintForm()
     {
+
         if (cityid == "0")
         {
             DalCities.SaveCities(_ModelCity);
