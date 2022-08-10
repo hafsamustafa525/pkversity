@@ -1,0 +1,176 @@
+﻿@page "/feedetails"
+@using ClassLibraryDAL
+@using ClassLibraryEntities
+@inject NavigationManager nm
+
+<h3>FeeDetails</h3>
+
+<EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmintForm">
+    <table>
+         <tr>
+            <td>
+                DegreeID
+            </td>
+            <td>
+                <InputText name="ID" @bind-Value="_ModelProgramDegreeDetail.ProgramDegreeId" ></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Duration
+            </td>
+            <td>
+                <InputText name="ID" @bind-Value="_ModelProgramDegreeDetail.Duration" ></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Total Fee
+            </td>
+            <td>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.TotalFee"></InputText>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                Semester Fee
+            </td>
+            <td>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.SemesterFee"></InputText>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                Closing Merit
+            </td>
+            <td>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.ClosingMerit"></InputText>
+            </td>
+        </tr>
+       <tr>
+            
+            <td>
+                <button type="submit" class="btn btn-primary">@ButtonName</button>
+            </td>
+        </tr>
+
+       
+    </table>
+
+
+</EditForm>
+
+<table class="table table-striped">
+    <tr>
+        <th>PDI</th>
+        <th>Duration</th>
+        <th>TSem</th>
+        <th>TFee</th>
+        <th>SFee</th>
+      <th>CMerit</th>
+    </tr>
+
+    @foreach (var emp in @ProgramDegreeList)
+    {
+        <tr>
+            <td>
+                @emp.ProgramDegreeDetailsId
+            </td>
+            <td>@emp.Duration</td>
+            <td>@emp.TotalSemesters</td>
+            <td>@emp.TotalFee</td>
+            <td>@emp.SemesterFee</td>
+            <td>@emp.ClosingMerit</td>
+            
+            
+            <td>
+
+             
+         <button @onclick="(e => OnDelete(emp.ProgramDegreeDetailsId))" class="btn btn-warning bt-sm">Del</button>
+        @*<button @onclick="(e=>EditDegree(emp.ProgramDegreeDetailsId,emp.Duration,emp.TotalSemesters,emp.TotalFee,emp.ClosingMerit))" class="btn btn-warning bt-sm">Edit</button>*@
+
+                
+        </td>
+        </tr>
+
+    }
+
+
+
+</table>
+
+@code {
+  
+    private List<EntProgramDegreeDetails>? ProgramDegreeList;
+   
+    private EntProgramDegreeDetails? _ModelProgramDegreeDetail { get; set; }
+    private string? ButtonName { get; set; }
+
+    
+    protected override void OnInitialized()
+    {
+        _ModelProgramDegreeDetail = new EntProgramDegreeDetails();
+        LaodEmployee();
+
+    }
+    private void LaodEmployee()
+    {
+        this.ProgramDegreeList = DALProgramDegreeDetails.GetProgramDegreeDetails();
+        ButtonName = "Save";
+    }
+    private void SubmintForm()
+    {
+        if (ButtonName == "Save")
+        {
+            if (_ModelProgramDegreeDetail.Duration != null && _ModelProgramDegreeDetail.ClosingMerit!="")
+            {
+                DALProgramDegreeDetails.SaveProgramDegreeDetails(_ModelProgramDegreeDetail);
+                _ModelProgramDegreeDetail = new EntProgramDegreeDetails();
+                LaodEmployee();
+            }
+            else
+            {
+
+            }
+             
+               
+        }
+        else
+        {
+            if (_ModelProgramDegreeDetail.Duration != null && _ModelProgramDegreeDetail.ClosingMerit!="")
+            {
+                DALProgramDegreeDetails.UpdateProgramCategory(_ModelProgramDegreeDetail);
+                _ModelProgramDegreeDetail = new EntProgramDegreeDetails();
+                LaodEmployee();
+            }
+            else
+            {
+                
+            }
+
+
+        }
+
+    }
+ 
+    private void EditDegree(string Did, string Duration,string TotalSemester,string TotalFee,string SemesterFee,string ClosingMerit)
+    {
+
+        _ModelProgramDegreeDetail.ProgramDegreeDetailsId = Did;
+        _ModelProgramDegreeDetail.Duration = Duration;
+        _ModelProgramDegreeDetail.TotalSemesters = TotalSemester;
+        _ModelProgramDegreeDetail.TotalFee= TotalFee;
+        _ModelProgramDegreeDetail.SemesterFee = SemesterFee;
+        _ModelProgramDegreeDetail.ClosingMerit = ClosingMerit;
+
+        ButtonName = "Update";
+    }
+    private void OnDelete(string id)
+    {
+        DALProgramDegreeDetails.DeleteProgramDegreeDetails(id);
+        LaodEmployee();
+
+    }
+
+}
+

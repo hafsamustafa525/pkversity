@@ -13,6 +13,7 @@ namespace ClassLibraryEntities
         public string? TotalSemesters { get; set; }
         public string? TotalFee { get; set; }
         public string? SemesterFee { get; set; }
+        public string? ClosingMerit { get; set; }
         public string? ApprovedById { get; set; }
         public string? CityId { get; set; }
         public string? Morning { get; set; }

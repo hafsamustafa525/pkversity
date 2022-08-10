@@ -28,7 +28,8 @@ namespace ClassLibraryDAL
                   ee.TotalSemesters= sdr["TotalSemesters"].ToString();
                  ee.TotalFee= sdr["TotalFee"].ToString();
                 ee.SemesterFee= sdr["SemesterFee"].ToString();
-                  ee.ApprovedById= sdr["ApprovedById"].ToString();
+                ee.ClosingMerit= sdr["ClosingMerit"].ToString();
+                ee.ApprovedById= sdr["ApprovedById"].ToString();
                   ee.CityId= sdr["CityId"].ToString();
                 ee.Morning = sdr["Morning"].ToString();
                 ee.Evening = sdr["Evening"].ToString();
@@ -57,6 +58,7 @@ namespace ClassLibraryDAL
             cmd.Parameters.AddWithValue("@TotalSemesters", ee.TotalSemesters);
             cmd.Parameters.AddWithValue("@TotalFee", ee.TotalFee);
             cmd.Parameters.AddWithValue("@SemesterFee", ee.SemesterFee);
+            cmd.Parameters.AddWithValue("@ClosingMerit", ee.ClosingMerit);
             cmd.Parameters.AddWithValue("@ApprovedById", ee.ApprovedById);
             cmd.Parameters.AddWithValue("@CityId", ee.CityId);
             cmd.Parameters.AddWithValue("@Morning", ee.Morning);
@@ -93,6 +95,7 @@ namespace ClassLibraryDAL
             cmd.Parameters.AddWithValue("@TotalSemesters", ee.TotalSemesters);
             cmd.Parameters.AddWithValue("@TotalFee", ee.TotalFee);
             cmd.Parameters.AddWithValue("@SemesterFee", ee.SemesterFee);
+            cmd.Parameters.AddWithValue("@ClosingMerit", ee.ClosingMerit);
             cmd.Parameters.AddWithValue("@ApprovedById", ee.ApprovedById);
             cmd.Parameters.AddWithValue("@CityId", ee.CityId);
             cmd.Parameters.AddWithValue("@Morning", ee.Morning);
@@ -126,6 +129,7 @@ namespace ClassLibraryDAL
                 ee.TotalSemesters = sdr["TotalSemesters"].ToString();
                 ee.TotalFee = sdr["TotalFee"].ToString();
                 ee.SemesterFee = sdr["SemesterFee"].ToString();
+                ee.ClosingMerit= sdr["ClosingMerit"].ToString();
                 ee.ApprovedById = sdr["ApprovedById"].ToString();
                 ee.CityId = sdr["CityId"].ToString();
                 ee.Morning = sdr["Morning"].ToString();
