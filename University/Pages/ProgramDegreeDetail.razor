@@ -7,25 +7,39 @@
 <EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmintForm">
     <table>
         <tr>
-           <td>
- 
-<select class="form-select" aria-label="Default select example">
-  <option selected>Select Programs</option>
-  <option value="1">Undergrade(14 year)</option>
-  <option value="2">Postgrade(16 year)</option>
-  <option value="3">Masters(16 year)</option>
-</select>
-</td>
-</tr>
-<tr>
-<td>
-              
+            <td>
+
                 <select class="form-select" aria-label="Default select example">
-  <option selected>Select Degree</option>
-  <option value="1">ComputerScience</option>
-  <option value="2">Engineering</option>
-  <option value="3">Social Sciences</option>
-</select>
+                    <option selected>Select Programs</option>
+                    <option value="1">Undergrade(14 year)</option>
+                    <option value="2">Postgrade(16 year)</option>
+                    <option value="3">Masters(16 year)</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+                <select class="form-select" aria-label="Default select example" @bind="@categoryid">
+
+                    <option selected>Select Category</option>
+                    <option value="1">ComputerScience</option>
+                    <option value="2">Engineering</option>
+                    <option value="3">Social Sciences</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+                <select class="form-select" aria-label="Default select example">
+
+                    <option selected>Select Degree </option>
+                    <option value="1">Computer Science</option>
+                    <option value="2">Cyber Security</option>
+                    <option value="3">Software Engineering</option>
+                    <option value="3">Artifical Engineering</option>
+                </select>
             </td>
         </tr>
         <tr>
@@ -65,39 +79,52 @@
                 ApprovedBYID
             </td>
             <td>
-                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.ApprovedById"></InputText>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                    <label class="form-check-label" for="flexCheckChecked">
+                        HEC
+                    </label>
+                </div>
+            </td>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        PEC
+                    </label>
+                </div>
             </td>
         </tr>
+        @*<tr>
+        <td>
+        CityID
+        </td>
+        <td>
+        <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.CityId"></InputText>
+        </td>
+        </tr>*@
+
         <tr>
+            <td>Shifts</td>
             <td>
-                CityID
-            </td>
-            <td>
-                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.CityId"></InputText>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Morning
-            </td>
-            <td>
-                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.Morning"></InputText>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Evening
-            </td>
-            <td>
-                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.Evening"></InputText>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Weekened
-            </td>
-            <td>
-                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.Weekened"></InputText>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                    <label class="form-check-label" for="flexCheckChecked">
+                        Morning
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Evening
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Weekened
+                    </label>
+                </div>
             </td>
         </tr>
         <tr>
@@ -105,32 +132,114 @@
                 PassingDegreeGroups
             </td>
             <td>
-                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.PassingDegreeGroups"></InputText>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                    <label class="form-check-label" for="flexCheckChecked">
+                        All Groups
+                    </label>
+                </div>
+            </td>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        PreEngineering
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        PreMedical
+                    </label>
+                </div>
+            </td>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        ICS
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Icom
+                    </label>
+                </div>
+            </td>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        General Science
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        FA
+                    </label>
+                </div>
+            </td>
+            <td>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Arts
+                    </label>
+                </div>
             </td>
         </tr>
+        @*<tr>
+        <td>
+        ProgramDegreeID
+        </td>
+        <td>
+        <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.ProgramDegreeId"></InputText>
+        </td>
+        </tr>*@
         <tr>
             <td>
-                ProgramDegreeID
+                ClosingMerit
             </td>
             <td>
-                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.ProgramDegreeId"></InputText>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                InstituteID
-            </td>
-            <td>
-                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.InstituteId"></InputText>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.ClosingMerit"></InputText>
             </td>
         </tr>
         <tr>
             <td>
                 Percentage
             </td>
-            <td>
-                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.Percentage"></InputText>
-            </td>
+            
+                
+                    <tr>
+                        <td>
+                    <div>
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Matric
+                        </label>
+                        <select>
+                            <option value="0">--Select Criteria---</option>
+                            <option value="42">50</option>
+                            <option value="51">60</option>
+                        </select>
+                    </div>
+                    </td>
+                    <td>
+                    <div>
+                        <label class="form-check-label" for="flexCheckDefault">
+                            FSC
+                        </label>
+                        <select>
+                            <option value="0">--Select Criteria---</option>
+                            <option value="42">50</option>
+                            <option value="51">60</option>
+                        </select>
+                    </div>
+                    </td>
+               </tr>
+            
         </tr>
 
         <tr>
@@ -151,6 +260,7 @@
 
     private EntProgramDegreeDetails? _ModelProgramDegreeDetail { get; set; }
     private string? title { get; set; }
+     private string? categoryid { get; set; }
     [Parameter] public string DegreeID { get; set; }
     protected override void OnInitialized()
     {
