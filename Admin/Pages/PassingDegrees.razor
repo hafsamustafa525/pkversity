@@ -8,7 +8,7 @@
     <tr>
         <th>ID</th>
         <th>Category Name</th>
-        
+
     </tr>
 
     @foreach (var emp in @PassingDegreeList)
@@ -20,7 +20,7 @@
             <td>@emp.Title</td>
             <td>
 
-             
+
                 <button @onclick="(e => OnDelete(emp.PassingDegreesId))" class="btn btn-danger ">Del</button>
                 <a href="passingdegree/@emp.PassingDegreesId" class="btn btn-warning bt-sm">Edit</a>
                 <a href="passingdsgroups/@emp.PassingDegreesId" class="btn btn-warning bt-sm">Add passing Degrees Group</a>
@@ -34,8 +34,8 @@
 
 @code {
 
-    private List<EntPassingDegree>?PassingDegreeList;
-  
+    private List<EntPassingDegree>? PassingDegreeList;
+
     protected override void OnInitialized()
     {
         LaodPassingDegree();

@@ -8,7 +8,7 @@
     <tr>
         <th>ID</th>
         <th>Category Name</th>
-        
+
     </tr>
 
     @foreach (var emp in @ProgramCategoriesList)
@@ -20,7 +20,7 @@
             <td>@emp.CategoryName</td>
             <td>
 
-             
+
                 <button @onclick="(e => OnDelete(emp.ProgramCategoryId))" class="btn btn-warning bt-sm">Del</button>
                 <a href="programcategory/@emp.ProgramCategoryId" class="btn btn-warning bt-sm">Edit</a>
                 <a href="programdegree/@emp.ProgramCategoryId" class="btn btn-warning bt-sm">Add Prorgrame Degrees</a>
@@ -35,8 +35,8 @@
 
 @code {
 
-    private List<EntProgramCategory>?ProgramCategoriesList;
-     private string? message { get; set; }
+    private List<EntProgramCategory>? ProgramCategoriesList;
+    private string? message { get; set; }
     protected override void OnInitialized()
     {
         LaodEmployee();

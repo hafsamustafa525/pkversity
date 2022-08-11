@@ -5,7 +5,7 @@
 <h3>CitiesComponent</h3>
 
 <a href="/city/0" class="btn btn-dark bt-sm">Add City</a>
-<table class="table table-striped"> 
+<table class="table table-striped">
     <tr>
         <th>City ID</th>
         <th>City</th>
@@ -19,7 +19,7 @@
             <td>@emp.CityCode</td>
             <td>
                 <button @onclick="(e => OnDelete(emp.CityId))" class="btn btn-warning bt-sm">Del</button>
-               <a href="city/@emp.CityId" class="btn btn-warning bt-sm">Edit</a>
+                <a href="city/@emp.CityId" class="btn btn-warning bt-sm">Edit</a>
             </td>
         </tr>
     }
@@ -31,7 +31,7 @@
 
     private List<EntCities> CitiesList;
 
-   
+
 
     protected override void OnInitialized()
     {

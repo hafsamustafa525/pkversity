@@ -10,7 +10,7 @@ namespace ClassLibraryDAL
 {
     public class DALProgramDegree
     {
-    
+
         public static List<EntProgramDegree> GetProgramDegree()
         {
             SqlConnection con = DBHelper.GetConnection();
@@ -58,7 +58,7 @@ namespace ClassLibraryDAL
             cmd.ExecuteNonQuery();
             con.Close();
         }
-        
+
 
         public static void UpdateProgramDegree(EntProgramDegree ee)
         {

@@ -1,7 +1,4 @@
-﻿
-
-
-@page "/programdegreedetails"
+﻿@page "/programdegreedetails"
 @using ClassLibraryDAL
 
 @using ClassLibraryEntities
@@ -47,7 +44,7 @@
             <td>@emp.Percentage</td>
             <td>
 
-             
+
                 <button @onclick="(e => OnDelete(emp.ProgramDegreeDetailsId))" class="btn btn-warning bt-sm">Del</button>
                 <a href="programdegreedetail/@emp.ProgramDegreeDetailsId" class="btn btn-warning bt-sm">Edit</a>
             </td>
@@ -61,7 +58,7 @@
 
 @code {
 
-    private List<EntProgramDegreeDetails>?ProgramDegreeDetailsList;
+    private List<EntProgramDegreeDetails>? ProgramDegreeDetailsList;
 
     protected override void OnInitialized()
     {
@@ -71,7 +68,7 @@
 
     private void OnDelete(string id)
     {
-        
+
         DALProgramDegreeDetails.DeleteProgramDegreeDetails(id);
         LaodProgramDegreeDetails();
 

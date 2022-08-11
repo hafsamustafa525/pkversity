@@ -28,7 +28,7 @@
                 Title
             </td>
             <td>
-                <InputText name="ID" @bind-Value="_ModelInstitute.Title" required ></InputText>
+                <InputText name="ID" @bind-Value="_ModelInstitute.Title" required></InputText>
             </td>
         </tr>
         <tr>
@@ -36,7 +36,7 @@
                 Email
             </td>
             <td>
-                <InputText name="Email" @bind-Value="_ModelInstitute.Email" required ></InputText>
+                <InputText name="Email" @bind-Value="_ModelInstitute.Email" required></InputText>
             </td>
         </tr>
         <tr>
@@ -44,7 +44,7 @@
                 Phone
             </td>
             <td>
-                <InputText name="Phone" @bind-Value="_ModelInstitute.Phone" required ></InputText>
+                <InputText name="Phone" @bind-Value="_ModelInstitute.Phone" required></InputText>
             </td>
         </tr>
 
@@ -54,7 +54,7 @@
                 Password
             </td>
             <td>
-                <InputText name="Password" @bind-Value="_ModelInstitute.Password" required ></InputText>
+                <InputText name="Password" @bind-Value="_ModelInstitute.Password" required></InputText>
             </td>
         </tr>
 
@@ -65,7 +65,7 @@
             </td>
             <td>
                 <select @bind="@cityid">
-                    <option value="0">--Select City---</option>
+                    <option ID="DropDown">--Select City---</option>
                     <option value="42">Lahore</option>
                     <option value="51">Islamabad</option>
                 </select>
@@ -77,7 +77,7 @@
                 TypeOfId
             </td>
             <td>
-                <select @bind="@typeid"  >
+                <select @bind="@typeid">
                     <option value="0">--Select Type---</option>
                     <option value="1">School</option>
                     <option value="4">Institute</option>
@@ -90,7 +90,7 @@
                 Location
             </td>
             <td>
-                <InputText name="Location" @bind-Value="_ModelInstitute.Location" required ></InputText>
+                <InputText name="Location" @bind-Value="_ModelInstitute.Location" required></InputText>
             </td>
         </tr>
 
@@ -118,7 +118,7 @@
 
     private string? cityid { get; set; }
     private string? typeid { get; set; }
-    private int i{ get; set; }
+    private int i { get; set; }
     bool check = false;
     private string? message { get; set; }
 
@@ -140,7 +140,7 @@
     {
         if (insid == "0")
         {
-            if (IfExist(_ModelInstitute.Title,_ModelInstitute.Email,_ModelInstitute.Phone ,_ModelInstitute.Location ) == 0)
+            if (IfExist(_ModelInstitute.Title, _ModelInstitute.Email, _ModelInstitute.Phone, _ModelInstitute.Location) == 0)
             {
 
 
@@ -157,7 +157,8 @@
                     check = true;
                     message = "Select city and typeid";
                 }
-            }else
+            }
+            else
 
             {
                 check = true;
@@ -166,7 +167,7 @@
         }
         else
         {
-            if (IfExist(_ModelInstitute.Title,_ModelInstitute.Email,_ModelInstitute.Phone ,_ModelInstitute.Location ) == 0)
+            if (IfExist(_ModelInstitute.Title, _ModelInstitute.Email, _ModelInstitute.Phone, _ModelInstitute.Location) == 0)
             {
 
 
@@ -184,27 +185,29 @@
                     message = "Select city and typeid";
                 }
 
-            } else
+            }
+            else
             {
                 check = true;
                 message = "Alread exist";
             }
         }
 
-    } 
+    }
 
-    private int IfExist(string title,string email,string phone, string location ){
+    private int IfExist(string title, string email, string phone, string location)
+    {
         instituteList = DalInstitutes.GetInstitutes();
 
-        foreach (var emp in  instituteList)
+        foreach (var emp in instituteList)
         {
-            if (emp.Title == title || emp.Email == email || emp.Phone == phone || emp.Location ==location)
+            if (emp.Title == title || emp.Email == email || emp.Phone == phone || emp.Location == location)
             {
-                i=1;
+                i = 1;
             }
             else
             {
-                i=0;
+                i = 0;
             }
 
         }

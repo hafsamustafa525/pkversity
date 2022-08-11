@@ -19,25 +19,25 @@ namespace ClassLibraryDAL
             SqlCommand cmd = new SqlCommand("SP_GetProgramDegreeDetails", con);
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataReader sdr = cmd.ExecuteReader();
-            List<EntProgramDegreeDetails> ProgramDegreeDetailList= new List<EntProgramDegreeDetails>();
+            List<EntProgramDegreeDetails> ProgramDegreeDetailList = new List<EntProgramDegreeDetails>();
             while (sdr.Read())
             {
                 EntProgramDegreeDetails ee = new EntProgramDegreeDetails();
-                ee.ProgramDegreeDetailsId= sdr["ProgramDegreeDetailsId"].ToString();
-                ee.Duration= sdr["Duration"].ToString();
-                  ee.TotalSemesters= sdr["TotalSemesters"].ToString();
-                 ee.TotalFee= sdr["TotalFee"].ToString();
-                ee.SemesterFee= sdr["SemesterFee"].ToString();
-                ee.ClosingMerit= sdr["ClosingMerit"].ToString();
-                ee.ApprovedById= sdr["ApprovedById"].ToString();
-                  ee.CityId= sdr["CityId"].ToString();
+                ee.ProgramDegreeDetailsId = sdr["ProgramDegreeDetailsId"].ToString();
+                ee.Duration = sdr["Duration"].ToString();
+                ee.TotalSemesters = sdr["TotalSemesters"].ToString();
+                ee.TotalFee = sdr["TotalFee"].ToString();
+                ee.SemesterFee = sdr["SemesterFee"].ToString();
+                ee.ClosingMerit = sdr["ClosingMerit"].ToString();
+                ee.ApprovedById = sdr["ApprovedById"].ToString();
+                ee.CityId = sdr["CityId"].ToString();
                 ee.Morning = sdr["Morning"].ToString();
                 ee.Evening = sdr["Evening"].ToString();
                 ee.Weekened = sdr["Weekened"].ToString();
-                ee.PassingDegreeGroups= sdr["PassingDegreeGroups"].ToString();
-                ee.ProgramDegreeId= sdr["ProgramDegreeId"].ToString();
-                ee.InstituteId= sdr["InstituteId"].ToString();
-                 ee.Percentage= sdr["Percentage"].ToString();
+                ee.PassingDegreeGroups = sdr["PassingDegreeGroups"].ToString();
+                ee.ProgramDegreeId = sdr["ProgramDegreeId"].ToString();
+                ee.InstituteId = sdr["InstituteId"].ToString();
+                ee.Percentage = sdr["Percentage"].ToString();
 
                 ProgramDegreeDetailList.Add(ee);
             }
@@ -47,7 +47,7 @@ namespace ClassLibraryDAL
 
 
 
- //[ProgramDegreeDetailsId], [Duration], [TotalSemesters], [TotalFee], [SemesterFee], [ApprovedById], [CityId], [Morning], [Evening], [Weekened],
+        //[ProgramDegreeDetailsId], [Duration], [TotalSemesters], [TotalFee], [SemesterFee], [ApprovedById], [CityId], [Morning], [Evening], [Weekened],
         //[PassingDegreeGroups], [ProgramDegreeId], [InstituteId], [Percentage]
         public static void SaveProgramDegreeDetails(EntProgramDegreeDetails ee)
         {
@@ -123,18 +123,18 @@ namespace ClassLibraryDAL
             EntProgramDegreeDetails ee = new EntProgramDegreeDetails();
             while (sdr.Read())
             {
-               
+
                 ee.ProgramDegreeDetailsId = sdr["ProgramDegreeDetailsId"].ToString();
                 ee.Duration = sdr["Duration"].ToString();
                 ee.TotalSemesters = sdr["TotalSemesters"].ToString();
                 ee.TotalFee = sdr["TotalFee"].ToString();
                 ee.SemesterFee = sdr["SemesterFee"].ToString();
-                ee.ClosingMerit= sdr["ClosingMerit"].ToString();
+                ee.ClosingMerit = sdr["ClosingMerit"].ToString();
                 ee.ApprovedById = sdr["ApprovedById"].ToString();
                 ee.CityId = sdr["CityId"].ToString();
                 ee.Morning = sdr["Morning"].ToString();
                 ee.Evening = sdr["Evening"].ToString();
-                ee.Weekened =sdr["Weekened"].ToString();
+                ee.Weekened = sdr["Weekened"].ToString();
                 ee.PassingDegreeGroups = sdr["PassingDegreeGroups"].ToString();
                 ee.ProgramDegreeId = sdr["ProgramDegreeId"].ToString();
                 ee.InstituteId = sdr["InstituteId"].ToString();

@@ -6,7 +6,7 @@
 <div><h3>Program Degrees</h3></div>
 @if (check)
 {
- <MessageComponent CustomMessage="@message"></MessageComponent>
+    <MessageComponent CustomMessage="@message"></MessageComponent>
 }
 <div>
     <EditForm Model="_ModelProgramDegree" OnSubmit="SubmintForm">
@@ -25,7 +25,7 @@
                 <td>
 
 
-                    <InputText PlaceHolder="DegreeName" name="Name" @bind-Value="_ModelProgramDegree.DegreeName" required ></InputText>
+                    <InputText PlaceHolder="DegreeName" name="Name" @bind-Value="_ModelProgramDegree.DegreeName" required></InputText>
                 </td>
 
 
@@ -44,9 +44,9 @@
 <table class="table table-striped">
     <tr>
         <th>ID</th>
-         <th>Category ID</th>
+        <th>Category ID</th>
         <th>Degree Name</th>
-       
+
     </tr>
 
     @foreach (var emp in @ProgramDegreeList)
@@ -57,7 +57,7 @@
                 <td>
                     @emp.ProgramDegreeId
                 </td>
-                
+
                 <td>@emp.ProgramCategoryid</td>
                 <td>@emp.DegreeName</td>
                 <td>
@@ -85,7 +85,7 @@
     private string? ButtonName { get; set; }
     private string? message { get; set; }
     bool check = false;
-    private int i{ get; set; }
+    private int i { get; set; }
 
     protected override void OnInitialized()
     {
@@ -102,7 +102,7 @@
     {
         if (ButtonName == "Save")
         {
-           if (IfExist(_ModelProgramDegree.DegreeName) == 0)
+            if (IfExist(_ModelProgramDegree.DegreeName) == 0)
             {
                 _ModelProgramDegree.ProgramCategoryid = CategoryID;
                 DALProgramDegree.SaveProgramDegree(_ModelProgramDegree);
@@ -111,7 +111,7 @@
             }
             else
             {
-                 check = true;
+                check = true;
                 message = "Alread exist";
             }
 
@@ -126,7 +126,7 @@
             }
             else
             {
-                 check = true;
+                check = true;
                 message = "Alread exist";
             }
 
@@ -135,7 +135,7 @@
 
     }
 
-    private void EditDegree(string id, string degreename,string pid)
+    private void EditDegree(string id, string degreename, string pid)
     {
 
         _ModelProgramDegree.DegreeName = degreename;
@@ -151,18 +151,19 @@
     }
 
 
-     private int IfExist(string item){
+    private int IfExist(string item)
+    {
         ProgramDegreeList = DALProgramDegree.GetProgramDegree();
 
         foreach (var emp in ProgramDegreeList)
         {
             if (emp.DegreeName == item)
             {
-                i=1;
+                i = 1;
             }
             else
             {
-                i=0;
+                i = 0;
             }
 
         }

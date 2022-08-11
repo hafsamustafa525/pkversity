@@ -11,7 +11,7 @@
                 DID
             </td>
             <td>
-                <InputText name="ID" @bind-Value="_ModelProgramDegreeDetail.ProgramDegreeDetailsId" disabled ></InputText>
+                <InputText name="ID" @bind-Value="_ModelProgramDegreeDetail.ProgramDegreeDetailsId" disabled></InputText>
             </td>
         </tr>
         <tr>
@@ -19,7 +19,7 @@
                 Duration
             </td>
             <td>
-                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.Duration" required ></InputText>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.Duration" required></InputText>
             </td>
         </tr>
         <tr>
@@ -27,7 +27,7 @@
                 TSem
             </td>
             <td>
-                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.TotalSemesters" required ></InputText>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.TotalSemesters" required></InputText>
             </td>
         </tr>
         <tr>
@@ -35,7 +35,7 @@
                 TFee
             </td>
             <td>
-                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.TotalFee" required ></InputText>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.TotalFee" required></InputText>
             </td>
         </tr>
         <tr>
@@ -119,7 +119,7 @@
             </td>
         </tr>
 
-       <tr>
+        <tr>
             <td>
             </td>
             <td>
@@ -127,20 +127,20 @@
             </td>
         </tr>
 
-       
+
     </table>
 
 
 </EditForm>
 
 @code {
-    
+
     private EntProgramDegreeDetails? _ModelProgramDegreeDetail { get; set; }
     private string? title { get; set; }
-    [Parameter] public string DegreeID {get;set;}
+    [Parameter] public string DegreeID { get; set; }
     protected override void OnInitialized()
     {
-        if (DegreeID=="0")
+        if (DegreeID == "0")
         {
             _ModelProgramDegreeDetail = new EntProgramDegreeDetails();
             title = "Create New Category";
@@ -154,7 +154,7 @@
 
     private void SubmintForm()
     {
-        if (DegreeID=="0")
+        if (DegreeID == "0")
         {
             DALProgramDegreeDetails.SaveProgramDegreeDetails(_ModelProgramDegreeDetail);
             nm.NavigateTo("/programdegreedetails");

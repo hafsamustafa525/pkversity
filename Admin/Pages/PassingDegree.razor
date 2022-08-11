@@ -12,7 +12,7 @@
                 SSN
             </td>
             <td>
-                <InputText name="ID" @bind-Value="_ModelPassingDegree.PassingDegreesId" disabled ></InputText>
+                <InputText name="ID" @bind-Value="_ModelPassingDegree.PassingDegreesId" disabled></InputText>
             </td>
         </tr>
         <tr>
@@ -20,11 +20,11 @@
                 Category Name
             </td>
             <td>
-                <InputText name="Name" @bind-Value="_ModelPassingDegree.Title" required ></InputText>
+                <InputText name="Name" @bind-Value="_ModelPassingDegree.Title" required></InputText>
             </td>
         </tr>
 
-       <tr>
+        <tr>
             <td>
             </td>
             <td>
@@ -32,35 +32,35 @@
             </td>
         </tr>
 
-       
+
     </table>
 
 
 </EditForm>
 
 @code {
-    
+
 
     private EntPassingDegree _ModelPassingDegree { get; set; }
     private string? title { get; set; }
-    [Parameter] public string PID{get;set;}
-        protected override void OnInitialized()
+    [Parameter] public string PID { get; set; }
+    protected override void OnInitialized()
     {
-        if (PID=="0")
+        if (PID == "0")
         {
-            _ModelPassingDegree  = new EntPassingDegree();
+            _ModelPassingDegree = new EntPassingDegree();
             title = "Create New Category";
         }
         else
         {
-            _ModelPassingDegree  = DALPassingDegree.GetPassingDegreesById(PID);
+            _ModelPassingDegree = DALPassingDegree.GetPassingDegreesById(PID);
             title = "Update Category";
         }
     }
 
     private void SubmintForm()
     {
-        if (PID=="0")
+        if (PID == "0")
         {
             DALPassingDegree.SavePassingdegrees(_ModelPassingDegree);
             nm.NavigateTo("/passingdegrees");

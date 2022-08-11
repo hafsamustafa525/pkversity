@@ -30,12 +30,13 @@ namespace ClassLibraryDAL
                 ee.@UserName = sdr["UserName"].ToString();
                 ee.@Password = sdr["Password"].ToString();
                 ee.@CreatedOn = sdr["CreatedOn"].ToString();
-                ee.@IsActive = sdr["IsActive"].ToString(); 
+                ee.@IsActive = sdr["IsActive"].ToString();
                 ee.@CityId = sdr["CityId"].ToString();
                 ee.@TypeOfId = sdr["TypeOfId"].ToString();
                 ee.@Location = sdr["Location"].ToString();
                 ee.@AdminId = sdr["AdminId"].ToString();
                 instituteList.Add(ee);
+
             }
             con.Close();
             return instituteList;
@@ -80,10 +81,10 @@ namespace ClassLibraryDAL
             cmd.Parameters.AddWithValue("@Title", ee.Title);
             cmd.Parameters.AddWithValue("@Email", ee.Email);
             cmd.Parameters.AddWithValue("@Phone", ee.Phone);
-  
+
             cmd.Parameters.AddWithValue("@Password", ee.Password);
-   
-       
+
+
             cmd.Parameters.AddWithValue("@CityId", ee.CityId);
             cmd.Parameters.AddWithValue("@TypeOfId", ee.TypeOfId);
             cmd.Parameters.AddWithValue("@Location", ee.Location);
@@ -118,7 +119,7 @@ namespace ClassLibraryDAL
             cmd.Parameters.AddWithValue("@Email", ee.Email);
             cmd.Parameters.AddWithValue("@Phone", ee.Phone);
             cmd.Parameters.AddWithValue("@Logo", ee.Logo);
-            
+
             cmd.Parameters.AddWithValue("@UserName", ee.UserName);
             cmd.Parameters.AddWithValue("@Password", ee.Password);
             cmd.Parameters.AddWithValue("@CreatedOn", ee.CreatedOn);

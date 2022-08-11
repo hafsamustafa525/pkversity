@@ -7,7 +7,7 @@
 
 @if (check)
 {
- <MessageComponent CustomMessage="@message"></MessageComponent>
+    <MessageComponent CustomMessage="@message"></MessageComponent>
 }
 
 <EditForm Model="_ModelCity" OnSubmit="SubmintForm">
@@ -17,15 +17,15 @@
                 City ID
             </td>
             <td>
-                <InputText DisplayName="CityId" @bind-Value="_ModelCity.CityId" disabled ></InputText>
+                <InputText DisplayName="CityId" @bind-Value="_ModelCity.CityId" disabled></InputText>
             </td>
         </tr>
         <tr>
             <td>
-               City Name
+                City Name
             </td>
             <td>
-                <InputText DisplayName="CityName" @bind-Value="_ModelCity.CityName" required ></InputText>
+                <InputText DisplayName="CityName" @bind-Value="_ModelCity.CityName" required></InputText>
             </td>
         </tr>
         <tr>
@@ -33,11 +33,11 @@
                 City Code
             </td>
             <td>
-                <InputText DisplayName="CityCode" @bind-Value="_ModelCity.CityCode" required ></InputText>
+                <InputText DisplayName="CityCode" @bind-Value="_ModelCity.CityCode" required></InputText>
             </td>
         </tr>
 
-        
+
         <tr>
             <td>
             </td>
@@ -57,9 +57,9 @@
     private string? title { get; set; }
     private string? message { get; set; }
     bool check = false;
-    private int i{ get; set; }
+    private int i { get; set; }
 
-    [Parameter] public string? cityid {get;set;}
+    [Parameter] public string? cityid { get; set; }
 
 
     protected override void OnInitialized()
@@ -81,7 +81,7 @@
 
         if (cityid == "0")
         {
-            if (IfExist(_ModelCity.CityName,_ModelCity.CityCode) == 0)
+            if (IfExist(_ModelCity.CityName, _ModelCity.CityCode) == 0)
             {
                 DalCities.SaveCities(_ModelCity);
                 nm.NavigateTo("/cities");
@@ -95,32 +95,34 @@
         }
         else
         {
-            if (IfExist(_ModelCity.CityName,_ModelCity.CityCode) == 0)
+            if (IfExist(_ModelCity.CityName, _ModelCity.CityCode) == 0)
             {
                 DalCities.UpdateCities(_ModelCity);
                 nm.NavigateTo("/cities");
-            }else
+            }
+            else
             {
-                 check = true;
+                check = true;
                 message = "Alread exist";
             }
         }
 
     }
 
-    
-     private int IfExist(string item,string id){
+
+    private int IfExist(string item, string id)
+    {
         CitiesList = DalCities.GetCities();
 
         foreach (var emp in CitiesList)
         {
             if (emp.CityName == item || emp.CityCode == id)
             {
-                i=1;
+                i = 1;
             }
             else
             {
-                i=0;
+                i = 0;
             }
 
         }

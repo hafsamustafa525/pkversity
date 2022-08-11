@@ -22,7 +22,7 @@ namespace ClassLibraryDAL
             cmd.ExecuteNonQuery();
             con.Close();
 
-           
+
         }
 
         public static EntPassingDSGroups GetPassingDSGroupsById(string PassingDSGroupsId)
