@@ -124,6 +124,7 @@
         {
             if (_ModelProgramDegreeDetail.Duration != null && _ModelProgramDegreeDetail.ClosingMerit!="")
             {
+                
                 DALProgramDegreeDetails.SaveProgramDegreeDetails(_ModelProgramDegreeDetail);
                 _ModelProgramDegreeDetail = new EntProgramDegreeDetails();
                 LaodEmployee();

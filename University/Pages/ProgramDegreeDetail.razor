@@ -1,0 +1,184 @@
+﻿@page "/programdegreedetail/{DegreeID}"
+@using ClassLibraryDAL
+@using ClassLibraryEntities
+@inject NavigationManager nm
+
+
+<EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmintForm">
+    <table>
+        <tr>
+            <td>
+                Programs
+            </td>
+            <td>
+                <select>
+                    <option>Select Program</option>
+                    <option value="14  ">Undergrade(14 year)</option>
+                    <option value="16">Postgrade(16 year) Program</option>
+                
+                </select>
+                <select>
+                    <option>Select Degree</option>
+                    <option value="14">ComputerScience</option>
+                    <option value="16">Undergrade(16 year) Program</option>
+                    <option value="18">Master(16 year)</option>
+                    <option value="18">MS(18 year)</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Duration
+            </td>
+            <td>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.Duration" required></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                TSem
+            </td>
+            <td>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.TotalSemesters" required></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                TFee
+            </td>
+            <td>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.TotalFee" required></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                SemFee
+            </td>
+            <td>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.SemesterFee"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                AId
+            </td>
+            <td>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.ApprovedById"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                CID
+            </td>
+            <td>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.CityId"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Morning
+            </td>
+            <td>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.Morning"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Evening
+            </td>
+            <td>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.Evening"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Weekened
+            </td>
+            <td>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.Weekened"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                PDG
+            </td>
+            <td>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.PassingDegreeGroups"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                PDD
+            </td>
+            <td>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.ProgramDegreeId"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                IID
+            </td>
+            <td>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.InstituteId"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Percentage
+            </td>
+            <td>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.Percentage"></InputText>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+            </td>
+            <td>
+                <button type="submit" class="btn btn-primary">@title</button>
+            </td>
+        </tr>
+
+
+    </table>
+
+
+</EditForm>
+
+@code {
+
+    private EntProgramDegreeDetails? _ModelProgramDegreeDetail { get; set; }
+    private string? title { get; set; }
+    [Parameter] public string DegreeID { get; set; }
+    protected override void OnInitialized()
+    {
+        if (DegreeID == "0")
+        {
+            _ModelProgramDegreeDetail = new EntProgramDegreeDetails();
+            title = "Create New Category";
+        }
+        else
+        {
+            _ModelProgramDegreeDetail = DALProgramDegreeDetails.GetProgramDegreeDetailsByID(DegreeID);
+            title = "Update Category";
+        }
+    }
+
+    private void SubmintForm()
+    {
+        if (DegreeID == "0")
+        {
+            DALProgramDegreeDetails.SaveProgramDegreeDetails(_ModelProgramDegreeDetail);
+            nm.NavigateTo("/programdegreedetails");
+        }
+        else
+        {
+            DALProgramDegreeDetails.UpdateProgramCategory(_ModelProgramDegreeDetail);
+            nm.NavigateTo("/programdegreedetails");
+        }
+
+    }
+
+
+
+}

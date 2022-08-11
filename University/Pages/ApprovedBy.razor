@@ -1,6 +1,21 @@
 ﻿@page "/approvedby"
 <h3>ApprovedBy</h3>
 
-@code {
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" @bind="value1" >
+  <label class="form-check-label" for="flexCheckChecked">
+    HEC
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" @bind="value2">
+  <label class="form-check-label" for="flexCheckDefault">
+     PEC
+  </label>
+</div>
 
+
+@code {
+    public bool value1 {get;set;}
+    public bool value2 {get;set;}
 }
