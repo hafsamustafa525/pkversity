@@ -5,7 +5,10 @@
 
 <h3>CityComponent</h3>
 
-
+@if (check)
+{
+ <MessageComponent CustomMessage="@message"></MessageComponent>
+}
 
 <EditForm Model="_ModelCity" OnSubmit="SubmintForm">
     <table>
@@ -49,11 +52,12 @@
 
 
 @code {
-
+    private List<EntCities> CitiesList;
     private EntCities? _ModelCity { get; set; }
-
     private string? title { get; set; }
-
+    private string? message { get; set; }
+    bool check = false;
+    private int i{ get; set; }
 
     [Parameter] public string? cityid {get;set;}
 
@@ -77,23 +81,51 @@
 
         if (cityid == "0")
         {
-            if (!string.IsNullOrEmpty(_ModelCity.CityName as string))
+            if (IfExist(_ModelCity.CityName,_ModelCity.CityCode) == 0)
             {
                 DalCities.SaveCities(_ModelCity);
                 nm.NavigateTo("/cities");
             }
+            else
+            {
+
+                check = true;
+                message = "Alread exist";
+            }
         }
         else
         {
-            if (!string.IsNullOrEmpty(_ModelCity.CityName as string))
+            if (IfExist(_ModelCity.CityName,_ModelCity.CityCode) == 0)
             {
                 DalCities.UpdateCities(_ModelCity);
                 nm.NavigateTo("/cities");
+            }else
+            {
+                 check = true;
+                message = "Alread exist";
             }
         }
 
     }
 
+    
+     private int IfExist(string item,string id){
+        CitiesList = DalCities.GetCities();
+
+        foreach (var emp in CitiesList)
+        {
+            if (emp.CityName == item || emp.CityCode == id)
+            {
+                i=1;
+            }
+            else
+            {
+                i=0;
+            }
+
+        }
+        return i;
+    }
 
 }
 

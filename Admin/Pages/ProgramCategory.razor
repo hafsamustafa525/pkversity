@@ -4,7 +4,10 @@
 @inject NavigationManager nm
 
 <h2>@title</h2>
-<h2>@ErrorMessage</h2>
+@if (check)
+{
+ <MessageComponent CustomMessage="@message"></MessageComponent>
+}
 <EditForm Model="_ModelProgramCategory" OnSubmit="SubmintForm">
     <table>
         <tr>
@@ -38,6 +41,7 @@
 
 </EditForm>
 
+
 @code {
 
 
@@ -46,7 +50,8 @@
     private EntProgramCategory _ModelProgramCategory { get; set; }
     private string? title { get; set; }
     private int i{ get; set; }
-    private string ErrorMessage{ get; set; }
+    private string? message { get; set; }
+    bool check = false;
     [Parameter] public string CategoryID { get; set; }
     protected override void OnInitialized()
     {
@@ -77,21 +82,31 @@
             }
             else
             {
-                ErrorMessage = "Alread exist";
+                check = true;
+                message = "Alread exist";
             }
 
 
         }
         else
         {
+            if (IfExist(_ModelProgramCategory.CategoryName) == 0){
             DALProgramCategory.UpdateProgramCategory(_ModelProgramCategory);
             nm.NavigateTo("/programcategories");
+            }
+            else
+            {
+                check = true;
+                message = "Alread exist";
+            }
+
         }
 
     }
 
     private int IfExist(string item){
-        
+        ProgramCategoriesList = DALProgramCategory.GetProgramCategory();
+
         foreach (var emp in ProgramCategoriesList)
         {
             if (emp.CategoryName == item)

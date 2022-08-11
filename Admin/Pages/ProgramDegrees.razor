@@ -4,6 +4,10 @@
 @inject NavigationManager nm
 
 <div><h3>Program Degrees</h3></div>
+@if (check)
+{
+ <MessageComponent CustomMessage="@message"></MessageComponent>
+}
 <div>
     <EditForm Model="_ModelProgramDegree" OnSubmit="SubmintForm">
         <table>
@@ -79,6 +83,10 @@
     [Parameter] public string? CategoryID { get; set; }
     private EntProgramDegree? _ModelProgramDegree { get; set; }
     private string? ButtonName { get; set; }
+    private string? message { get; set; }
+    bool check = false;
+    private int i{ get; set; }
+
     protected override void OnInitialized()
     {
         _ModelProgramDegree = new EntProgramDegree();
@@ -94,7 +102,7 @@
     {
         if (ButtonName == "Save")
         {
-            if (_ModelProgramDegree.DegreeName != null && _ModelProgramDegree.DegreeName!="")
+           if (IfExist(_ModelProgramDegree.DegreeName) == 0)
             {
                 _ModelProgramDegree.ProgramCategoryid = CategoryID;
                 DALProgramDegree.SaveProgramDegree(_ModelProgramDegree);
@@ -103,13 +111,14 @@
             }
             else
             {
-
+                 check = true;
+                message = "Alread exist";
             }
 
         }
         else
         {
-            if (_ModelProgramDegree.DegreeName != null && _ModelProgramDegree.DegreeName!="")
+            if (IfExist(_ModelProgramDegree.DegreeName) == 0)
             {
                 DALProgramDegree.UpdateProgramDegree(_ModelProgramDegree);
                 _ModelProgramDegree = new EntProgramDegree();
@@ -117,7 +126,8 @@
             }
             else
             {
-                
+                 check = true;
+                message = "Alread exist";
             }
 
 
@@ -141,7 +151,23 @@
     }
 
 
+     private int IfExist(string item){
+        ProgramDegreeList = DALProgramDegree.GetProgramDegree();
 
+        foreach (var emp in ProgramDegreeList)
+        {
+            if (emp.DegreeName == item)
+            {
+                i=1;
+            }
+            else
+            {
+                i=0;
+            }
+
+        }
+        return i;
+    }
 
 
 

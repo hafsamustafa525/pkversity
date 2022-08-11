@@ -7,12 +7,16 @@
 
 @typeid
 
+@if (check)
+{
+ <MessageComponent CustomMessage="@message"></MessageComponent>
+}
 
 <EditForm Model="@_ModelTypeof" OnSubmit="SubmintForm">
     <table>
         <tr>
             <td>
-                City ID
+                TypeOf ID
             </td>
             <td>
                 <InputText DisplayName="TypeOfId" @bind-Value="_ModelTypeof.TypeOfId" required ></InputText>
@@ -20,7 +24,7 @@
         </tr>
         <tr>
             <td>
-               City Name
+               Type Of Title
             </td>
             <td>
                 <InputText DisplayName="Type" @bind-Value="_ModelTypeof.Type" required ></InputText>
@@ -44,11 +48,13 @@
 
 
 @code  {
-         
-    private EntTypes? _ModelTypeof { get; set; }
-    
-    private string? title { get; set; }
 
+    private EntTypes? _ModelTypeof { get; set; }
+    private List<EntTypes> TypesList;
+    private string? title { get; set; }
+    private string? message { get; set; }
+    bool check = false;
+    private int i{ get; set; }
 
     [Parameter] public string? typeid {get;set;}
 
@@ -69,18 +75,56 @@
 
     private void SubmintForm()
     {
+
         if (typeid == "0")
         {
-            DalTypes.SaveTypeOfs(_ModelTypeof);
-            nm.NavigateTo("/typeofs");
+            if(IfExist(_ModelTypeof.Type,_ModelTypeof.TypeOfId)==0)
+            {
+                DalTypes.SaveTypeOfs(_ModelTypeof);
+                nm.NavigateTo("/typeofs");
+            }
+            else
+            {
+                check = true;
+                message = "Alread exist";
+            }
         }
         else
         {
-            DalTypes.UpdateTypesOfs(_ModelTypeof);
-            nm.NavigateTo("/typeofs");
+            if(IfExist(_ModelTypeof.Type,_ModelTypeof.TypeOfId)==0)
+            {
+                DalTypes.UpdateTypesOfs(_ModelTypeof);
+                nm.NavigateTo("/typeofs");
+            }
+            else
+            {
+                
+                check = true;
+                message = "Alread exist";
+                
+            }
+            
         }
 
     }
 
+
+        private int IfExist(string item,string id){
+        TypesList = DalTypes.GetTypeOfs();
+
+        foreach (var emp in TypesList)
+        {
+            if (emp.Type == item || emp.TypeOfId == id)
+            {
+                i=1;
+            }
+            else
+            {
+                i=0;
+            }
+
+        }
+        return i;
+    }
 
 }
