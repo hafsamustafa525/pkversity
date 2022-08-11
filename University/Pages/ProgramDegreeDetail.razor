@@ -7,23 +7,25 @@
 <EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmintForm">
     <table>
         <tr>
-            <td>
-                Programs
-            </td>
-            <td>
-                <select>
-                    <option>Select Program</option>
-                    <option value="14  ">Undergrade(14 year)</option>
-                    <option value="16">Postgrade(16 year) Program</option>
-                
-                </select>
-                <select>
-                    <option>Select Degree</option>
-                    <option value="14">ComputerScience</option>
-                    <option value="16">Undergrade(16 year) Program</option>
-                    <option value="18">Master(16 year)</option>
-                    <option value="18">MS(18 year)</option>
-                </select>
+           <td>
+ 
+<select class="form-select" aria-label="Default select example">
+  <option selected>Select Programs</option>
+  <option value="1">Undergrade(14 year)</option>
+  <option value="2">Postgrade(16 year)</option>
+  <option value="3">Masters(16 year)</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>
+              
+                <select class="form-select" aria-label="Default select example">
+  <option selected>Select Degree</option>
+  <option value="1">ComputerScience</option>
+  <option value="2">Engineering</option>
+  <option value="3">Social Sciences</option>
+</select>
             </td>
         </tr>
         <tr>
@@ -36,7 +38,7 @@
         </tr>
         <tr>
             <td>
-                TSem
+                TotalSemesters
             </td>
             <td>
                 <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.TotalSemesters" required></InputText>
@@ -44,7 +46,7 @@
         </tr>
         <tr>
             <td>
-                TFee
+                TotalFee
             </td>
             <td>
                 <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.TotalFee" required></InputText>
@@ -52,7 +54,7 @@
         </tr>
         <tr>
             <td>
-                SemFee
+                SemesterFee
             </td>
             <td>
                 <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.SemesterFee"></InputText>
@@ -60,7 +62,7 @@
         </tr>
         <tr>
             <td>
-                AId
+                ApprovedBYID
             </td>
             <td>
                 <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.ApprovedById"></InputText>
@@ -68,7 +70,7 @@
         </tr>
         <tr>
             <td>
-                CID
+                CityID
             </td>
             <td>
                 <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.CityId"></InputText>
@@ -100,7 +102,7 @@
         </tr>
         <tr>
             <td>
-                PDG
+                PassingDegreeGroups
             </td>
             <td>
                 <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.PassingDegreeGroups"></InputText>
@@ -108,7 +110,7 @@
         </tr>
         <tr>
             <td>
-                PDD
+                ProgramDegreeID
             </td>
             <td>
                 <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.ProgramDegreeId"></InputText>
@@ -116,7 +118,7 @@
         </tr>
         <tr>
             <td>
-                IID
+                InstituteID
             </td>
             <td>
                 <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.InstituteId"></InputText>
