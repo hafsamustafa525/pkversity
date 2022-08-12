@@ -17,14 +17,10 @@
         if (CategoryID == emp.PassingDegreeId)
         {
             <tr>
-                <td>
-                    @emp.PassingDSGroupsId
-                </td>
+                <td>@emp.PassingDSGroupsId</td>
                 <td>@emp.PassingDSGroups</td>
                 <td>@emp.PassingDegreeId</td>
                 <td>
-
-
                     <button @onclick="(e => OnDelete(emp.PassingDSGroupsId))" class="btn btn-danger ">Del</button>
                     <button @onclick="(e=>EditFun(emp.PassingDSGroupsId))" class="btn btn-warning bt-sm">Edit</button>
 

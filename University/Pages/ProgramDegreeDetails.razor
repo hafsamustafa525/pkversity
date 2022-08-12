@@ -1,10 +1,9 @@
 ﻿@page "/programdegreedetails"
 @using ClassLibraryDAL
-
 @using ClassLibraryEntities
 <h3>ProgramDegreeDetail</h3>
 
-<EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmintForm">
+<EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmitForm">
     <div class="row">
         <div class="col">
             <select class="form-select" aria-label="Default select example" @onchange="_CatOption">
@@ -107,7 +106,7 @@
     private EntProgramDegreeDetails? _ModelProgramDegreeDetail { get; set; }
     private string? alpha { get; set; }
     private string? DegreeId{ get; set; }
-
+    
     protected override void OnInitialized()
     {
         _ModelProgramDegreeDetail = new EntProgramDegreeDetails();
@@ -135,7 +134,7 @@
         alpha = e.Value as string;
 
     }
-    private void SubmintForm()
+    private void SubmitForm()
     {
         _ModelProgramDegreeDetail.InstituteId = "13";
         _ModelProgramDegreeDetail.ProgramDegreeId = DegreeId;

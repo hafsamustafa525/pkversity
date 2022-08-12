@@ -5,7 +5,7 @@
 
 <h3>@title</h3>
 
-<h3>InstituteComponent</h3>
+<h3>Institute Component</h3>
 @insid
 
 @if (check)
@@ -13,7 +13,7 @@
     <MessageComponent CustomMessage="@message"></MessageComponent>
 }
 
-<EditForm Model="_ModelInstitute" OnSubmit="SubmintForm">
+<EditForm Model="_ModelInstitute" OnSubmit="SubmitForm">
     <table>
         <tr>
             <td>
@@ -65,7 +65,7 @@
             </td>
             <td>
                 <select @bind="@cityid">
-                    <option ID="DropDown">--Select City---</option>
+                    <option ID="DropDown">---Select City---</option>
                     <option value="42">Lahore</option>
                     <option value="51">Islamabad</option>
                 </select>
@@ -136,7 +136,7 @@
         }
     }
 
-    private void SubmintForm()
+    private void SubmitForm()
     {
         if (insid == "0")
         {
