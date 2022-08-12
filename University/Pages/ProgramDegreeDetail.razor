@@ -4,6 +4,25 @@
 @inject NavigationManager nm
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmintForm">
     <table>
         <tr>
@@ -20,26 +39,34 @@
         <tr>
             <td>
 
-                <select class="form-select" aria-label="Default select example" @bind="@categoryid">
-
+                <select class="form-select" aria-label="Default select example" @onchange="_AreaOption">
                     <option selected>Select Category</option>
-                    <option value="1">ComputerScience</option>
-                    <option value="2">Engineering</option>
-                    <option value="3">Social Sciences</option>
+
+                    @foreach (var emp in @ProgramCategoriesList)
+                    {
+                        <option value="@emp.ProgramCategoryId" >@emp.CategoryName</option>
+                    }
                 </select>
+               
             </td>
         </tr>
         <tr>
             <td>
 
-                <select class="form-select" aria-label="Default select example">
 
-                    <option selected>Select Degree </option>
-                    <option value="1">Computer Science</option>
-                    <option value="2">Cyber Security</option>
-                    <option value="3">Software Engineering</option>
-                    <option value="3">Artifical Engineering</option>
+
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Select Category</option>
+
+                    @foreach (var emp in @ProgramDegreeList)
+                    {
+                        if (alpha == emp.ProgramCategoryid)
+                        {
+                            <option>@emp.DegreeName</option>
+                        }
+                    }
                 </select>
+
             </td>
         </tr>
         <tr>
@@ -211,35 +238,34 @@
             <td>
                 Percentage
             </td>
-            
-                
-                    <tr>
-                        <td>
-                    <div>
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Matric
-                        </label>
-                        <select>
-                            <option value="0">--Select Criteria---</option>
-                            <option value="42">50</option>
-                            <option value="51">60</option>
-                        </select>
-                    </div>
-                    </td>
-                    <td>
-                    <div>
-                        <label class="form-check-label" for="flexCheckDefault">
-                            FSC
-                        </label>
-                        <select>
-                            <option value="0">--Select Criteria---</option>
-                            <option value="42">50</option>
-                            <option value="51">60</option>
-                        </select>
-                    </div>
-                    </td>
-               </tr>
-            
+
+
+        <tr>
+            <td>
+                <div>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Matric
+                    </label>
+                    <select>
+                        <option value="0">--Select Criteria---</option>
+                        <option value="42">50</option>
+                        <option value="51">60</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="form-check-label" for="flexCheckDefault">
+                        FSC
+                    </label>
+                    <select>
+                        <option value="0">--Select Criteria---</option>
+                        <option value="42">50</option>
+                        <option value="51">60</option>
+                    </select>
+                </div>
+            </td>
+        </tr>
+
         </tr>
 
         <tr>
@@ -259,11 +285,16 @@
 @code {
 
     private EntProgramDegreeDetails? _ModelProgramDegreeDetail { get; set; }
+    private List<EntProgramCategory>? ProgramCategoriesList;
+    private List<EntProgramDegree>? ProgramDegreeList;
+    public string? ID { get; set; } = "1";
     private string? title { get; set; }
-     private string? categoryid { get; set; }
-    [Parameter] public string DegreeID { get; set; }
+    private string? alpha { get; set; }
+    private string? categoryid { get; set; }
+    [Parameter] public string? DegreeID { get; set; }
     protected override void OnInitialized()
     {
+        LaodEmployee();
         if (DegreeID == "0")
         {
             _ModelProgramDegreeDetail = new EntProgramDegreeDetails();
@@ -291,6 +322,16 @@
 
     }
 
+    private void LaodEmployee()
+    {
+        this.ProgramCategoriesList = DALProgramCategory.GetProgramCategory();
+        this.ProgramDegreeList = DALProgramDegree.GetProgramDegree();
+    }
+    private void _AreaOption(ChangeEventArgs e)
+    {
+        alpha = e.Value as string;
+
+    }
 
 
 }
