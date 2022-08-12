@@ -8,7 +8,7 @@
 {
     <MessageComponent CustomMessage="@message"></MessageComponent>
 }
-<EditForm Model="_ModelProgramCategory" OnSubmit="SubmintForm">
+<EditForm Model="_ModelProgramCategory" OnSubmit="SubmitForm">
     <table>
         <tr>
             <td>
@@ -41,9 +41,7 @@
 
 </EditForm>
 
-
 @code {
-
 
 
     private List<EntProgramCategory>? ProgramCategoriesList;
@@ -53,6 +51,7 @@
     private string? message { get; set; }
     bool check = false;
     [Parameter] public string CategoryID { get; set; }
+
     protected override void OnInitialized()
     {
         if (CategoryID == "0")
@@ -67,9 +66,7 @@
         }
     }
 
-
-
-    private void SubmintForm()
+    private void SubmitForm()
     {
 
 

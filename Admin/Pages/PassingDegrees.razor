@@ -1,22 +1,21 @@
 ﻿@page "/passingdegrees"
 @using ClassLibraryDAL
 @using ClassLibraryEntities
-<h3>ProgramCategory</h3>
+<h3>Program Category</h3>
 
 <a href="/passingdegree/0" class="btn btn-dark">Create Program Category</a>
 <table class="table table-striped">
     <tr>
         <th>ID</th>
         <th>Category Name</th>
-
     </tr>
 
     @foreach (var emp in @PassingDegreeList)
     {
         <tr>
-            <td>
-                @emp.PassingDegreesId
-            </td>
+
+            <td>@emp.PassingDegreesId</td>
+
             <td>@emp.Title</td>
             <td>
 
@@ -27,9 +26,6 @@
             </td>
         </tr>
     }
-
-
-
 </table>
 
 @code {
