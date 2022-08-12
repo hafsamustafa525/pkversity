@@ -1,22 +1,22 @@
-﻿@page "/shifts/{pdid}"
+﻿@page "/passinggroups/{pdid}"
 <h3>Shifts @pdid</h3>
 
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" @bind="morning">
+        <input class="form-check-input" type="checkbox" value="1"  id="flexCheckChecked" @bind="Group1">
         <label class="form-check-label" for="flexCheckChecked">
-            Morning
+            Chem,phy,maths
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" @bind="evening">
+        <input class="form-check-input" type="checkbox" value="2"  id="flexCheckChecked" @bind="Group2">
         <label class="form-check-label" for="flexCheckDefault">
-            Evening
+            Comp,phy,maths
         </label>
     </div>
     <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" @bind="weekened">
+        <input class="form-check-input" type="checkbox" value="3"   id="flexCheckChecked" @bind="Group3">
         <label class="form-check-label" for="flexCheckDefault">
-            Weekened
+            Chem,phy,Bio
         </label>
     </div>
     <button type="submit" @onclick="UpdateShift">Update Shift</button>
@@ -25,17 +25,18 @@
 @code {
     [Parameter] public string? pdid { get; set; }
     private ClassLibraryEntities.EntProgramDegreeDetails ModelProgramDegreeDetails { get; set; } = new ClassLibraryEntities.EntProgramDegreeDetails();
-    public bool morning { get; set; }
-    public bool evening { get; set; }
-    public bool weekened { get; set; }
-
+    public bool Group1 { get; set; }
+    public bool Group2 { get; set; }
+    public bool Group3 { get; set; }
+    public string? TotalGroups { get; set; }
     private void UpdateShift()
     {
-        ModelProgramDegreeDetails.Morning = morning.ToString();
-        ModelProgramDegreeDetails.Evening = evening.ToString();
-        ModelProgramDegreeDetails.Weekened = weekened.ToString();
+        
+       
+        TotalGroups = Group1 + "" + Group2 + "" + Group3;
+         ModelProgramDegreeDetails.PassingDegreeGroups = TotalGroups;
         ModelProgramDegreeDetails.ProgramDegreeDetailsId = pdid;
-        ModelProgramDegreeDetails.type = "shift";
+        ModelProgramDegreeDetails.type = "Groups";
         ClassLibraryDAL.DALProgramDegreeDetails.UpdateProgramCategory(ModelProgramDegreeDetails);
     }
 
