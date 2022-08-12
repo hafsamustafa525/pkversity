@@ -132,20 +132,21 @@ namespace ClassLibraryDAL
             SqlConnection con = DBHelper.GetConnection();
             con.Open();
             SqlCommand cmd = new SqlCommand("SP_UpdateProgramDegreeDetails", con);
-            cmd.Parameters.AddWithValue("@ProgramDegreeDetailsId", ee.ProgramDegreeDetailsId);
-            cmd.Parameters.AddWithValue("@Duration", ee.Duration);
-            cmd.Parameters.AddWithValue("@TotalSemesters", ee.TotalSemesters);
-            cmd.Parameters.AddWithValue("@TotalFee", ee.TotalFee);
-            cmd.Parameters.AddWithValue("@SemesterFee", ee.SemesterFee);
-            cmd.Parameters.AddWithValue("@ClosingMerit", ee.ClosingMerit);
-            cmd.Parameters.AddWithValue("@ApprovedById", ee.ApprovedById);
-            cmd.Parameters.AddWithValue("@CityId", ee.CityId);
-            cmd.Parameters.AddWithValue("@Morning", ee.Morning);
-            cmd.Parameters.AddWithValue("@Evening", ee.Evening);
-            cmd.Parameters.AddWithValue("@Weekened", ee.Weekened);
-            cmd.Parameters.AddWithValue("@PassingDegreeGroups", ee.PassingDegreeGroups);
-            cmd.Parameters.AddWithValue("@ProgramDegreeId", ee.ProgramDegreeId);
-            cmd.Parameters.AddWithValue("@InstituteId", ee.InstituteId);
+            cmd.Parameters.AddWithValue("@ProgramDegreeDetailsId", int.Parse(ee.ProgramDegreeDetailsId));
+            //cmd.Parameters.AddWithValue("@Duration", ee.Duration);
+            //cmd.Parameters.AddWithValue("@TotalSemesters", ee.TotalSemesters);
+            //cmd.Parameters.AddWithValue("@TotalFee", ee.TotalFee);
+            //cmd.Parameters.AddWithValue("@SemesterFee", ee.SemesterFee);
+            //cmd.Parameters.AddWithValue("@ClosingMerit", ee.ClosingMerit);
+            //cmd.Parameters.AddWithValue("@ApprovedById", ee.ApprovedById);
+            //cmd.Parameters.AddWithValue("@CityId", ee.CityId);
+            cmd.Parameters.AddWithValue("@Morning", bool.Parse(ee.Morning));
+            cmd.Parameters.AddWithValue("@Evening", bool.Parse(ee.Evening));
+            cmd.Parameters.AddWithValue("@Weekened", bool.Parse(ee.Weekened));
+            cmd.Parameters.AddWithValue("@type", ee.type);
+            //cmd.Parameters.AddWithValue("@PassingDegreeGroups", ee.PassingDegreeGroups);
+            //cmd.Parameters.AddWithValue("@ProgramDegreeId", ee.ProgramDegreeId);
+            //cmd.Parameters.AddWithValue("@InstituteId", ee.InstituteId);
 
 
             cmd.CommandType = CommandType.StoredProcedure;

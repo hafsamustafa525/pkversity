@@ -1,4 +1,5 @@
 ﻿@page "/programdegreedetails"
+@inject NavigationManager nm
 @using ClassLibraryDAL
 
 @using ClassLibraryEntities
@@ -39,9 +40,9 @@
 
 <table class="table table-bordered">
     <tr>
- 
+
         <th>Degree</th>
-      
+
 
 
         <th>Duration</th>
@@ -59,43 +60,47 @@
         <th>Weekened</th>
         <th>PDG</th>
         <th>Action</th>
-    
- 
-    </tr>
 
+
+    </tr>
     @foreach (var emp in @ProgramDegreeDetailsList)
     {
-     <tr>
+        <tr>
 
-    <td>@emp.ProgramDegreeId</td>
-    <td>@emp.Duration</td>
-    <td>@emp.TotalSemesters</td>
-    <td>@emp.Matric</td>
-    <td>@emp.FSC</td>
-    <td>@emp.BS</td>
-    <td>@emp.TotalFee</td>
-    <td>@emp.SemesterFee</td>
-    <td>@emp.ClosingMerit</td>
-    <td>@emp.ApprovedById</td>
-    <td>@emp.Morning</td>
-    <td>@emp.Evening</td>
-    <td>@emp.Weekened</td>
-    <td>@emp.PassingDegreeGroups</td>
-    
- 
-
-    <td>
-
-
-    <button @onclick="(e => OnDelete(emp.ProgramDegreeDetailsId))" class="btn btn-warning bt-sm">Del</button>
-    <a href="programdegreedetail/@emp.ProgramDegreeDetailsId" class="btn btn-warning bt-sm">Edit</a>
-    </td>
-    </tr>
+            <td>@emp.ProgramDegreeId</td>
+            <td>@emp.Duration</td>
+            <td>@emp.TotalSemesters</td>
+            <td>@emp.Matric</td>
+            <td>@emp.FSC</td>
+            <td>@emp.BS</td>
+            <td>@emp.TotalFee</td>
+            <td>@emp.SemesterFee</td>
+            <td>@emp.ClosingMerit</td>
+            <td>@emp.ApprovedById</td>
+            <td>@emp.Morning</td>
+            <td>@emp.Evening</td>
+            <td>@emp.Weekened</td>
+            <td>@emp.PassingDegreeGroups</td>
+            <td>
+            <button @onclick="(e => OnDelete(emp.ProgramDegreeDetailsId))" class="btn btn-warning bt-sm">Del</button>
+                @*<a href="programdegreedetail/@emp.ProgramDegreeDetailsId" class="btn btn-warning bt-sm">Edit</a>*@
+                </td>
+                    <td>
+                    <select class="form-select" aria-label="Default select example" @onchange="_EditOption">
+                        <option selected>Edit</option>
+                        <option value="1">Duration</option>
+                        <option value="2">TotalSemester</option>
+                        <option value="3">Eligibility Criteria</option>
+                        <option value="4">Fees</option>
+                        <option value="shifts/@emp.ProgramDegreeDetailsId">Shift</option>
+                        <option value="5">ClosingMerit</option>
+                        <option value="6">AprovedID</option>
+                        <option value="7">ProgramDegreeGroups</option>
+                    </select>
+            </td>
+        </tr>
 
     }
-    
-
-
 </table>
 
 @code {
@@ -103,11 +108,10 @@
     private List<EntProgramDegreeDetails>? ProgramDegreeDetailsList { get; set; }
     private List<EntProgramCategory>? ProgramCategoriesList;
     private List<EntProgramDegree>? ProgramDegreeList;
-
     private EntProgramDegreeDetails? _ModelProgramDegreeDetail { get; set; }
     private string? alpha { get; set; }
-    private string? DegreeId{ get; set; }
-
+    private string? DegreeId { get; set; }
+    private string? EditOption { get; set; } 
     protected override void OnInitialized()
     {
         _ModelProgramDegreeDetail = new EntProgramDegreeDetails();
@@ -135,12 +139,17 @@
         alpha = e.Value as string;
 
     }
+    private void _EditOption(ChangeEventArgs e)
+    {
+        EditOption = e.Value as string;
+        Redirect(EditOption);
+    }
     private void SubmintForm()
     {
         _ModelProgramDegreeDetail.InstituteId = "13";
         _ModelProgramDegreeDetail.ProgramDegreeId = DegreeId;
         DALProgramDegreeDetails.SaveProgramDegreeDetails(_ModelProgramDegreeDetail);
-         LaodProgramDegreeDetails();
+        LaodProgramDegreeDetails();
         //if (DegreeID == "0")
         //{
 
@@ -159,4 +168,11 @@
         this.ProgramCategoriesList = DALProgramCategory.GetProgramCategory();
         this.ProgramDegreeList = DALProgramDegree.GetProgramDegree();
     }
+
+
+    private void Redirect(string url)
+    {
+        nm.NavigateTo(url);  
+    }
+
  }

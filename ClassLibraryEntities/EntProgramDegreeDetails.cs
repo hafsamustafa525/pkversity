@@ -28,7 +28,8 @@ namespace ClassLibraryEntities
         public string? PassingDegreeGroups { get; set; }
         public string? ProgramDegreeId { get; set; }
         public string? InstituteId { get; set; }
-        
+        public string? type { get; set; }
+
 
 
 
