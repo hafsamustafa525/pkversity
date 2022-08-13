@@ -1,0 +1,35 @@
+﻿@page "/duration{pdid}"
+@using ClassLibraryDAL
+@using ClassLibraryEntities
+<h3>Duration</h3>
+
+<EditForm Model="_ModelDuration" OnSubmit="SubmitForm">
+
+  <table>
+      <tr>
+          <td>
+                  <select class="form-select" aria-label="Default select example" @onchange="_DurationOption">
+                    <option selected>--Select Duration--</option>
+                    <option value="1">1 Year</option>
+                    <option value="2">2 Year</option>
+                    <option value="3">3 Year</option>
+                    <option value="3">4 Year</option>
+                    <option value="3">5 Year</option>
+
+                </select>
+          </td>
+      </tr>
+  </table>
+
+</EditForm>
+@code {
+
+    private EntProgramDegreeDetails? _ModelDuration { get; set; } = new ClassLibraryEntities.EntProgramDegreeDetails();
+    [Parameter] public string pdid { get; set; }
+    private string duration { get; set; }
+    private void _AreaOption(ChangeEventArgs e)
+    {
+        duration = e.Value as string;
+
+    }
+}
