@@ -37,52 +37,55 @@
         </div>
     </div>
 </EditForm>
+<div class="container pt-4 ">
+<table class="table  table-bordered table-hover">
+    <thead class="table-dark">
+        <tr scope="row"> 
 
-<table class="table table-hover">
-    <tr>
+            <th>Degree</th>
+            <th>Duration</th>
+            <th>TSem</th>
+            <th>Matric</th>
+            <th>Fsc</th>
+            <th>BS</th>
 
-        <th>Degree</th>
-        <th>Duration</th>
-        <th>TSem</th>
-        <th>Matric</th>
-        <th>Fsc</th>
-        <th>BS</th>
+            <th>TFee</th>
+            <th>SFee</th>
+            <th>ClosingMerit</th>
+            <th>HEC,PEC</th>
+            <th>Morning</th>
+            <th>Evening</th>
+            <th>Weekened</th>
+            <th>PDG</th>
+            <th>Action</th>
+            <th>Edit</th>
 
-        <th>TFee</th>
-        <th>SFee</th>
-        <th>ClosingMerit</th>
-        <th>HEC,PEC</th>
-        <th>Morning</th>
-        <th>Evening</th>
-        <th>Weekened</th>
-        <th>PDG</th>
-        <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in @ProgramDegreeDetailsList)
+        {
+            <tr scope="row">
 
-
-    </tr>
-    @foreach (var emp in @ProgramDegreeDetailsList)
-    {
-        <tr>
-
-            <td>@emp.ProgramDegreeId</td>
-            <td>@emp.Duration</td>
-            <td>@emp.TotalSemesters</td>
-            <td>@emp.Matric</td>
-            <td>@emp.FSC</td>
-            <td>@emp.BS</td>
-            <td>@emp.TotalFee</td>
-            <td>@emp.SemesterFee</td>
-            <td>@emp.ClosingMerit</td>
-            <td>@emp.ApprovedById</td>
-            <td>@emp.Morning</td>
-            <td>@emp.Evening</td>
-            <td>@emp.Weekened</td>
-            <td>@emp.PassingDegreeGroups</td>
-            <td>
-            <button @onclick="(e => OnDelete(emp.ProgramDegreeDetailsId))" class="btn btn-warning bt-sm">Del</button>
-                @*<a href="programdegreedetail/@emp.ProgramDegreeDetailsId" class="btn btn-warning bt-sm">Edit</a>*@
+                <td>@emp.ProgramDegreeId</td>
+                <td>@emp.Duration</td>
+                <td>@emp.TotalSemesters</td>
+                <td>@emp.Matric</td>
+                <td>@emp.FSC</td>
+                <td>@emp.BS</td>
+                <td>@emp.TotalFee</td>
+                <td>@emp.SemesterFee</td>
+                <td>@emp.ClosingMerit</td>
+                <td>@emp.ApprovedById</td>
+                <td>@emp.Morning</td>
+                <td>@emp.Evening</td>
+                <td>@emp.Weekened</td>
+                <td>@emp.PassingDegreeGroups</td>
+                <td>
+                    <button @onclick="(e => OnDelete(emp.ProgramDegreeDetailsId))" class="btn btn-warning bt-sm">Del</button>
+                    @*<a href="programdegreedetail/@emp.ProgramDegreeDetailsId" class="btn btn-warning bt-sm">Edit</a>*@
                 </td>
-                    <td>
+                <td>
                     <select class="form-select" aria-label="Default select example" @onchange="_EditOption">
                         <option selected>Edit</option>
                         <option value="duration/@emp.ProgramDegreeDetailsId">Duration</option>
@@ -94,12 +97,13 @@
                         <option value="approvedby/@emp.ProgramDegreeDetailsId">AprovedID</option>
                         <option value="passinggroups/@emp.ProgramDegreeDetailsId">ProgramDegreeGroups</option>
                     </select>
-            </td>
-        </tr>
+                </td>
+            </tr>
 
-    }
+        }
+    </tbody>
 </table>
-
+</div>
 @code {
 
     private List<EntProgramDegreeDetails>? ProgramDegreeDetailsList { get; set; }
@@ -108,7 +112,7 @@
     private EntProgramDegreeDetails? _ModelProgramDegreeDetail { get; set; }
     private string? alpha { get; set; }
     private string? DegreeId { get; set; }
-    private string? EditOption { get; set; } 
+    private string? EditOption { get; set; }
     protected override void OnInitialized()
     {
         _ModelProgramDegreeDetail = new EntProgramDegreeDetails();
@@ -169,7 +173,7 @@
 
     private void Redirect(string url)
     {
-        nm.NavigateTo(url);  
+        nm.NavigateTo(url);
     }
 
  }
