@@ -4,27 +4,23 @@
 @using ClassLibraryEntities
 
 
+<table>
 
-<div class="form-check">
-   @* <input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" @bind="Group1">*@
-    @foreach (var emp in @PassingDSGroupsList)
-    {
-        <label class="form-check-label" for="flexCheckChecked">@emp.PassingDSGroups</label>
-    }
-</div>
-<div class="form-check">
-    <input class="form-check-input" type="checkbox" value="2" id="flexCheckChecked" @bind="Group2">
-    <label class="form-check-label" for="flexCheckDefault">
-        Comp,phy,maths
-    </label>
-</div>
-<div class="form-check">
-    <input class="form-check-input" type="checkbox" value="3" id="flexCheckChecked" @bind="Group3">
-    <label class="form-check-label" for="flexCheckDefault">
-        Chem,phy,Bio
-    </label>
-</div>
-<button type="submit" @onclick="UpdatePDG">Update Shift</button>
+    <div class="form-check">
+
+        @foreach (var emp in @PassingDSGroupsList)
+        {
+        <tr>
+            <td>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" @bind="@emp.PassingDSGroupsId">
+                <label class="form-check-label" for="flexCheckChecked">@emp.PassingDSGroups</label>
+            </td>
+        </tr>
+        }
+    </div>
+</table>
+
+<button type="submit" @onclick="UpdatePDG">Update PassingDGroups</button>
 
 
 @code {
@@ -47,10 +43,10 @@
     }
     protected override void OnInitialized()
     {
-       PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
+        PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
     }
 
-   
+
 
 
 }
