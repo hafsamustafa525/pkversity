@@ -42,7 +42,7 @@
         </td>
     </tr>
     <tr>
-        <td> <button type="submit" @onclick="UpdateCriteria">Update</button></td>
+        <td> <button type="submit" @onclick="UpdateEligibility">Update</button></td>
     </tr>
 </table>
 
@@ -70,7 +70,7 @@
         EditOption3 = e.Value as string;
 
     }
-    private void UpdateCriteria()
+    private void UpdateEligibility()
     {
         ModelProgramDegreeDetails.Matric = EditOption1;
         ModelProgramDegreeDetails.FSC = EditOption2;

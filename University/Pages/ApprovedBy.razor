@@ -14,7 +14,7 @@
             PEC
         </label>
     </div>
-    <button class="btn btn-primary" type="submit" @onclick="UpdateShift">Update </button>
+    <button class="btn btn-primary" type="submit" @onclick="Approved">Update </button>
 
 @code {
     [Parameter] public string? pdid { get; set; }
@@ -22,7 +22,7 @@
     public bool hec { get; set; }
     public bool pec { get; set; }
     private string ApprovedByID { get; set; }
-    private void UpdateShift()
+    private void Approved()
     {
        
         ApprovedByID=hec.ToString()+","+pec.ToString(); 

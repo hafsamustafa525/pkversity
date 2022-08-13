@@ -1,11 +1,11 @@
 ﻿@page "/closingmerit/{pdid}"
 <h3>ClosingMerit</h3>
 
-<EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmintForm">
+<EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmitForm">
 <table>
     <tr>
             <td>
-                ClosingMerit
+                Closing Merit (Last Year)
             </td>
             <td>
                 <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.ClosingMerit"></InputText>
@@ -13,7 +13,7 @@
         </tr>
         <tr>
             <td>
-                <button type="submit" >Update Shift</button>
+                <button type="submit" >Update Merit</button>
             </td>
         </tr>
 </table>
@@ -23,7 +23,7 @@
 
  [Parameter] public string? pdid { get; set; }
     private ClassLibraryEntities.EntProgramDegreeDetails _ModelProgramDegreeDetail { get; set; } = new ClassLibraryEntities.EntProgramDegreeDetails();
-     private void SubmintForm()
+     private void SubmitForm()
     {
         
         _ModelProgramDegreeDetail.ProgramDegreeDetailsId = pdid;

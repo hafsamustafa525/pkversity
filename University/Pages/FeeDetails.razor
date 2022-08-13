@@ -5,7 +5,7 @@
 
 <h3>FeeDetails</h3>
 
-<EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmintForm">
+<EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmitForm">
     <table>
          
         
@@ -50,7 +50,7 @@
 
     
    
-    private void SubmintForm()
+    private void SubmitForm()
     {   _ModelProgramDegreeDetail.ProgramDegreeDetailsId = pdid;
       _ModelProgramDegreeDetail.type = "FEE";
          ClassLibraryDAL.DALProgramDegreeDetails.UpdateProgramCategory(_ModelProgramDegreeDetail);

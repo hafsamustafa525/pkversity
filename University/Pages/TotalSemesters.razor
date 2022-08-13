@@ -3,7 +3,7 @@
 <table>
     <tr>
         <td>
-            Matric
+            Total Semesters
         </td>
         <td>
 
@@ -31,7 +31,7 @@
     </tr>
    
     <tr>
-        <td> <button type="submit" @onclick="UpdateCriteria">Update</button></td>
+        <td> <button type="submit" @onclick="UpdateSemester">Update</button></td>
     </tr>
 </table>
 @code {
@@ -43,10 +43,9 @@
         EditOption = e.Value as string;
 
     }
-    private void UpdateCriteria()
+    private void UpdateSemester()
     {
         ModelProgramDegreeDetails.TotalSemesters = EditOption;
-        
         ModelProgramDegreeDetails.ProgramDegreeDetailsId = pdid;
         ModelProgramDegreeDetails.type = "TotalSemesters";
         ClassLibraryDAL.DALProgramDegreeDetails.UpdateProgramCategory(ModelProgramDegreeDetails);
