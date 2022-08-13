@@ -1,0 +1,33 @@
+﻿@page "/closingmerit/{pdid}"
+<h3>ClosingMerit</h3>
+
+<EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmintForm">
+<table>
+    <tr>
+            <td>
+                ClosingMerit
+            </td>
+            <td>
+                <InputText name="Name" @bind-Value="_ModelProgramDegreeDetail.ClosingMerit"></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit" >Update Shift</button>
+            </td>
+        </tr>
+</table>
+
+</EditForm>
+@code {
+
+ [Parameter] public string? pdid { get; set; }
+    private ClassLibraryEntities.EntProgramDegreeDetails _ModelProgramDegreeDetail { get; set; } = new ClassLibraryEntities.EntProgramDegreeDetails();
+     private void SubmintForm()
+    {
+        
+        _ModelProgramDegreeDetail.ProgramDegreeDetailsId = pdid;
+        _ModelProgramDegreeDetail.type = "ClosingMerit";
+        ClassLibraryDAL.DALProgramDegreeDetails.UpdateProgramCategory(_ModelProgramDegreeDetail);
+    }
+}

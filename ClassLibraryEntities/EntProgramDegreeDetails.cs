@@ -20,9 +20,9 @@ namespace ClassLibraryEntities
         public string? SemesterFee { get; set; }
         public string? ClosingMerit { get; set; }
         public string? ApprovedById { get; set; }
-        public string? Morning { get; set; }
-        public string? Evening { get; set; }
-        public string? Weekened { get; set; }
+        public string? Morning { get; set; } = "false";
+        public string? Evening { get; set; } = "false";
+        public string? Weekened { get; set; } = "false";
         public string? CityId { get; set; }
 
         public string? PassingDegreeGroups { get; set; }

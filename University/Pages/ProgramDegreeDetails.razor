@@ -54,7 +54,7 @@
         <th>TFee</th>
         <th>SFee</th>
         <th>ClosingMerit</th>
-        <th>ABI</th>
+        <th>HEC,PEC</th>
         <th>Morning</th>
         <th>Evening</th>
         <th>Weekened</th>
@@ -88,14 +88,14 @@
                     <td>
                     <select class="form-select" aria-label="Default select example" @onchange="_EditOption">
                         <option selected>Edit</option>
-                        <option value="1">Duration</option>
-                        <option value="2">TotalSemester</option>
-                        <option value="3">Eligibility Criteria</option>
-                        <option value="4">Fees</option>
+                        <option value="duration/@emp.ProgramDegreeDetailsId">Duration</option>
+                        <option value="totalsemesters/@emp.ProgramDegreeDetailsId">TotalSemester</option>
+                        <option value="eligibility/@emp.ProgramDegreeDetailsId">Eligibility Criteria</option>
+                        <option value="feedetails/@emp.ProgramDegreeDetailsId">Fees</option>
                         <option value="shifts/@emp.ProgramDegreeDetailsId">Shift</option>
-                        <option value="5">ClosingMerit</option>
-                        <option value="6">AprovedID</option>
-                        <option value="7">ProgramDegreeGroups</option>
+                        <option value="closingmerit/@emp.ProgramDegreeDetailsId">ClosingMerit</option>
+                        <option value="approvedby/@emp.ProgramDegreeDetailsId">AprovedID</option>
+                        <option value="passinggroups/@emp.ProgramDegreeDetailsId">ProgramDegreeGroups</option>
                     </select>
             </td>
         </tr>
