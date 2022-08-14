@@ -1,10 +1,13 @@
 ﻿@page "/totalsemesters/{pdid}"
 @inject NavigationManager nm
 
-<div class="d-flex justify-content-between">
+@if (check )
+{
+    <MessageComponent CustomMessage="@message"></MessageComponent>
+}
 <h3>Total Semesters</h3>
 <a class="btn btn-primary" href="/programdegreedetails" role="button">Go Back</a>
-</div>
+
 
 
 
@@ -42,33 +45,20 @@
         <td> <button type="submit" @onclick="UpdateSemester">Update</button></td>
     </tr>
 </table>
-<h4>@check1</h4>
-@if (check )
-{
-    <MessageComponent CustomMessage="@message"></MessageComponent>
-}
-@if (check == true)
-{
-    check1 = "Update Sucessfully";
-}
-@if (check == false)
-{
-    check1 = "Please Select !";
-}
+
+
 @code {
     private string? EditOption { get; set; }
     [Parameter] public string? pdid { get; set; }
     private ClassLibraryEntities.EntProgramDegreeDetails ModelProgramDegreeDetails { get; set; } = new ClassLibraryEntities.EntProgramDegreeDetails();
     private bool check { get; set; } = false;
-    private string check1 { get; set; }
-
     private string? message { get; set; }
 
 
     private void _EditOption(ChangeEventArgs e)
     {
         EditOption = e.Value as string;
-        check = true;
+
     }
     private void UpdateSemester()
     {   
@@ -76,8 +66,10 @@
         ModelProgramDegreeDetails.ProgramDegreeDetailsId = pdid;
         ModelProgramDegreeDetails.type = "TotalSemesters";
         ClassLibraryDAL.DALProgramDegreeDetails.UpdateProgramCategory(ModelProgramDegreeDetails);
+        check = true;
+        message = "Succesfully Updated the Total Semester";
+
         
-        //nm.NavigateTo("/programdegreedetails");
-        //Task.Delay(3 * 1000).Wait();
+       
     }
 }

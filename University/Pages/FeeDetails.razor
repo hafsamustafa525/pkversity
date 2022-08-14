@@ -4,10 +4,12 @@
 
 
 
-<div class="d-flex justify-content-between">
-<h3>Fee Details</h3>
+@if (check )
+{
+    <MessageComponent CustomMessage="@message"></MessageComponent>
+}
+<h3>Fee Details </h3>
 <a class="btn btn-primary" href="/programdegreedetails" role="button">Go Back</a>
-</div>
 <EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmitForm">
     <table>
          
@@ -47,6 +49,8 @@
 
 
     [Parameter] public string? pdid { get; set; }
+     private bool check { get; set; } = false;
+    private string? message { get; set; }
 
     private EntProgramDegreeDetails _ModelProgramDegreeDetail { get; set; } = new EntProgramDegreeDetails();
 
@@ -57,6 +61,9 @@
     {   _ModelProgramDegreeDetail.ProgramDegreeDetailsId = pdid;
       _ModelProgramDegreeDetail.type = "FEE";
          ClassLibraryDAL.DALProgramDegreeDetails.UpdateProgramCategory(_ModelProgramDegreeDetail);
+          check = true;
+        message = "Succesfully Updated Fee Details   ";
+    
     }
  
     

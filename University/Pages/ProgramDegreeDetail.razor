@@ -1,4 +1,4 @@
-﻿@page "/programdegreedetail/{DegreeID}"
+﻿@*@page "/programdegreedetail/{DegreeID}"
 @using ClassLibraryDAL
 @using ClassLibraryEntities
 @inject NavigationManager nm
@@ -270,18 +270,14 @@
                     </label>
                 </div>
             </td>
-        </tr>*@
- 
-      
-        
+       </tr>*@
+                              
 
-        
-
-        <tr>
+       @* <tr>
             <td>
             </td>
             <td>
-                <button type="submit" class="btn btn-primary">@title</button>
+                <button type="submit" class="btn btn-danger">@title</button>
             </td>
         </tr>
 
@@ -344,3 +340,4 @@
 
 
 }
+*@

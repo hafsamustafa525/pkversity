@@ -2,10 +2,10 @@
 @using ClassLibraryDAL
 @using ClassLibraryEntities
 
-<div class="d-flex justify-content-between">
-<h3>Passing Groups</h3>
-<a class="btn btn-primary" href="/programdegreedetails" role="button">Go Back</a>
-</div>
+@if (check )
+{
+    <MessageComponent CustomMessage="@message"></MessageComponent>
+}
 <table>
 
     <div class="form-check">
@@ -27,9 +27,14 @@
 
 <input type="checkbox" @bind-value="YourConditionTypeOfBool" checked="@(YourConditionTypeOfBool?"checked":null)"/>&nbsp; Is True
 <span>My condition is @(YourConditionTypeOfBool?"True":"False")</span>
+
 @code {
     [Parameter] public string? pdid { get; set; }
     bool YourConditionTypeOfBool = true;
+     private bool check { get; set; } = false;
+    private string? message { get; set; }
+
+
 
     private List<EntPassingDSGroups>? PassingDSGroupsList;
     private ClassLibraryEntities.EntProgramDegreeDetails ModelProgramDegreeDetails { get; set; } = new ClassLibraryEntities.EntProgramDegreeDetails();
@@ -46,6 +51,9 @@
         ModelProgramDegreeDetails.ProgramDegreeDetailsId = pdid;
         ModelProgramDegreeDetails.type = "Groups";
         ClassLibraryDAL.DALProgramDegreeDetails.UpdateProgramCategory(ModelProgramDegreeDetails);
+            check = true;
+        message = "Succesfully Updated Passsing Groups    ";
+    
     }
 
     protected override void OnInitialized()

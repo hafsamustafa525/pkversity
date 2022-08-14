@@ -81,7 +81,7 @@
                 <td>@emp.Weekened</td>
                 <td>@emp.PassingDegreeGroups</td>
                 <td>
-                    <button @onclick="(e => OnDelete(emp.ProgramDegreeDetailsId))" class="btn btn-warning bt-sm">Del</button>
+                    <button @onclick="(e => OnDelete(emp.ProgramDegreeDetailsId))" class="btn btn-danger">Del</button>
                     @*<a href="programdegreedetail/@emp.ProgramDegreeDetailsId" class="btn btn-warning bt-sm">Edit</a>*@
                 </td>
                 <td>
@@ -152,16 +152,7 @@
         _ModelProgramDegreeDetail.ProgramDegreeId = DegreeId;
         DALProgramDegreeDetails.SaveProgramDegreeDetails(_ModelProgramDegreeDetail);
         LaodProgramDegreeDetails();
-        //if (DegreeID == "0")
-        //{
-
-        //    nm.NavigateTo("/programdegreedetails");
-        //}
-        ////else
-        ////{
-        ////    DALProgramDegreeDetails.UpdateProgramCategory(_ModelProgramDegreeDetail);
-        ////    nm.NavigateTo("/programdegreedetails");
-        ////}
+     
 
 
     }

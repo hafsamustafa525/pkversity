@@ -1,9 +1,12 @@
 ﻿@page "/duration/{pdid}"
 
-<div class="d-flex justify-content-between">
+
+@if (check )
+{
+    <MessageComponent CustomMessage="@message"></MessageComponent>
+}
 <h3>Duration</h3>
 <a class="btn btn-primary" href="/programdegreedetails" role="button">Go Back</a>
-</div>
 <table>
     <tr>
         <td>
@@ -31,6 +34,9 @@
     private string? EditOption { get; set; }
     [Parameter] public string? pdid { get; set; }
     private ClassLibraryEntities.EntProgramDegreeDetails ModelProgramDegreeDetails { get; set; } = new ClassLibraryEntities.EntProgramDegreeDetails();
+    private bool check { get; set; } = false;
+    private string? message { get; set; }
+
     private void _EditOption(ChangeEventArgs e)
     {
         EditOption = e.Value as string;
@@ -42,5 +48,7 @@
         ModelProgramDegreeDetails.ProgramDegreeDetailsId = pdid;
         ModelProgramDegreeDetails.type = "Duration";
         ClassLibraryDAL.DALProgramDegreeDetails.UpdateProgramCategory(ModelProgramDegreeDetails);
+        check = true;
+        message = "Succesfully Updated Duration ";
     }
 }
