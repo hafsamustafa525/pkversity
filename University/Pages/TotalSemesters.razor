@@ -1,12 +1,12 @@
 ﻿@page "/totalsemesters/{pdid}"
 @inject NavigationManager nm
+
+<div class="d-flex justify-content-between">
 <h3>Total Semesters</h3>
+<a class="btn btn-primary" href="/programdegreedetails" role="button">Go Back</a>
+</div>
 
 
-@if (check)
-{
-    <MessageComponent CustomMessage="@message"></MessageComponent>
-}
 
 <table>
     <tr>
@@ -15,7 +15,7 @@
         </td>
         <td>
 
-            <select class="form-select" aria-label="Default select example" @onchange="_EditOption">
+            <select class="form-select"  aria-label="Default select example" @onchange="_EditOption">
                 <option selected>Select Total Semesters</option>
                 <option value="1">1 </option>
                 <option value="2">2 </option>
@@ -42,39 +42,42 @@
         <td> <button type="submit" @onclick="UpdateSemester">Update</button></td>
     </tr>
 </table>
+<h4>@check1</h4>
+@if (check )
+{
+    <MessageComponent CustomMessage="@message"></MessageComponent>
+}
+@if (check == true)
+{
+    check1 = "Update Sucessfully";
+}
+@if (check == false)
+{
+    check1 = "Please Select !";
+}
 @code {
     private string? EditOption { get; set; }
     [Parameter] public string? pdid { get; set; }
     private ClassLibraryEntities.EntProgramDegreeDetails ModelProgramDegreeDetails { get; set; } = new ClassLibraryEntities.EntProgramDegreeDetails();
     private bool check { get; set; } = false;
+    private string check1 { get; set; }
+
     private string? message { get; set; }
-    private int milliseconds { get; set; } = 3000;
-    private int mydelay = 5000;
+
 
     private void _EditOption(ChangeEventArgs e)
     {
         EditOption = e.Value as string;
-
+        check = true;
     }
     private void UpdateSemester()
-    {
+    {   
         ModelProgramDegreeDetails.TotalSemesters = EditOption;
         ModelProgramDegreeDetails.ProgramDegreeDetailsId = pdid;
         ModelProgramDegreeDetails.type = "TotalSemesters";
         ClassLibraryDAL.DALProgramDegreeDetails.UpdateProgramCategory(ModelProgramDegreeDetails);
-        // Thread.Sleep(mydelay);
-        check = true;
-        message = "Sucessfully Updated the Semester's";
         
-
-        redirect();
-        
-    }
-
-    public void redirect()
-    {
-       // Thread.Sleep(mydelay);
+        //nm.NavigateTo("/programdegreedetails");
         //Task.Delay(3 * 1000).Wait();
-        nm.NavigateTo("/programdegreedetails");
     }
 }
