@@ -3,29 +3,29 @@
 <table>
     <tr>
         <td>
-            Degree Duration 
+            Degree Duration
         </td>
         <td>
 
             <select class="form-select" aria-label="Default select example" @onchange="_EditOption">
-                    <option selected>Select Duration</option>
-                    <option value="1Year">1 Year</option>
-                    <option value="2Year">2 Year</option>
-                    <option value="3Year">3 Year</option>
-                    <option value="4Year">4 Year</option>
-                    <option value="5Year">5 Year</option>
+                <option selected>Select Duration</option>
+                <option value="1Year">1 Year</option>
+                <option value="2Year">2 Year</option>
+                <option value="3Year">3 Year</option>
+                <option value="4Year">4 Year</option>
+                <option value="5Year">5 Year</option>
 
-                </select>
+            </select>
         </td>
     </tr>
-   
+
     <tr>
         <td> <button type="submit" @onclick="UpdateDuration">Update</button></td>
     </tr>
 </table>
 @code {
-     private string? EditOption { get; set; } 
-     [Parameter] public string? pdid { get; set; }
+    private string? EditOption { get; set; }
+    [Parameter] public string? pdid { get; set; }
     private ClassLibraryEntities.EntProgramDegreeDetails ModelProgramDegreeDetails { get; set; } = new ClassLibraryEntities.EntProgramDegreeDetails();
     private void _EditOption(ChangeEventArgs e)
     {
@@ -35,7 +35,6 @@
     private void UpdateDuration()
     {
         ModelProgramDegreeDetails.Duration = EditOption;
-        
         ModelProgramDegreeDetails.ProgramDegreeDetailsId = pdid;
         ModelProgramDegreeDetails.type = "Duration";
         ClassLibraryDAL.DALProgramDegreeDetails.UpdateProgramCategory(ModelProgramDegreeDetails);

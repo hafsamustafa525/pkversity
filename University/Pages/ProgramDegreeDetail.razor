@@ -3,7 +3,7 @@
 @using ClassLibraryEntities
 @inject NavigationManager nm
 
-<EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmintForm">
+<EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmitForm">
     <table>
    
         <tr>
@@ -303,7 +303,7 @@
     [Parameter] public string? DegreeID { get; set; }
     protected override void OnInitialized()
     {
-        LaodEmployee();
+       LaodProgramDegree();
         if (DegreeID == "0")
         {
             _ModelProgramDegreeDetail = new EntProgramDegreeDetails();
@@ -316,7 +316,7 @@
         }
     }
 
-    private void SubmintForm()
+    private void SubmitForm()
     {
         if (DegreeID == "0")
         {
@@ -331,7 +331,7 @@
 
     }
 
-    private void LaodEmployee()
+    private void LaodProgramDegree()
     {
         this.ProgramCategoriesList = DALProgramCategory.GetProgramCategory();
         this.ProgramDegreeList = DALProgramDegree.GetProgramDegree();

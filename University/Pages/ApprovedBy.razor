@@ -1,6 +1,6 @@
 ﻿@page "/approvedby/{pdid}"
 
-<h3>ApprovedBy</h3>
+<h3>Approved By</h3>
 
  <div class="form-check">
         <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" @bind="hec">
@@ -21,7 +21,7 @@
     private ClassLibraryEntities.EntProgramDegreeDetails ModelProgramDegreeDetails { get; set; } = new ClassLibraryEntities.EntProgramDegreeDetails();
     public bool hec { get; set; }
     public bool pec { get; set; }
-    private string ApprovedByID { get; set; }
+    private string? ApprovedByID { get; set; }
     private void Approved()
     {
        

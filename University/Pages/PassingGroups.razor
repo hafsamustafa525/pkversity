@@ -29,12 +29,13 @@
     [Parameter] public string? pdid { get; set; }
     bool YourConditionTypeOfBool = true;
 
-    private List<EntPassingDSGroups> PassingDSGroupsList;
+    private List<EntPassingDSGroups>? PassingDSGroupsList;
     private ClassLibraryEntities.EntProgramDegreeDetails ModelProgramDegreeDetails { get; set; } = new ClassLibraryEntities.EntProgramDegreeDetails();
     public bool Group1 { get; set; }
     public bool Group2 { get; set; }
     public bool Group3 { get; set; }
     public string? TotalGroups { get; set; }
+
     private void UpdatePDG()
     {
 
@@ -44,6 +45,7 @@
         ModelProgramDegreeDetails.type = "Groups";
         ClassLibraryDAL.DALProgramDegreeDetails.UpdateProgramCategory(ModelProgramDegreeDetails);
     }
+
     protected override void OnInitialized()
     {
         PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
