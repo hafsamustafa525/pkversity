@@ -1,10 +1,13 @@
 ﻿@page "/feedetails/{pdid}"
 @using ClassLibraryDAL
 @using ClassLibraryEntities
-@inject NavigationManager nm
 
-<h3>FeeDetails</h3>
 
+
+<div class="d-flex justify-content-between">
+<h3>Fee Details</h3>
+<a class="btn btn-primary" href="/programdegreedetails" role="button">Go Back</a>
+</div>
 <EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmitForm">
     <table>
          
