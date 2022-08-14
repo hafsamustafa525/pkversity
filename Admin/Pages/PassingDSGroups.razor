@@ -5,13 +5,15 @@
 
 
 
-<table class="table table-striped">
+<table class="table  table-bordered table-hover">
+    <thead class="table-dark">
     <tr>
         <th>Passing DSGroups ID</th>
         <th>PassingDSGroups</th>
         <th>Passing Degree ID</th>
     </tr>
-
+     </thead>
+    <tbody>
     @foreach (var emp in @PassingDSGroupsList)
     {
         if (CategoryID == emp.PassingDegreeId)
@@ -30,6 +32,7 @@
         }
     }
 
+    </tbody>
 </table>
 
 <h2>@title</h2>
