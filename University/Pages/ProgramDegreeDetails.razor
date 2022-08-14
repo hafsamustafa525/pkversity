@@ -37,7 +37,7 @@
         </div>
     </div>
 </EditForm>
-<div class="container pt-4 ">
+<div class="container pt-4 table-responsive">
 <table class="table  table-bordered table-hover">
     <thead class="table-dark">
         <tr scope="row"> 
@@ -48,7 +48,6 @@
             <th>Matric</th>
             <th>Fsc</th>
             <th>BS</th>
-
             <th>TFee</th>
             <th>SFee</th>
             <th>ClosingMerit</th>
@@ -104,8 +103,10 @@
     </tbody>
 </table>
 </div>
-@code {
 
+
+
+@code {
     private List<EntProgramDegreeDetails>? ProgramDegreeDetailsList { get; set; }
     private List<EntProgramCategory>? ProgramCategoriesList;
     private List<EntProgramDegree>? ProgramDegreeList;

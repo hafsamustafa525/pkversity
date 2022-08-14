@@ -12,7 +12,8 @@
         {
         <tr>
             <td>
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" @bind="@emp.PassingDSGroupsId">
+                <input class="form-check-input" type="checkbox"  id="flexCheckChecked" @bind-value="emp.PassingDSGroupsId" >
+                
                 <label class="form-check-label" for="flexCheckChecked">@emp.PassingDSGroups</label>
             </td>
         </tr>
@@ -22,9 +23,11 @@
 
 <button type="submit" @onclick="UpdatePDG">Update PassingDGroups</button>
 
-
+<input type="checkbox" @bind-value="YourConditionTypeOfBool" checked="@(YourConditionTypeOfBool?"checked":null)"/>&nbsp; Is True
+<span>My condition is @(YourConditionTypeOfBool?"True":"False")</span>
 @code {
     [Parameter] public string? pdid { get; set; }
+    bool YourConditionTypeOfBool = true;
 
     private List<EntPassingDSGroups> PassingDSGroupsList;
     private ClassLibraryEntities.EntProgramDegreeDetails ModelProgramDegreeDetails { get; set; } = new ClassLibraryEntities.EntProgramDegreeDetails();
