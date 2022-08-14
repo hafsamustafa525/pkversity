@@ -49,6 +49,7 @@
     private bool check { get; set; } = false;
     private string? message { get; set; }
     private int milliseconds { get; set; } = 3000;
+    private int mydelay = 5000;
 
     private void _EditOption(ChangeEventArgs e)
     {
@@ -61,10 +62,19 @@
         ModelProgramDegreeDetails.ProgramDegreeDetailsId = pdid;
         ModelProgramDegreeDetails.type = "TotalSemesters";
         ClassLibraryDAL.DALProgramDegreeDetails.UpdateProgramCategory(ModelProgramDegreeDetails);
+        // Thread.Sleep(mydelay);
         check = true;
         message = "Sucessfully Updated the Semester's";
+        
 
+        redirect();
+        
+    }
+
+    public void redirect()
+    {
+       // Thread.Sleep(mydelay);
+        //Task.Delay(3 * 1000).Wait();
         nm.NavigateTo("/programdegreedetails");
-        Task.Delay(3 * 1000).Wait();
     }
 }

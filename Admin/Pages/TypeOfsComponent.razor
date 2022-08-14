@@ -4,12 +4,16 @@
 
 <h3>TypeOfsComponent</h3>
 
-<a href="/typeof/0" class="btn btn-dark bt-sm">Add Type Ofs</a>
-<table class="table table-striped">
-    <tr>
+<a href="/typeof/0" class="btn btn-primary">Add Type Ofs</a>
+<table class="table  table-bordered table-hover">
+    <thead class="table-dark">  
+        <tr>
         <th>TypeOf ID</th>
         <th>Type</th>
+         <th>Action</th>
     </tr>
+     </thead>
+    <tbody>
     @foreach (var emp in TypesList)
 
     {
@@ -17,13 +21,13 @@
             <td>@emp.TypeOfId</td>
             <td>@emp.Type</td>
             <td>
-                <button @onclick="(e => OnDelete(emp.TypeOfId))" class="btn btn-warning bt-sm">Del</button>
+                <button @onclick="(e => OnDelete(emp.TypeOfId))" class="btn btn-danger">Del</button>
                 <a href="typeof/@emp.TypeOfId" class="btn btn-warning bt-sm">Edit</a>
             </td>
         </tr>
 
     }
-
+    </tbody>
 </table>
 
 @code {

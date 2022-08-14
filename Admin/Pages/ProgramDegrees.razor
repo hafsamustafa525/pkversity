@@ -64,19 +64,8 @@
 
 
                     <button @onclick="(e => OnDelete(emp.ProgramDegreeId))" class="btn btn-warning bt-sm">Del</button>
-                    @*<button @onclick="(e=>EditDegree(emp.ProgramCategoryid,emp.DegreeName,emp.ProgramDegreeId))" class="btn btn-warning bt-sm">Edit</button>*@
-                    <select class="form-select" aria-label="Default select example" >
-                        <option selected>Edit</option>
+                    <button @onclick="(e=>EditDegree(emp.ProgramCategoryid,emp.DegreeName,emp.ProgramDegreeId))" class="btn btn-warning bt-sm">Edit</button>
 
-                        
-                            <option value="">Duration</option>
-                            <option value="">TotalSemester</option>
-                            <option value="">Eligibility Criteria</option>
-                            <option value="">Fees</option>
-                            <option value="">ClosingMerit</option>
-                            <option value="">AprovedID</option>
-                            <option value="">ProgramDegreeGroups</option>
-                    </select>
 
                 </td>
             </tr>
