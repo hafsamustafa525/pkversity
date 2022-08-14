@@ -4,34 +4,47 @@
 <h3>ProgramCategory</h3>
 
 <a href="/programcategory/0" class="btn btn-dark">Create Program Category</a>
-<table class="table table-striped">
-    <tr>
-        <th>ID</th>
-        <th>Category Name</th>
+<div class="container pt-4 table-responsive">
+    <table class="table  table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Category Name</th>
+                <th>Delete</th>
+                <th>Edit</th>
+                <th>Add Program</th>
 
-    </tr>
-
-    @foreach (var emp in @ProgramCategoriesList)
-    {
-        <tr>
-            <td>
-                @emp.ProgramCategoryId
-            </td>
-            <td>@emp.CategoryName</td>
-            <td>
-
-
-                <button @onclick="(e => OnDelete(emp.ProgramCategoryId))" class="btn btn-warning bt-sm">Del</button>
-                <a href="programcategory/@emp.ProgramCategoryId" class="btn btn-warning bt-sm">Edit</a>
-                <a href="programdegree/@emp.ProgramCategoryId" class="btn btn-warning bt-sm">Add Prorgrame Degrees</a>
-            </td>
-        </tr>
-    }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in @ProgramCategoriesList)
+            {
+                <tr>
+                    <td>
+                        @emp.ProgramCategoryId
+                    </td>
+                    <td>@emp.CategoryName</td>
+                    <td>
 
 
+                        <button @onclick="(e => OnDelete(emp.ProgramCategoryId))" class="btn btn-danger">Del</button>
+                    </td>
+                    <td>
+                        <a href="programcategory/@emp.ProgramCategoryId" class="btn btn-warning bt-sm">Edit</a>
 
-</table>
+                    </td>
+                    <td>
+                        <a href="programdegree/@emp.ProgramCategoryId" class="btn btn-warning bt-sm">Add Prorgrame Degrees</a>
 
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+
+
+    </table>
+</div>
 
 @code {
 

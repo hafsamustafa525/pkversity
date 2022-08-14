@@ -4,12 +4,16 @@
 <h3>Program Category</h3>
 
 <a href="/passingdegree/0" class="btn btn-dark">Create Program Category</a>
+<div class="container pt-4 table-responsive">
 <table class="table  table-bordered table-hover">
     <thead class="table-dark">
     <tr>
         <th>ID</th>
         <th>Category Name</th>
-        <th>Action</th>
+        <th>Delete</th>
+        <th>Edit</th>
+        <th>Add Groups</th>
+
     </tr>
     </thead>
     <tbody>
@@ -26,14 +30,21 @@
 
 
                 <button @onclick="(e => OnDelete(emp.PassingDegreesId))" class="btn btn-danger ">Del</button>
-                <a href="passingdegree/@emp.PassingDegreesId" class="btn btn-warning bt-sm">Edit</a>
-                <a href="passingdsgroups/@emp.PassingDegreesId" class="btn btn-warning bt-sm">Add passing Degrees Group</a>
             </td>
+            <td>
+                <a href="passingdegree/@emp.PassingDegreesId" class="btn btn-warning bt-sm">Edit</a>
+
+            </td>
+            <td>
+                <a href="passingdsgroups/@emp.PassingDegreesId" class="btn btn-warning bt-sm">Add passing Degrees Group</a>
+
+            </td>
+
         </tr>
     }
     </tbody>
 </table>
-
+</div>
 @code {
 
     private List<EntPassingDegree>? PassingDegreeList;

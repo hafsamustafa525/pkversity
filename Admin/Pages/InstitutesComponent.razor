@@ -4,8 +4,9 @@
 
 <h3>Institute Component</h3>
 
-<a href="institute/0" class="btn btn-primary">Add institutes</a> <br />
-<table class="table  table-bordered table-hover">
+<a href="institute/0" class="btn btn-primary">Add institutes</a> 
+<div class="container pt-4 table-responsive">
+<table class="table  table-bordered table-hover ">
     <thead class="table-dark">
         <tr>
             <th>Institute ID</th>
@@ -21,7 +22,8 @@
                   <th>TypeOfId </th>
                      <th>Location </th>
                         <th>AdminId </th>
-                         <th>Action </th>
+                         <th>Delete </th>
+                         <th>Edit </th>
         </tr>
     </thead>
     <tbody>
@@ -46,14 +48,17 @@
 
                 <td>
                     <button @onclick="(e => OnDelete(emp.InstituteId))" class="btn btn-danger">Del</button>
+                </td>
+                <td>
                     <a href="institute/@emp.InstituteId" class="btn btn-warning bt-sm">Edit</a>
+
                 </td>
             </tr>
 
         }
     </tbody>
 </table>
-
+</div>
 @code {
 
 
