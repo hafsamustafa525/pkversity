@@ -1,4 +1,7 @@
 ﻿@page "/institute/{insid}"
+@using ClassLibraryDAL
+@using ClassLibraryEntities
+
 
 @inject NavigationManager nm;
 
@@ -7,6 +10,8 @@
 
 <h3>Institute Component</h3>
 @insid
+
+
 
 @if (check)
 {
@@ -64,14 +69,14 @@
                 CityId
             </td>
             <td>
-
-                <select class="form-select" aria-label="Default select example" @bind="@cityid">
-
+                <select class="form-select" aria-label="Default select example" @onchange="_InstEdit">
                     <option ID="DropDown">---Select City---</option>
-                    <option value="42">Lahore</option>
-                    <option value="51">Islamabad</option>
-                </select>
+                        @foreach (var emp in CitiesList)
+                         {
+                               <option value="@emp.CityId">@emp.CityName</option>
 
+                    }
+                </select>
             </td>
         </tr>
         <tr>
@@ -79,11 +84,15 @@
                 TypeOfId
             </td>
             <td>
-                <select class="form-select" aria-label="Default select example" @bind="@typeid">
+                <select class="form-select" aria-label="Default select example" @onchange="_TypeEdit">
 
                     <option value="0">--Select Type---</option>
-                    <option value="1">School</option>
-                    <option value="4">Institute</option>
+                    @foreach(var emp in TypesList)
+                    {
+                                            
+                    <option value="@emp.TypeOfId">@emp.Type</option>
+                  
+                    }
                 </select>
 
             </td>
@@ -115,12 +124,14 @@
 
     private EntInstitutes _ModelInstitute { get; set; }
     private List<EntInstitutes> instituteList;
+    private List<EntCities> CitiesList;
+    private List<EntTypes> TypesList;
     private string? title { get; set; }
+    private string? InstEdit { get; set; }
+    private string? TypeEdit{ get; set; } 
 
     [Parameter] public string insid { get; set; }
 
-    private string? cityid { get; set; }
-    private string? typeid { get; set; }
     private int i { get; set; }
     bool check = false;
     private string? message { get; set; }
@@ -137,6 +148,9 @@
             _ModelInstitute = DalInstitutes.GetInstituteBtId(insid);
             title = "Update Institute";
         }
+
+        this.CitiesList = DalCities.GetCities();
+        this.TypesList = DalTypes.GetTypeOfs();
     }
 
     private void SubmitForm()
@@ -148,10 +162,10 @@
 
 
 
-                if (typeid != "0" && cityid != "0" && typeid != null && cityid != null)
+                if (TypeEdit != "0" && InstEdit != "0" && TypeEdit != null && InstEdit != null)
                 {
-                    _ModelInstitute.CityId = cityid;
-                    _ModelInstitute.TypeOfId = typeid;
+                    _ModelInstitute.CityId = InstEdit;
+                    _ModelInstitute.TypeOfId = TypeEdit;
                     DalInstitutes.SaveInstitutes(_ModelInstitute);
                     nm.NavigateTo("/institutes");
                 }
@@ -174,11 +188,11 @@
             {
 
 
-                if (typeid != "0" && cityid != "0" && typeid != null && cityid != null)
+                if (TypeEdit != "0" && InstEdit != "0" && TypeEdit != null && InstEdit != null)
                 {
 
-                    _ModelInstitute.CityId = cityid;
-                    _ModelInstitute.TypeOfId = typeid;
+                    _ModelInstitute.CityId = InstEdit;
+                    _ModelInstitute.TypeOfId = TypeEdit;
                     DalInstitutes.UpdateInstitutes(_ModelInstitute);
                     nm.NavigateTo("/institutes");
                 }
@@ -217,8 +231,15 @@
         return i;
     }
 
+    private void _InstEdit(ChangeEventArgs e)
+    {
+        InstEdit = e.Value as string;
+    }
 
-
+    private void _TypeEdit(ChangeEventArgs e)
+    {
+        TypeEdit = e.Value as string;
+    }
 }
 
 
