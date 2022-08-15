@@ -5,12 +5,13 @@
 <h3>@title</h3>
 <h3>TypeofComponent</h3>
 
-@typeid
+
 
 @if (check)
 {
     <MessageComponent CustomMessage="@message"></MessageComponent>
 }
+<a class="btn btn-primary" href="/typeofs" role="button">Go Back</a>
 
 <EditForm Model="@_ModelTypeof" OnSubmit="SubmitForm">
     <table>
