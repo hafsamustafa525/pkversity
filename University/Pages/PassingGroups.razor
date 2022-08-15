@@ -36,15 +36,14 @@
     </tr>
      </thead>
     <tbody>
-    @foreach (var emp in @PassingDSGroupsList)
-    {
-        
+           
             <tr>
-                <td>@emp.PassingDSGroupsId</td>
-                <td>@emp.PassingDSGroups</td>
+                <td>@MyList</td>
+                @*<td>@emp.PassingDSGroups</td>*@
             </tr>
+           
         
-    }
+    
 
     </tbody>
 </table>
@@ -58,8 +57,7 @@
 
     private bool check { get; set; } = false;
     private string? message { get; set; }
-    public string? MyList{ get; set; }
-
+    public  string? MyList{ get; set; }
 
     private List<EntPassingDSGroups>? PassingDSGroupsList;
     private ClassLibraryEntities.EntProgramDegreeDetails ModelProgramDegreeDetails { get; set; } = new ClassLibraryEntities.EntProgramDegreeDetails();
