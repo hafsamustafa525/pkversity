@@ -64,7 +64,9 @@
                 CityId
             </td>
             <td>
-                <select @bind="@cityid">
+
+                <select class="form-select" aria-label="Default select example" @bind="@cityid">
+
                     <option ID="DropDown">---Select City---</option>
                     <option value="42">Lahore</option>
                     <option value="51">Islamabad</option>
@@ -77,7 +79,8 @@
                 TypeOfId
             </td>
             <td>
-                <select @bind="@typeid">
+                <select class="form-select" aria-label="Default select example" @bind="@typeid">
+
                     <option value="0">--Select Type---</option>
                     <option value="1">School</option>
                     <option value="4">Institute</option>

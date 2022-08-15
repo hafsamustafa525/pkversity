@@ -38,6 +38,8 @@ namespace ClassLibraryDAL
             {
                 ee.PassingDSGroupsId = sdr["PassingDSGroupsId"].ToString();
                 ee.PassingDSGroups = sdr["PassingDSGroups"].ToString();
+                ee.PassingDegreeId = sdr["PassingDegreeId"].ToString();
+
             }
             con.Close();
             return ee;
@@ -48,6 +50,7 @@ namespace ClassLibraryDAL
             SqlConnection con = DBHelper.GetConnection();
             con.Open();
             SqlCommand cmd = new SqlCommand("SP_UpdatePassingDSGroups", con);
+            cmd.Parameters.AddWithValue("@PassingDSGroupsId ", ee.PassingDSGroupsId);
             cmd.Parameters.AddWithValue("@PassingDSGroups ", ee.PassingDSGroups);
             cmd.Parameters.AddWithValue("@PassingDegreeId", ee.PassingDegreeId);
             cmd.CommandType = CommandType.StoredProcedure;

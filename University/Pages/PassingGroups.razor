@@ -6,34 +6,59 @@
 {
     <MessageComponent CustomMessage="@message"></MessageComponent>
 }
+
+<h3>Passing Groups </h3>
+<a class="btn btn-primary" href="/programdegreedetails" role="button">Go Back</a>
 <table>
 
     <div class="form-check">
-
+        
         @foreach (var emp in @PassingDSGroupsList)
         {
         <tr>
             <td>
-                <input class="form-check-input" type="checkbox"  id="flexCheckChecked" @bind-value="emp.PassingDSGroupsId" >
-                
-                <label class="form-check-label" for="flexCheckChecked">@emp.PassingDSGroups</label>
+                <input class="form-check-input" type="checkbox"  id="flexCheckChecked" @onchange="(e => {ClassLibraryDAL.CustomLogic.CheckboxClicked(emp.PassingDSGroupsId,e.Value);})">@emp.PassingDSGroups
             </td>
+            <td></td>
         </tr>
         }
     </div>
 </table>
+<button type="submit" class="btn btn-primary mt-2" @onclick="UpdatePDG">Update PassingDGroups</button>
+<div class="container pt-4 table-responsive">
+<table class="table  table-bordered table-hover">
+    <thead class="table-dark">
+    <tr>
+        <th>Passing DSGroups ID</th>
+        <th>PassingDSGroups</th>
+        
+        
+    </tr>
+     </thead>
+    <tbody>
+    @foreach (var emp in @PassingDSGroupsList)
+    {
+        
+            <tr>
+                <td>@emp.PassingDSGroupsId</td>
+                <td>@emp.PassingDSGroups</td>
+            </tr>
+        
+    }
 
-<button type="submit" @onclick="UpdatePDG">Update PassingDGroups</button>
+    </tbody>
+</table>
+</div>
 
-<input type="checkbox" @bind-value="YourConditionTypeOfBool" checked="@(YourConditionTypeOfBool?"checked":null)"/>&nbsp; Is True
-<span>My condition is @(YourConditionTypeOfBool?"True":"False")</span>
+
+
 
 @code {
     [Parameter] public string? pdid { get; set; }
-    bool YourConditionTypeOfBool = true;
-     private bool check { get; set; } = false;
-    private string? message { get; set; }
 
+    private bool check { get; set; } = false;
+    private string? message { get; set; }
+    public string? MyList{ get; set; }
 
 
     private List<EntPassingDSGroups>? PassingDSGroupsList;
@@ -45,15 +70,18 @@
 
     private void UpdatePDG()
     {
-
-        TotalGroups = Group1 + "" + Group2 + "" + Group3;
-        ModelProgramDegreeDetails.PassingDegreeGroups = TotalGroups;
+        CheckList();
+        // TotalGroups = Group1 + "" + Group2 + "" + Group3;
+        ModelProgramDegreeDetails.PassingDegreeGroups = MyList;
         ModelProgramDegreeDetails.ProgramDegreeDetailsId = pdid;
         ModelProgramDegreeDetails.type = "Groups";
+
         ClassLibraryDAL.DALProgramDegreeDetails.UpdateProgramCategory(ModelProgramDegreeDetails);
-            check = true;
-        message = "Succesfully Updated Passsing Groups    ";
-    
+        ClassLibraryDAL.CustomLogic.DisposeList();
+        check = true;
+        message = "Succesfully Updated Passsing Groups";
+        
+
     }
 
     protected override void OnInitialized()
@@ -61,7 +89,10 @@
         PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
     }
 
-
+    private void CheckList()
+    {
+        MyList = ClassLibraryDAL.CustomLogic.checklist();
+    }
 
 
 }

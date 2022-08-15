@@ -42,9 +42,9 @@
 
     private void UpdateShift()
     {
-        ModelProgramDegreeDetails.Morning = morning.ToString();
-        ModelProgramDegreeDetails.Evening = evening.ToString();
-        ModelProgramDegreeDetails.Weekened = weekened.ToString();
+        ModelProgramDegreeDetails.Morning = morning;
+        ModelProgramDegreeDetails.Evening = evening;
+        ModelProgramDegreeDetails.Weekened = weekened;
         ModelProgramDegreeDetails.ProgramDegreeDetailsId = pdid;
         ModelProgramDegreeDetails.type = "shift";
         ClassLibraryDAL.DALProgramDegreeDetails.UpdateProgramCategory(ModelProgramDegreeDetails);

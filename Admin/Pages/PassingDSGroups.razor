@@ -4,7 +4,7 @@
 @inject NavigationManager nm
 
 
-
+<div class="container pt-4 table-responsive">
 <table class="table  table-bordered table-hover">
     <thead class="table-dark">
     <tr>
@@ -29,13 +29,14 @@
 
 
                 </td>
+
             </tr>
         }
     }
 
     </tbody>
 </table>
-
+</div>
 <h2>@title</h2>
 <EditForm Model="_ModelPassingDSGroups" OnSubmit="SubmitForm">
     <table>
@@ -60,7 +61,7 @@
                 PassingDegreeId
             </td>
             <td>
-                <InputText name="Name" @bind-Value="_ModelPassingDSGroups.PassingDegreeId" required></InputText>
+                <InputText name="Name" @bind-Value="_ModelPassingDSGroups.PassingDegreeId" disabled></InputText>
             </td>
         </tr>
         <tr>
@@ -77,7 +78,8 @@
 </EditForm>
 
 @code {
-
+    private EntPassingDSGroups? _ModelPassingDSGroups { get; set; }
+    private string? title { get; set; }
     private List<EntPassingDSGroups>? PassingDSGroupsList;
     [Parameter] public string? CategoryID { get; set; }
     bool var = true;
@@ -88,12 +90,14 @@
         if (var == true)
         {
             _ModelPassingDSGroups = new EntPassingDSGroups();
+            LaodEmployee();
             title = "CreateNew";
 
         }
         else
         {
             _ModelPassingDSGroups = DALPassingDSGroups.GetPassingDSGroupsById(CategoryID);
+            LaodEmployee();
             title = "Update DS";
 
         }
@@ -117,8 +121,7 @@
         this.PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
     }
 
-    private EntPassingDSGroups? _ModelPassingDSGroups { get; set; }
-    private string? title { get; set; }
+   
 
 
 
@@ -126,15 +129,16 @@
     {
         if (var == true)
         {
+             _ModelPassingDSGroups.PassingDegreeId = CategoryID;
             DALPassingDSGroups.SavePassingDSGroups(_ModelPassingDSGroups);
-            nm.NavigateTo("/passingdsgroups/{CategoryID}");
+            
             LaodEmployee();
 
         }
         else
         {
             DALPassingDSGroups.UpdatePassingDSGroups(_ModelPassingDSGroups);
-            nm.NavigateTo("/passingdsgroups/{CategoryID}");
+           
             LaodEmployee();
 
 
