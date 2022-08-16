@@ -36,7 +36,7 @@ namespace ClassLibraryDAL
             foreach (var item in CheckBox)
             {
 
-                ChecKedItems += item+ ',';
+                ChecKedItems += item+",";
             }
 
             return ChecKedItems;

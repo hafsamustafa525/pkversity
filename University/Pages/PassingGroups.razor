@@ -2,7 +2,7 @@
 @using ClassLibraryDAL
 @using ClassLibraryEntities
 
-@if (check )
+@if (check)
 {
     <MessageComponent CustomMessage="@message"></MessageComponent>
 }
@@ -12,12 +12,12 @@
 <table>
 
     <div class="form-check">
-        
+
         @foreach (var emp in @PassingDSGroupsList)
         {
         <tr>
             <td>
-                <input class="form-check-input" type="checkbox"  id="flexCheckChecked" @onchange="(e => {ClassLibraryDAL.CustomLogic.CheckboxClicked(emp.PassingDSGroupsId,e.Value);})">@emp.PassingDSGroups
+                <input class="form-check-input" type="checkbox" id="flexCheckChecked" @onchange="(e => {ClassLibraryDAL.CustomLogic.CheckboxClicked(emp.PassingDSGroupsId,e.Value);})">@emp.PassingDSGroups
             </td>
             <td></td>
         </tr>
@@ -25,28 +25,37 @@
     </div>
 </table>
 <button type="submit" class="btn btn-primary mt-2" @onclick="UpdatePDG">Update PassingDGroups</button>
-<div class="container pt-4 table-responsive">
-<table class="table  table-bordered table-hover">
-    <thead class="table-dark">
-    <tr>
-        <th>Passing DSGroups ID</th>
-        <th>PassingDSGroups</th>
-        
-        
-    </tr>
-     </thead>
-    <tbody>
-           
-            <tr>
-                <td>@MyList</td>
-                @*<td>@emp.PassingDSGroups</td>*@
-            </tr>
-           
-        
-    
 
-    </tbody>
-</table>
+
+<div class="container pt-4 table-responsive">
+    <table class="table  table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Passing DSGroups ID</th>
+                <th>Passing DSGroups </th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var emp in @PassingDSGroupsList1)
+            {
+               
+                    <tr>
+
+                        <td>@emp.PassingDSGroupsId</td>
+
+                        <td>@emp.PassingDSGroups</td>
+
+
+                    </tr>
+                
+
+            }
+
+
+        </tbody>
+    </table>
 </div>
 
 
@@ -57,9 +66,11 @@
 
     private bool check { get; set; } = false;
     private string? message { get; set; }
-    public  string? MyList{ get; set; }
+    public string? MyList { get; set; }
 
-    private List<EntPassingDSGroups>? PassingDSGroupsList;
+    private List<EntPassingDSGroups>? PassingDSGroupsList { get; set; }
+    private List<EntPassingDSGroups>? PassingDSGroupsList1 { get; set; }
+
     private ClassLibraryEntities.EntProgramDegreeDetails ModelProgramDegreeDetails { get; set; } = new ClassLibraryEntities.EntProgramDegreeDetails();
     public bool Group1 { get; set; }
     public bool Group2 { get; set; }
@@ -68,22 +79,27 @@
 
     private void UpdatePDG()
     {
+
         CheckList();
-        // TotalGroups = Group1 + "" + Group2 + "" + Group3;
+
         ModelProgramDegreeDetails.PassingDegreeGroups = MyList;
         ModelProgramDegreeDetails.ProgramDegreeDetailsId = pdid;
         ModelProgramDegreeDetails.type = "Groups";
 
         ClassLibraryDAL.DALProgramDegreeDetails.UpdateProgramCategory(ModelProgramDegreeDetails);
+        //LaodProgramDegreeDetails();
         ClassLibraryDAL.CustomLogic.DisposeList();
         check = true;
         message = "Succesfully Updated Passsing Groups";
-        
+        LaodProgramDegreeDetails();
+
 
     }
 
     protected override void OnInitialized()
     {
+        LaodProgramDegreeDetails();
+
         PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
     }
 
@@ -91,6 +107,10 @@
     {
         MyList = ClassLibraryDAL.CustomLogic.checklist();
     }
+    private void LaodProgramDegreeDetails()
+    {
+        this.PassingDSGroupsList1 = ClassLibraryDAL.DALPassingDSGroups.GetGroupsById(pdid,13);
 
+    }
 
 }

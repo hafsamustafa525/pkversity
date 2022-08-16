@@ -91,6 +91,29 @@ namespace ClassLibraryDAL
             con.Close();
             return PassingDSGroupsList;
         }
+        public static List<EntPassingDSGroups> GetGroupsById(string ID,int InstituteId)
+        {
+            SqlConnection con = DBHelper.GetConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SP_GetProgramGroupsBYID", con);
+            cmd.Parameters.AddWithValue("@ID", int.Parse(ID));
+            cmd.Parameters.AddWithValue("@InstituteId", InstituteId);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataReader sdr = cmd.ExecuteReader();
+            List<EntPassingDSGroups> passingDSGroupsList = new List<EntPassingDSGroups>();
+            while (sdr.Read())
+            {
+                EntPassingDSGroups ee = new EntPassingDSGroups();
+                ee.PassingDSGroupsId = sdr["value"].ToString();
+                 ee.PassingDSGroups= sdr["PassingDSGroups"].ToString();
+                passingDSGroupsList.Add(ee);    
+
+            }
+            con.Close();
+            return passingDSGroupsList;
+        }
+
 
     }
 }

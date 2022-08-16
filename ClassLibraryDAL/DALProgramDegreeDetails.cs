@@ -190,6 +190,30 @@ namespace ClassLibraryDAL
             return ee;
         }
 
+        public static List<EntProgramDegreeDetails> GetGroupsById(string ID, int InstituteId)
+        {
+            SqlConnection con = DBHelper.GetConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SP_GetProgramGroupsBYID", con);
+            cmd.Parameters.AddWithValue("@ID", int.Parse(ID));
+            cmd.Parameters.AddWithValue("@InstituteId", InstituteId);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataReader sdr = cmd.ExecuteReader();
+            List<EntProgramDegreeDetails> passingDSGroupsList = new List<EntProgramDegreeDetails>();
+            while (sdr.Read())
+            {
+                EntProgramDegreeDetails ee = new EntProgramDegreeDetails();
+
+                ee.ProgramDegreeId = sdr["value"].ToString();
+                ee.PassingDegreeGroups = sdr["PassingDegreeGroups"].ToString();
+                passingDSGroupsList.Add(ee);
+
+            }
+            con.Close();
+            return passingDSGroupsList;
+        }
+
 
     }
 }
