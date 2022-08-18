@@ -107,6 +107,10 @@
 
 
 @code {
+    private ClassLibraryEntities.EntInstitutes? _Model{ get; set; }
+    private List<EntInstitutes>? ProgramUserAccount { get; set; }
+    
+        
     private List<EntProgramDegreeDetails>? ProgramDegreeDetailsList { get; set; }
     private List<EntProgramCategory>? ProgramCategoriesList;
     private List<EntProgramDegree>? ProgramDegreeList;
@@ -114,12 +118,19 @@
     private string? alpha { get; set; }
     private string? DegreeId { get; set; }
     private string? EditOption { get; set; }
+
+
+
+
+
     protected override void OnInitialized()
     {
+        
         _ModelProgramDegreeDetail = new EntProgramDegreeDetails();
         LoadProgramDetails();
         LaodProgramDegreeDetails();
-
+        
+     
 
     }
 
@@ -147,7 +158,8 @@
         Redirect(EditOption);
     }
     private void SubmintForm()
-    {
+    {   
+
         _ModelProgramDegreeDetail.InstituteId = "13";
         _ModelProgramDegreeDetail.ProgramDegreeId = DegreeId;
         DALProgramDegreeDetails.SaveProgramDegreeDetails(_ModelProgramDegreeDetail);

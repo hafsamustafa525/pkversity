@@ -1,0 +1,60 @@
+﻿@page "/register"
+@using ClassLibraryDAL
+@using ClassLibraryEntities
+@using University.Authentication
+@if (_ModelRegister== null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+<EditForm Model="_ModelRegister" OnSubmit="SubmitForm">
+    <table>
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                <InputText name="ID" @bind-Value="_ModelRegister.UserName" required ></InputText>
+            </td>
+        </tr>
+       
+        <tr>
+            <td>
+                Password
+            </td>
+            <td>
+                <InputText name="password" typeof="password" @bind-Value="_ModelRegister.Password" required></InputText>
+            </td>
+        </tr>
+          <tr>
+            <td>
+                Role
+            </td>
+            <td>
+                <InputText name="password" typeof="password" @bind-Value="_ModelRegister.Role" required></InputText>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </td>
+        </tr>
+
+
+    </table>
+
+
+</EditForm>
+
+}
+@code {
+    private EntInstitutes _ModelRegister { get; set; } = new EntInstitutes();
+
+    private void SubmitForm()
+    {
+        DALUserAcountService.SaveRegisterFrom(_ModelRegister);        
+    }
+}

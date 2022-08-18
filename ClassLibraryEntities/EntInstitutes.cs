@@ -8,7 +8,7 @@ namespace ClassLibraryEntities
 {
     public class EntInstitutes
     {
-
+        public string Role { get; set; } = "University";
         public string? InstituteId { get; set; }
         public string? Title { get; set; }
         public string? Email { get; set; }
