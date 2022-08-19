@@ -1,9 +1,15 @@
 ﻿@page "/programdegreedetails"
+@attribute [Authorize(Roles ="University")]
 @inject NavigationManager nm
 @using ClassLibraryDAL
+@inject AuthenticationStateProvider authStateProvider
+@using University.Authentication
+@inject IJSRuntime js
+
 
 @using ClassLibraryEntities
-<h3>ProgramDegreeDetail</h3>
+<h3>ProgramDegreeDetail </h3>
+<h3>@value1</h3>
 
 <EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmintForm">
     <div class="row">
@@ -104,13 +110,20 @@
 </table>
 </div>
 
-
-
+<h2>@message</h2>
 @code {
     private ClassLibraryEntities.EntInstitutes? _Model{ get; set; }
     private List<EntInstitutes>? ProgramUserAccount { get; set; }
-    
-        
+    public string message{ get; set; } 
+    public string? value1 { get; set; }
+    [CascadingParameter]
+    private Task <AuthenticationState> authenticatestate { get; set; }
+    private async Task DisplayGreeting()
+    {
+        var authState = await authenticatestate;
+        value1 = $"{authState.User.Identity.Name}";
+
+    }
     private List<EntProgramDegreeDetails>? ProgramDegreeDetailsList { get; set; }
     private List<EntProgramCategory>? ProgramCategoriesList;
     private List<EntProgramDegree>? ProgramDegreeList;
@@ -123,15 +136,13 @@
 
 
 
-    protected override void OnInitialized()
+    protected async override void OnInitialized()
     {
-        
+        DisplayGreeting();
         _ModelProgramDegreeDetail = new EntProgramDegreeDetails();
         LoadProgramDetails();
         LaodProgramDegreeDetails();
-        
-     
-
+        SubmintForm();
     }
 
     private void OnDelete(string id)
@@ -142,9 +153,21 @@
 
     }
 
-    private void LaodProgramDegreeDetails()
+    private async void LaodProgramDegreeDetails()
     {
-        this.ProgramDegreeDetailsList = DALProgramDegreeDetails.GetProgramDegreeDetailsByInstituteId("13");
+
+        if (value1 != null)
+        {
+
+            this.ProgramDegreeDetailsList =DALProgramDegreeDetails.GetProgramDegreeDetailsByInstituteId(value1);
+
+        }
+        //else
+        //{
+        //    message = "Not authorized";
+        //    value1 = "13";
+        //    this.ProgramDegreeDetailsList =DALProgramDegreeDetails.GetProgramDegreeDetailsByInstituteId(value1);
+        //}
 
     }
     private void _CatOption(ChangeEventArgs e)
@@ -158,13 +181,22 @@
         Redirect(EditOption);
     }
     private void SubmintForm()
-    {   
-
-        _ModelProgramDegreeDetail.InstituteId = "13";
-        _ModelProgramDegreeDetail.ProgramDegreeId = DegreeId;
-        DALProgramDegreeDetails.SaveProgramDegreeDetails(_ModelProgramDegreeDetail);
-        LaodProgramDegreeDetails();
-     
+    {
+        if (value1 != null)
+        {
+            _ModelProgramDegreeDetail.InstituteId = value1;
+            _ModelProgramDegreeDetail.ProgramDegreeId = DegreeId;
+            DALProgramDegreeDetails.SaveProgramDegreeDetails(_ModelProgramDegreeDetail);
+            LaodProgramDegreeDetails();
+        }
+        //else 
+        //{
+        //    value1 = "13";
+        //    _ModelProgramDegreeDetail.InstituteId = value1;
+        //    _ModelProgramDegreeDetail.ProgramDegreeId = DegreeId;
+        //    DALProgramDegreeDetails.SaveProgramDegreeDetails(_ModelProgramDegreeDetail);
+        //    LaodProgramDegreeDetails();
+        //}
 
 
     }
@@ -176,8 +208,10 @@
 
 
     private void Redirect(string url)
-    {
+    { 
         nm.NavigateTo(url);
     }
 
+
+   
  }

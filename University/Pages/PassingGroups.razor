@@ -1,4 +1,5 @@
 ﻿@page "/passinggroups/{pdid}"
+@attribute [Authorize(Roles ="University")]
 @using ClassLibraryDAL
 @using ClassLibraryEntities
 
@@ -77,6 +78,16 @@
     public bool Group3 { get; set; }
     public string? TotalGroups { get; set; }
 
+    public string? value1 { get; set; }
+    [CascadingParameter]
+    private Task <AuthenticationState> authenticatestate { get; set; }
+    private async Task DisplayGreeting()
+    {
+        var authState = await authenticatestate;
+        value1 = $"{authState.User.Identity.Name}";
+
+    }
+
     private void UpdatePDG()
     {
 
@@ -98,6 +109,7 @@
 
     protected override void OnInitialized()
     {
+        DisplayGreeting();
         LaodProgramDegreeDetails();
 
         PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
@@ -109,7 +121,7 @@
     }
     private void LaodProgramDegreeDetails()
     {
-        this.PassingDSGroupsList1 = ClassLibraryDAL.DALPassingDSGroups.GetGroupsById(pdid,13);
+        this.PassingDSGroupsList1 = ClassLibraryDAL.DALPassingDSGroups.GetGroupsById(pdid,int.Parse(value1));
 
     }
 

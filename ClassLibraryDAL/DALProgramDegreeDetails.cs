@@ -52,7 +52,7 @@ namespace ClassLibraryDAL
 
 
         public static List<EntProgramDegreeDetails> GetProgramDegreeDetailsByInstituteId(string InstituteId)
-        {
+            {
             SqlConnection con = DBHelper.GetConnection();
             con.Open();
             SqlCommand cmd = new SqlCommand("SP_GetProgramDegreeDetailsByInstituteId", con);

@@ -1,0 +1,73 @@
+﻿@page "/form"
+<h3>Form</h3>
+@using ClassLibraryDAL
+@using ClassLibraryEntities
+
+<EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmintForm">
+    <div class="row">
+        <div class="col">
+            <select class="form-select" aria-label="Default select example" @onchange="_CatOption">
+                <option selected>Select Degree</option>
+
+                @foreach (var emp in @ProgramCategoriesList)
+                {
+                    <option value="@emp.ProgramCategoryId">@emp.CategoryName</option>
+                }
+            </select>
+
+
+        </div>
+        <div class="col">
+            <select @bind="@DegreeId" class="form-select" aria-label="Default select example">
+                <option selected>Select Field</option>
+
+                @foreach (var emp in @ProgramDegreeList)
+                {
+                    if (alpha == emp.ProgramCategoryid)
+                    {
+                        <option value="@emp.ProgramDegreeId">@emp.DegreeName</option>
+                    }
+                }
+            </select>
+        </div>
+       <h2>Education Details</h2>
+
+    </div>
+</EditForm>
+
+
+
+@code {
+
+
+
+
+    private EntProgramDegreeDetails? _ModelProgramDegreeDetail { get; set; }
+    private List<EntProgramCategory>? ProgramCategoriesList;
+    private List<EntProgramDegree>? ProgramDegreeList;
+    private string? DegreeId { get; set; }
+    private string? alpha { get; set; }
+    private void _CatOption(ChangeEventArgs e)
+    {
+        alpha = e.Value as string;
+
+    }
+    private void SubmintForm()
+    {
+
+
+    }
+   
+    private void LoadProgramDetails()
+    {
+        this.ProgramCategoriesList = DALProgramCategory.GetProgramCategory();
+        this.ProgramDegreeList = DALProgramDegree.GetProgramDegree();
+    }
+    protected  override void OnInitialized()
+    {
+        _ModelProgramDegreeDetail = new EntProgramDegreeDetails();
+        LoadProgramDetails();
+       
+        
+    }
+}

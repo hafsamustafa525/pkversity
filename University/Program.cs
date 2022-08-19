@@ -5,16 +5,20 @@ using Microsoft.AspNetCore.Components.Web;
 using University.Authentication;
 using University.Data;
 
-var builder = WebApplication.CreateBuilder(args);
 
+
+var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddAuthenticationCore();
 builder.Services.AddRazorPages();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<ProtectedSessionStorage>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 builder.Services.AddSingleton< ClassLibraryDAL.DALUserAcountService>();
 builder.Services.AddSingleton<WeatherForecastService>();
+
 
 var app = builder.Build();
 

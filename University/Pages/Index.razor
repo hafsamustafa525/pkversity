@@ -1,6 +1,6 @@
 ﻿@page "/"
 @inject IJSRuntime js
-
+@using ClassLibraryDAL
 <PageTitle>Index</PageTitle>
 
 <AuthorizeView>
@@ -22,15 +22,16 @@ Welcome to your new app.
         <button @onclick="DisplayGreeting">Display </button>
     </Authorized>
 </AuthorizeView>
-
 @code{
     [CascadingParameter] 
     private Task <AuthenticationState> authenticatestate { get; set; }
-
+    public string? message1 { get; set; }
     private async Task DisplayGreeting()
-    {
+    {  
         var authState = await authenticatestate;
-        var message = $"Hello  {authState.User.Identity.Name}";
-        await js.InvokeVoidAsync("alert", message);
+         message1 = $"{authState.User.Identity.Name}";
+        await js.InvokeVoidAsync("alert", message1);
+
+        
     }
 }
