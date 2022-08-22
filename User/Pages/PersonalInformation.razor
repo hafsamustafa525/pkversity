@@ -1,25 +1,31 @@
 ﻿@page "/personalinformation"
 @using ClassLibraryEntities
-<div class="card m-3">
-    <h4 class="card-header">PersonalInformation</h4>
-    <div class="card-body">
+    
 
 
         <EditForm Model="_ModelInfo" OnSubmit="SubmitForm">
+            <h2 class="text-center">Personal Information</h2>
+            <div class="row mt-4 d-flex justify-content-center align-items-center">
 
-            <div class="row">
-
-                <div class="form-group col-4">
+                <div class="col-4">
                     <label>First Name</label>
                     <InputText @bind-Value="_ModelInfo.FirstName" class="form-control" />
 
                 </div>
-                <div class="form-group col-4">
-                    <label>Last Name</label>
-                    <InputText @bind-Value="_ModelInfo.LastName" class="form-control" />
+            </div>
+                        <div class="row d-flex justify-content-center">
+
+
+                <div class="col-4">
+                    <label>Father Name</label>
+                    <InputText @bind-Value="_ModelInfo.FatherName" class="form-control" />
 
                 </div>
-                <div class="form-group col-2">
+            </div>
+            <div class="row d-flex justify-content-center">
+
+
+                <div class="col-4">
                     <label>Gender</label>
                     <Select @onchange="_EditGender" class="form-select">
                         <option selected>Select Gender</option>
@@ -32,14 +38,19 @@
             </div>
 
 
-            <div class="row">
+            <div class="row d-flex justify-content-center">
 
-                <div class="form-group col-5">
+
+                <div class="col-4">
                     <label>Student CNIC</label>
                     <InputText @bind-Value="_ModelInfo.CNIC" class="form-control" />
 
                 </div>
-                <div class="form-group col-5">
+            </div>
+            <div class="row d-flex justify-content-center">
+
+
+                <div class="col-4">
                     <label>Date of Birth</label>
                     <InputDate @bind-Value="_ModelInfo.DateOfBirth" class="form-control" />
 
@@ -47,11 +58,12 @@
 
             </div>
 
-            <div class="row">
+            <div class="row d-flex justify-content-center">
 
-                <div class="form-group col-3">
+
+                <div class="col-4">
                     <label>City</label>
-                    <Select  @onchange="_EditCity" class="form-select">
+                    <Select @onchange="_EditCity" class="form-select">
                         <option selected>Select City</option>
                         <option value="Faisalabad">Faisalabad</option>
                         <option value="Multan">Multan</option>
@@ -64,120 +76,60 @@
                     </Select>
 
                 </div>
-                <div class="form-group col-2">
-                    <label>Province</label>
-                    <Select  @onchange="_EditProvince" class="form-select">
-                        <option selected>Select Province</option>
-                        <option value="Balochistan">Balochistan</option>
-                        <option value="Punjab">Punjab </option>
-                        <option value="Sindh">Sindh </option>
-                        <option value="Khyber Pakhtunkhwa">Khyber Pakhtunkhwa</option>
-                        <option value="Kashmir">Kashmir </option>
-                        <option value="Gilgit-Baltistan">Gilgit-Baltistan</option>
+            </div>
 
-                    </Select>
+            @*<div class="form-group col-2">
+            <label>Province</label>
+            <Select  @onchange="_EditProvince" class="form-select">
+            <option selected>Select Province</option>
+            <option value="Balochistan">Balochistan</option>
+            <option value="Punjab">Punjab </option>
+            <option value="Sindh">Sindh </option>
+            <option value="Khyber Pakhtunkhwa">Khyber Pakhtunkhwa</option>
+            <option value="Kashmir">Kashmir </option>
+            <option value="Gilgit-Baltistan">Gilgit-Baltistan</option>
 
-                </div>
-                <div class="form-group col-5">
+            </Select>
+
+            </div>*@
+            <div class="row d-flex justify-content-center">
+
+
+                <div class="col-4">
                     <label>Address</label>
                     <InputText @bind-Value="_ModelInfo.Address" class="form-control" />
 
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row d-flex justify-content-center">
 
-                <div class="form-group col-5">
+
+                <div class="col-4">
                     <label>Student Mobile Number</label>
                     <InputText type="number" @bind-Value="_ModelInfo.StudentMobileNo" class="form-control" />
 
                 </div>
-                <div class="form-group col-5">
+            </div>
+            <div class="row d-flex justify-content-center">
+
+
+                <div class="col-4">
                     <label>Email</label>
                     <InputText @bind-Value="_ModelInfo.Email" class="form-control" />
 
                 </div>
             </div>
 
-            <div class="row">
-                <div class="form-group col-5">
-                    <label>Password</label>
-                    <InputText @bind-Value="_ModelInfo.Password" type="password" class="form-control" />
-
-                </div>
-                <div class="form-group col-5">
-                    <label>Confirm Password</label>
-                    <InputText @bind-Value="_ModelInfo.ConfirmPassword" type="password" class="form-control" />
-
-                </div>
-            </div>
 
 
-
-            <h4 class="card-header">Father Information</h4>
-
-            <div class="row">
-
-                <div class="form-group col-5">
-                    <label>Father Name</label>
-                    <InputText @bind-Value="_ModelInfo.FatherName" class="form-control" />
-
-                </div>
-                <div class="form-group col-5">
-                    <label>Father CNIC</label>
-                    <InputText @bind-Value="_ModelInfo.FatherCnic" class="form-control" />
-
-                </div>
-            </div>
-
-            <div class="row">
-
-
-                <div class="form-group col-5">
-                    <label>Father Mobile Number</label>
-                    <InputText type="number" @bind-Value="_ModelInfo.FatherMobileNo" class="form-control" />
-
-                </div>
-
-                <div class="form-group col-5">
-                    <label>Father Income</label>
-                    <InputText @bind-Value="_ModelInfo.FatherIncome" class="form-control" />
-
-                </div>
-            </div>
-            <div class="row">
-
-
-                <div class="form-group col-5">
-
-                    <p>Is Your Father Alive?</p>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" @onchange="@(() => UpdateAlive("Yes"))">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" @onchange="@(() => UpdateAlive("No"))">
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            No
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group col-5">
-                    <label>Father Designation/Profession</label>
-                    <InputText type="number" @bind-Value="_ModelInfo.Designation" class="form-control" />
-
-                </div>
-
-            </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary mr-1">Register</button>
                 <button type="reset" class="btn btn-secondary">Cancel</button>
             </div>
         </EditForm>
-    </div>
-</div>
+    
+
 
 
 @code {
@@ -205,8 +157,8 @@
     {
         EditGender = e.Value as string;
     }
-     public void UpdateAlive(string alpha)
+    public void UpdateAlive(string alpha)
     {
-        _ModelInfo.FAlive=alpha;
+        _ModelInfo.FAlive = alpha;
     }
 }
