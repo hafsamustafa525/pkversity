@@ -22,10 +22,31 @@
             <td>@emp.TypeOfId</td>
             <td>@emp.Type</td>
             <td>
-                <button @onclick="(e => OnDelete(emp.TypeOfId))" class="btn btn-danger">Del</button>
+                <button @onclick="(e => OnDelete(emp.TypeOfId))" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"> DEL</button>
+              @*  <button @onclick="(e => OnDelete(emp.TypeOfId))" class="btn btn-danger">Del</button>*@
                 <a href="typeof/@emp.TypeOfId" class="btn btn-warning bt-sm">Edit</a>
             </td>
         </tr>
+
+
+         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">ALERT !</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are You Sure You Want To Delete ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" @onclick="(e => OnDelete(emp.TypeOfId))" data-bs-dismiss="modal" class="btn btn-danger">Delete</button>
+                           <h2>@emp.TypeOfId</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
     }
     </tbody>

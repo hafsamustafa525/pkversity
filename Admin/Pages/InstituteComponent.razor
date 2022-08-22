@@ -55,6 +55,14 @@
         </tr>
 
 
+          <tr>
+            <td>
+                UserName
+            </td>
+            <td>
+                <InputText type="text" name="UserName" @bind-Value="_ModelInstitute.UserName" required></InputText>
+            </td>
+        </tr>
         <tr>
             <td>
                 Password
@@ -72,9 +80,11 @@
             <td>
                 <select class="form-select" aria-label="Default select example" @onchange="_InstEdit">
                     <option ID="DropDown">---Select City---</option>
-                        @foreach (var emp in CitiesList)
-                         {
-                               <option value="@emp.CityId">@emp.CityName</option>
+                    @foreach (var emp in CitiesList)
+
+                    {
+
+                        <option value="@emp.CityId">@emp.CityName</option>
 
                     }
                 </select>
@@ -88,11 +98,11 @@
                 <select class="form-select" aria-label="Default select example" @onchange="_TypeEdit">
 
                     <option value="0">--Select Type---</option>
-                    @foreach(var emp in TypesList)
+                    @foreach (var emp in TypesList)
                     {
-                                            
-                    <option value="@emp.TypeOfId">@emp.Type</option>
-                  
+
+                        <option value="@emp.TypeOfId">@emp.Type</option>
+
                     }
                 </select>
 
@@ -129,13 +139,31 @@
     private List<EntTypes> TypesList;
     private string? title { get; set; }
     private string? InstEdit { get; set; }
-    private string? TypeEdit{ get; set; } 
+    private string? TypeEdit { get; set; }
 
     [Parameter] public string insid { get; set; }
 
     private int i { get; set; }
     bool check = false;
     private string? message { get; set; }
+    private string? EncPassword { get; set; }
+
+
+    public static string EncodePasswordToBase64(string password)
+    {
+        try
+        {
+            byte[] encData_byte = new byte[password.Length];
+            encData_byte = System.Text.Encoding.UTF8.GetBytes(password);
+            string encodedData = Convert.ToBase64String(encData_byte);
+            return encodedData;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error in base64Encode" + ex.Message);
+        }
+    }
+
 
     protected override void OnInitialized()
     {
@@ -165,6 +193,8 @@
 
                 if (TypeEdit != "0" && InstEdit != "0" && TypeEdit != null && InstEdit != null)
                 {
+                    EncPassword = EncodePasswordToBase64(_ModelInstitute.Password);
+                    _ModelInstitute.Password = EncPassword;
                     _ModelInstitute.CityId = InstEdit;
                     _ModelInstitute.TypeOfId = TypeEdit;
                     DalInstitutes.SaveInstitutes(_ModelInstitute);
@@ -185,8 +215,8 @@
         }
         else
         {
-            if (IfExist(_ModelInstitute.Title, _ModelInstitute.Email, _ModelInstitute.Phone, _ModelInstitute.Location) == 0)
-            {
+           //if (IfExist(_ModelInstitute.Title, _ModelInstitute.Email, _ModelInstitute.Phone, _ModelInstitute.Location) == 0)
+           // {
 
 
                 if (TypeEdit != "0" && InstEdit != "0" && TypeEdit != null && InstEdit != null)
@@ -203,12 +233,12 @@
                     message = "Select city and typeid";
                 }
 
-            }
-            else
-            {
-                check = true;
-                message = "Alread exist";
-            }
+          //  }
+          //  else
+          //  {
+          //      check = true;
+          //      message = "Alread exist";
+           // }
         }
 
     }
