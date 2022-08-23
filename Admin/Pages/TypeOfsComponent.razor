@@ -6,30 +6,32 @@
 
 <a href="/typeof/0" class="btn btn-primary">Add Type Ofs</a>
 <div class="container pt-4 table-responsive">
-<table class="table  table-bordered table-hover">
-    <thead class="table-dark">  
-        <tr>
-        <th>TypeOf ID</th>
-        <th>Type</th>
-         <th>Action</th>
-    </tr>
-     </thead>
-    <tbody>
-    @foreach (var emp in TypesList)
+    <table class="table  table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>TypeOf ID</th>
+                <th>Type</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in TypesList)
 
-    {
-        <tr>
-            <td>@emp.TypeOfId</td>
-            <td>@emp.Type</td>
-            <td>
-                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"> DEL</button>
-              @*  <button @onclick="(e => OnDelete(emp.TypeOfId))" class="btn btn-danger">Del</button>*@
-                <a href="typeof/@emp.TypeOfId" class="btn btn-warning bt-sm">Edit</a>
-            </td>
-        </tr>
-      //  <MessageComponent Function="@(() => OnDelete(emp.TypeOfId))"></MessageComponent>
-@*
-         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            {
+                <tr>
+                    <td>@emp.TypeOfId</td>
+                    <td>@emp.Type</td>
+                    <td>
+                        <button class="btn btn-danger"  data-toggle="modal" data-target="#exampleModal" > DEL</button>
+                       @*  <button @onclick="(e => OnDelete(emp.TypeOfId))" class="btn btn-danger">Del</button>*@
+                        <a href="typeof/@emp.TypeOfId" class="btn btn-warning bt-sm">Edit</a>
+
+                    </td>
+                </tr>
+
+                //  <MessageComponent Function="@(() => OnDelete(emp.TypeOfId))"></MessageComponent>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -42,15 +44,15 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="button" @onclick="(e => OnDelete(emp.TypeOfId))" data-bs-dismiss="modal" class="btn btn-danger">Delete</button>
-                           <h2>@emp.TypeOfId</h2>
+                                <h2>@emp.TypeOfId</h2>
                             </div>
                         </div>
                     </div>
                 </div>
-*@
-    }
-    </tbody>
-</table>
+
+            }
+        </tbody>
+    </table>
 </div>
 
 
