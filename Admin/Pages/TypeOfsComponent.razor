@@ -22,13 +22,13 @@
             <td>@emp.TypeOfId</td>
             <td>@emp.Type</td>
             <td>
-                <button @onclick="(e => OnDelete(emp.TypeOfId))" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"> DEL</button>
+                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"> DEL</button>
               @*  <button @onclick="(e => OnDelete(emp.TypeOfId))" class="btn btn-danger">Del</button>*@
                 <a href="typeof/@emp.TypeOfId" class="btn btn-warning bt-sm">Edit</a>
             </td>
         </tr>
-
-
+      //  <MessageComponent Function="@(() => OnDelete(emp.TypeOfId))"></MessageComponent>
+@*
          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -47,20 +47,17 @@
                         </div>
                     </div>
                 </div>
-
+*@
     }
     </tbody>
 </table>
 </div>
+
+
 @code {
 
 
     private List<EntTypes> TypesList;
-
-
-
-
-
 
 
     protected override void OnInitialized()
@@ -73,8 +70,6 @@
 
     }
 
-
-
     private void OnDelete(string id)
 
     {
@@ -83,11 +78,7 @@
 
         LaodTypeOfs();
 
-
-
     }
-
-
 
     private void LaodTypeOfs()
 
