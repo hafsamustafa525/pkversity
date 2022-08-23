@@ -1,231 +1,199 @@
 ﻿@page "/form"
-<h3>Form</h3>
 @using ClassLibraryDAL
 @using ClassLibraryEntities
 
-<EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmintForm">
-    <div class="row">
-        <div class="col">
-            <select class="form-select" aria-label="Default select example" @onchange="_CatOption">
-                <option selected>Select Degree</option>
 
-                @foreach (var emp in @ProgramCategoriesList)
-                {
-                    <option value="@emp.ProgramCategoryId">@emp.CategoryName</option>
-                }
-            </select>
+<div>
+    <EditForm Model="_ModelInfo" OnSubmit="SubmitForm">
+        <h2 class="text-center">Educational Information</h2>
+        <div class="row mt-4 d-flex justify-content-center align-items-center">
 
+            <div class="col-5">
+                <label>Degree</label>
+                <select class="form-select" aria-label="Default select example" @onchange="_DegreeOption">
+                    <option selected>Select Degree</option>
 
-        </div>
-        <div class="col">
-            <select @bind="@DegreeId" class="form-select" aria-label="Default select example">
-                <option selected>Select Field</option>
-
-                @foreach (var emp in @ProgramDegreeList)
-                {
-                    if (alpha == emp.ProgramCategoryid)
+                    @foreach (var reh in @PassingDegreeList)
                     {
-                        <option value="@emp.ProgramDegreeId">@emp.DegreeName</option>
+                        <option value="@reh.PassingDegreesId">@reh.Title</option>
                     }
-                }
-            </select>
+                </select>
+
+            </div>
+
+           
         </div>
-        <h2>Education Details</h2>
-
-    </div>
-</EditForm>
-
-<div class="card m-3">
-    <h4 class="card-header">SSC</h4>
-    <div class="card-body">
+        <div class="row d-flex justify-content-center">
 
 
-        <EditForm Model="_ModelInfo" OnSubmit="SubmitForm">
+            <div class="col-5">
+                <label>Degree Groups</label>
+                <select class="form-select" aria-label="Default select example" @onchange="_PGSGOption">
+                    <option selected>Select Degree Group </option>
 
-            <div class="row">
-
-                <div class="form-group col-5">
-                    <label>Degree:</label>
-                    <InputText @bind-Value="_ModelInfo.FirstName" class="form-control" />
-
-                </div>
-                <div class="form-group col-5">
-                    <label>Obtained Marks:</label>
-                    <InputText @bind-Value="_ModelInfo.LastName" class="form-control" />
-
-                </div>
+                    @foreach (var emp in @PassingDSGroupsList)
+                    {
+                        @if(degree==emp.PassingDegreeId)
+                        {
+                            <option value="@emp.PassingDSGroups">@emp.PassingDSGroups</option>
+                        }
+                        
+                    }
+                </select>
 
             </div>
 
+        </div>
+        <div class="row d-flex justify-content-center">
 
-            <div class="row">
 
-                <div class="form-group col-5">
-                    <label>Total Marks</label>
-                    <InputText @bind-Value="_ModelInfo.FirstName" class="form-control" />
+            <div class="col-5">
+                <label>Board/University</label>
+                <Select @onchange="_EditBU" class="form-select">
+                    <option selected>Select Board</option>
+                    <option value="Rwp">Rawalpindi</option>
+                    <option value="Isl">Islamabad</option>
 
-                </div>
-                <div class="form-group col-5">
-                    <label>Percentage</label>
-                    <InputText @bind-Value="_ModelInfo.LastName" class="form-control" />
+                </Select>
 
-                </div>
+            </div>
+        </div>
+
+
+        <div class="row d-flex justify-content-center">
+
+
+            <div class="col-5">
+                <label> Obtained Marks </label>
+                <InputText @bind-Value="_ModelInfo.ObtainedMarks" class="form-control" />
+
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+
+
+            <div class="col-5">
+                <label>Total Marks</label>
+                <input  @bind="_ModelInfo.TotalMarks"  class="form-control" />
 
             </div>
 
-            <div class="row">
+        </div>
+        
+        <div class="row d-flex justify-content-center">
 
-                <div class="form-group col-5">
-                    <label>Subject Groups</label>
-                    <InputText @bind-Value="_ModelInfo.FirstName" class="form-control" />
 
-                </div>
-                <div class="form-group col-5">
-                    <label>Institute:</label>
-                    <InputText @bind-Value="_ModelInfo.LastName" class="form-control" />
+            <div class="col-5">
+                <label>Percentage</label>
+                   <InputText @bind-Value="_ModelInfo.Percentage" ></InputText>         
 
-                </div>
+              
             </div>
-
-            <div class="row">
-
-                <div class="form-group col-5">
-                    <label>Board/University:</label>
-                    <InputText @bind-Value="_ModelInfo.FirstName" class="form-control" />
-
-                </div>
-                <div class="form-group col-5">
-                    <label>Passing Year:</label>
-                    <InputText @bind-Value="_ModelInfo.LastName" class="form-control" />
-
-                </div>
-            </div>
+        </div>
 
 
 
+        <div class="row d-flex justify-content-center">
 
 
-            <h4 class="card-header">HSSC</h4>
-
-            <div class="row">
-                <div class="form-group col-5">
-                    <label>Degree:</label>
-                    <InputText @bind-Value="_ModelInfo.FirstName" class="form-control" />
-
-                </div>
-                <div class="form-group col-5">
-                    <label>Obtained Marks:</label>
-                    <InputText @bind-Value="_ModelInfo.LastName" class="form-control" />
-
-                </div>
+            <div class="col-5">
+                <label>Passing Year</label>
+                <InputText @bind-Value="_ModelInfo.PassingYear" class="form-control" />
 
             </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
 
 
-            <div class="row">
-
-                <div class="form-group col-5">
-                    <label>Total Marks</label>
-                    <InputText @bind-Value="_ModelInfo.FirstName" class="form-control" />
-
-                </div>
-                <div class="form-group col-5">
-                    <label>Percentage</label>
-                    <InputText @bind-Value="_ModelInfo.LastName" class="form-control" />
-
-                </div>
+            <div class="col-5">
+                <label>Institute</label>
+                <InputText type="text" @bind-Value="_ModelInfo.Institute" class="form-control" />
 
             </div>
+        </div>
 
-            <div class="row">
 
-                <div class="form-group col-5">
-                    <label>Subjects</label>
-                    <InputText @bind-Value="_ModelInfo.FirstName" class="form-control" />
 
-                </div>
-                <div class="form-group col-5">
-                    <label>Institute:</label>
-                    <InputText @bind-Value="_ModelInfo.LastName" class="form-control" />
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary mr-1">Register</button>
+            <button type="reset" class="btn btn-secondary">Cancel</button>
+        </div>
+    </EditForm>
 
-                </div>
-            </div>
-
-            <div class="row">
-
-                <div class="form-group col-5">
-                    <label>Board/University:</label>
-                    <InputText @bind-Value="_ModelInfo.FirstName" class="form-control" />
-
-                </div>
-                <div class="form-group col-5">
-                    <label>Passing Year:</label>
-                    <InputText @bind-Value="_ModelInfo.LastName" class="form-control" />
-
-                </div>
-            </div>
-
-        </EditForm>
-    </div>
 </div>
 
 @code {
 
+    private EntEducationalInfo? _ModelInfo { get; set; } = new EntEducationalInfo();
+    private List<EntPassingDegree>? PassingDegreeList;
+    private List<EntPassingDSGroups>? PassingDSGroupsList;
+    // private int a{ get; set; }
+    //  private int b{ get; set; }
 
-
-
-    private EntProgramDegreeDetails? _ModelProgramDegreeDetail { get; set; }
-    private List<EntProgramCategory>? ProgramCategoriesList;
-    private List<EntProgramDegree>? ProgramDegreeList;
     private string? DegreeId { get; set; }
-    private string? alpha { get; set; }
-    private void _CatOption(ChangeEventArgs e)
+    private string? degree { get; set; }
+    public string? EditPDSG { get; set; }
+    public string? EditProvince { get; set; }
+    public string? EditBU { get; set; }
+
+
+    private void _DegreeOption(ChangeEventArgs e)
     {
-        alpha = e.Value as string;
+        degree = e.Value as string;
 
     }
-    private void SubmintForm()
+    private void LoadEducationalInfo()
     {
-
-
-    }
-
-    private void LoadProgramDetails()
-    {
-        this.ProgramCategoriesList = DALProgramCategory.GetProgramCategory();
-        this.ProgramDegreeList = DALProgramDegree.GetProgramDegree();
+        this.PassingDegreeList = DALPassingDegree.GetPassingDegrees();
+        this.PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
     }
     protected override void OnInitialized()
     {
-        _ModelProgramDegreeDetail = new EntProgramDegreeDetails();
-        LoadProgramDetails();
+        LoadEducationalInfo();
+
 
 
     }
-    private EntStudentInfo? _ModelInfo { get; set; } = new EntStudentInfo();
-    public string? EditCity { get; set; }
-    public string? EditProvince { get; set; }
-    public string? EditGender { get; set; }
+
+
 
     private void SubmitForm()
     {
+        if(degree=="1" || degree == "2")
+        {
+            _ModelInfo.Board_University = EditBU;
+            _ModelInfo.PassingDSGroup = EditPDSG;
+            //  _ModelInfo.DegreeName = "Matric";
+            _ModelInfo.SID = "1";
+            DALEducationalInfo.SaveStdMatricInfo(_ModelInfo);  
+        }
+        else
+        {
+             _ModelInfo.Board_University = EditBU;
+            _ModelInfo.PassingDSGroup = EditPDSG;
+            //  _ModelInfo.DegreeName = "Matric";
+            _ModelInfo.SID = "1";
+            DALEducationalInfo.SaveStdFscInfo(_ModelInfo);  
+        }
 
 
     }
-    private void _EditCity(ChangeEventArgs e)
+    private void _PGSGOption(ChangeEventArgs e)
     {
-        EditCity = e.Value as string;
+        EditPDSG = e.Value as string;
     }
-    private void _EditProvince(ChangeEventArgs e)
+   // private void _EditProvince(ChangeEventArgs e)
+ //   {
+ //       EditProvince = e.Value as string;
+ //   }
+    private void _EditBU(ChangeEventArgs e)
     {
-        EditProvince = e.Value as string;
+        EditBU = e.Value as string;
     }
-    private void _EditGender(ChangeEventArgs e)
-    {
-        EditGender = e.Value as string;
-    }
-    public void UpdateAlive(string alpha)
-    {
-        _ModelInfo.FAlive = alpha;
-    }
+
+   // private int Perc{ get; set; }
+
+    //private void CalPerc() => Perc = (a+ b);
+
 }

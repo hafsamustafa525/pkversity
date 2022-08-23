@@ -6,6 +6,17 @@
 <div>
 <EditForm Model="_ModelInfo" OnSubmit="SubmitForm">
     <h2 class="text-center">Personal Information</h2>
+
+       <div class="row mt-4 d-flex justify-content-center align-items-center">
+
+        <div class="col-4">
+            <label>Student ID</label>
+            <InputText @bind-Value="_ModelInfo.SID" class="form-control" disabled />
+
+        </div>
+    </div>
+
+
     <div class="row mt-4 d-flex justify-content-center align-items-center">
 
         <div class="col-4">
@@ -79,7 +90,7 @@
         </div>
     </div>
 
-  
+
 
     <div class="row d-flex justify-content-center">
 
@@ -118,7 +129,7 @@
     </div>
 </EditForm>
 
-</div>
+ </div>
 
 
 @code {
@@ -130,14 +141,14 @@
     public string? EditGender { get; set; }
 
 
-   
+
 
     private void SubmitForm()
-    {    
+    {
         _ModelInfo.Gender = EditGender;
         _ModelInfo.City = EditCity;
         DALStudentInfo.SaveStudentInfo(_ModelInfo);
-                nm.NavigateTo("/");
+        nm.NavigateTo("/");
 
     }
     private void _EditCity(ChangeEventArgs e)
