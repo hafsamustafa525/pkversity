@@ -21,7 +21,7 @@
 
             </div>
 
-           
+
         </div>
         <div class="row d-flex justify-content-center">
 
@@ -33,11 +33,11 @@
 
                     @foreach (var emp in @PassingDSGroupsList)
                     {
-                        @if(degree==emp.PassingDegreeId)
+                        @if (degree == emp.PassingDegreeId)
                         {
                             <option value="@emp.PassingDSGroups">@emp.PassingDSGroups</option>
                         }
-                        
+
                     }
                 </select>
 
@@ -74,20 +74,20 @@
 
             <div class="col-5">
                 <label>Total Marks</label>
-                <input  @bind="_ModelInfo.TotalMarks"  class="form-control" />
+                <input @bind="_ModelInfo.TotalMarks" class="form-control" />
 
             </div>
 
         </div>
-        
+
         <div class="row d-flex justify-content-center">
 
 
             <div class="col-5">
                 <label>Percentage</label>
-                   <InputText @bind-Value="_ModelInfo.Percentage" ></InputText>         
+                <InputText @bind-Value="_ModelInfo.Percentage" class="form-control" ></InputText>
 
-              
+
             </div>
         </div>
 
@@ -123,11 +123,49 @@
 
 </div>
 
+
+<div class="container pt-4 table-responsive">
+    <table class="table  table-bordered table-hover">
+        <thead class="table-dark">
+            <tr scope="row">
+
+
+                <th>Passing Degree Group</th>
+                <th>Board/University</th>
+                <th>Obtained Marks</th>
+                <th>Total Marks</th>
+                <th>Percentage</th>
+                <th>Passing Year</th>
+                <th>Institutes</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in @MatricList)
+            {
+                <tr scope="row">
+
+                    <td>@emp.PassingDSGroup</td>
+                    <td>@emp.Board_University</td>
+                    <td>@emp.ObtainedMarks</td>
+                    <td>@emp.TotalMarks</td>
+                    <td>@emp.Percentage</td>
+                    <td>@emp.PassingYear</td>
+                    <td>@emp.Institute</td>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+
 @code {
 
     private EntEducationalInfo? _ModelInfo { get; set; } = new EntEducationalInfo();
     private List<EntPassingDegree>? PassingDegreeList;
     private List<EntPassingDSGroups>? PassingDSGroupsList;
+    private List<EntEducationalInfo>? MatricList;
     // private int a{ get; set; }
     //  private int b{ get; set; }
 
@@ -147,34 +185,30 @@
     {
         this.PassingDegreeList = DALPassingDegree.GetPassingDegrees();
         this.PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
+        this.MatricList = DALEducationalInfo.GetMatricInfo("1");
     }
     protected override void OnInitialized()
     {
-        LoadEducationalInfo();
-
-
-
+       LoadEducationalInfo();
     }
-
-
 
     private void SubmitForm()
     {
-        if(degree=="1" || degree == "2")
+        if (degree == "1" || degree == "2")
         {
             _ModelInfo.Board_University = EditBU;
             _ModelInfo.PassingDSGroup = EditPDSG;
             //  _ModelInfo.DegreeName = "Matric";
             _ModelInfo.SID = "1";
-            DALEducationalInfo.SaveStdMatricInfo(_ModelInfo);  
+            DALEducationalInfo.SaveStdMatricInfo(_ModelInfo);
         }
         else
         {
-             _ModelInfo.Board_University = EditBU;
+            _ModelInfo.Board_University = EditBU;
             _ModelInfo.PassingDSGroup = EditPDSG;
             //  _ModelInfo.DegreeName = "Matric";
             _ModelInfo.SID = "1";
-            DALEducationalInfo.SaveStdFscInfo(_ModelInfo);  
+            DALEducationalInfo.SaveStdFscInfo(_ModelInfo);
         }
 
 
@@ -183,16 +217,13 @@
     {
         EditPDSG = e.Value as string;
     }
-   // private void _EditProvince(ChangeEventArgs e)
- //   {
- //       EditProvince = e.Value as string;
- //   }
+
     private void _EditBU(ChangeEventArgs e)
     {
         EditBU = e.Value as string;
     }
 
-   // private int Perc{ get; set; }
+    // private int Perc{ get; set; }
 
     //private void CalPerc() => Perc = (a+ b);
 

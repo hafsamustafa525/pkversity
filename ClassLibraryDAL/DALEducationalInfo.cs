@@ -11,31 +11,30 @@ namespace ClassLibraryDAL
 {
     public class DALEducationalInfo
     {
-        //public static List<EntEducationalInfo> GetStudentInfo()
-        //{
-        //    SqlConnection con = DBHelper.GetConnection();
-        //    con.Open();
-        //    SqlCommand cmd = new SqlCommand("SP_GetCities", con);
-        //    cmd.CommandType = CommandType.StoredProcedure;
-        //    SqlDataReader sdr = cmd.ExecuteReader();
-        //    List<EntStudentInfo> CitiesList = new List<EntStudentInfo>();
-        //    while (sdr.Read())
-        //    {
-        //        EntStudentInfo ee = new EntStudentInfo();
-        //        ee.FirstName = sdr["FirstName"].ToString();
-        //        ee.LastName = sdr["LastName"].ToString();
-        //        ee.Gender = sdr["Gender"].ToString();
-        //        ee.CNIC = sdr["CNIC"].ToString();
-        //        ee.DateOfBirth = sdr["DateOfBirth"].ToString();
-        //        ee.City = sdr["City"].ToString();
-        //        ee.Address = sdr["Address"].ToString();
-        //        ee.StudentMobileNo = sdr["StudentMobileNo"].ToString();
-        //        ee.Email = sdr["Email"].ToString();
-        //        CitiesList.Add(ee);
-        //    }
-        //    con.Close();
-        //    return CitiesList;
-        //}
+        public static List<EntEducationalInfo> GetMatricInfo(string id)
+        {
+            SqlConnection con = DBHelper.GetConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SP_GetMatric", con);
+            cmd.Parameters.AddWithValue("@SID", id);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataReader sdr = cmd.ExecuteReader();
+            List<EntEducationalInfo> MatricList = new List<EntEducationalInfo>();
+            while (sdr.Read())
+            {
+                EntEducationalInfo ee = new EntEducationalInfo();
+                ee.PassingDSGroup = sdr["PassingDSGroup"].ToString();
+                ee.Board_University = sdr["Board_University"].ToString();
+                ee.ObtainedMarks = sdr["ObtainedMarks"].ToString();
+                ee.TotalMarks = sdr["TotalMarks"].ToString();
+                ee.Percentage = sdr["Percentage"].ToString();
+                ee.PassingYear = sdr["PassingYear"].ToString();
+                ee.Institute = sdr["Institute"].ToString();
+                MatricList.Add(ee);
+            }
+            con.Close();
+            return MatricList;
+        }
 
         public static void SaveStdMatricInfo(EntEducationalInfo ee)
         {
