@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "University", "University\Un
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "User", "User\User.csproj", "{3CA2B97E-D15D-46C1-8E3A-FD3B08B579C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontPage", "FrontPage\FrontPage.csproj", "{E382D213-46E0-42BE-B4AC-454B1EFCE50E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontPage", "FrontPage\FrontPage.csproj", "{E382D213-46E0-42BE-B4AC-454B1EFCE50E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
