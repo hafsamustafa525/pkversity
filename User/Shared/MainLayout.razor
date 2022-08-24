@@ -1,15 +1,27 @@
 ﻿@inherits LayoutComponentBase
 
-<PageTitle>User</PageTitle>
+<PageTitle>FrontPage</PageTitle>
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<div class="navbar">
 
     <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        <div class="">
+            <nav class="navbar navbar-dark">
+
+
+
+                <div class="container-fluid mx-5">
+                    <a class="navbar-brand px-3" href="/">Academia</a>
+                    <a class="navbar-brand px-3" href="/form">Academic Info</a>
+                    <a class="navbar-brand px-3" href="/personalinformation">Personal Info</a>
+                
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <a href="login" class="btn btn-outline-success" >Login</a>
+                        <button class="btn btn-outline-success" type="submit">SignUp</button>
+                    </form>
+                </div>
+            </nav>
         </div>
 
         <article class="content px-4">

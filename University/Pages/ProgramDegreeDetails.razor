@@ -163,13 +163,7 @@
             this.ProgramDegreeDetailsList =DALProgramDegreeDetails.GetProgramDegreeDetailsByInstituteId(value1);
 
         }
-        //else
-        //{
-        //    message = "Not authorized";
-        //    value1 = "13";
-        //    this.ProgramDegreeDetailsList =DALProgramDegreeDetails.GetProgramDegreeDetailsByInstituteId(value1);
-        //}
-
+   
     }
     private void _CatOption(ChangeEventArgs e)
     {
@@ -190,14 +184,7 @@
             DALProgramDegreeDetails.SaveProgramDegreeDetails(_ModelProgramDegreeDetail);
             LaodProgramDegreeDetails();
         }
-        //else 
-        //{
-        //    value1 = "13";
-        //    _ModelProgramDegreeDetail.InstituteId = value1;
-        //    _ModelProgramDegreeDetail.ProgramDegreeId = DegreeId;
-        //    DALProgramDegreeDetails.SaveProgramDegreeDetails(_ModelProgramDegreeDetail);
-        //    LaodProgramDegreeDetails();
-        //}
+
 
 
     }
