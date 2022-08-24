@@ -85,7 +85,7 @@
 
             <div class="col-5">
                 <label>Percentage</label>
-                <InputText @bind-Value="_ModelInfo.Percentage" class="form-control" ></InputText>
+                <InputText @bind-Value="_ModelInfo.Percentage" class="form-control"></InputText>
 
 
             </div>
@@ -123,7 +123,7 @@
 
 </div>
 
-
+<h2>SSC</h2>
 <div class="container pt-4 table-responsive">
     <table class="table  table-bordered table-hover">
         <thead class="table-dark">
@@ -137,6 +137,7 @@
                 <th>Percentage</th>
                 <th>Passing Year</th>
                 <th>Institutes</th>
+                <th>Action</th>
 
             </tr>
         </thead>
@@ -153,6 +154,7 @@
                     <td>@emp.PassingYear</td>
                     <td>@emp.Institute</td>
 
+                    <button class="btn btn-danger" @onclick="(e => Delete(emp.SID))">DEL</button>
                 </tr>
 
             }
@@ -160,12 +162,54 @@
     </table>
 </div>
 
+<h2>HSSC</h2>
+<div class="container pt-4 table-responsive">
+    <table class="table  table-bordered table-hover">
+        <thead class="table-primary">
+            <tr scope="row">
+
+
+                <th>Passing Degree Group</th>
+                <th>Board/University</th>
+                <th>Obtained Marks</th>
+                <th>Total Marks</th>
+                <th>Percentage</th>
+                <th>Passing Year</th>
+                <th>Institutes</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in @FscList)
+            {
+                <tr scope="row">
+
+                    <td>@emp.PassingDSGroup</td>
+                    <td>@emp.Board_University</td>
+                    <td>@emp.ObtainedMarks</td>
+                    <td>@emp.TotalMarks</td>
+                    <td>@emp.Percentage</td>
+                    <td>@emp.PassingYear</td>
+                    <td>@emp.Institute</td>
+
+                     <button class="btn btn-danger" @onclick="(e => FDelete(emp.SID))">DEL</button>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
 @code {
 
     private EntEducationalInfo? _ModelInfo { get; set; } = new EntEducationalInfo();
     private List<EntPassingDegree>? PassingDegreeList;
     private List<EntPassingDSGroups>? PassingDSGroupsList;
     private List<EntEducationalInfo>? MatricList;
+    private List<EntEducationalInfo>? FscList;
     // private int a{ get; set; }
     //  private int b{ get; set; }
 
@@ -186,10 +230,11 @@
         this.PassingDegreeList = DALPassingDegree.GetPassingDegrees();
         this.PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
         this.MatricList = DALEducationalInfo.GetMatricInfo("1");
+        this.FscList = DALEducationalInfo.GetFscInfo("1");
     }
     protected override void OnInitialized()
     {
-       LoadEducationalInfo();
+        LoadEducationalInfo();
     }
 
     private void SubmitForm()
@@ -198,9 +243,9 @@
         {
             _ModelInfo.Board_University = EditBU;
             _ModelInfo.PassingDSGroup = EditPDSG;
-            //  _ModelInfo.DegreeName = "Matric";
             _ModelInfo.SID = "1";
             DALEducationalInfo.SaveStdMatricInfo(_ModelInfo);
+            LoadEducationalInfo();
         }
         else
         {
@@ -209,10 +254,24 @@
             //  _ModelInfo.DegreeName = "Matric";
             _ModelInfo.SID = "1";
             DALEducationalInfo.SaveStdFscInfo(_ModelInfo);
+            LoadEducationalInfo();
         }
 
 
     }
+
+    private void Delete(string id)
+    {
+        DALEducationalInfo.DeleteMatric(id);
+        LoadEducationalInfo();
+    }
+
+      private void FDelete(string id)
+    {
+        DALEducationalInfo.DeleteFsc(id);
+        LoadEducationalInfo();
+    }
+
     private void _PGSGOption(ChangeEventArgs e)
     {
         EditPDSG = e.Value as string;
