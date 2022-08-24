@@ -65,7 +65,7 @@
 
             <div class="col-5">
                 <label> Obtained Marks </label>
-                <input @bind="a" class="form-control" />
+                <InputText @bind-bind-Value="_ModelInfo.ObtainedMarks" class="form-control" />
 
             </div>
         </div>
@@ -74,7 +74,7 @@
 
             <div class="col-5">
                 <label>Total Marks</label>
-                <input @bind="b" class="form-control" />
+                <InputText @bind-bind-Value="_ModelInfo.TotalMarks" class="form-control" />
 
             </div>
 
@@ -85,7 +85,7 @@
 
             <div class="col-5">
                 <label>Percentage</label>
-                <input @bind="c" class="form-control"></input>
+                <InputText @bind-Value="_ModelInfo.Percentage"   class="form-control"/>
 
 
             </div>
@@ -201,7 +201,7 @@
     </table>
 </div>
 
- <h1>@c</h1>
+ 
 
 @code {
 
@@ -210,15 +210,7 @@
     private List<EntPassingDSGroups>? PassingDSGroupsList;
     private List<EntEducationalInfo>? MatricList;
     private List<EntEducationalInfo>? FscList;
-    public int a{ get; set; }
-    public int b{ get; set; }
-    public int c { get; set; }
-    public void Calperc()
-    {
-    c = (a / b);    
-
-    }
-
+    
     private string? DegreeId { get; set; }
     private string? degree { get; set; }
     public string? EditPDSG { get; set; }
@@ -228,27 +220,27 @@
 
     private void _DegreeOption(ChangeEventArgs e)
     {
-    degree = e.Value as string;
+        degree = e.Value as string;
 
     }
     private void LoadEducationalInfo()
     {
-    this.PassingDegreeList = DALPassingDegree.GetPassingDegrees();
-    this.PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
-    this.MatricList = DALEducationalInfo.GetMatricInfo("1");
-    this.FscList = DALEducationalInfo.GetFscInfo("1");
+        this.PassingDegreeList = DALPassingDegree.GetPassingDegrees();
+        this.PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
+        this.MatricList = DALEducationalInfo.GetMatricInfo("1");
+        this.FscList = DALEducationalInfo.GetFscInfo("1");
     }
     protected override void OnInitialized()
     {
-    LoadEducationalInfo();
+        LoadEducationalInfo();
     }
 
     private void SubmitForm()
     {
-    Calperc();
-    if (degree == "1" || degree == "2")
+      
+        if (degree == "1" || degree == "2")
         {
-                    
+         
             _ModelInfo.Board_University = EditBU;
             _ModelInfo.PassingDSGroup = EditPDSG;
             _ModelInfo.SID = "1";
@@ -259,7 +251,7 @@
         {
             _ModelInfo.Board_University = EditBU;
             _ModelInfo.PassingDSGroup = EditPDSG;
-            //  _ModelInfo.DegreeName = "Matric";
+            
             _ModelInfo.SID = "1";
             DALEducationalInfo.SaveStdFscInfo(_ModelInfo);
             LoadEducationalInfo();
