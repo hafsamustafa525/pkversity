@@ -5,6 +5,39 @@
 
 <a class="btn btn-primary" href="/passingdegrees" role="button">Go Back</a>
 
+<h2>@title</h2>
+<EditForm Model="_ModelPassingDSGroups" OnSubmit="SubmitForm">
+    <table>
+        <tr>
+          
+            <td>
+                <InputText PlaceHolder=" PassingDSGroupsID" name="ID" @bind-Value="_ModelPassingDSGroups.PassingDSGroupsId" disabled></InputText>
+            </td>
+       
+         
+            <td> 
+                <InputText PlaceHolder=" PassingDegreeId" name="Name" @bind-Value="_ModelPassingDSGroups.PassingDegreeId" disabled></InputText>
+            </td>
+        
+         
+            <td>
+                <InputText PlaceHolder=" PassingDSGroups"  name="Name" @bind-Value="_ModelPassingDSGroups.PassingDSGroups" required></InputText>
+            </td>
+        </tr>
+       
+        <tr>
+
+            <td>
+                <button type="submit" class="btn btn-primary">@title</button>
+            </td>
+        </tr>
+
+
+    </table>
+
+
+</EditForm>
+
 <div class="container pt-4 table-responsive">
 <table class="table  table-bordered table-hover">
     <thead class="table-dark">
@@ -38,46 +71,7 @@
     </tbody>
 </table>
 </div>
-<h2>@title</h2>
-<EditForm Model="_ModelPassingDSGroups" OnSubmit="SubmitForm">
-    <table>
-        <tr>
-            <td>
-                PassingDSGroupsID
-            </td>
-            <td>
-                <InputText name="ID" @bind-Value="_ModelPassingDSGroups.PassingDSGroupsId" disabled></InputText>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                PassingDegreeId
-            </td>
-            <td>
-                <InputText name="Name" @bind-Value="_ModelPassingDSGroups.PassingDegreeId" disabled></InputText>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                PassingDSGroups
-            </td>
-            <td>
-                <InputText name="Name" @bind-Value="_ModelPassingDSGroups.PassingDSGroups" required></InputText>
-            </td>
-        </tr>
-       
-        <tr>
 
-            <td>
-                <button type="submit" class="btn btn-primary">@title</button>
-            </td>
-        </tr>
-
-
-    </table>
-
-
-</EditForm>
 
 @code {
     private EntPassingDSGroups? _ModelPassingDSGroups { get; set; }

@@ -25,7 +25,7 @@
                 City Name
             </td>
             <td>
-                <InputText DisplayName="CityName" @bind-Value="_ModelCity.CityName" required></InputText>
+                <input DisplayName="CityName" @bind="_ModelCity.CityName" required></input>
             </td>
         </tr>
         <tr>
@@ -33,7 +33,7 @@
                 City Code
             </td>
             <td>
-                <InputText DisplayName="CityCode" @bind-Value="_ModelCity.CityCode" required></InputText>
+                <input type="number" DisplayName="CityCode" @bind="_ModelCity.CityCode" required></input>
             </td>
         </tr>
 
@@ -95,16 +95,10 @@
         }
         else
         {
-            if (IfExist(_ModelCity.CityName, _ModelCity.CityCode) == 0)
-            {
+            
                 DalCities.UpdateCities(_ModelCity);
                 nm.NavigateTo("/cities");
-            }
-            else
-            {
-                check = true;
-                message = "Alread exist";
-            }
+           
         }
 
     }
