@@ -22,8 +22,8 @@
                     <td>@emp.TypeOfId</td>
                     <td>@emp.Type</td>
                     <td>
-                        <button class="btn btn-danger"  data-toggle="modal" data-target="#exampleModal" > DEL</button>
-                       @*  <button @onclick="(e => OnDelete(emp.TypeOfId))" class="btn btn-danger">Del</button>*@
+                       
+                         <button @onclick="(e => OnDelete(emp.TypeOfId))" class="btn btn-danger">Del</button>
                         <a href="typeof/@emp.TypeOfId" class="btn btn-warning bt-sm">Edit</a>
 
                     </td>

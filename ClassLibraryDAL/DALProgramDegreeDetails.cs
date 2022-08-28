@@ -81,6 +81,7 @@ namespace ClassLibraryDAL
                 ee.Weekened = (bool)sdr["Weekened"];
                 ee.CityId = sdr["CityId"].ToString();
                 ee.PassingDegreeGroups = sdr["PassingDegreeGroups"].ToString();
+                ee.DegreeName= sdr["DegreeName"].ToString();
                 ee.ProgramDegreeId = sdr["DegreeName"].ToString();
                 ee.InstituteId = sdr["InstituteId"].ToString();
 

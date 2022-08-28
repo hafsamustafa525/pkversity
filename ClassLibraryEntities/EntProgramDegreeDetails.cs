@@ -28,6 +28,7 @@ namespace ClassLibraryEntities
         public string? ProgramDegreeId { get; set; }
         public string? InstituteId { get; set; }
         public string? type { get; set; }
+        public string? DegreeName{ get; set; }
 
 
     }

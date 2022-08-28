@@ -2,19 +2,21 @@
 @using ClassLibraryEntities
 @using ClassLibraryDAL
 @inject NavigationManager nm;
+@inject AuthenticationStateProvider authStateProvider
+@attribute [Authorize(Roles = "User")]
 
 <div>
 <EditForm Model="_ModelInfo" OnSubmit="SubmitForm">
     <h2 class="text-center">Personal Information</h2>
 
-       <div class="row mt-4 d-flex justify-content-center align-items-center">
+       @*<div class="row mt-4 d-flex justify-content-center align-items-center">
 
         <div class="col-4">
             <label>Student ID</label>
             <InputText @bind-Value="_ModelInfo.SID" class="form-control" disabled />
 
         </div>
-    </div>
+    </div>*@
 
 
     <div class="row mt-4 d-flex justify-content-center align-items-center">
@@ -135,16 +137,30 @@
 @code {
 
 
-    private EntStudentInfo? _ModelInfo { get; set; } = new EntStudentInfo();
+     private EntStudentInfo? _ModelInfo { get; set; } = new EntStudentInfo();
     public string? EditCity { get; set; }
     public string? EditProvince { get; set; }
     public string? EditGender { get; set; }
 
+    public string? value1 { get; set; }
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticatestate { get; set; }
 
+    private async Task DisplayGreeting()
+    {
+        var authState = await authenticatestate;
+        value1 = $"{authState.User.Identity.Name}";
 
+    }
+
+    protected override void OnInitialized()
+    {
+        DisplayGreeting();
+    }
 
     private void SubmitForm()
     {
+        _ModelInfo.SID = value1;
         _ModelInfo.Gender = EditGender;
         _ModelInfo.City = EditCity;
         DALStudentInfo.SaveStudentInfo(_ModelInfo);
@@ -162,9 +178,5 @@
     private void _EditGender(ChangeEventArgs e)
     {
         EditGender = e.Value as string;
-    }
-    public void UpdateAlive(string alpha)
-    {
-        _ModelInfo.FAlive = alpha;
     }
 }

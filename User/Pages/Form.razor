@@ -1,6 +1,8 @@
 ﻿@page "/form"
 @using ClassLibraryDAL
 @using ClassLibraryEntities
+@inject AuthenticationStateProvider authStateProvider
+@attribute [Authorize(Roles = "User")]
 
 
 <div>
@@ -205,18 +207,29 @@
 
 @code {
 
+   
     private EntEducationalInfo? _ModelInfo { get; set; } = new EntEducationalInfo();
     private List<EntPassingDegree>? PassingDegreeList;
     private List<EntPassingDSGroups>? PassingDSGroupsList;
     private List<EntEducationalInfo>? MatricList;
     private List<EntEducationalInfo>? FscList;
-    
+
     private string? DegreeId { get; set; }
     private string? degree { get; set; }
     public string? EditPDSG { get; set; }
     public string? EditProvince { get; set; }
     public string? EditBU { get; set; }
 
+    public string? value1 { get; set; }
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticatestate { get; set; }
+
+    private async Task DisplayGreeting()
+    {
+        var authState = await authenticatestate;
+        value1 = $"{authState.User.Identity.Name}";
+
+    }
 
     private void _DegreeOption(ChangeEventArgs e)
     {
@@ -227,23 +240,24 @@
     {
         this.PassingDegreeList = DALPassingDegree.GetPassingDegrees();
         this.PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
-        this.MatricList = DALEducationalInfo.GetMatricInfo("1");
-        this.FscList = DALEducationalInfo.GetFscInfo("1");
+        this.MatricList = DALEducationalInfo.GetMatricInfo(value1);
+        this.FscList = DALEducationalInfo.GetFscInfo(value1);
     }
     protected override void OnInitialized()
     {
+        DisplayGreeting();
         LoadEducationalInfo();
     }
 
     private void SubmitForm()
     {
-      
+
         if (degree == "1" || degree == "2")
         {
-         
+
             _ModelInfo.Board_University = EditBU;
             _ModelInfo.PassingDSGroup = EditPDSG;
-            _ModelInfo.SID = "1";
+            _ModelInfo.SID = value1;
             DALEducationalInfo.SaveStdMatricInfo(_ModelInfo);
             LoadEducationalInfo();
         }
@@ -251,8 +265,8 @@
         {
             _ModelInfo.Board_University = EditBU;
             _ModelInfo.PassingDSGroup = EditPDSG;
-            
-            _ModelInfo.SID = "1";
+
+            _ModelInfo.SID = value1;
             DALEducationalInfo.SaveStdFscInfo(_ModelInfo);
             LoadEducationalInfo();
         }
@@ -266,7 +280,7 @@
         LoadEducationalInfo();
     }
 
-      private void FDelete(string id)
+    private void FDelete(string id)
     {
         DALEducationalInfo.DeleteFsc(id);
         LoadEducationalInfo();
@@ -281,6 +295,7 @@
     {
         EditBU = e.Value as string;
     }
+
 
    
 }

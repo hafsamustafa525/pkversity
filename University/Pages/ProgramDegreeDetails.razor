@@ -1,5 +1,5 @@
 ﻿@page "/programdegreedetails"
-@attribute [Authorize(Roles ="University")]
+@attribute [Authorize(Roles = "University")]
 @inject NavigationManager nm
 @using ClassLibraryDAL
 @inject AuthenticationStateProvider authStateProvider
@@ -44,81 +44,62 @@
     </div>
 </EditForm>
 
-<div class="container pt-4 table-responsive">
-<table class="table  table-bordered table-hover">
-    <thead class="table-dark">
-        <tr scope="row"> 
 
-            <th>Degree</th>
-            <th>Duration</th>
-            <th>TSem</th>
-            <th>Matric</th>
-            <th>Fsc</th>
-            <th>BS</th>
-            <th>TFee</th>
-            <th>SFee</th>
-            <th>ClosingMerit</th>
-            <th>HEC,PEC</th>
-            <th>Morning</th>
-            <th>Evening</th>
-            <th>Weekened</th>
-            <th>PDG</th>
-            <th>Action</th>
-            <th>Edit</th>
 
-        </tr>
-    </thead>
-    <tbody>
+<div class="container-fluid mt-5">
+    <div class="row">
+
         @foreach (var emp in @ProgramDegreeDetailsList)
-        {
-            <tr scope="row">
-
-                <td>@emp.ProgramDegreeId</td>
-                <td>@emp.Duration</td>
-                <td>@emp.TotalSemesters</td>
-                <td>@emp.Matric</td>
-                <td>@emp.FSC</td>
-                <td>@emp.BS</td>
-                <td>@emp.TotalFee</td>
-                <td>@emp.SemesterFee</td>
-                <td>@emp.ClosingMerit</td>
-                <td>@emp.ApprovedById</td>
-                <td>@emp.Morning</td>
-                <td>@emp.Evening</td>
-                <td>@emp.Weekened</td>
-                <td>@emp.PassingDegreeGroups</td>
-                <td>
-                    <button @onclick="(e => OnDelete(emp.ProgramDegreeDetailsId))" class="btn btn-danger">Del</button>
-                    @*<a href="programdegreedetail/@emp.ProgramDegreeDetailsId" class="btn btn-warning bt-sm">Edit</a>*@
-                </td>
-                <td>
-                    <select class="form-select" aria-label="Default select example" @onchange="_EditOption">
-                        <option selected>Edit</option>
-                        <option value="duration/@emp.ProgramDegreeDetailsId">Duration</option>
-                        <option value="totalsemesters/@emp.ProgramDegreeDetailsId">TotalSemester</option>
-                        <option value="eligibility/@emp.ProgramDegreeDetailsId">Eligibility Criteria</option>
-                        <option value="feedetails/@emp.ProgramDegreeDetailsId">Fees</option>
-                        <option value="shifts/@emp.ProgramDegreeDetailsId">Shift</option>
-                        <option value="closingmerit/@emp.ProgramDegreeDetailsId">ClosingMerit</option>
-                        <option value="approvedby/@emp.ProgramDegreeDetailsId">AprovedID</option>
-                        <option value="passinggroups/@emp.ProgramDegreeDetailsId">ProgramDegreeGroups</option>
-                    </select>
-                </td>
-            </tr>
-
-        }
-    </tbody>
-</table>
+        {<div class="col-3  mt-4" >
+            <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+    <div class="card-header">@emp.ProgramDegreeId</div>
+    <div class="card-body">
+           <h5>Duration : <span class="text-info">@emp.Duration </span></h5>
+           <h5>TotalSem : <span class="text-info">@emp.TotalSemesters </span></h5>
+           <h5>Matric : <span class="text-info">@emp.Matric </span></h5>
+           <h5>Interm : <span class="text-info">@emp.FSC </span></h5>
+           <h5>Bachlor : <span class="text-info">@emp.BS </span></h5>
+           <h5>TotalFee : <span class="text-info">@emp.TotalFee </span></h5>
+           <h5>SemFee : <span class="text-info">@emp.SemesterFee </span></h5>
+           <h5>ClosingMerit : <span class="text-info">@emp.ClosingMerit </span></h5>
+           <h5>HEC,PEC : <span class="text-info">@emp.ApprovedById </span></h5>
+           <h5>Duration : <span class="text-info">@emp.Duration </span></h5>
+           <h5>Morning : <span class="text-info">@emp.Morning </span></h5>
+           <h5>Evening : <span class="text-info">@emp.Evening </span></h5>
+           <h5>Weekened : <span class="text-info">@emp.Weekened</span></h5>
+           <h5>PassingGroups : <span class="text-info">@emp.PassingDegreeGroups </span></h5>
+           
+            <button @onclick="(e => OnDelete(emp.ProgramDegreeDetailsId))" class="btn btn-info">Delete</button>
+            <select class="form-select" aria-label="Default select example" @onchange="_EditOption">
+                <option selected>Edit</option>
+                <option value="duration/@emp.ProgramDegreeDetailsId">Duration</option>
+                <option value="totalsemesters/@emp.ProgramDegreeDetailsId">TotalSemester</option>
+                <option value="eligibility/@emp.ProgramDegreeDetailsId">Eligibility Criteria</option>
+                <option value="feedetails/@emp.ProgramDegreeDetailsId">Fees</option>
+                <option value="shifts/@emp.ProgramDegreeDetailsId">Shift</option>
+                <option value="closingmerit/@emp.ProgramDegreeDetailsId">ClosingMerit</option>
+                <option value="approvedby/@emp.ProgramDegreeDetailsId">AprovedID</option>
+                <option value="passinggroups/@emp.ProgramDegreeDetailsId">ProgramDegreeGroups</option>
+            </select>
+            </div>
+</div>
 </div>
 
-<h2>@message</h2>
+        }
+           
+        
+    </div>
+</div>
+
+
+
 @code {
-    private ClassLibraryEntities.EntInstitutes? _Model{ get; set; }
+    private ClassLibraryEntities.EntInstitutes? _Model { get; set; }
     private List<EntInstitutes>? ProgramUserAccount { get; set; }
-    public string message{ get; set; } 
+    public string message { get; set; }
     public string? value1 { get; set; }
     [CascadingParameter]
-    private Task <AuthenticationState> authenticatestate { get; set; }
+    private Task<AuthenticationState> authenticatestate { get; set; }
     private async Task DisplayGreeting()
     {
         var authState = await authenticatestate;
@@ -160,10 +141,10 @@
         if (value1 != null)
         {
 
-            this.ProgramDegreeDetailsList =DALProgramDegreeDetails.GetProgramDegreeDetailsByInstituteId(value1);
+            this.ProgramDegreeDetailsList = DALProgramDegreeDetails.GetProgramDegreeDetailsByInstituteId(value1);
 
         }
-   
+
     }
     private void _CatOption(ChangeEventArgs e)
     {
@@ -196,10 +177,10 @@
 
 
     private void Redirect(string url)
-    { 
+    {
         nm.NavigateTo(url);
     }
 
 
-   
+
  }
