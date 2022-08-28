@@ -1,15 +1,13 @@
 ﻿@page "/programdegreedetails"
-@attribute [Authorize(Roles ="University")]
+@attribute [Authorize(Roles = "University")]
 @inject NavigationManager nm
 @using ClassLibraryDAL
 @inject AuthenticationStateProvider authStateProvider
 @using University.Authentication
 @inject IJSRuntime js
-
-
 @using ClassLibraryEntities
-<h3>ProgramDegreeDetail </h3>
-<h3>@value1</h3>
+
+<h3>Program Degree Detail </h3>
 
 <EditForm Model="_ModelProgramDegreeDetail" OnSubmit="SubmintForm">
     <div class="row">
@@ -44,81 +42,117 @@
     </div>
 </EditForm>
 
-<div class="container pt-4 table-responsive">
-<table class="table  table-bordered table-hover">
-    <thead class="table-dark">
-        <tr scope="row"> 
 
-            <th>Degree</th>
-            <th>Duration</th>
-            <th>TSem</th>
-            <th>Matric</th>
-            <th>Fsc</th>
-            <th>BS</th>
-            <th>TFee</th>
-            <th>SFee</th>
-            <th>ClosingMerit</th>
-            <th>HEC,PEC</th>
-            <th>Morning</th>
-            <th>Evening</th>
-            <th>Weekened</th>
-            <th>PDG</th>
-            <th>Action</th>
-            <th>Edit</th>
+<div class="container-fluid mt-5">
+    <div class="row">
 
-        </tr>
-    </thead>
-    <tbody>
         @foreach (var emp in @ProgramDegreeDetailsList)
         {
-            <tr scope="row">
+            <div class="col-md-12  mt-4">
+                <div class="card  DegreeCards mb-3">
+                    <div class="card-header">
+                       
+                        <div class="d-flex justify-content-between">
+                             <div class="card-title h2">
+                            @emp.ProgramDegreeId
+                        </div>
+                            <div class="d-flex">
+                                <select class="form-select" aria-label="Default select example" @onchange="_EditOption">
+                                    <option selected>Edit</option>
+                                    <option value="duration/@emp.ProgramDegreeDetailsId">Duration</option>
+                                    <option value="totalsemesters/@emp.ProgramDegreeDetailsId">TotalSemester</option>
+                                    <option value="eligibility/@emp.ProgramDegreeDetailsId">Eligibility Criteria</option>
+                                    <option value="feedetails/@emp.ProgramDegreeDetailsId">Fees</option>
+                                    <option value="shifts/@emp.ProgramDegreeDetailsId">Shift</option>
+                                    <option value="closingmerit/@emp.ProgramDegreeDetailsId">ClosingMerit</option>
+                                    <option value="approvedby/@emp.ProgramDegreeDetailsId">AprovedID</option>
+                                    <option value="passinggroups/@emp.ProgramDegreeDetailsId">ProgramDegreeGroups</option>
+                                </select>
+                         
+                                <button @onclick="(e => OnDelete(emp.ProgramDegreeDetailsId))" class="btn btn-danger">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
 
-                <td>@emp.ProgramDegreeId</td>
-                <td>@emp.Duration</td>
-                <td>@emp.TotalSemesters</td>
-                <td>@emp.Matric</td>
-                <td>@emp.FSC</td>
-                <td>@emp.BS</td>
-                <td>@emp.TotalFee</td>
-                <td>@emp.SemesterFee</td>
-                <td>@emp.ClosingMerit</td>
-                <td>@emp.ApprovedById</td>
-                <td>@emp.Morning</td>
-                <td>@emp.Evening</td>
-                <td>@emp.Weekened</td>
-                <td>@emp.PassingDegreeGroups</td>
-                <td>
-                    <button @onclick="(e => OnDelete(emp.ProgramDegreeDetailsId))" class="btn btn-danger">Del</button>
-                    @*<a href="programdegreedetail/@emp.ProgramDegreeDetailsId" class="btn btn-warning bt-sm">Edit</a>*@
-                </td>
-                <td>
-                    <select class="form-select" aria-label="Default select example" @onchange="_EditOption">
-                        <option selected>Edit</option>
-                        <option value="duration/@emp.ProgramDegreeDetailsId">Duration</option>
-                        <option value="totalsemesters/@emp.ProgramDegreeDetailsId">TotalSemester</option>
-                        <option value="eligibility/@emp.ProgramDegreeDetailsId">Eligibility Criteria</option>
-                        <option value="feedetails/@emp.ProgramDegreeDetailsId">Fees</option>
-                        <option value="shifts/@emp.ProgramDegreeDetailsId">Shift</option>
-                        <option value="closingmerit/@emp.ProgramDegreeDetailsId">ClosingMerit</option>
-                        <option value="approvedby/@emp.ProgramDegreeDetailsId">AprovedID</option>
-                        <option value="passinggroups/@emp.ProgramDegreeDetailsId">ProgramDegreeGroups</option>
-                    </select>
-                </td>
-            </tr>
+                                <div class="col mt-2">
+                                    <h5>Duration  <span class="text-primary">@emp.Duration </span></h5>
+                                </div>
+                                <div class="col mt-2">
+                                    <h5>TotalSem  <span class="text-primary">@emp.TotalSemesters </span></h5>
+                                </div>
+                                <div class="col mt-2">
+                                    <h5>Matric  <span class="text-primary">@emp.Matric </span></h5>
+                                </div>
+                                <div class="col mt-2">
+                                    <h5>Interm  <span class="text-primary">@emp.FSC </span></h5>
+                                </div>
+                                <div class="col mt-2">
+                                    <h5>Bachlor  <span class="text-primary">@emp.BS </span></h5>
+                                </div>
+                               
+
+                            </div>
+                            <div class="col-md-4">
+                                 <div class="col mt-2">
+                                    <h5>TotalFee  <span class="text-primary">@emp.TotalFee </span></h5>
+                                </div>
+                                <div class="col mt-2">
+                                    <h5>SemFee  <span class="text-primary">@emp.SemesterFee </span></h5>
+                                </div>
+                                <div class="col mt-2">
+                                    <h5>ClosingMerit  <span class="text-primary">@emp.ClosingMerit </span></h5>
+                                </div>
+                                <div class="col mt-2">
+                                    <h5>HEC,PEC  <span class="text-primary">@emp.ApprovedById </span></h5>
+                                </div>
+                                <div class="col mt-2">
+                                    <h5>Duration  <span class="text-primary">@emp.Duration </span></h5>
+
+                                </div>
+                               
+
+
+                            </div>
+                             <div class="col-md-4">
+                                  <div class="col mt-2">
+                                    <h5>Morning  <span class="text-primary">@emp.Morning </span></h5>
+                                </div>
+                                <div class="col mt-2">
+                                    <h5>Evening  <span class="text-primary">@emp.Evening </span></h5>
+                                </div>
+                                <div class="col mt-2">
+                                    <h5>Weekened  <span class="text-primary">@emp.Weekened</span></h5>
+                                </div>
+                                <div class="col mt-2">
+                                    <h5>PassingGroups  <span class="text-primary">@emp.PassingDegreeGroups </span></h5>
+                                </div>
+                                 </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         }
-    </tbody>
-</table>
+
+
+    </div>
 </div>
 
-<h2>@message</h2>
+
+
 @code {
-    private ClassLibraryEntities.EntInstitutes? _Model{ get; set; }
+    private ClassLibraryEntities.EntInstitutes? _Model { get; set; }
     private List<EntInstitutes>? ProgramUserAccount { get; set; }
-    public string message{ get; set; } 
+    private List<EntInstitutes> InstList { get; set; }
+    private EntInstitutes _Modal1 { get; set; } = new EntInstitutes();
+    public string? message { get; set; }
     public string? value1 { get; set; }
     [CascadingParameter]
-    private Task <AuthenticationState> authenticatestate { get; set; }
+    private Task<AuthenticationState> authenticatestate { get; set; }
     private async Task DisplayGreeting()
     {
         var authState = await authenticatestate;
@@ -128,11 +162,12 @@
     private List<EntProgramDegreeDetails>? ProgramDegreeDetailsList { get; set; }
     private List<EntProgramCategory>? ProgramCategoriesList;
     private List<EntProgramDegree>? ProgramDegreeList;
-    private EntProgramDegreeDetails? _ModelProgramDegreeDetail { get; set; }
+
+    private EntProgramDegreeDetails? _ModelProgramDegreeDetail { get; set; }=new EntProgramDegreeDetails();
     private string? alpha { get; set; }
     private string? DegreeId { get; set; }
     private string? EditOption { get; set; }
-
+    private string? CID { get; set; }
 
 
 
@@ -140,10 +175,18 @@
     protected async override void OnInitialized()
     {
         DisplayGreeting();
-        _ModelProgramDegreeDetail = new EntProgramDegreeDetails();
+
+       // InstList = DalInstitutes.GetInstitutes();
+        //foreach (var emp in InstList)
+        //{
+        //    if (emp.InstituteId == value1)
+        //    {
+        //        CID = emp.CityId;
+        //    }
+        //}
         LoadProgramDetails();
         LaodProgramDegreeDetails();
-        SubmintForm();
+
     }
 
     private void OnDelete(string id)
@@ -153,17 +196,16 @@
         LaodProgramDegreeDetails();
 
     }
-
     private async void LaodProgramDegreeDetails()
     {
 
         if (value1 != null)
         {
 
-            this.ProgramDegreeDetailsList =DALProgramDegreeDetails.GetProgramDegreeDetailsByInstituteId(value1);
+            this.ProgramDegreeDetailsList = DALProgramDegreeDetails.GetProgramDegreeDetailsByInstituteId(value1);
 
         }
-   
+
     }
     private void _CatOption(ChangeEventArgs e)
     {
@@ -181,6 +223,7 @@
         {
             _ModelProgramDegreeDetail.InstituteId = value1;
             _ModelProgramDegreeDetail.ProgramDegreeId = DegreeId;
+            _ModelProgramDegreeDetail.CityId = CID;  //id here
             DALProgramDegreeDetails.SaveProgramDegreeDetails(_ModelProgramDegreeDetail);
             LaodProgramDegreeDetails();
         }
@@ -193,13 +236,11 @@
         this.ProgramCategoriesList = DALProgramCategory.GetProgramCategory();
         this.ProgramDegreeList = DALProgramDegree.GetProgramDegree();
     }
-
-
     private void Redirect(string url)
-    { 
+    {
         nm.NavigateTo(url);
     }
 
 
-   
+
  }

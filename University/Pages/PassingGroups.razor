@@ -1,5 +1,5 @@
 ﻿@page "/passinggroups/{pdid}"
-@attribute [Authorize(Roles ="University")]
+@attribute [Authorize(Roles = "University")]
 @using ClassLibraryDAL
 @using ClassLibraryEntities
 
@@ -41,16 +41,16 @@
 
             @foreach (var emp in @PassingDSGroupsList1)
             {
-               
-                    <tr>
 
-                        <td>@emp.PassingDSGroupsId</td>
+                <tr>
 
-                        <td>@emp.PassingDSGroups</td>
+                    <td>@emp.PassingDSGroupsId</td>
+
+                    <td>@emp.PassingDSGroups</td>
 
 
-                    </tr>
-                
+                </tr>
+
 
             }
 
@@ -71,16 +71,16 @@
 
     private List<EntPassingDSGroups>? PassingDSGroupsList { get; set; }
     private List<EntPassingDSGroups>? PassingDSGroupsList1 { get; set; }
-
+    
     private ClassLibraryEntities.EntProgramDegreeDetails ModelProgramDegreeDetails { get; set; } = new ClassLibraryEntities.EntProgramDegreeDetails();
     public bool Group1 { get; set; }
     public bool Group2 { get; set; }
     public bool Group3 { get; set; }
     public string? TotalGroups { get; set; }
-
+     private string? CID { get; set; }
     public string? value1 { get; set; }
     [CascadingParameter]
-    private Task <AuthenticationState> authenticatestate { get; set; }
+    private Task<AuthenticationState> authenticatestate { get; set; }
     private async Task DisplayGreeting()
     {
         var authState = await authenticatestate;
@@ -97,6 +97,7 @@
         ModelProgramDegreeDetails.ProgramDegreeDetailsId = pdid;
         ModelProgramDegreeDetails.type = "Groups";
 
+
         ClassLibraryDAL.DALProgramDegreeDetails.UpdateProgramCategory(ModelProgramDegreeDetails);
         //LaodProgramDegreeDetails();
         ClassLibraryDAL.CustomLogic.DisposeList();
@@ -110,6 +111,7 @@
     protected override void OnInitialized()
     {
         DisplayGreeting();
+      
         LaodProgramDegreeDetails();
 
         PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
@@ -121,7 +123,7 @@
     }
     private void LaodProgramDegreeDetails()
     {
-        this.PassingDSGroupsList1 = ClassLibraryDAL.DALPassingDSGroups.GetGroupsById(pdid,int.Parse(value1));
+        this.PassingDSGroupsList1 = ClassLibraryDAL.DALPassingDSGroups.GetGroupsById(pdid, int.Parse(value1));
 
     }
 

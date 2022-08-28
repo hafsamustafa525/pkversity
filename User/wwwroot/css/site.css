@@ -18,7 +18,19 @@ h1:focus {
 a, .btn-link {
     color: #0071c1;
 }
-
+.nav-item a{
+    color: white !important;
+    font-size: 1rem;
+}
+.navbar-brand {
+    font-size: 2rem;
+    
+}
+.navbar-nav {
+    display: flex;
+    gap: 1.5rem;
+    color: white;
+}
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;
@@ -112,6 +124,7 @@ body {
     background: #0F2027; /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027); /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     color: white;
 }
 
@@ -455,13 +468,19 @@ h6 span {
         width: auto;
         display: block;
     }
-.form-control{
-    background-color:transparent;
-    color:white;
+.form-control {
+    border-radius: 0.5rem;
+    background: transparent;
+    border: 2px solid rgba(77, 181, 255, 0.4);
+    color: #fff;
 }
 .form-select {
-    background-color: transparent;
-    color: white;
+    
+    border-radius: 0.5rem;
+    background: transparent;
+    border: 2px solid rgba(77, 181, 255, 0.4);
+    resize: none;
+    
 }
 .text-center{
     margin-top:2rem;
@@ -469,3 +488,20 @@ h6 span {
 #btn-register{
     margin-right:3rem;
 }
+.nav-item a:hover {
+    
+    border: 1px solid blue;
+    
+}
+
+
+div.b {
+    position: absolute;
+    right: 0;
+    
+}
+
+    select option {
+        background-color: #0F2027; /* fallback for old browsers */
+        color: white;
+    }

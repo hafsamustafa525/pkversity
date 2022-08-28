@@ -10,6 +10,7 @@ namespace ClassLibraryEntities
     {
         public string? ProgramDegreeDetailsId { get; set; }
         public string? Duration { get; set; }
+        public string? DegreeName { get; set; }
         public string? Programs { get; set; }
         public string? Matric { get; set; }
         public string? FSC { get; set; }
@@ -28,6 +29,7 @@ namespace ClassLibraryEntities
         public string? ProgramDegreeId { get; set; }
         public string? InstituteId { get; set; }
         public string? type { get; set; }
+       
 
 
     }

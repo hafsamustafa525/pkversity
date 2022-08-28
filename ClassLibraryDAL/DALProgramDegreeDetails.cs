@@ -81,7 +81,9 @@ namespace ClassLibraryDAL
                 ee.Weekened = (bool)sdr["Weekened"];
                 ee.CityId = sdr["CityId"].ToString();
                 ee.PassingDegreeGroups = sdr["PassingDegreeGroups"].ToString();
+                ee.DegreeName= sdr["DegreeName"].ToString();
                 ee.ProgramDegreeId = sdr["DegreeName"].ToString();
+             
                 ee.InstituteId = sdr["InstituteId"].ToString();
 
                 ProgramDegreeDetailList.Add(ee);
@@ -214,6 +216,47 @@ namespace ClassLibraryDAL
             return passingDSGroupsList;
         }
 
+        public static List<EntProgramDegreeDetails> GetProgramDegreeByInstituteId(string InstituteId)
+        {
+            SqlConnection con = DBHelper.GetConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("U_SP_GetProgramDegreeByInstituteId", con);
+            cmd.Parameters.AddWithValue("@InstituteId", int.Parse(InstituteId));
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataReader sdr = cmd.ExecuteReader();
+            List<EntProgramDegreeDetails> ProgramDegreeDetailList = new List<EntProgramDegreeDetails>();
+            while (sdr.Read())
+            {
+                EntProgramDegreeDetails ee = new EntProgramDegreeDetails();
+
+
+                ee.ProgramDegreeDetailsId = sdr["ProgramDegreeDetailsId"].ToString();
+                ee.Programs = sdr["Programs"].ToString();
+                ee.Duration = sdr["Duration"].ToString();
+                ee.TotalSemesters = sdr["TotalSemesters"].ToString();
+                ee.Matric = sdr["Matric"].ToString();
+                ee.FSC = sdr["FSC"].ToString();
+                ee.BS = sdr["BS"].ToString();
+                ee.TotalFee = sdr["TotalFee"].ToString();
+                ee.SemesterFee = sdr["SemesterFee"].ToString();
+                ee.ClosingMerit = sdr["ClosingMerit"].ToString();
+                ee.ApprovedById = sdr["ApprovedById"].ToString();
+                ee.Morning = (bool)sdr["Morning"];
+                ee.Evening = (bool)sdr["Evening"];
+                ee.Weekened = (bool)sdr["Weekened"];
+                ee.CityId = sdr["CityId"].ToString();
+                ee.PassingDegreeGroups = sdr["PassingDegreeGroups"].ToString();
+                ee.ProgramDegreeId = sdr["ProgramDegreeId"].ToString();
+                ee.DegreeName= sdr["DegreeName"].ToString();
+                ee.InstituteId = sdr["InstituteId"].ToString();
+
+                ProgramDegreeDetailList.Add(ee);
+            }
+            con.Close();
+            return ProgramDegreeDetailList;
+
+
+        }
 
     }
 }

@@ -53,7 +53,14 @@
                 <InputText name="Phone" @bind-Value="_ModelInstitute.Phone" required></InputText>
             </td>
         </tr>
-
+         <tr>
+            <td>
+                Logo
+            </td>
+            <td>
+                <InputText name="Logo" @bind-Value="_ModelInstitute.Logo" required></InputText>
+            </td>
+        </tr>
 
           <tr>
             <td>
@@ -197,6 +204,7 @@
                     _ModelInstitute.Password = EncPassword;
                     _ModelInstitute.CityId = InstEdit;
                     _ModelInstitute.TypeOfId = TypeEdit;
+                    
                     DalInstitutes.SaveInstitutes(_ModelInstitute);
                     nm.NavigateTo("/institutes");
                 }

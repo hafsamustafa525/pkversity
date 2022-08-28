@@ -1,10 +1,57 @@
 ﻿@page "/"
+@using ClassLibraryDAL
+@using ClassLibraryEntities
+
+<div class="row">
+    <div class="col">
+        <select class="form-select text-white" aria-label="Default select example" @onchange="_DegOption">
+            <option selected>Select Category</option>
+
+            @foreach (var emp in @PassingDegreeList)
+            {
+                <option value="@emp.PassingDegreesId">@emp.Title</option>
+            }
+        </select>
+
+
+    </div>
+    <div class="col">
+        <select @bind="@PassingDegreeSGid" class="form-select text-white" aria-label="Default select example">
+            <option selected>Select Category</option>
+
+            @foreach (var emp in @PassingDSGroupsList)
+            {
+                if (alpha == emp.PassingDegreeId)
+                {
+                    <option value="@emp.PassingDSGroupsId">@emp.PassingDSGroups</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="col">
+
+
+        <select @bind="@cityID" class="form-select text-white" aria-label="Default select example">
+            <option selected>Select City</option>
+
+            @foreach (var emp in @CitiesList)
+            {
+
+                <option value="@emp.CityId">@emp.CityName</option>
+
+            }
+        </select>
+    </div>
+    <div class="col">
+        <button type="submit" class="btn btn-primary" @onclick="Submit">Search</button>
+    </div>
+</div>
 <section id="header" class="d-flex align-items-center">
     <div class="container-fluid">
         <div class="row">
             <div class="col-10 mx-auto">
                 <div class="row mt-5">
-                    <div class="col-md-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex justify-content-center flex-column mt-5">
+                    <div class="col-md-6 pt-5 pt-lg-0 order-1 order-sm-1 d-flex justify-content-center flex-column mt-5">
                         <h1>Grow your Carrier with <strong class="brand-name">Academia</strong></h1>
                         <h2 class="my-3">We are the team Of talented developer making websites</h2>
                         <div class="mt-3">
@@ -12,8 +59,8 @@
                         </div>
                     </div>
 
-                    <div id="earth" class="col-lg-6 order-1 order-lg-2 header-img mt-5 d-flex align-items-center justify-content-center">
-                       <img src="https://www.freeiconspng.com/uploads/globe-png-hd-1.png" class="img-fluid" width="450" alt="globe png hd" />
+                    <div id="earth" class="col-lg-6 order-2 order-sm-2 header-img mt-5 d-flex align-items-center justify-content-center">
+                        <img src="Images/globe.png" class="img-fluid" width="450" alt="globe png hd" />
                     </div>
 
                 </div>
@@ -22,3 +69,102 @@
     </div>
 
 </section>
+@if (check)
+{
+
+
+    <div class="container-fluid mt-5">
+        <div class="row">
+            @foreach (var emp in FilterCitiesList)
+            {
+                <div class="col-3 mt-4">
+                    <div class="card bg-secondary  text-white" style="width: 18rem;">
+                        <h3>@emp.Title</h3> <h2>@emp.InstituteId</h2>
+                        <div class="card-body">
+
+                         <button class="btn btn-primary bt-sm" @onclick="(e=>DepartmentsDetails(emp.InstituteId))">View Details</button>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+
+        </div>
+    </div>
+}
+
+
+@if (check1)
+{
+
+
+    <div class="container-fluid mt-5">
+        <div class="row">
+            @foreach (var emp in FilterDepartmentList)
+            {
+                <div class="col-3 mt-4">
+                    <div class="card bg-secondary  text-white" style="width: 18rem;">
+                        <h3>@emp.DegreeName</h3> 
+                        <div class="card-body">
+
+                         <h3  >@emp.SemesterFee</h3>
+                         <h3  >@emp.TotalFee</h3>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+
+        </div>
+    </div>
+}
+@code {
+
+    private List<EntPassingDegree>? PassingDegreeList;
+    private List<EntPassingDSGroups>? PassingDSGroupsList;
+    private List<EntCities>? CitiesList;
+    private List<EntFilter> FilterCitiesList;
+    private List<EntProgramDegreeDetails>? FilterDepartmentList{ get; set; }
+
+    public string? alpha { get; set; }
+    public string? cityID { get; set; }
+    public bool check = false;
+    public bool check1 = false;
+
+    private string? PassingDegreeSGid { get; set; }
+    private EntFilter? _ModelFilter { get; set; } = new EntFilter();
+    private void LoadProgramDetails()
+    {
+        this.PassingDegreeList = DALPassingDegree.GetPassingDegrees();
+        this.PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
+        this.CitiesList = DalCities.GetCities();
+    }
+    protected async override void OnInitialized()
+    {
+        LoadProgramDetails();
+    }
+    private void _DegOption(ChangeEventArgs e)
+    {
+        alpha = e.Value as string;
+
+    }
+    private void Submit()
+    {
+        FilterCitiesList = DalFilter.GetDepartmentsbyID(PassingDegreeSGid, cityID);
+        check = true;
+    }
+
+    private void DepartmentsDetails(string iid)
+    {
+        check = false;
+        FilterDepartmentList = DalFilter.GetDepartmentDetailsbyID(PassingDegreeSGid, iid);
+        check1 = true;
+    }
+}
