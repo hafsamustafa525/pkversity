@@ -69,7 +69,7 @@
                                     <option value="passinggroups/@emp.ProgramDegreeDetailsId">ProgramDegreeGroups</option>
                                 </select>
                          
-                                <button @onclick="(e => OnDelete(emp.ProgramDegreeDetailsId))" class="btn btn-danger">Delete</button>
+                                <button @onclick="(e=>OpenDeleteDialog(emp.ProgramDegreeDetailsId))" class="btn btn-danger">Delete</button>
                             </div>
                         </div>
                     </div>
@@ -142,7 +142,9 @@
     </div>
 </div>
 
-
+@if (DeleteDialogOpen) {
+    <Modal Title="Are you sure?" FunDel="@(()=>OnDelete(@ID))"   Text="Do you want to delete" OnClose="@OnDeleteDialogClose"></Modal>
+}
 
 @code {
     private ClassLibraryEntities.EntInstitutes? _Model { get; set; }
@@ -153,6 +155,24 @@
     public string? value1 { get; set; }
     [CascadingParameter]
     private Task<AuthenticationState> authenticatestate { get; set; }
+
+     public bool check=true;
+    public string? ID { get; set; }
+    public bool DeleteDialogOpen{ get; set; }
+    private void OnDeleteDialogClose(bool accepted)
+    {
+        DeleteDialogOpen = false;
+        LaodProgramDegreeDetails();
+        StateHasChanged();
+    }
+    private void OpenDeleteDialog(string Id)
+    {
+        DeleteDialogOpen = true;
+        ID = Id;
+        StateHasChanged();
+    }
+
+
     private async Task DisplayGreeting()
     {
         var authState = await authenticatestate;
