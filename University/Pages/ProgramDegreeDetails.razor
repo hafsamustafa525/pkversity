@@ -176,14 +176,14 @@
     {
         DisplayGreeting();
 
-       // InstList = DalInstitutes.GetInstitutes();
-        //foreach (var emp in InstList)
-        //{
-        //    if (emp.InstituteId == value1)
-        //    {
-        //        CID = emp.CityId;
-        //    }
-        //}
+        InstList = DalInstitutes.GetInstitutes();
+        foreach (var emp in InstList)
+        {
+            if (emp.InstituteId == value1)
+            {
+                CID = emp.CityId;
+            }
+        }
         LoadProgramDetails();
         LaodProgramDegreeDetails();
 

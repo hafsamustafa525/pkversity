@@ -47,7 +47,7 @@
 
 
                     <td>
-                        <button @onclick="(e => OnDelete(emp.InstituteId))" class="btn btn-danger">Del</button>
+                        <button @onclick="(e=>OpenDeleteDialog(emp.InstituteId))" class="btn btn-danger">Del</button>
                     </td>
                     <td>
                         <a href="institute/@emp.InstituteId" class="btn btn-warning bt-sm">Edit</a>
@@ -59,10 +59,33 @@
         </tbody>
     </table>
 </div>
+
+@if (DeleteDialogOpen) {
+    <Modal Title="Are you sure?" FunDel="@(()=>OnDelete(@ID))"   Text="Do you want to delete" OnClose="@OnDeleteDialogClose"></Modal>
+}
 @code {
 
 
+
+
     private List<EntInstitutes> instituteList;
+
+
+    public bool check=true;
+    public string? ID { get; set; }
+    public bool DeleteDialogOpen{ get; set; }
+    private void OnDeleteDialogClose(bool accepted)
+    {
+        DeleteDialogOpen = false;
+        LaodInstitute();
+        StateHasChanged();
+    }
+    private void OpenDeleteDialog(string Id)
+    {
+        DeleteDialogOpen = true;
+        ID = Id;
+        StateHasChanged();
+    }
 
 
     protected override void OnInitialized()
