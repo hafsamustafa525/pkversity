@@ -68,7 +68,7 @@
                 <td>
 
 
-                    <button @onclick="(e => OnDelete(emp.ProgramDegreeId))" class="btn btn-danger">Del</button>
+                    <button @onclick="(e=>OpenDeleteDialog(emp.ProgramDegreeId))" class="btn btn-danger">Del</button>
                    
                 </td>
                 <td> 
@@ -86,6 +86,10 @@
 </table>
 
 </div>
+
+@if (DeleteDialogOpen) {
+    <Modal Title="Are you sure?" FunDel="@(()=>OnDelete(@ID))"   Text="Do you want to delete" OnClose="@OnDeleteDialogClose"></Modal>
+}
 @code {
 
     private List<EntProgramDegree>? ProgramDegreeList;
@@ -96,13 +100,31 @@
     bool check = false;
     private int i { get; set; }
 
+
+       public bool check1=true;
+    public string? ID { get; set; }
+    public bool DeleteDialogOpen{ get; set; }
+    private void OnDeleteDialogClose(bool accepted)
+    {
+        DeleteDialogOpen = false;
+        LaodprogramDegree();
+        StateHasChanged();
+    }
+    private void OpenDeleteDialog(string Id)
+    {
+        DeleteDialogOpen = true;
+        ID = Id;
+        StateHasChanged();
+    }
+
+
     protected override void OnInitialized()
     {
         _ModelProgramDegree = new EntProgramDegree();
-        LaodEmployee();
+        LaodprogramDegree();
 
     }
-    private void LaodEmployee()
+    private void LaodprogramDegree()
     {
         this.ProgramDegreeList = DALProgramDegree.GetProgramDegree();
         ButtonName = "Save";
@@ -116,7 +138,7 @@
                 _ModelProgramDegree.ProgramCategoryid = CategoryID;
                 DALProgramDegree.SaveProgramDegree(_ModelProgramDegree);
                 _ModelProgramDegree = new EntProgramDegree();
-                LaodEmployee();
+                LaodprogramDegree();
             }
             else
             {
@@ -131,7 +153,7 @@
             {
                 DALProgramDegree.UpdateProgramDegree(_ModelProgramDegree);
                 _ModelProgramDegree = new EntProgramDegree();
-                LaodEmployee();
+                LaodprogramDegree();
             }
             else
             {
@@ -155,7 +177,7 @@
     private void OnDelete(string id)
     {
         DALProgramDegree.DeleteProgramDegree(id);
-        LaodEmployee();
+        LaodprogramDegree();
 
     }
 

@@ -23,7 +23,7 @@
             <td>@emp.CityName</td>
             <td>@emp.CityCode</td>
             <td>
-                <button @onclick="(e => OnDelete(emp.CityId))" class="btn btn-danger">Del</button>
+                <button @onclick="(e=>OpenDeleteDialog(emp.CityId))" class="btn btn-danger">Del</button>
                 <a href="city/@emp.CityId" class="btn btn-warning bt-sm">Edit</a>
             </td>
         </tr>
@@ -31,10 +31,31 @@
     </tbody>
 </table>
 </div>
+
+
+@if (DeleteDialogOpen) {
+    <Modal Title="Are you sure?" FunDel="@(()=>OnDelete(@ID))"   Text="Do you want to delete" OnClose="@OnDeleteDialogClose"></Modal>
+}
 @code {
 
-
+    public bool check=true;
+    public string? ID { get; set; }
+    public bool DeleteDialogOpen{ get; set; }
     private List<EntCities> CitiesList;
+
+    private void OnDeleteDialogClose(bool accepted)
+    {
+        DeleteDialogOpen = false;
+        LaodCity(); ;
+        StateHasChanged();
+
+    }
+    private void OpenDeleteDialog(string Id)
+    {
+        DeleteDialogOpen = true;
+        ID = Id;
+        StateHasChanged();
+    }
 
 
 
@@ -47,6 +68,7 @@
     private void OnDelete(string id)
     {
         DalCities.DeleteCities(id);
+         DeleteDialogOpen = false;
         LaodCity();
 
     }

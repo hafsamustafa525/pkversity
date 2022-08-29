@@ -58,7 +58,7 @@
                 <td>@emp.PassingDSGroups</td>
                 <td>@emp.PassingDegreeId</td>
                 <td>
-                    <button @onclick="(e => OnDelete(emp.PassingDSGroupsId))" class="btn btn-danger ">Del</button>
+                    <button @onclick="(e=>OpenDeleteDialog(emp.PassingDSGroupsId))" class="btn btn-danger ">Del</button>
                     <button @onclick="(e=>EditFun(emp.PassingDSGroupsId))" class="btn btn-warning bt-sm">Edit</button>
 
 
@@ -73,27 +73,47 @@
 </div>
 
 
+
+
 @code {
     private EntPassingDSGroups? _ModelPassingDSGroups { get; set; }
     private string? title { get; set; }
     private List<EntPassingDSGroups>? PassingDSGroupsList;
     [Parameter] public string? CategoryID { get; set; }
     bool var = true;
+
+    public bool check=true;
+    public string? ID { get; set; }
+    public bool DeleteDialogOpen{ get; set; }
+    private void OnDeleteDialogClose(bool accepted)
+    {
+        DeleteDialogOpen = false;
+        LaodPassingDSGroups();
+        StateHasChanged();
+    }
+    private void OpenDeleteDialog(string Id)
+    {
+        DeleteDialogOpen = true;
+        ID = Id;
+        StateHasChanged();
+    }
+
+
     protected override void OnInitialized()
     {
-        LaodEmployee();
+        LaodPassingDSGroups();
 
         if (var == true)
         {
             _ModelPassingDSGroups = new EntPassingDSGroups();
-            LaodEmployee();
+            LaodPassingDSGroups();
             title = "CreateNew";
 
         }
         else
         {
             _ModelPassingDSGroups = DALPassingDSGroups.GetPassingDSGroupsById(CategoryID);
-            LaodEmployee();
+            LaodPassingDSGroups();
             title = "Update DS";
 
         }
@@ -108,11 +128,11 @@
     private void OnDelete(string id)
     {
         DALPassingDSGroups.DeletePassingDSGroups(id);
-        LaodEmployee();
+        LaodPassingDSGroups();
 
     }
 
-    private void LaodEmployee()
+    private void LaodPassingDSGroups()
     {
         this.PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
     }
@@ -128,14 +148,14 @@
              _ModelPassingDSGroups.PassingDegreeId = CategoryID;
             DALPassingDSGroups.SavePassingDSGroups(_ModelPassingDSGroups);
             
-            LaodEmployee();
+            LaodPassingDSGroups();
 
         }
         else
         {
             DALPassingDSGroups.UpdatePassingDSGroups(_ModelPassingDSGroups);
            
-            LaodEmployee();
+            LaodPassingDSGroups();
 
 
         }
