@@ -26,5 +26,26 @@ namespace ClassLibraryDAL
 
 
         }
+
+        public static List<EntFutureScope> GetFutureScopeById(string ProgramDegreeId)
+        {
+            SqlConnection con = DBHelper.GetConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SP_GetFutureScopeById", con);
+            cmd.Parameters.AddWithValue("@ProgramDegreeId", int.Parse(ProgramDegreeId));  //
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataReader sdr = cmd.ExecuteReader();
+            List<EntFutureScope> FutureList = new List<EntFutureScope>();
+            while (sdr.Read())
+            {
+                EntFutureScope ee = new EntFutureScope();
+                ee.ProgramDegreeId= sdr["ProgramDegreeId"].ToString();
+                ee.Description = sdr["Description"].ToString();
+               FutureList.Add(ee);
+            }
+            con.Close();
+            return FutureList;
+        }
+
     }
 }

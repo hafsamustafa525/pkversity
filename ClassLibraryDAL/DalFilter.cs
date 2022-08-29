@@ -60,23 +60,29 @@ namespace ClassLibraryDAL
             return FilterList;
         }
 
-        public static List<EntProgramDegreeDetails> GetDepartmentDetailsbyID(string PDSGID, string @InstituteID)
+        public static List<EntProgramDegreeDetails> GetDepartmentDetailsbyID(string PDSGID, string InstituteID)
         {
             SqlConnection con = DBHelper.GetConnection();
             con.Open();
             SqlCommand cmd = new SqlCommand("U_SP_GetDepartmentDetails", con);
             cmd.Parameters.AddWithValue("@PDSGID", PDSGID);
-            cmd.Parameters.AddWithValue("@InstituteID", int.Parse(@InstituteID));
+            cmd.Parameters.AddWithValue("@InstituteID", int.Parse(InstituteID));
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataReader sdr = cmd.ExecuteReader();
             List<EntProgramDegreeDetails> DepartmentList = new List<EntProgramDegreeDetails>();
             while (sdr.Read())
             {
                 EntProgramDegreeDetails ee = new EntProgramDegreeDetails();
-
-                ee.DegreeName = sdr["DegreeName"].ToString();
-                ee.SemesterFee = sdr["SemesterFee"].ToString();
+                ee.Duration = sdr["Duration"].ToString();
+                ee.Matric = sdr["SemesterFee"].ToString();
+                ee.FSC= sdr["FSC"].ToString();
+                ee.Matric= sdr["Matric"].ToString();
                 ee.TotalFee= sdr["TotalFee"].ToString();
+                ee.SemesterFee= sdr["SemesterFee"].ToString();
+                ee.ClosingMerit= sdr["ClosingMerit"].ToString();
+                ee.DegreeName= sdr["DegreeName"].ToString();
+                ee.TotalSemesters= sdr["TotalSemesters"].ToString();
+                ee.ProgramDegreeId= sdr["ProgramDegreeId"].ToString();
                 DepartmentList.Add(ee);
 
             }

@@ -43,10 +43,21 @@
         </select>
     </div>
     <div class="col">
+
+
+        <select  class="form-select text-white" aria-label="Default select example">
+            <option selected>Select Percentage</option>
+            <option selected>50</option>
+            <option selected>60</option>
+
+            
+        </select>
+    </div>
+    <div class="col">
         <button type="submit" class="btn btn-primary" @onclick="Submit">Search</button>
     </div>
 </div>
-<section id="header" class="d-flex align-items-center">
+@*<section id="header" class="d-flex align-items-center">
     <div class="container-fluid">
         <div class="row">
             <div class="col-10 mx-auto">
@@ -68,7 +79,7 @@
         </div>
     </div>
 
-</section>
+</section>*@
 @if (check)
 {
 
@@ -77,54 +88,41 @@
         <div class="row">
             @foreach (var emp in FilterCitiesList)
             {
-                <div class="col-3 mt-4">
-                    <div class="card bg-secondary  text-white" style="width: 18rem;">
-                        <h3>@emp.Title</h3> <h2>@emp.InstituteId</h2>
-                        <div class="card-body">
-
-                         <button class="btn btn-primary bt-sm" @onclick="(e=>DepartmentsDetails(emp.InstituteId))">View Details</button>
-
-
-                        </div>
-                    </div>
-                </div>
-
-
-            }
-
-        </div>
-    </div>
-}
-
-
-@if (check1)
-{
-
-
-    <div class="container-fluid mt-5">
-        <div class="row">
-            @foreach (var emp in FilterDepartmentList)
-            {
-                <div class="col-3 mt-4">
-                    <div class="card bg-secondary  text-white" style="width: 18rem;">
-                        <h3>@emp.DegreeName</h3> 
-                        <div class="card-body">
-
-                         <h3  >@emp.SemesterFee</h3>
-                         <h3  >@emp.TotalFee</h3>
-
-
-
-                        </div>
-                    </div>
-                </div>
-
+  <div class="col-3 mt-4">
+<div class="card bg-secondary  text-white" style="width: 18rem;">
+  <div class="card-body">
+    <h4 class="card-title">@emp.Title</h4>
+    <h6 class="card-subtitle mb-2">You are eligible in <b >@emp.Departments </b> Departments</h6>
+    
+<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @onclick="e=>DepartmentsDetails(emp.InstituteId)">View Details</button>
+    
+  </div>
+</div>
+</div>
 
             }
 
         </div>
     </div>
 }
+
+
+
+
+<div class="offcanvas offcanvas-end w-100 canvas-color" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">Eligible Departments</h5>
+    <button type="button" class="btn-close text-reset " style="Color:White;"  data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+        @if (check1)
+        {
+        <ViewDetails FilterDepartmentList="FilterDepartmentList"></ViewDetails>
+            
+        }
+
+  </div>
+</div>
 @code {
 
     private List<EntPassingDegree>? PassingDegreeList;
@@ -138,7 +136,7 @@
     public bool check = false;
     public bool check1 = false;
 
-    private string? PassingDegreeSGid { get; set; }
+    private string? PassingDegreeSGid { get; set; }  
     private EntFilter? _ModelFilter { get; set; } = new EntFilter();
     private void LoadProgramDetails()
     {
@@ -163,7 +161,7 @@
 
     private void DepartmentsDetails(string iid)
     {
-        check = false;
+        
         FilterDepartmentList = DalFilter.GetDepartmentDetailsbyID(PassingDegreeSGid, iid);
         check1 = true;
     }
