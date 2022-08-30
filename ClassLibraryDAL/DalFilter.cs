@@ -36,29 +36,41 @@ namespace ClassLibraryDAL
             con.Close();
             return FilterList;
         }
-        public static List<EntFilter> GetDepartmentsbyID(string PDSGID,string CityId,string Percentage)
+        public static List<EntFilter> GetDepartmentsbyID(string PDSGID, string CityId, string Percentage)
         {
-            SqlConnection con = DBHelper.GetConnection();
-            con.Open();
-            SqlCommand cmd = new SqlCommand("U_SP_GetDepartmentCountByGroupIdAndCityId", con);
-            cmd.Parameters.AddWithValue("@PDSGID", PDSGID);
-            cmd.Parameters.AddWithValue("@CityId", int.Parse(CityId));
-            cmd.Parameters.AddWithValue("@Percentage", int.Parse(Percentage));
-            cmd.CommandType = CommandType.StoredProcedure;
-            SqlDataReader sdr = cmd.ExecuteReader();
             List<EntFilter> FilterList = new List<EntFilter>();
-            while (sdr.Read())
+            try
             {
-                EntFilter ee = new EntFilter();
+                SqlConnection con = DBHelper.GetConnection();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("U_SP_GetDepartmentCountByGroupIdAndCityId", con);
+                cmd.Parameters.AddWithValue("@PDSGID", PDSGID);
+                cmd.Parameters.AddWithValue("@CityId", int.Parse(CityId));
+                cmd.Parameters.AddWithValue("@Percentage", int.Parse(Percentage));
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataReader sdr = cmd.ExecuteReader();
                 
-                ee.Title = sdr["Title"].ToString();
-                ee.InstituteId = sdr["InstituteId"].ToString();
-                ee.Departments = sdr["Departments"].ToString();
+                while (sdr.Read())
+                {
+                    EntFilter ee = new EntFilter();
 
-                FilterList.Add(ee);
+                    ee.Title = sdr["Title"].ToString();
+                    ee.InstituteId = sdr["InstituteId"].ToString();
+                    ee.Departments = sdr["Departments"].ToString();
+
+                    FilterList.Add(ee);
+                    
+                }
+                con.Close();
+               
+            }
+            catch(Exception ex) 
+            {
+                ex.Message.ToString(); 
 
             }
-            con.Close();
+           
+
             return FilterList;
         }
 
@@ -77,19 +89,20 @@ namespace ClassLibraryDAL
                 EntProgramDegreeDetails ee = new EntProgramDegreeDetails();
                 ee.Duration = sdr["Duration"].ToString();
                 ee.Matric = sdr["SemesterFee"].ToString();
-                ee.FSC= sdr["FSC"].ToString();
-                ee.Matric= sdr["Matric"].ToString();
-                ee.TotalFee= sdr["TotalFee"].ToString();
-                ee.SemesterFee= sdr["SemesterFee"].ToString();
-                ee.ClosingMerit= sdr["ClosingMerit"].ToString();
-                ee.DegreeName= sdr["DegreeName"].ToString();
-                ee.TotalSemesters= sdr["TotalSemesters"].ToString();
-                ee.ProgramDegreeId= sdr["ProgramDegreeId"].ToString();
+                ee.FSC = sdr["FSC"].ToString();
+                ee.Matric = sdr["Matric"].ToString();
+                ee.TotalFee = sdr["TotalFee"].ToString();
+                ee.SemesterFee = sdr["SemesterFee"].ToString();
+                ee.ClosingMerit = sdr["ClosingMerit"].ToString();
+                ee.DegreeName = sdr["DegreeName"].ToString();
+                ee.TotalSemesters = sdr["TotalSemesters"].ToString();
+                ee.ProgramDegreeId = sdr["ProgramDegreeId"].ToString();
                 DepartmentList.Add(ee);
 
             }
             con.Close();
             return DepartmentList;
         }
+
     }
 }
