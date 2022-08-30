@@ -1,14 +1,13 @@
 ﻿@using ClassLibraryDAL
 @using ClassLibraryEntities
-<div class="container-fluid">
+<div class="d-flex justify-content-center align-items-center">
+
     <div class="row">
-        <div class="col-md-8">
+
         @foreach (var emp in @FilterDepartmentList)
         {
-
-
             <div class="col-md-12 mb-4">
-                 <div class="card text-dark bg-light">
+                <div class="card text-dark bg-light">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
                             <div>
@@ -17,14 +16,17 @@
                             </div>
 
                             <div>
-                                <button class="btn btn-primary " @onclick="e=>FutureS(emp.ProgramDegreeId)">Future Scope</button>
 
+                                <button class="btn btn-primary " @onclick="e=>FutureS(emp.ProgramDegreeId)">Future Scope</button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    Launch static backdrop modal
+                                </button>
                             </div>
                         </div>
                     </div>
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-8">
 
                                 <div class="col mt-2">
                                     <h5>Duration  <span class="text-primary">@emp.Duration </span></h5>
@@ -62,42 +64,62 @@
             </div>
 
         }
-        </div>
-        <div class="col-md-4">
-            @if (check)
-            {
-
-
-                <div class="container-fluid">
-                    <div class="row">
-                        @foreach (var emp in FutureScopeList)
-                        {
-                            <div class="col-12">
-                                <div class="card text-dark bg-light">
-                                    <div class="card-body">
-                                        @((MarkupString)emp.Description)
-
-
-
-
-
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        }
-
-                    </div>
-                </div>
-            }
-        </div>
     </div>
+    @*<div class="col-md-4">
+    @if (check)
+    {
+
+
+    <div class="container-fluid">
+    <div class="row">
+    @foreach (var emp in FutureScopeList)
+    {
+    <div class="col-12">
+    <div class="card text-dark bg-light">
+    <div class="card-body">
+    @((MarkupString)emp.Description)
+
+
+
+
+
+    </div>
+    </div>
+    </div>
+
+
+    }
+
+    </div>
+    </div>
+    }
+    </div>*@
+
 </div>
 
 
 
+@if (check)
+{
+<FutureScope  ID="@ID" OnClose="@OnDeleteDialogClose"></FutureScope>    
+}
+
+<!-- Button trigger modal -->
+<!-- Modal -->
+
+
+
+
 @code {
+    public bool DeleteDialogOpen{ get; set; }
+    private void OnDeleteDialogClose(bool accepted)
+    {
+        DeleteDialogOpen = false;
+      
+      
+        StateHasChanged();
+    }
+    public string ID{ get; set; }
     public bool check { get; set; } = false;
     [Parameter] public string insid { get; set; }
     [Parameter] public string PDSGID { get; set; }
@@ -108,7 +130,9 @@
     public void FutureS(string id)
     {
         FutureScopeList = DALFutureScope.GetFutureScopeById(id);
+
         check = true;
+        ID = id;
     }
 
 }
