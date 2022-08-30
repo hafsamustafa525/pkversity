@@ -6,38 +6,27 @@
 
 <PageTitle>FrontPage</PageTitle>
 
-<div class="navbar">
+
 
     <main>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid ">
-            <a class="navbar-brand text-white" aria-current="page" href="/">Academia</a>
 
-               
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <AuthorizeView Roles="User">
+<nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white text-black">
+        <div class="container-fluid ">
+          <div class="d-flex align-items-center "><a class="navbar-brand py-1 " href="/"><img  src="Images/Academia.png" style="height:3rem; margin-left:3rem;"   alt="Directory logo"></a>
+           
+          </div>
+          <!-- Navbar Collapse -->
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+          
+            <ul class="navbar-nav ms-auto text-black">
+               <AuthorizeView Roles="User">
             <Authorized>
-               
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link  " aria-current="page" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="form">Academic Info</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="personalinformation">Personal Info</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " aria-current="page" href="/searchcity">Search City</a>
-                        </li>
-                    </ul>
-
-                       </Authorized>
+                           
+              <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="form">AcademicInfo</a></li>
+              <li class="nav-item"><a class="nav-link" href="personalinformation">PersonalInfo</a></li>
+              <li class="nav-item"><a class="nav-link" href="searchcity">Search City</a></li>
+               </Authorized>
 
         </AuthorizeView>
          
@@ -45,35 +34,23 @@
 
                     <AuthorizeView>
                         <Authorized>
-                            <a @onclick="logout" href="javascript:void(0)" class="btn btn-outline-success">LogOut</a>
+                           
+                              <a @onclick="logout" href="javascript:void(0)" class="btn btn-outline-success">LogOut</a>
                         </Authorized>
-                        
-                        <NotAuthorized>
-                            <div  class="b">
-                        <a href="login" class="btn btn-outline-success">Login/SignUp</a>
-
-                    </div>
-
-                        </NotAuthorized>
+                          <NotAuthorized>
+              <a href="login" class="btn btn-primary">Login</a>
+              <a href="register" class="btn btn-primary">Register</a>
+          </NotAuthorized>
                     </AuthorizeView>
-
-
-                </div>
-
-            </div>
-        </nav>
-
-
-
-
-
-
-
+          </ul>
+           
+          </div>
+        </div>
+      </nav>
         <article class="content px-4">
             @Body
         </article>
     </main>
-</div>
 
 @code{
 

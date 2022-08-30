@@ -7,7 +7,7 @@
 
 <div>
     <EditForm Model="_ModelInfo" OnSubmit="SubmitForm">
-        <h2 class="text-center">Educational Information</h2>
+        <h2 class="text-center mt-5 text-black">Educational Information</h2>
         <div class="row mt-4 d-flex justify-content-center align-items-center">
 
             <div class="col-5">
@@ -127,8 +127,8 @@
 
 <h2>SSC</h2>
 <div class="container pt-4 table-responsive">
-    <table class="table  table-bordered table-hover">
-        <thead class="table-success">
+    <table class="table  table-bordered">
+        <thead class="table-dark">
             <tr scope="row">
 
 
@@ -146,7 +146,7 @@
         <tbody>
             @foreach (var emp in @MatricList)
             {
-                <tr scope="row" class="text-white">
+                <tr scope="row">
 
                     <td>@emp.PassingDSGroup</td>
                     <td>@emp.Board_University</td>
@@ -155,8 +155,7 @@
                     <td>@emp.Percentage</td>
                     <td>@emp.PassingYear</td>
                     <td>@emp.Institute</td>
-
-                    <button class="btn btn-danger" @onclick="(e => Delete(emp.SID))">DEL</button>
+                    <button class="btn btn-delete" @onclick="(e => Delete(emp.SID))">Delete</button>
                 </tr>
 
             }
@@ -167,7 +166,7 @@
 <h2>HSSC</h2>
 <div class="container pt-4 table-responsive">
     <table class="table  table-bordered table-hover">
-        <thead class="table-success">
+        <thead class="table-dark">
             <tr scope="row">
 
 
@@ -185,7 +184,7 @@
         <tbody>
             @foreach (var emp in @FscList)
             {
-                <tr scope="row" class="text-white">
+                <tr scope="row" >
 
                     <td>@emp.PassingDSGroup</td>
                     <td>@emp.Board_University</td>
@@ -195,7 +194,7 @@
                     <td>@emp.PassingYear</td>
                     <td>@emp.Institute</td>
 
-                     <button class="btn btn-danger" @onclick="(e => FDelete(emp.SID))">DEL</button>
+                     <button class="btn btn-primary btn-delete" @onclick="(e => FDelete(emp.SID))">Delete</button>
                 </tr>
 
             }

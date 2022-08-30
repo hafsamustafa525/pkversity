@@ -16,6 +16,7 @@ namespace ClassLibraryEntities
         public string? CityId { get; set; }
         public string? CityName { get; set; }
         public string? Departments { get; set; }
+        public  string? percentage { get; set; }
 
     }
 }

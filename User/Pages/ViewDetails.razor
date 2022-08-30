@@ -8,7 +8,7 @@
 
 
             <div class="col-md-12 mb-4">
-                <div class="card text-white bg-secondary">
+                 <div class="card text-dark bg-light">
                     <div class="card-header">
                         <div class="d-flex justify-content-between">
                             <div>
@@ -17,7 +17,7 @@
                             </div>
 
                             <div>
-                                <button class="btn btn-danger " @onclick="e=>FutureS(emp.ProgramDegreeId)">Future Scope</button>
+                                <button class="btn btn-primary " @onclick="e=>FutureS(emp.ProgramDegreeId)">Future Scope</button>
 
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                         @foreach (var emp in FutureScopeList)
                         {
                             <div class="col-12">
-                                <div class="card bg-secondary  text-white">
+                                <div class="card text-dark bg-light">
                                     <div class="card-body">
                                         @((MarkupString)emp.Description)
 

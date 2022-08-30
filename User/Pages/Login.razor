@@ -9,13 +9,10 @@
 @inject AuthenticationStateProvider authStateProvider
 @inject NavigationManager nm
 
-@if (check)
-{
-    <MessageComponent CustomMessage="@message"></MessageComponent>
-}
 
 
-<div class="section">
+
+@*<div class="section">
     <div class="container">
         <div class="row  justify-content-center">
             <div class="col-12 text-center align-self-center py-5">
@@ -68,6 +65,20 @@
             </div>
         </div>
     </div>
+</div>*@
+
+<div class=" d-flex justify-content-center center">
+    <div class="card gap-3 Login-Card" style="width: 28rem;">
+        <h3 class="text-center">Login</h3>
+
+        <input @bind="User" placeholder="userName" />
+        <input type="password" @bind="Password" placeholder="Password" />
+        <button @onclick="Authenticate" class="btn btn-primary">Login</button>
+        @if (check)
+        {
+            <h6 class="text-danger text-center">@message </h6>
+        }
+    </div>
 </div>
 @code {
 
@@ -101,7 +112,7 @@
     {
 
         _Model = DALUserLogin.GetUserByName(User);
-        _Model.Username = User;
+        _Model.Username = User;  //
         ID = _Model.UserId;
         Passwrd = DecodeFrom64(_Model.Password);
 
@@ -114,43 +125,27 @@
             message = "Invalid UserName and Password ! ";
 
         }
-
-        var customAuthStateProvider = (CustomAuthenticationStateProvider)authStateProvider;
-        await customAuthStateProvider.UpdateAuthenticationState(new UserSession
-            {
-                UserId = _Model.UserId,
-                UserName = _Model.Username,
-                Role = _Model.Role
-
-            });
-
-        nm.NavigateTo("/", true);
-    }
-
-
-    public static string EncodePasswordToBase64(string password)
-    {
-        try
+        else
         {
-            byte[] encData_byte = new byte[password.Length];
-            encData_byte = System.Text.Encoding.UTF8.GetBytes(password);
-            string encodedData = Convert.ToBase64String(encData_byte);
-            return encodedData;
+
+            var customAuthStateProvider = (CustomAuthenticationStateProvider)authStateProvider;
+            await customAuthStateProvider.UpdateAuthenticationState(new UserSession
+                {
+                    UserId = _Model.UserId,
+                    UserName = _Model.Username,
+                    Role = _Model.Role
+
+                });
+
+            nm.NavigateTo("/", true);
         }
-        catch (Exception ex)
-        {
-            throw new Exception("Error in base64Encode" + ex.Message);
-        }
+
     }
 
-    private void SignUp()
-    {
-        EncPass = EncodePasswordToBase64(Password);
-        _Model.Password = EncPass;
-        _Model.Role = "User";
-        DALUserLogin.SaveSignUp(_Model);
-        nm.NavigateTo("/");
-    }
+
+
+
+
 
 
 }

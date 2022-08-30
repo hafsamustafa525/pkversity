@@ -36,13 +36,14 @@ namespace ClassLibraryDAL
             con.Close();
             return FilterList;
         }
-        public static List<EntFilter> GetDepartmentsbyID(string PDSGID,string CityId)
+        public static List<EntFilter> GetDepartmentsbyID(string PDSGID,string CityId,string Percentage)
         {
             SqlConnection con = DBHelper.GetConnection();
             con.Open();
             SqlCommand cmd = new SqlCommand("U_SP_GetDepartmentCountByGroupIdAndCityId", con);
             cmd.Parameters.AddWithValue("@PDSGID", PDSGID);
             cmd.Parameters.AddWithValue("@CityId", int.Parse(CityId));
+            cmd.Parameters.AddWithValue("@Percentage", int.Parse(Percentage));
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataReader sdr = cmd.ExecuteReader();
             List<EntFilter> FilterList = new List<EntFilter>();
@@ -53,6 +54,7 @@ namespace ClassLibraryDAL
                 ee.Title = sdr["Title"].ToString();
                 ee.InstituteId = sdr["InstituteId"].ToString();
                 ee.Departments = sdr["Departments"].ToString();
+
                 FilterList.Add(ee);
 
             }

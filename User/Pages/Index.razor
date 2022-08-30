@@ -2,84 +2,77 @@
 @using ClassLibraryDAL
 @using ClassLibraryEntities
 
-<div class="row">
-    <div class="col">
-        <select class="form-select text-white" aria-label="Default select example" @onchange="_DegOption">
-            <option selected>Select Category</option>
 
-            @foreach (var emp in @PassingDegreeList)
-            {
-                <option value="@emp.PassingDegreesId">@emp.Title</option>
-            }
-        </select>
-
-
+<div class="col-xl-10">
+    <div class="text-center text-lg-start">
+        <p class="subtitle letter-spacing-4 mb-2 text-secondary text-shadow">The best holiday experience</p>
+        <h1 class="display-3 fw-bold text-shadow">Stay like a local</h1>
     </div>
-    <div class="col">
-        <select @bind="@PassingDegreeSGid" class="form-select text-white" aria-label="Default select example">
-            <option selected>Select Category</option>
+    <div class="search-bar mt-5 p-3 p-lg-1 ps-lg-4">
 
-            @foreach (var emp in @PassingDSGroupsList)
-            {
-                if (alpha == emp.PassingDegreeId)
-                {
-                    <option value="@emp.PassingDSGroupsId">@emp.PassingDSGroups</option>
-                }
-            }
-        </select>
-    </div>
-    <div class="col">
-
-
-        <select @bind="@cityID" class="form-select text-white" aria-label="Default select example">
-            <option selected>Select City</option>
-
-            @foreach (var emp in @CitiesList)
-            {
-
-                <option value="@emp.CityId">@emp.CityName</option>
-
-            }
-        </select>
-    </div>
-    <div class="col">
-
-
-        <select  class="form-select text-white" aria-label="Default select example">
-            <option selected>Select Percentage</option>
-            <option selected>50</option>
-            <option selected>60</option>
-
-            
-        </select>
-    </div>
-    <div class="col">
-        <button type="submit" class="btn btn-primary" @onclick="Submit">Search</button>
-    </div>
-</div>
-@*<section id="header" class="d-flex align-items-center">
-    <div class="container-fluid">
         <div class="row">
-            <div class="col-10 mx-auto">
-                <div class="row mt-5">
-                    <div class="col-md-6 pt-5 pt-lg-0 order-1 order-sm-1 d-flex justify-content-center flex-column mt-5">
-                        <h1>Grow your Carrier with <strong class="brand-name">Academia</strong></h1>
-                        <h2 class="my-3">We are the team Of talented developer making websites</h2>
-                        <div class="mt-3">
-                            <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Services</a>
-                        </div>
-                    </div>
 
-                    <div id="earth" class="col-lg-6 order-2 order-sm-2 header-img mt-5 d-flex align-items-center justify-content-center">
-                        <img src="Images/globe.png" class="img-fluid" width="450" alt="globe png hd" />
-                    </div>
 
+            <div class="col-lg-3">
+                <div class="dropdown bootstrap-select">
+                    <select class="form-select text-black" @onchange="_DegOption" required>
+                        <option selected>Select Category</option>
+
+                        @foreach (var emp in @PassingDegreeList)
+                        {
+                            <option value="@emp.PassingDegreesId">@emp.Title</option>
+                        }
+                    </select>
                 </div>
             </div>
-        </div>
-    </div>
+            <div class="col-lg-3">
+                <div class="dropdown bootstrap-select">
+                    <select @bind="@PassingDegreeSGid" class="form-select text-black" aria-label="Default select example" >
+                        <option selected>Select Category</option>
 
-</section>*@
+                        @foreach (var emp in @PassingDSGroupsList)
+                        {
+                            if (alpha == emp.PassingDegreeId)
+                            {
+                                <option value="@emp.PassingDSGroupsId">@emp.PassingDSGroups</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="dropdown bootstrap-select">
+                    <select @bind="@perc" class="form-select text-black" aria-label="Default select example" required>
+                        <option selected>Select Percentage</option>
+                        <option value="50">50 </option>
+                        <option value="60">60</option>
+
+
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="dropdown bootstrap-select">
+                    <select  @bind="cityID" class="form-select " aria-label="Default select example" required>
+                        <option value="">Select City</option>
+
+                        @foreach (var emp in @CitiesList)
+                        {
+
+                            <option value="@emp.CityId">@emp.CityName</option>
+
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary" @onclick="Submit">Search</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 @if (check)
 {
 
@@ -88,17 +81,17 @@
         <div class="row">
             @foreach (var emp in FilterCitiesList)
             {
-  <div class="col-3 mt-4">
-<div class="card bg-secondary  text-white" style="width: 18rem;">
-  <div class="card-body">
-    <h4 class="card-title">@emp.Title</h4>
-    <h6 class="card-subtitle mb-2">You are eligible in <b >@emp.Departments </b> Departments</h6>
-    
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @onclick="e=>DepartmentsDetails(emp.InstituteId)">View Details</button>
-    
-  </div>
-</div>
-</div>
+                <div class="col-3 mt-4">
+                    <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                        <div class="card-header h4">@emp.Title</div>
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2">You are eligible in <b>@emp.Departments </b> Departments</h6>
+
+                            <button class="btn btn-primary mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @onclick="e=>DepartmentsDetails(emp.InstituteId)">View Details</button>
+
+                        </div>
+                    </div>
+                </div>
 
             }
 
@@ -110,33 +103,36 @@
 
 
 <div class="offcanvas offcanvas-end w-100 canvas-color" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-  <div class="offcanvas-header">
-    <h5 id="offcanvasRightLabel">Eligible Departments</h5>
-    <button type="button" class="btn-close text-reset " style="Color:White;"  data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel">Eligible Departments</h5>
+        <button type="button" class="btn-close text-reset " style="Color:White;" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
         @if (check1)
         {
-        <ViewDetails FilterDepartmentList="FilterDepartmentList"></ViewDetails>
-            
+            <ViewDetails FilterDepartmentList="FilterDepartmentList"></ViewDetails>
+
         }
 
-  </div>
+    </div>
 </div>
 @code {
 
+    
     private List<EntPassingDegree>? PassingDegreeList;
     private List<EntPassingDSGroups>? PassingDSGroupsList;
     private List<EntCities>? CitiesList;
     private List<EntFilter> FilterCitiesList;
-    private List<EntProgramDegreeDetails>? FilterDepartmentList{ get; set; }
+    private List<EntProgramDegreeDetails>? FilterDepartmentList { get; set; }
 
     public string? alpha { get; set; }
+    private string? PassingDegreeSGid { get; set; }
     public string? cityID { get; set; }
     public bool check = false;
     public bool check1 = false;
+    public string? perc { get; set; }
 
-    private string? PassingDegreeSGid { get; set; }  
+
     private EntFilter? _ModelFilter { get; set; } = new EntFilter();
     private void LoadProgramDetails()
     {
@@ -155,13 +151,13 @@
     }
     private void Submit()
     {
-        FilterCitiesList = DalFilter.GetDepartmentsbyID(PassingDegreeSGid, cityID);
+        FilterCitiesList = DalFilter.GetDepartmentsbyID(PassingDegreeSGid,cityID, perc);
         check = true;
     }
 
     private void DepartmentsDetails(string iid)
     {
-        
+
         FilterDepartmentList = DalFilter.GetDepartmentDetailsbyID(PassingDegreeSGid, iid);
         check1 = true;
     }

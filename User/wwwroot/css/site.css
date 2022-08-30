@@ -19,7 +19,7 @@ a, .btn-link {
     color: #0071c1;
 }
 .nav-item a{
-    color: white !important;
+    color: black !important;
     font-size: 1rem;
 }
 .navbar-brand {
@@ -31,11 +31,7 @@ a, .btn-link {
     gap: 1.5rem;
     color: white;
 }
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-}
+
 
 .content {
     padding-top: 1.1rem;
@@ -82,11 +78,7 @@ a, .btn-link {
         content: "An error has occurred."
     }
 
-.navbar {
-    background: #0F2027; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
+
 
 .header-img .animated {
     animation: up-down 2s ease-in-out infinite alternate-reverse both;
@@ -121,55 +113,13 @@ a, .btn-link {
 }
 
 body {
-    background: #0F2027; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    color: white;
+    background-color: #F8F9FA;
+    color: black;
 }
 
 
 
-/*#earth {
-    width: 450px;
-    height: 450px;
-    background: url(https://web.archive.org/web/20150807125159if_/http://www.noirextreme.com/digital/Earth-Color4096.jpg);
-    border-radius: 50%;
-    margin-left: auto;
-    background-size: 610px;
-    box-shadow: inset 8px 36px 80px 36px rgb(0, 0, 0), inset -6px 0 12px 4px rgba(255, 255, 255, 0.3);
-    animation-name: rotate;
-    animation-duration: 12s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    -webkit-animation-name: rotate;
-    -webkit-animation-duration: 12s;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-}
 
-@keyframes rotate {
-    from {
-        background-position: 0px 0px;
-    }
-
-    to {
-        background-position: 610px 0px;
-    }
-}
-
-@-webkit-keyframes rotate 
-    from {
-        background-position: 0px 0px;
-    }
-
-    to {
-        background-position: 610px 0px;
-    }
-
-*/
-
-/* Please ❤ this if you like it! */
 
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
@@ -180,7 +130,7 @@ body {
     font-size: 15px;
     line-height: 1.7;
     color: #c4c3ca;
-    background-color: #1f2029;
+    background-color: #F8F9FA;
     overflow-x: hidden;
 }
 
@@ -432,24 +382,7 @@ h6 span {
     transition: all 200ms linear;
 }
 
-.btn {
-    background-color: transparent;
-    border: 1px solid blue;
-    color: white;
-}
 
-    .btn:active,
-    .btn:focus {
-        background-color: #102770;
-        color: #ffeba7;
-        box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
-    }
-
-    .btn:hover {
-        background-color: #102770;
-        color: #ffeba7;
-        box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
-    }
 
 
 
@@ -501,13 +434,19 @@ div.b {
     
 }
 
-    select option {
-        background-color: #0F2027; /* fallback for old browsers */
-        color: white;
-    }
+    
 .canvas-color {
-    background-color: #0F2027; /* fallback for old browsers */
-    background-color: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027); /* Chrome 10-25, Safari 5.1-6 */
-    background-color: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: #F8F9FA;
+    color:white;
+}
+.Login-Card input {
+    font-size: 1.5rem;
+    border: 1px solid blue;
+}
+.center {
+    margin-top:15rem;
+}
+.btn-delete{
+    background-color:brown;
     color:white;
 }

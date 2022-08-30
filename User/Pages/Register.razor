@@ -1,0 +1,52 @@
+﻿@page "/register"
+@inject IJSRuntime js
+@using ClassLibraryDAL
+@using ClassLibraryEntities
+@using User.Authentication
+
+@inject IJSRuntime js
+@inject AuthenticationStateProvider authStateProvider
+@inject NavigationManager nm
+
+<div class=" d-flex justify-content-center center">
+<div class="card gap-3 Login-Card" style="width: 28rem;">
+    <h3 class="text-center">Register</h3>
+
+ <input @bind="_Model.Username" type="text"  placeholder="Your Full Name" id="logname" autocomplete="off">
+       <input @bind="_Model.Email" type="email"  placeholder="Your Email" id="logemail" autocomplete="off">
+    <input @bind="Password" type="password"  placeholder="Your Password" id="logpass" autocomplete="off">
+
+    <button @onclick="SignUp" class="btn btn-primary">SignUp</button>
+</div>
+</div>
+
+@code {
+        public string? EncPass { get; set; }
+         public string? Password { get; set; }
+    private ClassLibraryEntities.EntUserlogin _Model { get; set; } = new ClassLibraryEntities.EntUserlogin();
+
+
+      public static string EncodePasswordToBase64(string password)
+    {
+        try
+        {
+            byte[] encData_byte = new byte[password.Length];
+            encData_byte = System.Text.Encoding.UTF8.GetBytes(password);
+            string encodedData = Convert.ToBase64String(encData_byte);
+            return encodedData;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Error in base64Encode" + ex.Message);
+        }
+    }
+
+private void SignUp()
+    {
+        EncPass = EncodePasswordToBase64(Password);
+        _Model.Password = EncPass;
+        _Model.Role = "User";
+        DALUserLogin.SaveSignUp(_Model);
+        nm.NavigateTo("/");
+    }
+}
