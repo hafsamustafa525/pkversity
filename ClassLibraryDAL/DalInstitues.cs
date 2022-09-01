@@ -11,9 +11,11 @@ namespace ClassLibraryDAL
 {
     public class DalInstitutes
     {
+       
         public static List<EntInstitutes> GetInstitutes()
         {
-            SqlConnection con = DBHelper.GetConnection();
+           
+           SqlConnection con = DBHelper.GetConnection();
             con.Open();
             SqlCommand cmd = new SqlCommand("SP_GetInstitutes", con);
             cmd.CommandType = CommandType.StoredProcedure;
