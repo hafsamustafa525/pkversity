@@ -27,14 +27,14 @@
     </CKEditorBlazor>
 </EditForm>
 
-@data
 <button @onclick="getData" class="btn btn-primary">Submit</button>
 
 @code {
     private List<EntProgramDegree>? ProgramDegreeList;
     private List<EntFutureScope> FutureScopeList;
+    private List<EntFutureScope> FutureCheckList;
     private EntFutureScope _Model { get; set; } = new EntFutureScope();
-    private string? DegreeId{ get; set; }
+    private string? DegreeId { get; set; }
 
 
     EditorOptions editorOptions;
@@ -60,10 +60,24 @@
 
     private void getData()
     {
+
         data = editorOptions.InitialText.ToString();
         _Model.Description = data;
         _Model.ProgramDegreeId = DegreeId;
-        
-        DALFutureScope.SaveDesciption(_Model);
+        FutureCheckList = DALFutureScope.GetFutureScopeById(DegreeId);
+
+        if (FutureCheckList.Count == 0)
+        {
+            DALFutureScope.SaveDesciption(_Model);
+            OnInitializedAsync();
+
+        }
+        else
+        {
+            DALFutureScope.UpdateDesciption(_Model);
+            OnInitializedAsync();
+        }
+
+
     }
 }
