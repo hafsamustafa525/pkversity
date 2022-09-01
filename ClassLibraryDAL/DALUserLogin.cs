@@ -11,19 +11,19 @@ namespace ClassLibraryDAL
 {
     public  class DALUserLogin
     {
-        public static EntUserlogin GetUserByName(string UserName)
+        public static EntUserlogin GetUserByName(string Email)
         {
             SqlConnection con = ClassLibraryDAL.DBHelper.GetConnection();
             con.Open();
             SqlCommand cmd = new SqlCommand("U_SP_GetUserByName", con);
-            cmd.Parameters.AddWithValue("@UserName", UserName);
+            cmd.Parameters.AddWithValue("@Email", Email);
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataReader sdr = cmd.ExecuteReader();
             EntUserlogin ee = new EntUserlogin();
             while (sdr.Read())
             {
                 ee.UserId = sdr["UserId"].ToString();
-                ee.Username = sdr["UserName"].ToString();
+                ee.Email = sdr["Email"].ToString();
                 ee.Password = sdr["Password"].ToString();
 
 
@@ -38,9 +38,13 @@ namespace ClassLibraryDAL
             SqlConnection con = DBHelper.GetConnection();
             con.Open();
             SqlCommand cmd = new SqlCommand("U_SP_SaveSignUp", con);
+            cmd.Parameters.AddWithValue("@FirstName", ee.FirstName);
+            cmd.Parameters.AddWithValue("@LastName", ee.LastName);
             cmd.Parameters.AddWithValue("@Email", ee.Email);
-            cmd.Parameters.AddWithValue("@UserName", ee.Username);
             cmd.Parameters.AddWithValue("@Password", ee.Password);
+            cmd.Parameters.AddWithValue("@ContactNo", ee.ContactNo);
+            cmd.Parameters.AddWithValue("@City", ee.City);
+            cmd.Parameters.AddWithValue("@Gender", ee.Gender);
             cmd.Parameters.AddWithValue("@Role", ee.Role);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.ExecuteNonQuery();

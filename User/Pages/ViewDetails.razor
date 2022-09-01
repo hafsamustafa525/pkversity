@@ -12,15 +12,10 @@
                         <div class="d-flex justify-content-between">
                             <div>
                                 <h3>@emp.DegreeName</h3>
-
                             </div>
-
                             <div>
-
-                                <button class="btn btn-primary " @onclick="e=>FutureS(emp.ProgramDegreeId)">Future Scope</button>
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    Launch static backdrop modal
-                                </button>
+                                <button class="btn btn-primary " @onclick="e=>OpenDeleteDialog(emp.ProgramDegreeId)">Future Scope</button>
+                             
                             </div>
                         </div>
                     </div>
@@ -79,60 +74,44 @@
     <div class="card-body">
     @((MarkupString)emp.Description)
 
-
-
-
-
     </div>
     </div>
     </div>
-
-
     }
-
     </div>
     </div>
     }
     </div>*@
-
 </div>
 
-
-
-@if (check)
+@if (DeleteDialogOpen)
 {
 <FutureScope  ID="@ID" OnClose="@OnDeleteDialogClose"></FutureScope>    
 }
-
 <!-- Button trigger modal -->
 <!-- Modal -->
 
-
-
-
 @code {
     public bool DeleteDialogOpen{ get; set; }
-    private void OnDeleteDialogClose(bool accepted)
+     private void OnDeleteDialogClose(bool accepted)
     {
         DeleteDialogOpen = false;
-      
-      
         StateHasChanged();
     }
-    public string ID{ get; set; }
-    public bool check { get; set; } = false;
-    [Parameter] public string insid { get; set; }
-    [Parameter] public string PDSGID { get; set; }
+    private void OpenDeleteDialog(string Id)
+    {
+        DeleteDialogOpen = true;
+        ID = Id;
+        StateHasChanged();
+    }
+
+    public string? ID{ get; set; }
+    public bool check { get; set;} = false;
+    [Parameter] public string? insid { get; set; }
+    [Parameter] public string? PDSGID { get; set; }
     [Parameter]
     public List<EntProgramDegreeDetails>? FilterDepartmentList { get; set; }
     public List<EntFutureScope>? FutureScopeList { get; set; }
 
-    public void FutureS(string id)
-    {
-        FutureScopeList = DALFutureScope.GetFutureScopeById(id);
-
-        check = true;
-        ID = id;
-    }
-
+   
 }
