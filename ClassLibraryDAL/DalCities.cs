@@ -13,42 +13,66 @@ namespace ClassLibraryDAL
     {
         public static List<EntCities> GetCities()
         {
-            SqlConnection con = DBHelper.GetConnection();
-            con.Open();
-            SqlCommand cmd = new SqlCommand("SP_GetCities", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            SqlDataReader sdr = cmd.ExecuteReader();
             List<EntCities> CitiesList = new List<EntCities>();
-            while (sdr.Read())
+            try
             {
-                EntCities ee = new EntCities();
-                ee.CityId = sdr["CityId"].ToString();
-                ee.CityName = sdr["CityName"].ToString();
-                ee.CityCode = sdr["CityCode"].ToString();
-                CitiesList.Add(ee);
+
+
+                SqlConnection con = DBHelper.GetConnection();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SP_GetCities", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataReader sdr = cmd.ExecuteReader();
+
+                while (sdr.Read())
+                {
+                    EntCities ee = new EntCities();
+                    ee.CityId = sdr["CityId"].ToString();
+                    ee.CityName = sdr["CityName"].ToString();
+                    ee.CityCode = sdr["CityCode"].ToString();
+                    CitiesList.Add(ee);
+                }
+                con.Close();
+
             }
-            con.Close();
+            catch (Exception ex)
+            {
+                Excep = ex.Message.ToString() + ex.StackTrace.ToString();
+
+                GetError(Excep);
+            }
             return CitiesList;
         }
 
 
-        //GetCityById
         public static EntCities GetCityById(string CityId)
         {
-            SqlConnection con = DBHelper.GetConnection();
-            con.Open();
-            SqlCommand cmd = new SqlCommand("SP_GetCityById", con);
-            cmd.Parameters.AddWithValue("@CityId", CityId);
-            cmd.CommandType = CommandType.StoredProcedure;
-            SqlDataReader sdr = cmd.ExecuteReader();
             EntCities ee = new EntCities();
-            while (sdr.Read())
+            try
             {
-                ee.CityId = sdr["CityId"].ToString();
-                ee.CityName = sdr["CityName"].ToString();
-                ee.CityCode = sdr["CityCode"].ToString();
+
+                SqlConnection con = DBHelper.GetConnection();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SP_GetCityById", con);
+                cmd.Parameters.AddWithValue("@CityId", CityId);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataReader sdr = cmd.ExecuteReader();
+                
+                while (sdr.Read())
+                {
+                    ee.CityId = sdr["CityId"].ToString();
+                    ee.CityName = sdr["CityName"].ToString();
+                    ee.CityCode = sdr["CityCode"].ToString();
+                }
+                con.Close();
+               
             }
-            con.Close();
+            catch (Exception ex)
+            {
+                Excep = ex.Message.ToString() + ex.StackTrace.ToString();
+
+                GetError(Excep);
+            }
             return ee;
         }
 
@@ -90,6 +114,19 @@ namespace ClassLibraryDAL
             cmd.ExecuteNonQuery();
             con.Close();
 
+        }
+
+
+        public static string? Excep { get; set; }
+        public static void GetError(string Err)
+        {
+            SqlConnection con = DBHelper.GetConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("U_SP_StoreError", con);
+            cmd.Parameters.AddWithValue("@Err", Err);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
 
 

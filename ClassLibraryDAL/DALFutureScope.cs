@@ -27,6 +27,20 @@ namespace ClassLibraryDAL
 
         }
 
+        public static void UpdateDesciption(EntFutureScope ee)
+        {
+            SqlConnection con = DBHelper.GetConnection();
+            con.Open();
+            SqlCommand cmd = new SqlCommand("SP_UpdateDescription", con);
+            cmd.Parameters.AddWithValue("@ProgramDegreeId", ee.ProgramDegreeId);
+            cmd.Parameters.AddWithValue("@Description", ee.Description);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+
+        }
+
         public static List<EntFutureScope> GetFutureScopeById(string ProgramDegreeId)
         {
             SqlConnection con = DBHelper.GetConnection();
