@@ -223,7 +223,7 @@
     [CascadingParameter]
     private Task<AuthenticationState> authenticatestate { get; set; }
 
-    private async Task DisplayGreeting()
+    private async Task UserSession()
     {
         var authState = await authenticatestate;
         value1 = $"{authState.User.Identity.Name}";
@@ -244,14 +244,14 @@
     }
     protected override void OnInitialized()
     {
-        DisplayGreeting();
+        UserSession();
         LoadEducationalInfo();
     }
 
     private void SubmitForm()
     {
 
-        if (degree == "1" || degree == "2")
+        if (degree == "3" || degree == "4")
         {
 
             _ModelInfo.Board_University = EditBU;
@@ -259,6 +259,7 @@
             _ModelInfo.SID = value1;
             DALEducationalInfo.SaveStdMatricInfo(_ModelInfo);
             LoadEducationalInfo();
+            _ModelInfo = new EntEducationalInfo();
         }
         else
         {
@@ -268,6 +269,8 @@
             _ModelInfo.SID = value1;
             DALEducationalInfo.SaveStdFscInfo(_ModelInfo);
             LoadEducationalInfo();
+             _ModelInfo = new EntEducationalInfo();
+
         }
 
 
