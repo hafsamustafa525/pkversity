@@ -11,115 +11,180 @@ namespace ClassLibraryDAL
 {
     public class DALEducationalInfo
     {
+        public static string? Excep { get; set; }
         public static List<EntEducationalInfo> GetMatricInfo(string id)
         {
-            SqlConnection con = DBHelper.GetConnection();
-            con.Open();
-            SqlCommand cmd = new SqlCommand("SP_GetMatric", con);
-            cmd.Parameters.AddWithValue("@SID", id);
-            cmd.CommandType = CommandType.StoredProcedure;
-            SqlDataReader sdr = cmd.ExecuteReader();
             List<EntEducationalInfo> MatricList = new List<EntEducationalInfo>();
-            while (sdr.Read())
+            try
             {
-                EntEducationalInfo ee = new EntEducationalInfo();
-                ee.SID = sdr["SID"].ToString();
-                ee.PassingDSGroup = sdr["PassingDSGroup"].ToString();
-                ee.Board_University = sdr["Board_University"].ToString();
-                ee.ObtainedMarks = sdr["ObtainedMarks"].ToString();
-                ee.TotalMarks = sdr["TotalMarks"].ToString();
-                ee.Percentage = sdr["Percentage"].ToString();
-                ee.PassingYear = sdr["PassingYear"].ToString();
-                ee.Institute = sdr["Institute"].ToString();
-                MatricList.Add(ee);
+
+
+                SqlConnection con = DBHelper.GetConnection();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SP_GetMatric", con);
+                cmd.Parameters.AddWithValue("@SID", id);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataReader sdr = cmd.ExecuteReader();
+
+                while (sdr.Read())
+                {
+                    EntEducationalInfo ee = new EntEducationalInfo();
+                    ee.SID = sdr["SID"].ToString();
+                    ee.PassingDSGroup = sdr["PassingDSGroup"].ToString();
+                    ee.Board_University = sdr["Board_University"].ToString();
+                    ee.ObtainedMarks = sdr["ObtainedMarks"].ToString();
+                    ee.TotalMarks = sdr["TotalMarks"].ToString();
+                    ee.Percentage = sdr["Percentage"].ToString();
+                    ee.PassingYear = sdr["PassingYear"].ToString();
+                    ee.Institute = sdr["Institute"].ToString();
+                    MatricList.Add(ee);
+                }
+                con.Close();
+
             }
-            con.Close();
+            catch (Exception ex)
+            {
+                Excep = ex.Message.ToString() + ex.StackTrace.ToString();
+                DalFilter.GetError(Excep);
+            }
             return MatricList;
         }
 
         public static List<EntEducationalInfo> GetFscInfo(string id)
         {
-            SqlConnection con = DBHelper.GetConnection();
-            con.Open();
-            SqlCommand cmd = new SqlCommand("SP_GetFsc", con);
-            cmd.Parameters.AddWithValue("@SID", id);
-            cmd.CommandType = CommandType.StoredProcedure;
-            SqlDataReader sdr = cmd.ExecuteReader();
             List<EntEducationalInfo> FscList = new List<EntEducationalInfo>();
-            while (sdr.Read())
+
+            try
             {
-                EntEducationalInfo ee = new EntEducationalInfo();
-                ee.SID = sdr["SID"].ToString();
-                ee.PassingDSGroup = sdr["PassingDSGroup"].ToString();
-                ee.Board_University = sdr["Board_University"].ToString();
-                ee.ObtainedMarks = sdr["ObtainedMarks"].ToString();
-                ee.TotalMarks = sdr["TotalMarks"].ToString();
-                ee.Percentage = sdr["Percentage"].ToString();
-                ee.PassingYear = sdr["PassingYear"].ToString();
-                ee.Institute = sdr["Institute"].ToString();
-                FscList.Add(ee);
+
+                SqlConnection con = DBHelper.GetConnection();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SP_GetFsc", con);
+                cmd.Parameters.AddWithValue("@SID", id);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataReader sdr = cmd.ExecuteReader();
+                while (sdr.Read())
+                {
+                    EntEducationalInfo ee = new EntEducationalInfo();
+                    ee.SID = sdr["SID"].ToString();
+                    ee.PassingDSGroup = sdr["PassingDSGroup"].ToString();
+                    ee.Board_University = sdr["Board_University"].ToString();
+                    ee.ObtainedMarks = sdr["ObtainedMarks"].ToString();
+                    ee.TotalMarks = sdr["TotalMarks"].ToString();
+                    ee.Percentage = sdr["Percentage"].ToString();
+                    ee.PassingYear = sdr["PassingYear"].ToString();
+                    ee.Institute = sdr["Institute"].ToString();
+                    FscList.Add(ee);
+                }
+                con.Close();
+
             }
-            con.Close();
+            catch (Exception ex)
+            {
+                Excep = ex.Message.ToString() + ex.StackTrace.ToString();
+                DalFilter.GetError(Excep);
+            }
             return FscList;
         }
 
         public static void SaveStdMatricInfo(EntEducationalInfo ee)
         {
-            SqlConnection con = DBHelper.GetConnection();
-            con.Open();
-            SqlCommand cmd = new SqlCommand("SP_SaveStdMatric", con);
-            cmd.Parameters.AddWithValue("@SID", ee.SID);
-            cmd.Parameters.AddWithValue("@PassingDSGroup", ee.PassingDSGroup);
-            cmd.Parameters.AddWithValue("@Board_University", ee.Board_University);
-            cmd.Parameters.AddWithValue("@ObtainedMarks", ee.ObtainedMarks);
-            cmd.Parameters.AddWithValue("@TotalMarks", ee.TotalMarks);
-            cmd.Parameters.AddWithValue("@Percentage", ee.Percentage);
-            cmd.Parameters.AddWithValue("@PassingYear", ee.PassingYear);
-            cmd.Parameters.AddWithValue("@Institute", ee.Institute);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.ExecuteNonQuery();
-            con.Close();
+            try
+            {
+
+
+                SqlConnection con = DBHelper.GetConnection();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SP_SaveStdMatric", con);
+                cmd.Parameters.AddWithValue("@SID", ee.SID);
+                cmd.Parameters.AddWithValue("@PassingDSGroup", ee.PassingDSGroup);
+                cmd.Parameters.AddWithValue("@Board_University", ee.Board_University);
+                cmd.Parameters.AddWithValue("@ObtainedMarks", ee.ObtainedMarks);
+                cmd.Parameters.AddWithValue("@TotalMarks", ee.TotalMarks);
+                cmd.Parameters.AddWithValue("@Percentage", ee.Percentage);
+                cmd.Parameters.AddWithValue("@PassingYear", ee.PassingYear);
+                cmd.Parameters.AddWithValue("@Institute", ee.Institute);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Excep = ex.Message.ToString() + ex.StackTrace.ToString();
+                DalFilter.GetError(Excep);
+            }
         }
 
 
         public static void SaveStdFscInfo(EntEducationalInfo ee)
         {
-            SqlConnection con = DBHelper.GetConnection();
-            con.Open();
-            SqlCommand cmd = new SqlCommand("SP_SaveStdFsc", con);
-            cmd.Parameters.AddWithValue("@SID", ee.SID);
-            cmd.Parameters.AddWithValue("@PassingDSGroup", ee.PassingDSGroup);
-            cmd.Parameters.AddWithValue("@Board_University", ee.Board_University);
-            cmd.Parameters.AddWithValue("@ObtainedMarks", ee.ObtainedMarks);
-            cmd.Parameters.AddWithValue("@TotalMarks", ee.TotalMarks);
-            cmd.Parameters.AddWithValue("@Percentage", ee.Percentage);
-            cmd.Parameters.AddWithValue("@PassingYear", ee.PassingYear);
-            cmd.Parameters.AddWithValue("@Institute", ee.Institute);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.ExecuteNonQuery();
-            con.Close();
+            try
+            {
+
+
+                SqlConnection con = DBHelper.GetConnection();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SP_SaveStdFsc", con);
+                cmd.Parameters.AddWithValue("@SID", ee.SID);
+                cmd.Parameters.AddWithValue("@PassingDSGroup", ee.PassingDSGroup);
+                cmd.Parameters.AddWithValue("@Board_University", ee.Board_University);
+                cmd.Parameters.AddWithValue("@ObtainedMarks", ee.ObtainedMarks);
+                cmd.Parameters.AddWithValue("@TotalMarks", ee.TotalMarks);
+                cmd.Parameters.AddWithValue("@Percentage", ee.Percentage);
+                cmd.Parameters.AddWithValue("@PassingYear", ee.PassingYear);
+                cmd.Parameters.AddWithValue("@Institute", ee.Institute);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Excep = ex.Message.ToString() + ex.StackTrace.ToString();
+                DalFilter.GetError(Excep);
+            }
         }
 
         public static void DeleteMatric(string id)
         {
-            SqlConnection con = DBHelper.GetConnection();
-            con.Open();
-            SqlCommand cmd = new SqlCommand("SP_DeleteMatric", con);
-            cmd.Parameters.AddWithValue("@SID",id);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.ExecuteNonQuery();
-            con.Close();
+            try
+            {
+
+
+                SqlConnection con = DBHelper.GetConnection();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SP_DeleteMatric", con);
+                cmd.Parameters.AddWithValue("@SID", id);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Excep = ex.Message.ToString() + ex.StackTrace.ToString();
+                DalFilter.GetError(Excep);
+            }
         }
 
         public static void DeleteFsc(string id)
         {
-            SqlConnection con = DBHelper.GetConnection();
-            con.Open();
-            SqlCommand cmd = new SqlCommand("SP_DeleteFsc", con);
-            cmd.Parameters.AddWithValue("@SID", id);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.ExecuteNonQuery();
-            con.Close();
+            try
+            {
+
+
+                SqlConnection con = DBHelper.GetConnection();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SP_DeleteFsc", con);
+                cmd.Parameters.AddWithValue("@SID", id);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                Excep = ex.Message.ToString() + ex.StackTrace.ToString();
+
+                DalFilter.GetError(Excep);
+            }
         }
 
     }
