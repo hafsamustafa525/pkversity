@@ -5,75 +5,71 @@
 
 
 
-<div class="col-xl-10">
-    <div class="text-center text-lg-start">
-        <p class="subtitle letter-spacing-4 mb-2 text-secondary text-shadow">The best holiday experience</p>
-        <h1 class="display-3 fw-bold text-shadow">Stay like a local</h1>
-    </div>
-    <div class="search-bar mt-5 p-3 p-lg-1 ps-lg-4">
+<div class="search-bar mt-5 p-3 p-lg-1 ps-lg-4">
 
-        <div class="row">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <div class="input-group">
 
 
-            <div class="col-lg-3">
-                <div class="dropdown bootstrap-select">
-                    <select class="form-select text-black" @onchange="_DegOption" required>
-                        <option value="-1" selected>Select Category</option>
+              
+                    <div class="dropdown bootstrap-select">
+                        <select class="form-select text-black" @onchange="_DegOption" required>
+                            <option value="-1" selected>Select Category</option>
 
-                        @foreach (var emp in @PassingDegreeList)
-                        {
-                            <option value="@emp.PassingDegreesId">@emp.Title</option>
-                        }
-                    </select>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="dropdown bootstrap-select">
-                    <select @bind="@PassingDegreeSGid" class="form-select text-black" aria-label="Default select example">
-                        <option value="-1" selected>Select Category</option>
-
-                        @foreach (var emp in @PassingDSGroupsList)
-                        {
-                            if (alpha == emp.PassingDegreeId)
+                            @foreach (var emp in @PassingDegreeList)
                             {
-                                <option value="@emp.PassingDSGroupsId">@emp.PassingDSGroups</option>
+                                <option value="@emp.PassingDegreesId">@emp.Title</option>
                             }
-                        }
-                    </select>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="dropdown bootstrap-select">
-                    <select @bind="@perc" class="form-select text-black" aria-label="Default select example" required>
-                        <option value="-1" selected>Select Percentage</option>
-                        <option value="50">50 </option>
-                        <option value="60">60</option>
+                        </select>
+                    </div>
+            
+          
+                    <div class="dropdown bootstrap-select">
+                        <select @bind="@PassingDegreeSGid" class="form-select text-black" aria-label="Default select example">
+                            <option value="-1" selected>Select Category</option>
+
+                            @foreach (var emp in @PassingDSGroupsList)
+                            {
+                                if (alpha == emp.PassingDegreeId)
+                                {
+                                    <option value="@emp.PassingDSGroupsId">@emp.PassingDSGroups</option>
+                                }
+                            }
+                        </select>
+                    </div>
+          
+                    <div class="dropdown bootstrap-select">
+                        <select @bind="@perc" class="form-select text-black" aria-label="Default select example" required>
+                            <option value="-1" selected>Select Percentage</option>
+                            <option value="50">50 </option>
+                            <option value="60">60</option>
 
 
-                    </select>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="dropdown bootstrap-select">
-                    <select @bind="cityID" class="form-select " aria-label="Default select example" required>
-                        <option value="-1">Select City</option>
+                        </select>
+                    </div>
+              
+          
+                    <div class="dropdown bootstrap-select">
+                        <select @bind="cityID" class="form-select " aria-label="Default select example" required>
+                            <option value="-1">Select City</option>
 
-                        @foreach (var emp in @CitiesList)
-                        {
+                            @foreach (var emp in @CitiesList)
+                            {
 
-                            <option value="@emp.CityId">@emp.CityName</option>
+                                <option value="@emp.CityId">@emp.CityName</option>
 
-                        }
-                    </select>
-                </div>
-            </div>
-            <div class="col">
-                <button type="submit" class="btn btn-primary" @onclick="Submit">Search</button>
+                            }
+                        </select>
+                    </div>
+            
+                    <button type="submit" class="btn btn-primary" @onclick="Submit">Search</button>
+              
             </div>
         </div>
-
     </div>
 </div>
+
 
 @if (check)
 {
@@ -84,9 +80,10 @@
             @foreach (var emp in FilterCitiesList)
             {
                 <div class="col-3 mt-4">
-                    <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-                        <div class="card-header h4">@emp.Title</div>
+                    <div class="card text-dark bg-light shadow mb-3" style="max-width: 18rem;">
+
                         <div class="card-body">
+                            <div class="h4">@emp.Title</div>
                             <h6 class="card-subtitle mb-2">You are eligible in <b>@emp.Departments </b> Departments</h6>
 
                             <button class="btn btn-primary mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @onclick="e=>DepartmentsDetails(emp.InstituteId)">View Details</button>
@@ -116,7 +113,7 @@
     </div>
 </div>
 
-@if(checck)
+@if (checck)
 {
     <MessageComponent CustomMessage="@Message"></MessageComponent>
 }
@@ -158,7 +155,7 @@
     }
     private void Submit()
     {
-        if (PassingDegreeSGid != "-1" && !string.IsNullOrEmpty(PassingDegreeSGid as string) || cityID != "-1" && !string.IsNullOrEmpty(cityID as string) || perc != "-1" && !string.IsNullOrEmpty(perc as string) )
+        if (PassingDegreeSGid != "-1" && !string.IsNullOrEmpty(PassingDegreeSGid as string) || cityID != "-1" && !string.IsNullOrEmpty(cityID as string) || perc != "-1" && !string.IsNullOrEmpty(perc as string))
         {
             FilterCitiesList = DalFilter.GetDepartmentsbyID(PassingDegreeSGid, cityID, perc);
             check = true;
@@ -166,13 +163,13 @@
         else
         {
             Alert();
-            
+
         }
 
     }
     private async Task Alert()
     {
-        await js.InvokeVoidAsync("alert","Please select all values");
+        await js.InvokeVoidAsync("alert", "Please select all values");
     }
     private void DepartmentsDetails(string iid)
     {

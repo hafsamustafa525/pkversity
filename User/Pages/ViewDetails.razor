@@ -1,58 +1,71 @@
 ﻿@using ClassLibraryDAL
 @using ClassLibraryEntities
-<div class="d-flex justify-content-center align-items-center">
+
+@*d-flex justify-content-center align-items-center*@
+
+<style>
+    .card {
+        border-left: 4px solid blue;
+    }
+
+    .text-primary {
+        font-weight: 600;
+    }
+</style>
+<div class="container">
 
     <div class="row">
 
         @foreach (var emp in @FilterDepartmentList)
         {
             <div class="col-md-12 mb-4">
-                <div class="card text-dark bg-light">
-                    <div class="card-header">
-                        <div class="d-flex justify-content-between">
+                <div class="card text-dark bg-light shadow-sm ">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-5">
                             <div>
-                                <h3>@emp.DegreeName</h3>
+                                <h4 class="fw-bold text-secondary">@emp.DegreeName</h4>
                             </div>
                             <div>
                                 <button class="btn btn-primary " @onclick="e=>OpenDeleteDialog(emp.ProgramDegreeId)">Future Scope</button>
-                             
+
                             </div>
                         </div>
-                    </div>
-                    <div class="container">
                         <div class="row">
-                            <div class="col-md-8">
-
-                                <div class="col mt-2">
-                                    <h5>Duration  <span class="text-primary">@emp.Duration </span></h5>
-                                </div>
-                                <div class="col mt-2">
-                                    <h5>TotalSem  <span class="text-primary">@emp.TotalSemesters</span></h5>
-                                </div>
-                                <div class="col mt-2">
-                                    <h5>Matric  <span class="text-primary">@emp.Matric </span></h5>
-                                </div>
-                                <div class="col mt-2">
-                                    <h5>FSC  <span class="text-primary">@emp.FSC </span></h5>
+                            <div class="col-md-3">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Duration</span><span class="text-primary">@emp.Duration </span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
-                                <div class="col mt-2">
-                                    <h5>TotalFee  <span class="text-primary">@emp.TotalFee </span></h5>
+                            <div class="col-md-3">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>TotalSem  </span><span class="text-primary">@emp.TotalSemesters</span>
+                                    </div>
                                 </div>
-                                <div class="col mt-2">
-                                    <h5>SemFee  <span class="text-primary">@emp.SemesterFee </span></h5>
-                                </div>
-                                <div class="col mt-2">
-                                    <h5>ClosingMerit  <span class="text-primary">@emp.ClosingMerit </span></h5>
-                                </div>
-
-
-
-
                             </div>
-
-
+                            <div class="col-md-3">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Total Fee  </span><span class="text-primary">@emp.TotalFee</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Semester Fee  </span><span class="text-primary">@emp.SemesterFee</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mt-4">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Closing Merit  </span><span class="text-primary">@emp.ClosingMerit</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -60,39 +73,17 @@
 
         }
     </div>
-    @*<div class="col-md-4">
-    @if (check)
-    {
-
-
-    <div class="container-fluid">
-    <div class="row">
-    @foreach (var emp in FutureScopeList)
-    {
-    <div class="col-12">
-    <div class="card text-dark bg-light">
-    <div class="card-body">
-    @((MarkupString)emp.Description)
-
-    </div>
-    </div>
-    </div>
-    }
-    </div>
-    </div>
-    }
-    </div>*@
 </div>
 
 @if (DeleteDialogOpen)
 {
-<FutureScope  ID="@ID" OnClose="@OnDeleteDialogClose"></FutureScope>    
+    <FutureScope ID="@ID" OnClose="@OnDeleteDialogClose"></FutureScope>
 }
 
 
 @code {
-    public bool DeleteDialogOpen{ get; set; }
-     private void OnDeleteDialogClose(bool accepted)
+    public bool DeleteDialogOpen { get; set; }
+    private void OnDeleteDialogClose(bool accepted)
     {
         DeleteDialogOpen = false;
         StateHasChanged();
@@ -104,13 +95,13 @@
         StateHasChanged();
     }
 
-    public string? ID{ get; set; }
-    public bool check { get; set;} = false;
+    public string? ID { get; set; }
+    public bool check { get; set; } = false;
     [Parameter] public string? insid { get; set; }
     [Parameter] public string? PDSGID { get; set; }
     [Parameter]
     public List<EntProgramDegreeDetails>? FilterDepartmentList { get; set; }
     public List<EntFutureScope>? FutureScopeList { get; set; }
 
-   
+
 }
