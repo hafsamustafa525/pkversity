@@ -10,7 +10,7 @@
         <h2 class="text-center mt-5 text-black">Educational Information</h2>
         <div class="row mt-4 d-flex justify-content-center align-items-center">
 
-            <div class="col-5">
+            <div class="col-sm-5">
                 <label>Degree</label>
                 <select class="form-select" aria-label="Default select example" @onchange="_DegreeOption">
                     <option selected>Select Degree</option>
@@ -28,7 +28,7 @@
         <div class="row d-flex justify-content-center">
 
 
-            <div class="col-5">
+            <div class="col-sm-5">
                 <label>Degree Groups</label>
                 <select class="form-select" aria-label="Default select example" @onchange="_PGSGOption">
                     <option selected>Select Degree Group </option>
@@ -49,7 +49,7 @@
         <div class="row d-flex justify-content-center">
 
 
-            <div class="col-5">
+            <div class="col-sm-5">
                 <label>Board/University</label>
                 <Select @onchange="_EditBU" class="form-select ">
                     <option selected>Select Board</option>
@@ -65,7 +65,7 @@
         <div class="row d-flex justify-content-center">
 
 
-            <div class="col-5">
+            <div class="col-sm-5">
                 <label> Obtained Marks </label>
                 <InputText @bind-Value="_ModelInfo.ObtainedMarks" class="form-control" />
 
@@ -74,7 +74,7 @@
         <div class="row d-flex justify-content-center">
 
 
-            <div class="col-5">
+            <div class="col-sm-5">
                 <label>Total Marks</label>
                 <InputText @bind-Value="_ModelInfo.TotalMarks" class="form-control" />
 
@@ -85,7 +85,7 @@
         <div class="row d-flex justify-content-center">
 
 
-            <div class="col-5">
+            <div class="col-sm-5">
                 <label>Percentage</label>
                 <InputText @bind-Value="_ModelInfo.Percentage"   class="form-control"/>
 
@@ -98,7 +98,7 @@
         <div class="row d-flex justify-content-center">
 
 
-            <div class="col-5">
+            <div class="col-sm-5">
                 <label>Passing Year</label>
                 <InputText @bind-Value="_ModelInfo.PassingYear" class="form-control" />
 
@@ -108,7 +108,7 @@
         <div class="row d-flex justify-content-center">
 
 
-            <div class="col-5">
+            <div class="col-sm-5">
                 <label>Institute</label>
                 <InputText type="text" @bind-Value="_ModelInfo.Institute" class="form-control" />
 
@@ -125,82 +125,171 @@
 
 </div>
 
-<h2>SSC</h2>
-<div class="container pt-4 table-responsive">
-    <table class="table  table-bordered">
-        <thead class="table-dark">
-            <tr scope="row">
+<style>
+    .card {
+        border-left: 4px solid blue;
+    }
 
+    .text-primary {
+        font-weight: 600;
+    }
+</style>
+<div class="container mt-5">
 
-                <th>Passing Degree Group</th>
-                <th>Board/University</th>
-                <th>Obtained Marks</th>
-                <th>Total Marks</th>
-                <th>Percentage</th>
-                <th>Passing Year</th>
-                <th>Institutes</th>
-                <th>Action</th>
+    <div class="row">
 
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var emp in @MatricList)
-            {
-                <tr scope="row">
+        @foreach (var emp in @MatricList)
+        {
+            <div class="col-md-10 mb-4">
+                <div class="card text-dark bg-light shadow-sm ">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-5">
+                            <div>
+                                <h3 class="fw-bold ">SSC</h3>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary "  @onclick="(e => FDelete(emp.SID))">Delete</button>
 
-                    <td>@emp.PassingDSGroup</td>
-                    <td>@emp.Board_University</td>
-                    <td>@emp.ObtainedMarks</td>
-                    <td>@emp.TotalMarks</td>
-                    <td>@emp.Percentage</td>
-                    <td>@emp.PassingYear</td>
-                    <td>@emp.Institute</td>
-                    <button class="btn btn-delete" @onclick="(e => Delete(emp.SID))">Delete</button>
-                </tr>
+                            </div>
+                        </div>
+                        <div class="row">
+                           @* <div class="col-md-3">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Passing</span><span class="text-primary">@emp.PassingDSGroup </span>
+                                    </div>
+                                </div>
+                            </div>*@
+                            <div class="col-md-3">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Board/University</span><span class="text-primary">@emp.Board_University</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>ObtainedMarks  </span><span class="text-primary">@emp.ObtainedMarks</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>TotalMarks</span><span class="text-primary">@emp.TotalMarks</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Percentage</span><span class="text-primary">@emp.Percentage</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mt-4">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>PassingYear</span><span class="text-primary">@emp.PassingYear</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mt-4">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Institutes</span><span class="text-primary">@emp.Institute</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            }
-        </tbody>
-    </table>
+        }
+    </div>
 </div>
 
-<h2>HSSC</h2>
-<div class="container pt-4 table-responsive">
-    <table class="table  table-bordered table-hover">
-        <thead class="table-dark">
-            <tr scope="row">
+<div class="container ">
 
+    <div class="row">
 
-                <th>Passing Degree Group</th>
-                <th>Board/University</th>
-                <th>Obtained Marks</th>
-                <th>Total Marks</th>
-                <th>Percentage</th>
-                <th>Passing Year</th>
-                <th>Institutes</th>
-                <th>Action</th>
+        @foreach (var emp in @FscList)
+        {
+            <div class="col-md-10 mb-4">
+                <div class="card text-dark bg-light shadow-sm ">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-5">
+                            <div>
+                                <h3 class="fw-bold ">HSSC</h3>
+                            </div>
+                            <div>
+                                <button class="btn btn-primary "  @onclick="(e => FDelete(emp.SID))">Delete</button>
 
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var emp in @FscList)
-            {
-                <tr scope="row" >
+                            </div>
+                        </div>
+                        <div class="row">
+                           @* <div class="col-md-3">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Passing Groups</span><span class="text-primary">@emp.PassingDSGroup </span>
+                                    </div>
+                                </div>
+                            </div>*@
+                            <div class="col-md-3">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Board/University</span><span class="text-primary">@emp.Board_University</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>ObtainedMarks  </span><span class="text-primary">@emp.ObtainedMarks</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>TotalMarks</span><span class="text-primary">@emp.TotalMarks</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Percentage</span><span class="text-primary">@emp.Percentage</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mt-4">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>PassingYear</span><span class="text-primary">@emp.PassingYear</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mt-4">
+                                <div class="card p-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Institutes</span><span class="text-primary">@emp.Institute</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                    <td>@emp.PassingDSGroup</td>
-                    <td>@emp.Board_University</td>
-                    <td>@emp.ObtainedMarks</td>
-                    <td>@emp.TotalMarks</td>
-                    <td>@emp.Percentage</td>
-                    <td>@emp.PassingYear</td>
-                    <td>@emp.Institute</td>
-
-                     <button class="btn btn-primary btn-delete" @onclick="(e => FDelete(emp.SID))">Delete</button>
-                </tr>
-
-            }
-        </tbody>
-    </table>
+        }
+    </div>
 </div>
+
+
+
 
  
 

@@ -9,19 +9,12 @@
 <EditForm Model="_ModelInfo" OnSubmit="SubmitForm">
     <h2 class="text-center text-black mt-5">Personal Information</h2>
 
-       @*<div class="row mt-4 d-flex justify-content-center align-items-center">
-
-        <div class="col-4">
-            <label>Student ID</label>
-            <InputText @bind-Value="_ModelInfo.SID" class="form-control" disabled />
-
-        </div>
-    </div>*@
+     
 
 
     <div class="row mt-4 d-flex justify-content-center align-items-center">
 
-        <div class="col-4">
+        <div class="col-sm-4">
             <label>First Name</label>
             <InputText @bind-Value="_ModelInfo.FirstName" class="form-control" />
 
@@ -30,7 +23,7 @@
     <div class="row d-flex justify-content-center">
 
 
-        <div class="col-4">
+        <div class="col-sm-4">
             <label>Father Name</label>
             <InputText @bind-Value="_ModelInfo.FatherName" class="form-control" />
 
@@ -39,7 +32,7 @@
     <div class="row d-flex justify-content-center">
 
 
-        <div class="col-4">
+        <div class="col-sm-4">
             <label>Gender</label>
             <Select @onchange="_EditGender" class="form-select">
                 <option selected>Select Gender</option>
@@ -55,7 +48,7 @@
     <div class="row d-flex justify-content-center">
 
 
-        <div class="col-4">
+        <div class="col-sm-4">
             <label>Student CNIC</label>
             <InputText @bind-Value="_ModelInfo.CNIC" class="form-control" />
 
@@ -64,7 +57,7 @@
     <div class="row d-flex justify-content-center">
 
 
-        <div class="col-4">
+        <div class="col-sm-4">
             <label>Date of Birth</label>
             <InputText type="date" @bind-Value="_ModelInfo.DateOfBirth" class="form-control" />
 
@@ -75,7 +68,7 @@
     <div class="row d-flex justify-content-center">
 
 
-        <div class="col-4">
+        <div class="col-sm-4">
             <label>City</label>
             <Select @onchange="_EditCity" class="form-select">
                 <option selected>Select City</option>
@@ -97,7 +90,7 @@
     <div class="row d-flex justify-content-center">
 
 
-        <div class="col-4">
+        <div class="col-sm-4">
             <label>Address</label>
             <InputText @bind-Value="_ModelInfo.Address" class="form-control" />
 
@@ -107,7 +100,7 @@
     <div class="row d-flex justify-content-center">
 
 
-        <div class="col-4">
+        <div class="col-sm-4">
             <label>Student Mobile Number</label>
             <InputText type="tel" @bind-Value="_ModelInfo.StudentMobileNo" class="form-control" />
 
@@ -116,7 +109,7 @@
     <div class="row d-flex justify-content-center">
 
 
-        <div class="col-4">
+        <div class="col-sm-4">
             <label>Email</label>
             <InputText type="email" @bind-Value="_ModelInfo.Email" class="form-control" />
 

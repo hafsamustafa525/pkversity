@@ -18,14 +18,16 @@ h1:focus {
 a, .btn-link {
     color: #0071c1;
 }
-.nav-item a{
+
+.nav-item a {
     color: black !important;
     font-size: 1rem;
 }
+
 .navbar-brand {
     font-size: 2rem;
-    
 }
+
 .navbar-nav {
     display: flex;
     gap: 1.5rem;
@@ -290,38 +292,40 @@ h6 span {
     }
 
 
-.text-center{
-    margin-top:2rem;
+.text-center {
+    margin-top: 2rem;
 }
-#btn-register{
-    margin-right:3rem;
+
+#btn-register {
+    margin-right: 3rem;
 }
+
 .nav-item a:hover {
-    
-    border: 1px solid blue;
-    
+    color:blue;
 }
 
 
 div.b {
     position: absolute;
     right: 0;
-    
 }
 
-    
+
 .canvas-color {
     background-color: #F8F9FA;
-    color:white;
+    color: white;
 }
+
 .Login-Card input {
     font-size: 1.5rem;
     border: 1px solid blue;
 }
+
 .center {
-    margin-top:15rem;
+    margin-top: 15rem;
 }
-.btn-delete{
-    background-color:brown;
-    color:white;
+
+.btn-delete {
+    background-color: brown;
+    color: white;
 }
