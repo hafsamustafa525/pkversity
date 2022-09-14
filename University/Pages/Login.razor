@@ -17,7 +17,7 @@
         <input @bind="User" placeholder="userName" />
         <input type="password" @bind="Password" placeholder="Password" />
         <button @onclick="Authenticate" class="btn btn-primary">Login</button>
-        @if(check)
+        @if (check)
         {
             <p class="text-danger text-center">@Message</p>
         }
@@ -25,7 +25,6 @@
 </div>
 
 @code {
-
     private ClassLibraryEntities.EntInstitutes? _Model { get; set; }
 
     public string? User { get; set; }
@@ -75,9 +74,16 @@
 
                 });
 
-            nm.NavigateTo("/", true);
+            nm.NavigateTo("/home", true);
         }
 
     }
 
-}
+
+
+
+
+    }
+
+
+

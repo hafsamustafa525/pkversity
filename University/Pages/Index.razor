@@ -5,7 +5,10 @@
 
 <AuthorizeView>
     <Authorized>
-        <h1> hello, @context.User.Identity.Name</h1>
+      @*  @if (check)
+        {
+            <h1> hello, @var[1]</h1>
+        }*@
     </Authorized>
     <NotAuthorized>
         <h1> hello Guest</h1>
@@ -19,20 +22,29 @@ Welcome to your new app.
 <SurveyPrompt Title="How is Blazor working for you?" />
 <AuthorizeView>
     <Authorized>
-        <button @onclick="DisplayGreeting">Display </button>
-   </Authorized>
-</AuthorizeView>
-@code{
-    [CascadingParameter] 
-    private Task <AuthenticationState> authenticatestate { get; set; }
-    public string? message1 { get; set; }
-    private async Task DisplayGreeting()
-    { 
-         
-         var authState = await authenticatestate;
-         message1 = $"{authState.User.Identity.Name}";
-         await js.InvokeVoidAsync("alert", message1);
 
-        
+        <button @onclick="DisplayGreeting">Display </button>
+       
+    </Authorized>
+</AuthorizeView>
+
+@code {
+    [CascadingParameter]
+    private Task<AuthenticationState> authenticatestate { get; set; }
+    public string? message1 { get; set; }
+    public bool check { get; set; } = true;
+
+
+
+   public  string[] var{ get; set; }
+    public async Task DisplayGreeting()
+    {
+
+        var authState = await authenticatestate;
+       // message1 = $"{authState.User.Identity.Name}";
+         var= authState.User.Identity.Name.Split(',');
+        await js.InvokeVoidAsync("alert", var[1]);
+
+
     }
 }

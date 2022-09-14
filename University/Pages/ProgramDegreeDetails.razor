@@ -155,10 +155,20 @@
     public string? value1 { get; set; }
     [CascadingParameter]
     private Task<AuthenticationState> authenticatestate { get; set; }
-
-     public bool check=true;
+    public bool check=true;
     public string? ID { get; set; }
     public bool DeleteDialogOpen{ get; set; }
+    private List<EntProgramDegreeDetails>? ProgramDegreeDetailsList { get; set; }
+    private List<EntProgramCategory>? ProgramCategoriesList;
+    private List<EntProgramDegree>? ProgramDegreeList;
+    private EntProgramDegreeDetails? _ModelProgramDegreeDetail { get; set; }=new EntProgramDegreeDetails();
+    private string? alpha { get; set; }
+    private string? DegreeId { get; set; }
+    private string? EditOption { get; set; }
+    private string? CID { get; set; }
+
+
+
     private void OnDeleteDialogClose(bool accepted)
     {
         DeleteDialogOpen = false;
@@ -171,27 +181,12 @@
         ID = Id;
         StateHasChanged();
     }
-
-
     private async Task DisplayGreeting()
     {
         var authState = await authenticatestate;
         value1 = $"{authState.User.Identity.Name}";
 
     }
-    private List<EntProgramDegreeDetails>? ProgramDegreeDetailsList { get; set; }
-    private List<EntProgramCategory>? ProgramCategoriesList;
-    private List<EntProgramDegree>? ProgramDegreeList;
-
-    private EntProgramDegreeDetails? _ModelProgramDegreeDetail { get; set; }=new EntProgramDegreeDetails();
-    private string? alpha { get; set; }
-    private string? DegreeId { get; set; }
-    private string? EditOption { get; set; }
-    private string? CID { get; set; }
-
-
-
-
     protected async override void OnInitialized()
     {
         DisplayGreeting();
@@ -208,7 +203,6 @@
         LaodProgramDegreeDetails();
 
     }
-
     private void OnDelete(string id)
     {
 
@@ -221,12 +215,14 @@
 
         if (value1 != null)
         {
+            string[] v = value1.Split(',');
 
-            this.ProgramDegreeDetailsList = DALProgramDegreeDetails.GetProgramDegreeDetailsByInstituteId(value1);
+            this.ProgramDegreeDetailsList = DALProgramDegreeDetails.GetProgramDegreeDetailsByInstituteId(v[0]);
 
         }
 
     }
+  
     private void _CatOption(ChangeEventArgs e)
     {
         alpha = e.Value as string;
@@ -241,7 +237,9 @@
     {
         if (value1 != null)
         {
-            _ModelProgramDegreeDetail.InstituteId = value1;
+            string[] v = value1.Split(',');
+
+            _ModelProgramDegreeDetail.InstituteId = v[0];
             _ModelProgramDegreeDetail.ProgramDegreeId = DegreeId;
             _ModelProgramDegreeDetail.CityId = CID;  //id here
             DALProgramDegreeDetails.SaveProgramDegreeDetails(_ModelProgramDegreeDetail);
