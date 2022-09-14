@@ -8,7 +8,7 @@
 
 <h3>@title</h3>
 
-<h3>Institute Component</h3>
+<h3>Institutes </h3>
 
 
 
@@ -85,7 +85,7 @@
                 CityId
             </td>
             <td>
-                <select class="form-select" aria-label="Default select example" @onchange="_InstEdit">
+                <select class="form-select" aria-label="Default select example" @onchange="_CityEdit">
                     <option ID="DropDown">---Select City---</option>
                     @foreach (var emp in CitiesList)
 
@@ -266,7 +266,7 @@
         return i;
     }
 
-    private void _InstEdit(ChangeEventArgs e)
+    private void _CityEdit(ChangeEventArgs e)
     {
         InstEdit = e.Value as string;
     }
