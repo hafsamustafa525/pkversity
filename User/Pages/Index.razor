@@ -8,25 +8,28 @@
     .color-d{
         background-color:#1a1a97c4;
     }
+    .size{
+        font-size:1.5rem;
+    }
 </style>
- <div class="color-d">
+ <div>
         <div class="text-center py-5">
-            <h1 class="text-white mt-4 mb-4">Learn From Home</h1>
-            <h1 class="text-white display-1 mb-5">Education Courses</h1>
+            <h1 class="text-black mt-4 mb-4">Careers that matter</h1>
+            <h1 class="text-black display-1 mb-5">Education Courses</h1>
             <div class="mx-auto mb-5" >
                 
                 
 
 
        <div class="row">
-        <div class="col-md-10 offset-md-3">
-            <div class="input-group ">
+        <div class="col-sm-10 offset-sm-2">
+            <div class="input-group">
 
 
               
                     <div class="dropdown bootstrap-select">
-                        <select class="form-select text-black" @onchange="_DegOption" required>
-                            <option value="-1" selected>Select Category</option>
+                        <select class="form-select text-black size" @onchange="_DegOption" required>
+                            <option value="-1" selected>Select Program Degree</option>
 
                             @foreach (var emp in @PassingDegreeList)
                             {
@@ -37,8 +40,8 @@
             
           
                     <div class="dropdown bootstrap-select">
-                        <select @bind="@PassingDegreeSGid" class="form-select text-black" aria-label="Default select example">
-                            <option value="-1" selected>Select Category</option>
+                        <select @bind="@PassingDegreeSGid" class="form-select text-black size" aria-label="Default select example">
+                            <option value="-1" selected>Select Passing Groups</option>
 
                             @foreach (var emp in @PassingDSGroupsList)
                             {
@@ -51,10 +54,14 @@
                     </div>
           
                     <div class="dropdown bootstrap-select">
-                        <select @bind="@perc" class="form-select text-black" aria-label="Default select example" required>
+                        <select @bind="@perc" class="form-select text-black size" aria-label="Default select example" required>
                             <option value="-1" selected>Select Percentage</option>
-                            <option value="50">50 </option>
-                            <option value="60">60</option>
+                            <option value="50">40-45</option>
+                            <option value="50">45-50</option>
+                            <option value="50">50-55</option>
+                            <option value="60">55-60</option>
+                            <option value="60">60-65</option>
+                            <option value="60">65-70</option>
 
 
                         </select>
@@ -62,7 +69,7 @@
               
           
                     <div class="dropdown bootstrap-select">
-                        <select @bind="cityID" class="form-select " aria-label="Default select example" required>
+                        <select @bind="cityID" class="form-select size" aria-label="Default select example" required>
                             <option value="-1">Select City</option>
 
                             @foreach (var emp in @CitiesList)
@@ -74,7 +81,7 @@
                         </select>
                     </div>
             
-                    <button type="submit" class="btn btn-outline-success text-white" @onclick="Submit">Search</button>
+                    <button type="submit" class="btn btn-primary text-white" @onclick="Submit">Search</button>
               
         
        </div>
@@ -103,7 +110,7 @@
                             <div class="h4">@emp.Title</div>
                             <h6 class="card-subtitle mb-2">You are eligible in <b>@emp.Departments </b> Departments</h6>
 
-                            <button class="btn btn-primary mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @onclick="e=>DepartmentsDetails(emp.InstituteId)">View Details</button>
+                            <button class="btn btn-primary mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @onclick="e=>DepartmentsDetails(emp.InstituteId,emp.Title)">View Details</button>
 
                         </div>
                     </div>
@@ -117,7 +124,7 @@
 
 <div class="offcanvas offcanvas-end w-100 canvas-color" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
-        <h5 id="offcanvasRightLabel">Eligible Departments</h5>
+        <h2 id="offcanvasRightLabel" class="text-black">@Title</h2>
         <button type="button" class="btn-close text-reset " style="Color:White;" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
@@ -143,7 +150,7 @@
     private List<EntCities>? CitiesList;
     private List<EntFilter> FilterCitiesList;
     private List<EntProgramDegreeDetails>? FilterDepartmentList { get; set; }
-
+    public string? Title{ get; set; }
     public string? alpha { get; set; }
     private string? PassingDegreeSGid { get; set; }
     public string? cityID { get; set; }
@@ -188,9 +195,9 @@
     {
         await js.InvokeVoidAsync("alert", "Please select all values");
     }
-    private void DepartmentsDetails(string iid)
+    private void DepartmentsDetails(string iid,string title)
     {
-
+        Title = title;
         FilterDepartmentList = DalFilter.GetDepartmentDetailsbyID(PassingDegreeSGid, iid);
         check1 = true;
     }
