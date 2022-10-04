@@ -12,38 +12,44 @@
     }
 
     .nav-color {
-        background-color: #1D1D1B;
-        color: white
+        background-color: white;
+        color: black;
     }
 
     .btn-green {
         background-color: #40DE21;
     }
 
-  
+    .footer-anchor {
+        text-decoration: none
+    }
 </style>
 
 <main>
-    <nav class="navbar navbar-expand-sm sticky-top nav-color" style="height:3.5rem;">
-        <div class="container-fluid position-relative" style="background-color:#1D1D1B;">
-            <a href="/" class="navbar-brand ml-lg-3">
-                <img src="https://i.ibb.co/BPsZd5f/pkversitylogo.png" class="img-height" />
+    <nav class="navbar navbar-expand-sm sticky-top nav-color shadow-sm" >
+        <div class="container-fluid position-relative" style="background-color:white;">
+            <a class="navbar-brand" href="/" b-23ai3ihtzc="">
+                <img src="images/img.png" height="40">
+
             </a>
+             
+
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon" style="background-color:white;"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <AuthorizeView Roles="User">
                         <Authorized>
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="/">Home</a>
+                                <a class="nav-link text-black" aria-current="page" href="/">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="personalinformation">Personal Info</a>
+                                <a class="nav-link text-black"  href="personalinformation">Personal Info</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="form">Academic Info</a>
+                                <a class="nav-link text-black" href="form">Academic Info</a>
                             </li>
                         </Authorized>
 
@@ -51,13 +57,13 @@
                 </ul>
                 <AuthorizeView>
                     <Authorized>
-                        <a @onclick="logout" href="javascript:void(0)" class="btn btn-green">Logout</a>
+                        <a @onclick="logout" href="javascript:void(0)" class="btn text-black" style="background-color:azure;">Logout</a>
                     </Authorized>
                     <NotAuthorized>
                         <form class="form-inline my-2 my-lg-0">
 
-                            <a href="login" class="btn btn-green">Login</a>
-                            <a href="register" class="btn btn-green">Register</a>
+                            <a href="login" class="btn text-black" style="background-color:azure;">Login</a>
+                            <a href="register" class="btn text-black" style="background-color:azure;">Register</a>
                         </form>
 
                     </NotAuthorized>
@@ -65,21 +71,38 @@
             </div>
         </div>
     </nav>
-    <div style="height:100vh;">
+    <div>
         @Body
     </div>
-    <footer class="fixed-bottom text-lg-start pb-2 " style="background-color:#1D1D1B; color:white;">
+    <section class="border-top mt-5">
+        <!--!--><!--!--><style>
+                            .nav-link {
+                                display: inline-block !important;
+                                padding: 0 5px 0 5px;
+                               
+                            }
+        </style>
+        <!--!--><div class="container  pt-3">
+            <div class="row">
+                <div class="col-md-2 text-center">
+                    <img src="/images/img.png" height="40">
+                    <p class="text-secondary small">
+                        ©2022 pkversity
 
-        @* <div class="container p-1">
-        </div>*@
+                    </p>
+                </div>
+                <div class="col-md-8 text-center text-secondary">
+                    <a href="aboutus" class="nav-link">About Us</a>
+                    <a href="#" class="nav-link">Contact Us</a>
+                    <a href="#" class="nav-link">Privacy Policy</a>
+                    <a href="#" class="nav-link">FAQ</a>
+                    <a href="#" class="nav-link">Partners</a>
 
-        <div class="text-center  ">
-            ©2020 Pkversity
+                    <p class="small">Powerd by: ASEYEM (Institute of Research and Guidance), Islamabad Pakistan</p>
+                </div>
+            </div>
         </div>
-        <p class="text-center ">
-            Powered by: ASEYEM (Institute of Research and Guiudance), Islamabad Pakistan
-        </p>
-    </footer>
+    </section>
 </main>
 
 @code {
