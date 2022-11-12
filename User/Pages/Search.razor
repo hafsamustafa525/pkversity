@@ -1,4 +1,4 @@
-﻿@page "/search"
+﻿@page "/search/{value2}/{value3}/{value4}"
 @using ClassLibraryDAL
 @using ClassLibraryEntities
 @inject IJSRuntime js
@@ -166,9 +166,14 @@
 
 @code {
 
-    
-   
-  // public  Submit1 { get; set; }
+    [Parameter]
+    public string? value2{ get; set; }
+    [Parameter]
+    public string? value3{ get; set; }
+    [Parameter]
+    public string? value4{ get; set; }
+    public bool Data { get; set; } = false;
+    // public  Submit1 { get; set; }
 
     public string? value1 { get; set; }
     [CascadingParameter]
@@ -186,19 +191,19 @@
     private List<EntProgramDegreeDetails>? FilterDepartmentList { get; set; }
 
     public string? Title { get; set; }
-   
+
     public string? alpha { get; set; }
-    
+
     public string? PassingDegreeSGid { get; set; }
-   
+
     public string? cityID { get; set; }
 
-    
+
     public bool check { get; set; } = false;
-   
+
     public bool check1 = false;
     public bool checck = false;
- 
+
     public string? perc { get; set; }
     public string? Message { get; set; }
 
@@ -215,7 +220,7 @@
 
     private void LoadProgramDetails()
     {
-       // System.Threading.Thread.Sleep(2000);
+        // System.Threading.Thread.Sleep(2000);
         this.PassingDegreeList = DALPassingDegree.GetPassingDegrees();
         this.PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
         this.CitiesList = DalCities.GetCities();
@@ -225,7 +230,7 @@
         //  isloading = true;
         // await Task.Run(LoadProgramDetails);
         LoadProgramDetails();
-        
+        List();
     }
 
     private void _DegOption(ChangeEventArgs e)
@@ -234,13 +239,23 @@
 
     }
 
-    
+    public void List()
+    {
+
+
+        FilterCitiesList = DalFilter.GetDepartmentsbyID(value2 , value3, value4);
+        check = true;
+    }
+
     public void  Submit() 
-    {   
+    {
+        Data = false;
+
+
         if (PassingDegreeSGid != "-1" && !string.IsNullOrEmpty(PassingDegreeSGid as string) || cityID != "-1" && !string.IsNullOrEmpty(cityID as string) || perc != "-1" && !string.IsNullOrEmpty(perc as string))
         {  
             FilterCitiesList = DalFilter.GetDepartmentsbyID(PassingDegreeSGid, cityID, perc);
-           check = true;
+            check = true;
         }
         else
         {
@@ -255,6 +270,8 @@
     }
     private void DepartmentsDetails(string iid, string title)
     {
+        PassingDegreeSGid = value2;
+
       //  DisplayGreeting();
        // if (value1 != null && value1 != "")
        // {
