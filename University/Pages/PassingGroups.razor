@@ -126,8 +126,10 @@
         MyList = ClassLibraryDAL.CustomLogic.checklist();
     }
     private void LaodProgramDegreeDetails()
-    {
-        this.PassingDSGroupsList1 = ClassLibraryDAL.DALPassingDSGroups.GetGroupsById(pdid, int.Parse(value1));
+    {   
+        string[] v = value1.Split(',');
+        
+        this.PassingDSGroupsList1 = ClassLibraryDAL.DALPassingDSGroups.GetGroupsById(pdid, int.Parse(v[0]));
 
     }
 

@@ -16,21 +16,18 @@ h1:focus {
 }
 
 
-.nav-item a {
-    color: white;
-    font-size: 1rem;
-}
+
 
 .navbar-brand {
     font-size: 1rem;
 }
 
-.navbar-nav {
+/*.navbar-nav {
     display: flex;
     gap: 1.5rem;
     color: white;
 }
-
+*/
 
 .content {
     padding-top: 1.1rem;
@@ -112,10 +109,6 @@ h1:focus {
     font-family: "Muli",sans-serif;
 }
 
-body {
-    background-color: #F8F9FA;
-    color: white;
-}
 
 
 
@@ -261,74 +254,72 @@ div.b {
     background-color: brown;
     color: white;
 }
-.loader20, .loader20:after, .loader20:before {
-    border-radius: 50%
+
+.box {
+    min-height: 80vh;
 }
 
-    .loader20:after, .loader20:before {
-        position: absolute;
-        content: ''
-    }
 
-    .loader20:before {
-        width: 5.2em;
-        height: 10.2em;
-        background-color: #eef7f5;
-        border-radius: 10.2em 0 0 10.2em;
-        top: -.1em;
-        left: -.1em;
-        -webkit-transform-origin: 5.2em 5.1em;
-        transform-origin: 5.2em 5.1em;
-        -webkit-animation: load20 2s infinite ease 1.5s;
-        animation: load20 2s infinite ease 1.5s
-    }
 
-.loader20 {
-    font-size: 11px;
-    text-indent: -99999em;
-    margin: 55px auto;
-    position: relative;
-    width: 10em;
-    height: 10em;
-    box-shadow: inset 0 0 0 1em #fff;
-    -webkit-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    transform: translateZ(0)
+
+
+.loader {
+    width: 70px;
+    height: 70px;
+    margin: 40px auto;
 }
 
-    .loader20:after {
-        width: 5.2em;
-        height: 10.2em;
-        background-color: #eef7f5;
-        border-radius: 0 10.2em 10.2em 0;
-        top: -.1em;
-        left: 5.1em;
-        -webkit-transform-origin: 0 5.1em;
-        transform-origin: 0 5.1em;
-        -webkit-animation: load20 2s infinite ease;
-        animation: load20 2s infinite ease
+    .loader p {
+        font-size: 16px;
+        color: #777;
     }
 
-@-webkit-keyframes load20 {
+    .loader .loader-inner {
+        display: inline-block;
+        width: 15px;
+        border-radius: 15px;
+        background: #0d6efd;
+    }
+
+        .loader .loader-inner:nth-last-child(1) {
+            -webkit-animation: loading 1.5s 1s infinite;
+            animation: loading 1.5s 1s infinite;
+        }
+
+        .loader .loader-inner:nth-last-child(2) {
+            -webkit-animation: loading 1.5s .5s infinite;
+            animation: loading 1.5s .5s infinite;
+        }
+
+        .loader .loader-inner:nth-last-child(3) {
+            -webkit-animation: loading 1.5s 0s infinite;
+            animation: loading 1.5s 0s infinite;
+        }
+
+@-webkit-keyframes loading {
     0% {
-        -webkit-transform: rotate(0);
-        transform: rotate(0)
+        height: 15px;
+    }
+
+    50% {
+        height: 35px;
     }
 
     100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg)
+        height: 15px;
     }
 }
 
-@keyframes load20 {
+@keyframes loading {
     0% {
-        -webkit-transform: rotate(0);
-        transform: rotate(0)
+        height: 15px;
+    }
+
+    50% {
+        height: 35px;
     }
 
     100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg)
+        height: 15px;
     }
 }

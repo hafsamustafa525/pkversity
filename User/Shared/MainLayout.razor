@@ -26,13 +26,13 @@
 </style>
 
 <main>
-    <nav class="navbar navbar-expand-sm sticky-top nav-color shadow-sm" >
+    <nav class="navbar navbar-expand-sm sticky-top nav-color shadow-sm">
         <div class="container-fluid position-relative" style="background-color:white;">
             <a class="navbar-brand" href="/" b-23ai3ihtzc="">
-                <img src="images/img.png" height="40">
+                <img src="Images/img.png" height="40">
 
             </a>
-             
+
 
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +46,7 @@
                                 <a class="nav-link text-black" aria-current="page" href="/">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-black"  href="personalinformation">Personal Info</a>
+                                <a class="nav-link text-black" href="personalinformation">Personal Info</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-black" href="form">Academic Info</a>
@@ -57,13 +57,13 @@
                 </ul>
                 <AuthorizeView>
                     <Authorized>
-                        <a @onclick="logout" href="javascript:void(0)" class="btn text-black" style="background-color:azure;">Logout</a>
+                        <a @onclick="logout" href="javascript:void(0)" class="btn btn-primary">Logout</a>
                     </Authorized>
                     <NotAuthorized>
                         <form class="form-inline my-2 my-lg-0">
 
-                            <a href="login" class="btn text-black" style="background-color:azure;">Login</a>
-                            <a href="register" class="btn text-black" style="background-color:azure;">Register</a>
+                            <a href="login" class="btn  btn-primary">Login</a>
+                            <a href="register" class="btn  btn-primary">Register</a>
                         </form>
 
                     </NotAuthorized>
@@ -74,18 +74,17 @@
     <div>
         @Body
     </div>
-    <section class="border-top mt-5 fixed-bottom">
+    <section class="border-top mt-5 ">
         <!--!--><!--!--><style>
                             .nav-link {
                                 display: inline-block !important;
                                 padding: 0 5px 0 5px;
-                               
                             }
         </style>
         <!--!--><div class="container  pt-3">
             <div class="row">
                 <div class="col-md-2 text-center">
-                   @*<img src="/images/img.png" height="40">*@
+                    @*<img src="/images/img.png" height="40">*@
 
                     <p class="text-secondary small">
                         ©2022 pkversity

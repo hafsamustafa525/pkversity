@@ -24,19 +24,29 @@
     .font1 {
         font-size: 2.5rem;
     }
+
     .text-sm .tooltip-inner {
-  font-size: 0.5rem;
-}
-    
+        font-size: 0.5rem;
+    }
+
+    .label-properties {
+        font-size: 1.5rem;
+        color: black;
+        font-weight: 600;
+    }
 </style>
 @if (PassingDegreeList == null)
 {
-    <div class="container-fluid bg-3">
+    <div class="container-fluid bg-3 mt-5">
         <div class="container">
-
             <div class="row">
                 <div class="col-md-12">
-                    <div class="loader20">Loading...</div>
+                    <div class="loader">
+                        <p>Loading...</p>
+                        <div class="loader-inner"></div>
+                        <div class="loader-inner"></div>
+                        <div class="loader-inner"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -44,91 +54,83 @@
 }
 else
 {
-    <div>
 
-
+    <div class="box">
         <div class="text-center">
-            <img src="images/img.png" height="100" style="margin-top:10rem;">
-
-            @*<h1 class="text-black mt-4 mb-4 font1">Careers that matter</h1>
-        <h1 class="text-black display-1 mb-5 font">Lets build your career with Pkversity</h1>*@
-            <div class="mx-auto mb-5 mt-3">
-
-
-
-
+            <h1 class="text-black mt-4 mb-4 font1 fw-bold">Careers that matter</h1>
+            <h4 class="text-black display-1 mb-2 font">Lets build your career with <span></span></h4>
+            <img src="Images/img.png" height="80">
+        </div>
+        <div class="mb-5 mt-3">
+            <div class="container">
                 <div class="row">
-                      
-                    <div class="col-sm-10 offset-sm-1">
-                       
-                        <div class="input-group">
+                    <div class="col-md-6 mt-3">
 
-                            <div class="d-flex flex-column">
-                           <h7>Select last Passing degree</h7>
-                            <button style="border:none;"   data-toggle="tooltip" data-mdb-custom-class="text-sm" data-placement="top" title="Select Last Passing Degree">                            
-                            <select class="form-select text-black size" @onchange="_DegOption" required>
-                                <option value="-1" selected>Select Program Degree</option>
+                        <label for="exampleFormControlInput1" class="form-label label-properties">Select Program Degree</label>
+                        <select class="form-select text-black size"
+                            @onchange="_DegOption" required>
+                            <option value="-1" selected>Select Program Degree</option>
 
-                                @foreach (var emp in @PassingDegreeList)
+                            @foreach (var emp in @PassingDegreeList)
+                            {
+                                <option value="@emp.PassingDegreesId">@emp.Title</option>
+                            }
+                        </select>
+
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <label for="exampleFormControlInput1" class="form-label label-properties">Select Passing Groups</label>
+                        <select @bind="@PassingDegreeSGid" class="form-select text-black size" aria-label="Default select example">
+                            <option value="-1" selected>Select Passing Groups</option>
+
+                            @foreach (var emp in @PassingDSGroupsList)
+                            {
+                                if (alpha == emp.PassingDegreeId)
                                 {
-                                    <option value="@emp.PassingDegreesId">@emp.Title</option>
+                                    <option value="@emp.PassingDSGroupsId">@emp.PassingDSGroups</option>
                                 }
-                            </select>
-                            </button>
-                            </div>
-                            <div class="d-flex flex-column">
-                           <h7>Select last Passing degree's group</h7>
-                            <select @bind="@PassingDegreeSGid" class="form-select text-black size" aria-label="Default select example">
-                                <option value="-1" selected>Select Passing Groups</option>
-
-                                @foreach (var emp in @PassingDSGroupsList)
-                                {
-                                    if (alpha == emp.PassingDegreeId)
-                                    {
-                                        <option value="@emp.PassingDSGroupsId">@emp.PassingDSGroups</option>
-                                    }
-                                }
-                            </select>
-                            </div>
-                             <div class="d-flex flex-column">
-                           <h7>Select last passing degree's Percentage </h7>
-                            <select @bind="@perc" class="form-select text-black size" aria-label="Default select example" required>
-                                <option value="-1" selected>Select Percentage</option>
-                                <option value="50">40-45 %</option>
-                                <option value="50">45-50 %</option>
-                                <option value="50">50-55 %</option>
-                                <option value="60">55-60 %</option>
-                                <option value="60">60-65 %</option>
-                                <option value="60">65-70 %</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <label for="exampleFormControlInput1" class="form-label label-properties">Select percentage</label>
+                        <select @bind="@perc" class="form-select text-black size" aria-label="Default select example" required>
+                            <option value="-1" selected>Select Percentage</option>
+                            <option value="50">40-45 %</option>
+                            <option value="50">45-50 %</option>
+                            <option value="50">50-55 %</option>
+                            <option value="60">55-60 %</option>
+                            <option value="60">60-65 %</option>
+                            <option value="60">65-70 %</option>
 
 
-                            </select>
-                            </div>
-                             <div class="d-flex flex-column">
-                           <h7>Select favourable city </h7>
-                            <select @bind="cityID" class="form-select size" aria-label="Default select example" required>
-                                <option value="-1">Select City</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <label for="exampleFormControlInput1" class="form-label label-properties">Select City</label>
+                        <select @bind="cityID" class="form-select size" aria-label="Default select example" required>
+                            <option value="-1">Select City</option>
 
-                                @foreach (var emp in @CitiesList)
-                                {
+                            @foreach (var emp in @CitiesList)
+                            {
 
-                                    <option value="@emp.CityId">@emp.CityName</option>
+                                <option value="@emp.CityId">@emp.CityName</option>
 
-                                }
-                            </select>
-                            </div>
-                            <div  style="font-size: 1rem;margin-top: 1.7rem;">
-                                
-                            <button type="submit" class="btn btn-primary text-white" style="font-size: 22px;" @onclick="Submit">Search</button>
-                            </div>
+                            }
+                        </select>
+                    </div>
+                    <div style="font-size: 1rem;margin-top: 1.7rem;">
 
-                        </div>
-
+                        <button type="submit" class="btn btn-primary text-white" style="font-size: 22px;" @onclick="Submit">Search</button>
                     </div>
 
                 </div>
             </div>
+
+
+
         </div>
+
 
     </div>
 

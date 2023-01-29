@@ -8,119 +8,104 @@
 <div>
     <EditForm Model="_ModelInfo" OnSubmit="SubmitForm">
         <h2 class="text-center mt-5 text-black">Educational Information</h2>
-        <div class="row mt-4 d-flex justify-content-center align-items-center">
+        <div class="container">
+            <div class="row mt-4 d-flex flex-column justify-content-center align-items-center">
 
-            <div class="col-sm-5">
-                <label>Degree</label>
-                <select class="form-select" aria-label="Default select example" @onchange="_DegreeOption">
-                    <option selected>Select Degree</option>
+                <div class="col-sm-5">
+                    <label class="form-label text-black">Degree</label>
+                    <select class="form-select" aria-label="Default select example" @onchange="_DegreeOption">
+                        <option selected>Select Degree</option>
 
-                    @foreach (var reh in @PassingDegreeList)
-                    {
-                        <option value="@reh.PassingDegreesId">@reh.Title</option>
-                    }
-                </select>
-
-            </div>
-
-
-        </div>
-        <div class="row d-flex justify-content-center">
-
-
-            <div class="col-sm-5">
-                <label>Degree Groups</label>
-                <select class="form-select" aria-label="Default select example" @onchange="_PGSGOption">
-                    <option selected>Select Degree Group </option>
-
-                    @foreach (var emp in @PassingDSGroupsList)
-                    {
-                        @if (degree == emp.PassingDegreeId)
+                        @foreach (var reh in @PassingDegreeList)
                         {
-                            <option value="@emp.PassingDSGroups">@emp.PassingDSGroups</option>
+                            <option value="@reh.PassingDegreesId">@reh.Title</option>
                         }
+                    </select>
 
-                    }
-                </select>
+                </div>
+
+
+
+
+
+                <div class="col-sm-5">
+                    <label class="form-label text-black">Degree Groups</label>
+                    <select class="form-select" aria-label="Default select example" @onchange="_PGSGOption">
+                        <option selected>Select Degree Group </option>
+
+                        @foreach (var emp in @PassingDSGroupsList)
+                        {
+                            @if (degree == emp.PassingDegreeId)
+                            {
+                                <option value="@emp.PassingDSGroups">@emp.PassingDSGroups</option>
+                            }
+
+                        }
+                    </select>
+
+                </div>
+
+
+
+                <div class="col-sm-5">
+                    <label class="form-label text-black">Board/University</label>
+                    <Select @onchange="_EditBU" class="form-select ">
+                        <option selected>Select Board</option>
+                        <option value="Rwp">Rawalpindi</option>
+                        <option value="Isl">Islamabad</option>
+
+                    </Select>
+
+                </div>
+
+                <div class="col-sm-5">
+                    <label class="form-label text-black"> Obtained Marks </label>
+                    <InputText @bind-Value="_ModelInfo.ObtainedMarks" class="form-control" placeholder="Enter Obtainer Marks" />
+
+                </div>
+
+
+                <div class="col-sm-5">
+                    <label class="form-label text-black">Total Marks</label>
+                    <InputText @bind-Value="_ModelInfo.TotalMarks" class="form-control" placeholder="Enter Total Marks" />
+
+                </div>
+
+
+
+                <div class="col-sm-5">
+                    <label class="form-label text-black">Percentage</label>
+                    <InputText @bind-Value="_ModelInfo.Percentage" class="form-control" placeholder="Enter Percentage" />
+
+
+                </div>
+
+
+
+
+
+                <div class="col-sm-5">
+                    <label class="form-label text-black">Passing Year</label>
+                    <InputText @bind-Value="_ModelInfo.PassingYear" class="form-control" placeholder="Enter passing year" />
+
+                </div>
+
+
+
+                <div class="col-sm-5">
+                    <label class="form-label text-black">Institute</label>
+                    <InputText type="text" @bind-Value="_ModelInfo.Institute" class="form-control" placeholder="Enter Institute Name" />
+
+                </div>
 
             </div>
 
         </div>
-        <div class="row d-flex justify-content-center">
-
-
-            <div class="col-sm-5">
-                <label>Board/University</label>
-                <Select @onchange="_EditBU" class="form-select ">
-                    <option selected>Select Board</option>
-                    <option value="Rwp">Rawalpindi</option>
-                    <option value="Isl">Islamabad</option>
-
-                </Select>
-
-            </div>
-        </div>
-
-
-        <div class="row d-flex justify-content-center">
-
-
-            <div class="col-sm-5">
-                <label> Obtained Marks </label>
-                <InputText @bind-Value="_ModelInfo.ObtainedMarks" class="form-control" />
-
-            </div>
-        </div>
-        <div class="row d-flex justify-content-center">
-
-
-            <div class="col-sm-5">
-                <label>Total Marks</label>
-                <InputText @bind-Value="_ModelInfo.TotalMarks" class="form-control" />
-
-            </div>
-
-        </div>
-
-        <div class="row d-flex justify-content-center">
-
-
-            <div class="col-sm-5">
-                <label>Percentage</label>
-                <InputText @bind-Value="_ModelInfo.Percentage"   class="form-control"/>
-
-
-            </div>
-        </div>
-
-
-
-        <div class="row d-flex justify-content-center">
-
-
-            <div class="col-sm-5">
-                <label>Passing Year</label>
-                <InputText @bind-Value="_ModelInfo.PassingYear" class="form-control" />
-
-            </div>
-        </div>
-
-        <div class="row d-flex justify-content-center">
-
-
-            <div class="col-sm-5">
-                <label>Institute</label>
-                <InputText type="text" @bind-Value="_ModelInfo.Institute" class="form-control" />
-
-            </div>
-        </div>
-
-
-
         <div class="text-center ">
-            <button type="submit" class="btn btn-primary " id="btn-register">Register</button>
-            <button type="reset" class="btn btn-secondary">Cancel</button>
+            <button type="submit" class="btn btn-primary mt-3 " id="btn-register">Register</button>
+            <button type="reset" class="btn btn-secondary mt-3 ">Cancel</button>
         </div>
+
     </EditForm>
 
 </div>
@@ -148,18 +133,18 @@
                                 <h3 class="fw-bold ">SSC</h3>
                             </div>
                             <div>
-                                <button class="btn btn-primary "  @onclick="(e => FDelete(emp.SID))">Delete</button>
+                                <button class="btn btn-primary " @onclick="(e => FDelete(emp.SID))">Delete</button>
 
                             </div>
                         </div>
                         <div class="row">
-                           @* <div class="col-md-3">
-                                <div class="card p-2">
-                                    <div class="d-flex justify-content-between">
-                                        <span>Passing</span><span class="text-primary">@emp.PassingDSGroup </span>
-                                    </div>
-                                </div>
-                            </div>*@
+                            @* <div class="col-md-3">
+                        <div class="card p-2">
+                        <div class="d-flex justify-content-between">
+                        <span>Passing</span><span class="text-primary">@emp.PassingDSGroup </span>
+                        </div>
+                        </div>
+                        </div>*@
                             <div class="col-md-3">
                                 <div class="card p-2">
                                     <div class="d-flex justify-content-between">
@@ -225,18 +210,18 @@
                                 <h3 class="fw-bold ">HSSC</h3>
                             </div>
                             <div>
-                                <button class="btn btn-primary "  @onclick="(e => FDelete(emp.SID))">Delete</button>
+                                <button class="btn btn-primary " @onclick="(e => FDelete(emp.SID))">Delete</button>
 
                             </div>
                         </div>
                         <div class="row">
-                           @* <div class="col-md-3">
-                                <div class="card p-2">
-                                    <div class="d-flex justify-content-between">
-                                        <span>Passing Groups</span><span class="text-primary">@emp.PassingDSGroup </span>
-                                    </div>
-                                </div>
-                            </div>*@
+                            @* <div class="col-md-3">
+                        <div class="card p-2">
+                        <div class="d-flex justify-content-between">
+                        <span>Passing Groups</span><span class="text-primary">@emp.PassingDSGroup </span>
+                        </div>
+                        </div>
+                        </div>*@
                             <div class="col-md-3">
                                 <div class="card p-2">
                                     <div class="d-flex justify-content-between">
@@ -291,11 +276,11 @@
 
 
 
- 
+
 
 @code {
 
-   
+
     private EntEducationalInfo? _ModelInfo { get; set; } = new EntEducationalInfo();
     private List<EntPassingDegree>? PassingDegreeList;
     private List<EntPassingDSGroups>? PassingDSGroupsList;
@@ -358,7 +343,7 @@
             _ModelInfo.SID = value1;
             DALEducationalInfo.SaveStdFscInfo(_ModelInfo);
             LoadEducationalInfo();
-             _ModelInfo = new EntEducationalInfo();
+            _ModelInfo = new EntEducationalInfo();
 
         }
 
@@ -388,5 +373,5 @@
     }
 
 
-   
+
 }
