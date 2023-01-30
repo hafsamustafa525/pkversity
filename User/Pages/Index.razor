@@ -34,6 +34,15 @@
         color: black;
         font-weight: 600;
     }
+
+    .carousel-item {
+        height: 120vh;
+        min-height: 400px;
+        background: no-repeat center center;
+        background-attachment:fixed;
+       background-position:center;
+        background-size: cover;
+    }
 </style>
 @if (PassingDegreeList == null)
 {
@@ -42,7 +51,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="loader">
-                        <p>Loading...</p>
+                      
                         <div class="loader-inner"></div>
                         <div class="loader-inner"></div>
                         <div class="loader-inner"></div>
@@ -54,85 +63,94 @@
 }
 else
 {
+    
 
-    <div class="box">
-        <div class="text-center">
-            <h1 class="text-black mt-4 mb-4 font1 fw-bold">Careers that matter</h1>
-            <h4 class="text-black display-1 mb-2 font">Lets build your career with <span></span></h4>
-            <img src="Images/img.png" height="80">
-        </div>
-        <div class="mb-5 mt-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 mt-3">
 
-                        <label for="exampleFormControlInput1" class="form-label label-properties">Select Program Degree</label>
-                        <select class="form-select text-black size"
-                            @onchange="_DegOption" required>
-                            <option value="-1" selected>Select Program Degree</option>
+      
+ 
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="background-image: url('Images/pic.jpg')">
+                    <div class="text-center">
+                        <h1 class="text-black mt-4 mb-4 font1 fw-bold">Careers that matter</h1>
+                        <h4 class="text-black display-1 mb-2 font">Lets build your career with <span></span></h4>
+                        <img src="Images/img.png" height="80">
+                    </div>
+                    <div class="mb-5 mt-3">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6 mt-3">
 
-                            @foreach (var emp in @PassingDegreeList)
-                            {
-                                <option value="@emp.PassingDegreesId">@emp.Title</option>
-                            }
-                        </select>
+                                    <label for="exampleFormControlInput1" class="form-label label-properties">Select Program Degree</label>
+                                    <select class="form-select text-black size"
+                                        @onchange="_DegOption" required>
+                                        <option value="-1" selected>Select Program Degree</option>
+
+                                        @foreach (var emp in @PassingDegreeList)
+                                        {
+                                            <option value="@emp.PassingDegreesId">@emp.Title</option>
+                                        }
+                                    </select>
+
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <label for="exampleFormControlInput1" class="form-label label-properties">Select Passing Groups</label>
+                                    <select @bind="@PassingDegreeSGid" class="form-select text-black size" aria-label="Default select example">
+                                        <option value="-1" selected>Select Passing Groups</option>
+
+                                        @foreach (var emp in @PassingDSGroupsList)
+                                        {
+                                            if (alpha == emp.PassingDegreeId)
+                                            {
+                                                <option value="@emp.PassingDSGroupsId">@emp.PassingDSGroups</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <label for="exampleFormControlInput1" class="form-label label-properties">Select percentage</label>
+                                    <select @bind="@perc" class="form-select text-black size" aria-label="Default select example" required>
+                                        <option value="-1" selected>Select Percentage</option>
+                                        <option value="50">40-45 %</option>
+                                        <option value="50">45-50 %</option>
+                                        <option value="50">50-55 %</option>
+                                        <option value="60">55-60 %</option>
+                                        <option value="60">60-65 %</option>
+                                        <option value="60">65-70 %</option>
+
+
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mt-3">
+                                    <label for="exampleFormControlInput1" class="form-label label-properties">Select City</label>
+                                    <select @bind="cityID" class="form-select size" aria-label="Default select example" required>
+                                        <option value="-1">Select City</option>
+
+                                        @foreach (var emp in @CitiesList)
+                                        {
+
+                                            <option value="@emp.CityId">@emp.CityName</option>
+
+                                        }
+                                    </select>
+                                </div>
+                                <div style="font-size: 1rem;margin-top: 1.7rem; text-align-center">
+
+                                    <button type="submit" class="btn btn-primary text-white" style="font-size: 22px;" @onclick="Submit">Search</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+
 
                     </div>
-                    <div class="col-md-6 mt-3">
-                        <label for="exampleFormControlInput1" class="form-label label-properties">Select Passing Groups</label>
-                        <select @bind="@PassingDegreeSGid" class="form-select text-black size" aria-label="Default select example">
-                            <option value="-1" selected>Select Passing Groups</option>
-
-                            @foreach (var emp in @PassingDSGroupsList)
-                            {
-                                if (alpha == emp.PassingDegreeId)
-                                {
-                                    <option value="@emp.PassingDSGroupsId">@emp.PassingDSGroups</option>
-                                }
-                            }
-                        </select>
-                    </div>
-                    <div class="col-md-6 mt-3">
-                        <label for="exampleFormControlInput1" class="form-label label-properties">Select percentage</label>
-                        <select @bind="@perc" class="form-select text-black size" aria-label="Default select example" required>
-                            <option value="-1" selected>Select Percentage</option>
-                            <option value="50">40-45 %</option>
-                            <option value="50">45-50 %</option>
-                            <option value="50">50-55 %</option>
-                            <option value="60">55-60 %</option>
-                            <option value="60">60-65 %</option>
-                            <option value="60">65-70 %</option>
-
-
-                        </select>
-                    </div>
-                    <div class="col-md-6 mt-3">
-                        <label for="exampleFormControlInput1" class="form-label label-properties">Select City</label>
-                        <select @bind="cityID" class="form-select size" aria-label="Default select example" required>
-                            <option value="-1">Select City</option>
-
-                            @foreach (var emp in @CitiesList)
-                            {
-
-                                <option value="@emp.CityId">@emp.CityName</option>
-
-                            }
-                        </select>
-                    </div>
-                    <div style="font-size: 1rem;margin-top: 1.7rem;">
-
-                        <button type="submit" class="btn btn-primary text-white" style="font-size: 22px;" @onclick="Submit">Search</button>
-                    </div>
-
                 </div>
-            </div>
-
-
-
         </div>
+   
+       
 
 
-    </div>
+
 
 }
 <div class="container">
