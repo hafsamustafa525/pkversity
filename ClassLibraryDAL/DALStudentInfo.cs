@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using ClassLibraryEntities;
+using System.Reflection.Metadata;
 
 namespace ClassLibraryDAL
 {
@@ -46,15 +47,70 @@ namespace ClassLibraryDAL
             }
         }
 
-        
+
+        public static List<EntStudentInfo> GetStudentInfobyID(string stdid)
+        {
+            List<EntStudentInfo> StudentInfoList = new List<EntStudentInfo>();
+
+            try
+            {
+                SqlConnection con = DBHelper.GetConnection();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("U_SP_GetStudentInfobyID", con);
+                cmd.Parameters.AddWithValue("@StdId", stdid);
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataReader sdr = cmd.ExecuteReader();
+
+                while (sdr.Read())
+                {
+                    EntStudentInfo ee = new EntStudentInfo();
+                    ee.SID = sdr["SID"].ToString();
+                    ee.FirstName = sdr["FirstName"].ToString();
+                    ee.FatherName = sdr["FatherName"].ToString();
+                    ee.CNIC = sdr["StdCnic"].ToString();
+                    ee.DateOfBirth = sdr["DateOfBirth"].ToString();
+                    ee.City = sdr["City"].ToString();
+                    ee.Email = sdr["Email"].ToString();
+                    ee.Gender = sdr["Gender"].ToString();
+                    ee.StudentMobileNo = sdr["StdMobileNumber"].ToString();
+                    StudentInfoList.Add(ee);
+
+                }
+                con.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Excep = ex.Message.ToString() + ex.StackTrace.ToString();
+                DalFilter.GetError(Excep);
+            }
+            return StudentInfoList;
+
+        }
+
+        public static void DeleteStudentInfobyID(string id)
+        {
+            try
+            {
 
 
-
-    
+                SqlConnection con = DBHelper.GetConnection();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("U_SP_DeleteStudentInfobyID", con);
+                cmd.Parameters.AddWithValue("@SID", id);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Excep = ex.Message.ToString() + ex.StackTrace.ToString();
+                DalFilter.GetError(Excep);
+            }
+        }
 
 
     }
-
 
 
 }

@@ -179,7 +179,7 @@ namespace ClassLibraryDAL
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Excep = ex.Message.ToString() + ex.StackTrace.ToString();
 
