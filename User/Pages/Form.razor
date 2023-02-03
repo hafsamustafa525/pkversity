@@ -99,7 +99,7 @@
 
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-primary mr-3 mt-3" style="padding-left: 12rem; padding-right: 12rem;">Register</button>
+                        <button type="submit" class="btn btn-primary mr-3 mt-3" style="padding-left: 12rem; padding-right: 12rem;">@title</button>
 
                     </div>
                 </div>
@@ -136,7 +136,7 @@
                             </div>
                             <div>
                                 <button class="btn btn-primary " @onclick="(e => FDelete(emp.SID))">Delete</button>
-
+                                <button class="btn btn-success " @onclick="(e =>EditUpdateMatric(emp.SID))">Update</button>
                             </div>
                         </div>
                         <div class="row">
@@ -213,7 +213,7 @@
                             </div>
                             <div>
                                 <button class="btn btn-primary " @onclick="(e => FDelete(emp.SID))">Delete</button>
-
+                                <button class="btn btn-success " @onclick="(e =>EditUpdateFSC(emp.SID))">Update</button>
                             </div>
                         </div>
                         <div class="row">
@@ -289,9 +289,12 @@
     private List<EntEducationalInfo>? MatricList;
     private List<EntEducationalInfo>? FscList;
 
+    public bool var = true;
+    public bool varFSC = true;
     private string? DegreeId { get; set; }
     private string? degree { get; set; }
     public string? EditPDSG { get; set; }
+    public string? title { get; set; }
     public string? EditProvince { get; set; }
     public string? EditBU { get; set; }
 
@@ -299,6 +302,22 @@
     [CascadingParameter]
     private Task<AuthenticationState> authenticatestate { get; set; }
 
+    private void EditUpdateMatric(string id)
+    {
+
+        _ModelInfo = DALEducationalInfo.GetMatricInfobyID(id);
+        //this.MatricList = DALEducationalInfo.GetMatricInfo(id);
+        title = "Update";
+        var = false;
+    }
+    private void EditUpdateFSC(string id)
+    {
+
+        _ModelInfo = DALEducationalInfo.GetFscInfoByID(id);
+        //this.MatricList = DALEducationalInfo.GetMatricInfo(id);
+        title = "Update";
+        varFSC = false;
+    }
     private async Task UserSession()
     {
         var authState = await authenticatestate;
@@ -321,7 +340,15 @@
     protected override void OnInitialized()
     {
         UserSession();
-        LoadEducationalInfo();
+        if (var == true || varFSC==true)
+        {
+            LoadEducationalInfo();
+            title = "Register";
+        }
+        else
+        {
+            title = "Update";
+        }
     }
 
     private void SubmitForm()
@@ -329,24 +356,47 @@
 
         if (degree == "3" || degree == "4")
         {
-
-            _ModelInfo.Board_University = EditBU;
-            _ModelInfo.PassingDSGroup = EditPDSG;
-            _ModelInfo.SID = value1;
-            DALEducationalInfo.SaveStdMatricInfo(_ModelInfo);
-            LoadEducationalInfo();
-            _ModelInfo = new EntEducationalInfo();
+            if (var)
+            {
+                _ModelInfo.Board_University = EditBU;
+                _ModelInfo.PassingDSGroup = EditPDSG;
+                _ModelInfo.SID = value1;
+                DALEducationalInfo.SaveStdMatricInfo(_ModelInfo);
+                LoadEducationalInfo();
+                _ModelInfo = new EntEducationalInfo();
+            }
+            else
+            {
+                _ModelInfo.Board_University = EditBU;
+                _ModelInfo.PassingDSGroup = EditPDSG;
+                _ModelInfo.SID = value1;
+                DALEducationalInfo.updateMatricInfo(_ModelInfo);
+                LoadEducationalInfo();
+                _ModelInfo = new EntEducationalInfo();
+            }
         }
         else
         {
-            _ModelInfo.Board_University = EditBU;
-            _ModelInfo.PassingDSGroup = EditPDSG;
+            if (varFSC)
+            {
+                _ModelInfo.Board_University = EditBU;
+                _ModelInfo.PassingDSGroup = EditPDSG;
 
-            _ModelInfo.SID = value1;
-            DALEducationalInfo.SaveStdFscInfo(_ModelInfo);
-            LoadEducationalInfo();
-            _ModelInfo = new EntEducationalInfo();
+                _ModelInfo.SID = value1;
+                DALEducationalInfo.SaveStdFscInfo(_ModelInfo);
+                LoadEducationalInfo();
+                _ModelInfo = new EntEducationalInfo();
+            }
+            else
+            {
+                _ModelInfo.Board_University = EditBU;
+                _ModelInfo.PassingDSGroup = EditPDSG;
 
+                _ModelInfo.SID = value1;
+                DALEducationalInfo.updateFSCInfo(_ModelInfo);
+                LoadEducationalInfo();
+                _ModelInfo = new EntEducationalInfo();
+            }
         }
 
 
