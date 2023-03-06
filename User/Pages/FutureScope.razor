@@ -20,27 +20,18 @@
             <div class="modal-body" >
 
                 <div class="container-fluid">
-
                     @foreach (var emp in FutureScopeList)
                     {
 
                         <div class="card text-dark bg-light">
                             <div class="card-body">
                                 @((MarkupString)emp.Description)
-
                             </div>
                         </div>
-
-
 
                     }
 
                 </div>
-
-
-
-
-
 
             </div>
 
@@ -51,7 +42,6 @@
 
 
 @code {
-
 
 
     [Parameter]
@@ -79,7 +69,6 @@
         FutureScopeList = DALFutureScope.GetFutureScopeById(ID);
 
     }
-
 
 
 }

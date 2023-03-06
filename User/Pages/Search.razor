@@ -41,20 +41,7 @@
         font-size: 2.5rem;
     }
 </style>
-@*@if (PassingDegreeList==null)
-{
-    <div class="container-fluid bg-3">
-        <div class="container">
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="loader20">Loading...</div>
-                </div>
-            </div>
-        </div>
-    </div>
-}*@
-@*else{*@
 
 <div>
     <div class="box">
@@ -226,22 +213,16 @@
     private EntFilter? _ModelFilter { get; set; } = new EntFilter();
 
 
-
-
-
-
-
     private void LoadProgramDetails()
     {
-        // System.Threading.Thread.Sleep(2000);
+        
         this.PassingDegreeList = DALPassingDegree.GetPassingDegrees();
         this.PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
         this.CitiesList = DalCities.GetCities();
     }
     protected override void OnInitialized()
     {
-        //  isloading = true;
-        // await Task.Run(LoadProgramDetails);
+        
         LoadProgramDetails();
         
     }

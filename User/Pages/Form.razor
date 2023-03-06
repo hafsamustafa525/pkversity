@@ -140,14 +140,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            @* <div class="col-md-3">
-                        <div class="card p-2">
-                        <div class="d-flex justify-content-between">
-                        <span>Passing</span><span class="text-primary">@emp.PassingDSGroup </span>
-                        </div>
-                        </div>
-                        </div>*@
-                            <div class="col-md-3">
+                                                   <div class="col-md-3">
                                 <div class="card p-2">
                                     <div class="d-flex justify-content-between">
                                         <span>Board/University</span><span class="text-primary">@emp.Board_University</span>
@@ -217,13 +210,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            @* <div class="col-md-3">
-                        <div class="card p-2">
-                        <div class="d-flex justify-content-between">
-                        <span>Passing Groups</span><span class="text-primary">@emp.PassingDSGroup </span>
-                        </div>
-                        </div>
-                        </div>*@
+                    
                             <div class="col-md-3">
                                 <div class="card p-2">
                                     <div class="d-flex justify-content-between">
@@ -306,7 +293,7 @@
     {
 
         _ModelInfo = DALEducationalInfo.GetMatricInfobyID(id);
-        //this.MatricList = DALEducationalInfo.GetMatricInfo(id);
+        
         title = "Update";
         var = false;
     }
@@ -314,7 +301,7 @@
     {
 
         _ModelInfo = DALEducationalInfo.GetFscInfoByID(id);
-        //this.MatricList = DALEducationalInfo.GetMatricInfo(id);
+       
         title = "Update";
         varFSC = false;
     }
