@@ -1,11 +1,19 @@
-﻿@page "/search/{value2}/{value3}/{value4}"
+﻿@page "/search"
+@*/{value2}/{value3}/{value4}*@
 @using ClassLibraryDAL
 @using ClassLibraryEntities
 @inject IJSRuntime js
+@using Newtonsoft.Json.Linq
 
 @using User.Authentication
 @inject AuthenticationStateProvider authStateProvider
 @inject NavigationManager nm
+
+@inject HttpClient http
+
+
+@using System.Net.Http
+@using Newtonsoft.Json
 
 
 <style>
@@ -16,19 +24,20 @@
     .size {
         font-size: 1.5rem;
     }
-    .font{
-        font-size:2.5rem;
+
+    .font {
+        font-size: 2.5rem;
     }
-    .font1{
-        font-size:2.5rem;
+
+    .font1 {
+        font-size: 2.5rem;
     }
-  
 </style>
 @*@if (PassingDegreeList==null)
 {
     <div class="container-fluid bg-3">
         <div class="container">
-            
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="loader20">Loading...</div>
@@ -116,27 +125,31 @@
 
         </div>
 
-        <div class="container-fluid mt-5">
-            <div class="row">
-                @foreach (var emp in FilterCitiesList)
-                {
-                    <div class="col-md-3 mt-4">
-                        <div class="card text-dark bg-light shadow mb-3" style="max-width: 18rem;">
 
-                            <div class="card-body">
-                                <div class="h4">@emp.Title</div>
-                                <h6 class="card-subtitle mb-2">You are eligible in <b>@emp.Departments </b> Departments</h6>
+        @if (check)
+        {
+            <div class="container-fluid mt-5">
+                <div class="row">
+                    @foreach (var emp in FilterCitiesList)
+                    {
+                        <div class="col-md-3 mt-4">
+                            <div class="card text-dark bg-light shadow mb-3" style="max-width: 18rem;">
 
-                                <button class="btn btn-primary mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @onclick="e=>DepartmentsDetails(emp.InstituteId,emp.Title)">View Details</button>
+                                <div class="card-body">
+                                    <div class="h4">@emp.Title</div>
+                                    <h6 class="card-subtitle mb-2">You are eligible in <b>@emp.Departments </b> Departments</h6>
 
+                                    <button class="btn btn-primary mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @onclick="e=>DepartmentsDetails(emp.InstituteId,emp.Title)">View Details</button>
+
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                }
+                    }
 
+                </div>
             </div>
-        </div>
+        }
 
     </div>
 
@@ -164,58 +177,32 @@
 }
 
 
-
-
 @code {
 
-    [Parameter]
-    public string? value2{ get; set; }
-    [Parameter]
-    public string? value3{ get; set; }
-    [Parameter]
-    public string? value4{ get; set; }
     public bool Data { get; set; } = false;
-    // public  Submit1 { get; set; }
-
     public string? value1 { get; set; }
     [CascadingParameter]
     private Task<AuthenticationState> authenticatestate { get; set; }
     public bool isloading { get; set; } = false;
     private List<EntPassingDegree>? PassingDegreeList;
     private List<EntPassingDSGroups>? PassingDSGroupsList;
-    private List<EntCities>? CitiesList;
-
-    [Parameter]
-    public List<EntFilter>? FilterCitiesList  { get; set; }
+    private List<EntCities>? CitiesList { get; set; } = new List<EntCities>();
 
 
+    private EntCities EntCity { get; set; } = new EntCities();
 
+    public List<EntFilter>? FilterCitiesList { get; set; }
     private List<EntProgramDegreeDetails>? FilterDepartmentList { get; set; }
-
     public string? Title { get; set; }
-
     public string? alpha { get; set; }
-
     public string? PassingDegreeSGid { get; set; }
-
     public string? cityID { get; set; }
-
-
     public bool check { get; set; } = false;
-
     public bool check1 = false;
     public bool checck = false;
-
     public string? perc { get; set; }
     public string? Message { get; set; }
-
-
-
-
     private EntFilter? _ModelFilter { get; set; } = new EntFilter();
-
-
-
 
 
 
@@ -225,14 +212,16 @@
         // System.Threading.Thread.Sleep(2000);
         this.PassingDegreeList = DALPassingDegree.GetPassingDegrees();
         this.PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
-        this.CitiesList = DalCities.GetCities();
+        // this.CitiesList = DalCities.GetCities();
+
+
     }
     protected override void OnInitialized()
+
+
     {
-        //  isloading = true;
-        // await Task.Run(LoadProgramDetails);
         LoadProgramDetails();
-        List();
+
     }
 
     private void _DegOption(ChangeEventArgs e)
@@ -241,21 +230,14 @@
 
     }
 
-    public void List()
-    {
 
-
-        FilterCitiesList = DalFilter.GetDepartmentsbyID(value2 , value3, value4);
-        check = true;
-    }
-
-    public void  Submit() 
+    public void Submit()
     {
         Data = false;
 
 
         if (PassingDegreeSGid != "-1" && !string.IsNullOrEmpty(PassingDegreeSGid as string) || cityID != "-1" && !string.IsNullOrEmpty(cityID as string) || perc != "-1" && !string.IsNullOrEmpty(perc as string))
-        {  
+        {
             FilterCitiesList = DalFilter.GetDepartmentsbyID(PassingDegreeSGid, cityID, perc);
             check = true;
         }
@@ -272,26 +254,26 @@
     }
     private void DepartmentsDetails(string iid, string title)
     {
-        //PassingDegreeSGid = value2;
 
-      //  DisplayGreeting();
-       // if (value1 != null && value1 != "")
-       // {
+
+        DisplayGreeting();
+        if (value1 != null && value1 != "")
+        {
             Title = title;
-            FilterDepartmentList = DalFilter.GetDepartmentDetailsbyID(value2.ToString(), iid);
+            FilterDepartmentList = DalFilter.GetDepartmentDetailsbyID(PassingDegreeSGid.ToString(), iid);
             check1 = true;
-      //  }
-      //  else
-       // {
-        //    nm.NavigateTo("/login");
-             
+        }
+        else
+        {
+            nm.NavigateTo("/login");
 
 
 
-       // }
+
+        }
     }
 
-        private async Task DisplayGreeting()
+    private async Task DisplayGreeting()
     {
         var authState = await authenticatestate;
         value1 = $"{authState.User.Identity.Name}";
