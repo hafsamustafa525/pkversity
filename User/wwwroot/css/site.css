@@ -323,3 +323,64 @@ div.b {
         height: 15px;
     }
 }
+
+
+
+/*Testing Purpose CSS*/
+@media (min-width: 1024px) {
+    #hero {
+        background-attachment: fixed;
+    }
+}
+
+@media (max-width: 768px) {
+    #hero {
+        height: 100vh;
+    }
+
+        #hero h1 {
+            font-size: 28px;
+            line-height: 36px;
+        }
+
+        #hero h2 {
+            font-size: 18px;
+            line-height: 24px;
+            margin-bottom: 30px;
+        }
+
+        #hero .btn-get-started,
+        #hero .btn-watch-video {
+            font-size: 13px;
+        }
+}
+
+@media (max-height: 500px) {
+    #hero {
+        height: 120vh;
+    }
+}
+/*--------------------------------------------------------------
+# Clients
+--------------------------------------------------------------*/
+.clients {
+    padding: 15px 0;
+    text-align: center;
+}
+
+.clients img {
+    max-width: 45%;
+    transition: all 0.4s ease-in-out;
+    display: inline-block;
+    padding: 15px 0;
+}
+
+    .clients img:hover {
+        transform: scale(1.15);
+    }
+
+@media (max-width: 768px) {
+    .clients img {
+        max-width: 40%;
+    }
+}
