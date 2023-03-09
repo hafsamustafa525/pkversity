@@ -65,9 +65,9 @@
                         <label for="exampleFormControlInput1" class="form-label text-black">City</label>
                         <Select @onchange="_EditCity" class="form-select form-select-lg" required>
                             <option selected>Select City</option>
-                            <option value="Faisalabad">Faisalabad</option>
+                            <option value="Islamabad">Islamabad</option>
                             <option value="Multan">Multan</option>
-                            <option value="Gujranwala">Gujranwala</option>
+                            <option value="Rawalpindi">Rawalpindi</option>
                             <option value="Hyderabad">Hyderabad</option>
                             <option value="Peshawar">Peshawar</option>
                             <option value="Quetta">Quetta</option>
@@ -111,9 +111,9 @@
                         <button type="submit" class="btn btn-primary mr-3 mt-3" style="padding-left: 12rem; padding-right: 12rem;">Add</button>
 
                     </div>
-                    @*<div>
+                    <div>
                     <button type="reset" class="btn btn-secondary mr-3 mt-3 " style="padding-left: 12rem; padding-right: 12rem;">Reset</button>
-                    </div>*@
+                    </div>
 
                 </div>
             </div>
@@ -123,7 +123,6 @@
     </EditForm>
 
 </div>
-
 
 
 <style>
@@ -254,13 +253,15 @@
         this.StudentInfoList = DALStudentInfo.GetStudentInfobyID(value1);
     }
 
+
     private void SubmitForm()
     {
         _ModelInfo.SID = value1;
         _ModelInfo.Gender = EditGender;
         _ModelInfo.City = EditCity;
         DALStudentInfo.SaveStudentInfo(_ModelInfo);
-        nm.NavigateTo("/");
+        LoadStudentInfo();
+      
 
     }
     private void _EditCity(ChangeEventArgs e)

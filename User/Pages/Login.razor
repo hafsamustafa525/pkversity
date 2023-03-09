@@ -87,7 +87,7 @@
     {
 
         _Model = DALUserLogin.GetUserByName(Email);
-        _Model.Email = Email;  //
+        _Model.Email = Email;  
         ID = _Model.UserId;
         Passwrd = DecodeFrom64(_Model.Password);
 
@@ -112,7 +112,7 @@
 
                 });
 
-            nm.NavigateTo("/", true);
+            nm.NavigateTo("/search", true);
         }
 
     }
