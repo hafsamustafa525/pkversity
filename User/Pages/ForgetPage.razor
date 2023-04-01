@@ -9,7 +9,7 @@
 @inject NavigationManager nm
 
 <style>
-    margin-left: -30px; 
+    margin-left: -30px;
     cursor: pointer;
     background-color:required;
 </style>
@@ -35,7 +35,7 @@
                         <label class="form-label" for="form3Example4"> </label>
                         <input type="checkbox" onclick="myFunction()">Show Password
                         <span class='fa fa-eye-slash' onclick="myFunction()"> </span>
-                        
+
                     </div>
                     <div class="form-outline">
                         <input type="password" id="form3Example5" @bind="ConfirmPassword"
@@ -101,7 +101,7 @@
 
 
             _Model = DALUserLogin.GetUserByName(Email);
-            if (_Model == null)
+            if (_Model.UserId == null)
             {
                 check = true;
                 message = "Invalid Email . Please Enter Valid Email ";
@@ -115,6 +115,13 @@
                 message = "Password Updated Successfully";
             }
         }
+        else
+        {
+            check = true;
+            message = "Please Enter Same Password in above field  ";
+        }
+
+
 
     }
 
