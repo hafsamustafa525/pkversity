@@ -41,6 +41,9 @@
                             Don't have an account? <a href="register"
                                                       class="link-danger text-decoration-none">Register</a>
                         </p>
+                        <a class="small fw-bold mt-2 pt-1 mb-0 text-black"
+                           href="forgetpage">Forgotten Password? </a>
+
                         @if (check)
                         {
                             <h6 class="text-danger text-center">@message </h6>
@@ -60,7 +63,7 @@
 
 
 
- private ClassLibraryEntities.EntUserlogin _Model { get; set; } = new ClassLibraryEntities.EntUserlogin();
+    private ClassLibraryEntities.EntUserlogin _Model { get; set; } = new ClassLibraryEntities.EntUserlogin();
 
     public string? Email { get; set; }
     public string? Password { get; set; }
@@ -87,7 +90,7 @@
     {
 
         _Model = DALUserLogin.GetUserByName(Email);
-        _Model.Email = Email;  
+        _Model.Email = Email;
         ID = _Model.UserId;
         Passwrd = DecodeFrom64(_Model.Password);
 

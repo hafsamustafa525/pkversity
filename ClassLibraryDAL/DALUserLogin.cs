@@ -9,11 +9,11 @@ using ClassLibraryEntities;
 
 namespace ClassLibraryDAL
 {
-    public  class DALUserLogin
+    public class DALUserLogin
     {
         public static string? Excep { get; set; }
 
-        public static EntUserlogin GetUserByName(string Email)
+        public static EntUserlogin GetUserByName(string? Email)
         {
             EntUserlogin ee = new EntUserlogin();
 
@@ -46,7 +46,7 @@ namespace ClassLibraryDAL
 
         }
 
-        public static void SaveSignUp (EntUserlogin ee)
+        public static void SaveSignUp(EntUserlogin ee)
         {
             try
             {
@@ -74,5 +74,26 @@ namespace ClassLibraryDAL
             }
         }
 
+        public static void UpdatePassword(String? UserId, String? Password)
+        {
+            try
+            {
+
+
+                SqlConnection con = DBHelper.GetConnection();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("U_SP_UpdatePassword", con);
+                cmd.Parameters.AddWithValue("@UserId", UserId);
+                cmd.Parameters.AddWithValue("@Password", Password);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch(Exception ex) 
+            {
+                Excep = ex.Message.ToString() + ex.StackTrace.ToString();
+                DalFilter.GetError(Excep);
+            }
+        }
     }
 }
