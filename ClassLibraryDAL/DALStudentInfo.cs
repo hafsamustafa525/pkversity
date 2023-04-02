@@ -109,6 +109,32 @@ namespace ClassLibraryDAL
             }
         }
 
+        public static void UpdateStudentInfo(EntEducationalInfo ee)
+        {
+            try
+            {
+                SqlConnection con = DBHelper.GetConnection();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("SP_UpdateFSC", con);
+                cmd.Parameters.AddWithValue("@SID", ee.SID);
+                cmd.Parameters.AddWithValue("@PassingDSGroup", ee.PassingDSGroup);
+                cmd.Parameters.AddWithValue("@Board_University", ee.Board_University);
+                cmd.Parameters.AddWithValue("@ObtainedMarks", ee.ObtainedMarks);
+                cmd.Parameters.AddWithValue("@TotalMarks", ee.TotalMarks);
+                cmd.Parameters.AddWithValue("@Percentage", ee.Percentage);
+                cmd.Parameters.AddWithValue("@PassingYear", ee.PassingYear);
+                cmd.Parameters.AddWithValue("@Institute", ee.Institute);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Excep = ex.Message.ToString() + ex.StackTrace.ToString();
+                DalFilter.GetError(Excep);
+            }
+        }
+
 
     }
 

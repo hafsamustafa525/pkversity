@@ -9,9 +9,26 @@
 @inject NavigationManager nm
 
 <style>
-    margin-left: -30px;
-    cursor: pointer;
-    background-color:required;
+
+    .password-container {
+        
+        position: relative;
+    }
+
+        .password-container input[type="password"],
+        .password-container input[type="text"] {
+            width: 100%;
+            padding: 12px 36px 12px 12px;
+            box-sizing: border-box;
+        }
+
+    .fa-eye-slash {
+        position: absolute;
+        top: 28%;
+        right: 4%;
+        cursor: pointer;
+        color: lightgray;
+    }
 </style>
 
 <section class="vh-50">
@@ -29,20 +46,39 @@
                         <label class="form-label" for="form3Example3"> </label>
                     </div>
                     <div class="form-outline">
-                        <input type="password" id="form3Example4" @bind="Password"
-                               class="form-control form-control-lg"
-                               placeholder="Enter the New Password " />
-                        <label class="form-label" for="form3Example4"> </label>
-                        <input type="checkbox" onclick="myFunction()">Show Password
-                        <span class='fa fa-eye-slash' onclick="myFunction()"> </span>
+                        <div class="password-container">
+                            <input type="password" id="form3Example4" @bind="Password"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter the New Password " />
+                            <label class="form-label" for="form3Example4"> </label>
+                            <span class='fa fa-eye-slash' onclick="myFunction()"> </span>
+
+
+
+
+                        </div>
 
                     </div>
                     <div class="form-outline">
+                        <div class="password-container">
+                            <input type="password" id="form3Example5" @bind="ConfirmPassword"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter the New Password " />
+                            <label class="form-label" for="form3Example5"> </label>
+                            <span class='fa fa-eye-slash' onclick="myFunction1()"> </span>
+
+
+
+
+                        </div>
+
+                    </div>
+                    @*<div class="form-outline">
                         <input type="password" id="form3Example5" @bind="ConfirmPassword"
                                class="form-control form-control-lg"
                                placeholder="Enter the Password Again " />
                         <label class="form-label" for="form3Example5"> </label>
-                    </div>
+                    </div>*@
 
                     <div class="text-center  mt-4 pt-2">
                         <button type="button" class="btn btn-primary btn-lg"

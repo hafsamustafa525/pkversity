@@ -189,8 +189,6 @@ namespace ClassLibraryDAL
                 DalFilter.GetError(Excep);
             }
         }
-
-
         public static void SaveStdFscInfo(EntEducationalInfo ee)
         {
             try
@@ -268,7 +266,7 @@ namespace ClassLibraryDAL
             {
                 SqlConnection con = DBHelper.GetConnection();
                 con.Open();
-                SqlCommand cmd = new SqlCommand("updateMatric", con);
+                SqlCommand cmd = new SqlCommand("U_SP_UpdateMatricInfo", con);
                 cmd.Parameters.AddWithValue("@SID", ee.SID);
                 cmd.Parameters.AddWithValue("@PassingDSGroup", ee.PassingDSGroup);
                 cmd.Parameters.AddWithValue("@Board_University", ee.Board_University);
@@ -294,7 +292,7 @@ namespace ClassLibraryDAL
             {
                 SqlConnection con = DBHelper.GetConnection();
                 con.Open();
-                SqlCommand cmd = new SqlCommand("SP_UpdateFSC", con);
+                SqlCommand cmd = new SqlCommand("U_SP_UpdateFSCInfo", con);
                 cmd.Parameters.AddWithValue("@SID", ee.SID);
                 cmd.Parameters.AddWithValue("@PassingDSGroup", ee.PassingDSGroup);
                 cmd.Parameters.AddWithValue("@Board_University", ee.Board_University);
