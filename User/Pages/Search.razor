@@ -44,7 +44,7 @@
         font-size: 2.5rem;
     }
 </style>
-@if (PassingDSGroupsList == null)
+@if (Loadercheck )
 {
 <div class="loader"></div>
 }
@@ -174,8 +174,7 @@ else{
 
 
 @code {
-
-   
+    public bool Loadercheck { get; set; } = false;
     public bool Data { get; set; } = false;
     public string? value1 { get; set; }
     [CascadingParameter]
@@ -185,7 +184,7 @@ else{
     private List<EntPassingDSGroups>? PassingDSGroupsList;
     private List<EntCities>? CitiesList;
 
-    
+
     public List<EntFilter>? FilterCitiesList { get; set; }
 
     private List<EntProgramDegreeDetails>? FilterDepartmentList { get; set; }
@@ -213,16 +212,17 @@ else{
 
     private void LoadProgramDetails()
     {
-        
+
         this.PassingDegreeList = DALPassingDegree.GetPassingDegrees();
         this.PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
         this.CitiesList = DalCities.GetCities();
     }
     protected override void OnInitialized()
     {
-        
+        Loadercheck = true;
+       
         LoadProgramDetails();
-        
+        Loadercheck = false;
     }
 
     private void _DegOption(ChangeEventArgs e)
