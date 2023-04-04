@@ -139,8 +139,11 @@
                     }
                 </div>
             </div>
+        }else if(nullcheck)
+        {
+            <h1 style="text-align:center">Sorry! You are not Eligible in any University .</h1>
         }
-  
+
     </div>
 
 
@@ -169,7 +172,7 @@
 
 @code {
 
-   
+
     public bool Data { get; set; } = false;
     public string? value1 { get; set; }
     [CascadingParameter]
@@ -179,7 +182,7 @@
     private List<EntPassingDSGroups>? PassingDSGroupsList;
     private List<EntCities>? CitiesList;
 
-    
+
     public List<EntFilter>? FilterCitiesList { get; set; }
 
     private List<EntProgramDegreeDetails>? FilterDepartmentList { get; set; }
@@ -195,6 +198,7 @@
     public bool check  = false;
 
     public bool check1 = false;
+    public bool nullcheck = false;
 
     public bool checck = false;
 
@@ -207,16 +211,16 @@
 
     private void LoadProgramDetails()
     {
-        
+
         this.PassingDegreeList = DALPassingDegree.GetPassingDegrees();
         this.PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
         this.CitiesList = DalCities.GetCities();
     }
     protected override void OnInitialized()
     {
-        
+
         LoadProgramDetails();
-        
+
     }
 
     private void _DegOption(ChangeEventArgs e)
@@ -225,7 +229,7 @@
 
     }
 
-   
+
     public void Submit()
     {
         Data = true;
@@ -234,7 +238,16 @@
         if (PassingDegreeSGid != "-1" && !string.IsNullOrEmpty(PassingDegreeSGid as string) || cityID != "-1" && !string.IsNullOrEmpty(cityID as string) || perc != "-1" && !string.IsNullOrEmpty(perc as string))
         {
             FilterCitiesList = DalFilter.GetDepartmentsbyID(PassingDegreeSGid, cityID, perc);
-            check = true;
+           
+            if(FilterCitiesList.Count != 0)
+            {
+                check = true;
+            }
+            else
+            {
+                nullcheck = true;
+            }
+
         }
         else
         {
