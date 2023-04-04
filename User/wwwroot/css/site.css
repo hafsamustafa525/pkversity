@@ -3,7 +3,14 @@
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-
+body {
+    background-color: white !important;
+    font-family: "Open Sans", sans-serif;
+    color: #444444;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 110%;
+}
 * {
     margin: 0;
     /* padding: 0; */
@@ -318,6 +325,18 @@ div.b {
         background-attachment: fixed;
     }
 }
+@media (max-width: 768px) {
+    .img-hero {
+        display:none;
+    }
+    .main-heading {
+        font-size: 31px !important;
+    }
+    .header-section{
+       
+        text-align:center;
+    }
+}
 
 @media (max-width: 768px) {
     #hero {
@@ -368,5 +387,41 @@ div.b {
 @media (max-width: 768px) {
     .clients img {
         max-width: 40%;
+    }
+}
+@media (min-width: 1024px) {
+    .section-title p {
+        width: 50%;
+    }
+}
+
+.loader {
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #3498db;
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }
