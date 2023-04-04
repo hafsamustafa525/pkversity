@@ -9,6 +9,27 @@
 @inject AuthenticationStateProvider authStateProvider
 @inject NavigationManager nm
 
+<style>
+
+    .password-container {
+        position: relative;
+    }
+
+        .password-container input[type="password"],
+        .password-container input[type="text"] {
+            width: 100%;
+            padding: 12px 36px 12px 12px;
+            box-sizing: border-box;
+        }
+
+    .fa-eye-slash {
+        position: absolute;
+        top: 28%;
+        right: 4%;
+        cursor: pointer;
+        color: lightgray;
+    }
+</style>
 
 
 <section class="vh-50">
@@ -27,9 +48,12 @@
 
                     <!-- Password input -->
                     <div class="form-outline mb-3">
-                        <input type="password" @bind="Password" id="form3Example4" class="form-control form-control-lg"
-                               placeholder="Enter password" />
-                        <label class="form-label" for="form3Example4"> </label>
+                        <div class="password-container">
+                            <input type="password" @bind="Password" id="InputLoginPassword" class="form-control form-control-lg"
+                                   placeholder="Enter password" />
+                            <label class="form-label" for="InputLoginPassword"> </label>
+                            <span class='fa fa-eye-slash' onclick="myFunction2()"> </span>
+                        </div>
                     </div>
 
                     <div class="text-center  mt-4 pt-2">

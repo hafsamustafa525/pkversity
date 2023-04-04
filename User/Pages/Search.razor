@@ -9,6 +9,9 @@
 
 
 <style>
+    .label {
+        color: #0D6EFD;
+    }
     .btn{
         border-radius: 0;
     }
@@ -41,12 +44,15 @@
         font-size: 2.5rem;
     }
 </style>
-
-
-<div>
-    <div class="box">
-        <div class="mx-auto mt-1">
-            <div class="mt-4 filter">
+@if (Loadercheck )
+{
+<div class="loader"></div>
+}
+else{
+<div style="background-color:white;">
+    <div class="box container">
+        <div class="mx-auto ">
+            <div class="pt-4 filter">
                 <div class="row">
                     <div class="col-md-3">                   
                         <div class="form-floating">
@@ -58,7 +64,7 @@
                                     <option value="@emp.PassingDegreesId">@emp.Title</option>
                                 }
                             </select>
-                            <label for="floatingSelect">Select Last Program Degree</label>
+                            <label for="floatingSelect" class="label">Select Last Program Degree</label>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -74,7 +80,7 @@
                                     }
                                 }
                             </select>
-                            <label for="floatingSelect">Select Passing Degree Subject Groups</label>
+                            <label for="floatingSelect" class="label">Select Passing Degree Subject Groups</label>
                         </div>
                        
                     </div>
@@ -89,7 +95,7 @@
                                 <option value="60">60-65 %</option>
                                 <option value="60">65-70 %</option>
                             </select>
-                            <label for="floatingSelect">Select Percentage</label>
+                            <label for="floatingSelect" class="label">Select Percentage</label>
                         </div>
                         
                     </div>
@@ -105,12 +111,12 @@
 
                                 }
                             </select>
-                            <label for="floatingSelect">Select City</label>
+                            <label for="floatingSelect"class="label">Select City</label>
                         </div>
                        
                     </div>
                     <div class="col-1">
-                        <button type="submit" style="height: 3.5rem;" class="btn btn-primary text-white btn-lg" @onclick="Submit">Search</button>
+                        <button type="submit" style="height: 58px" class="btn btn-primary text-white btn-lg" @onclick="Submit">Search</button>
                     </div>
 
                 </div>
@@ -119,8 +125,8 @@
 
         @if (check)
         {
-            <div class="container-fluid mt-5">
-                <div class="row">
+            <div class="container-fluid mt-5 ml-4">
+                <div class="row" style="gap: 2rem;">
 
                     @foreach (var emp in FilterCitiesList)
                     {
@@ -139,13 +145,16 @@
                     }
                 </div>
             </div>
+        }else if(nullcheck)
+        {
+            <h1 style="text-align:center">Sorry! You are not Eligible in any University .</h1>
         }
-  
+
     </div>
 
 
 </div>
-
+}
 <div class="offcanvas offcanvas-end w-100 canvas-color" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
         <h2 id="offcanvasRightLabel" class="text-black">@Title</h2>
@@ -169,7 +178,9 @@
 
 @code {
 
-   
+
+    public bool Loadercheck { get; set; } = false;
+
     public bool Data { get; set; } = false;
     public string? value1 { get; set; }
     [CascadingParameter]
@@ -179,7 +190,7 @@
     private List<EntPassingDSGroups>? PassingDSGroupsList;
     private List<EntCities>? CitiesList;
 
-    
+
     public List<EntFilter>? FilterCitiesList { get; set; }
 
     private List<EntProgramDegreeDetails>? FilterDepartmentList { get; set; }
@@ -195,6 +206,7 @@
     public bool check  = false;
 
     public bool check1 = false;
+    public bool nullcheck = false;
 
     public bool checck = false;
 
@@ -207,16 +219,23 @@
 
     private void LoadProgramDetails()
     {
-        
+
         this.PassingDegreeList = DALPassingDegree.GetPassingDegrees();
         this.PassingDSGroupsList = DALPassingDSGroups.GetPassingDSGroups();
         this.CitiesList = DalCities.GetCities();
     }
     protected override void OnInitialized()
     {
-        
+
+
         LoadProgramDetails();
-        
+
+
+        Loadercheck = true;
+       
+        LoadProgramDetails();
+        Loadercheck = false;
+
     }
 
     private void _DegOption(ChangeEventArgs e)
@@ -225,7 +244,7 @@
 
     }
 
-   
+
     public void Submit()
     {
         Data = true;
@@ -234,7 +253,16 @@
         if (PassingDegreeSGid != "-1" && !string.IsNullOrEmpty(PassingDegreeSGid as string) || cityID != "-1" && !string.IsNullOrEmpty(cityID as string) || perc != "-1" && !string.IsNullOrEmpty(perc as string))
         {
             FilterCitiesList = DalFilter.GetDepartmentsbyID(PassingDegreeSGid, cityID, perc);
-            check = true;
+           
+            if(FilterCitiesList.Count != 0)
+            {
+                check = true;
+            }
+            else
+            {
+                nullcheck = true;
+            }
+
         }
         else
         {
