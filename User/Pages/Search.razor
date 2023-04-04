@@ -145,8 +145,11 @@ else{
                     }
                 </div>
             </div>
+        }else if(nullcheck)
+        {
+            <h1 style="text-align:center">Sorry! You are not Eligible in any University .</h1>
         }
-  
+
     </div>
 
 
@@ -174,7 +177,10 @@ else{
 
 
 @code {
+
+
     public bool Loadercheck { get; set; } = false;
+
     public bool Data { get; set; } = false;
     public string? value1 { get; set; }
     [CascadingParameter]
@@ -200,6 +206,7 @@ else{
     public bool check  = false;
 
     public bool check1 = false;
+    public bool nullcheck = false;
 
     public bool checck = false;
 
@@ -219,10 +226,16 @@ else{
     }
     protected override void OnInitialized()
     {
+
+
+        LoadProgramDetails();
+
+
         Loadercheck = true;
        
         LoadProgramDetails();
         Loadercheck = false;
+
     }
 
     private void _DegOption(ChangeEventArgs e)
@@ -231,7 +244,7 @@ else{
 
     }
 
-   
+
     public void Submit()
     {
         Data = true;
@@ -240,7 +253,16 @@ else{
         if (PassingDegreeSGid != "-1" && !string.IsNullOrEmpty(PassingDegreeSGid as string) || cityID != "-1" && !string.IsNullOrEmpty(cityID as string) || perc != "-1" && !string.IsNullOrEmpty(perc as string))
         {
             FilterCitiesList = DalFilter.GetDepartmentsbyID(PassingDegreeSGid, cityID, perc);
-            check = true;
+           
+            if(FilterCitiesList.Count != 0)
+            {
+                check = true;
+            }
+            else
+            {
+                nullcheck = true;
+            }
+
         }
         else
         {
