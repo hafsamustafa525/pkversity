@@ -24,3 +24,4 @@ function myFunction2() {
         x.type = "password";
     }
 }
+
