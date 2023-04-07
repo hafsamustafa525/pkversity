@@ -54,8 +54,9 @@
                     </td>
                     <td>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-                         </div>
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="@emp.admission_open_close" @onchange="@(e=>_AdmissionEdit(e, emp.InstituteId))" >
+                        </div>
+
                     </td>
                 </tr>
 
@@ -73,8 +74,9 @@
 
 
 
-    private List<EntInstitutes> instituteList;
+    private List<EntInstitutes>? instituteList;
 
+    public bool? myvalue { get; set; }
 
     public bool check = true;
     public string? ID { get; set; }
@@ -85,7 +87,7 @@
         LaodInstitute();
         StateHasChanged();
     }
-    private void OpenDeleteDialog(string Id)
+    private void OpenDeleteDialog(string? Id)
     {
         DeleteDialogOpen = true;
         ID = Id;
@@ -110,4 +112,14 @@
     {
         this.instituteList = DalInstitutes.GetInstitutes();
     }
+
+    private void _AdmissionEdit(ChangeEventArgs e,string InstituteId)
+    {
+        myvalue = (bool?)e.Value;
+        DalInstitutes.SaveAdmissionInfo(myvalue, InstituteId);
+       
+    }
+  
+
+ 
 }

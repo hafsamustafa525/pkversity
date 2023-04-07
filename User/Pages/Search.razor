@@ -73,12 +73,16 @@
         color: #fff;
         text-transform: uppercase;
         right: 26px;
-        
     }
 
     .red {
+        background-color: red !important;
+    }
+
+    .blue {
         background-color: blue !important;
     }
+
 </style>
 @if (Loadercheck)
 {
@@ -171,13 +175,20 @@ else
                         {
                             <div class="col-md-3 mt-4">
                                 <div class="card text-dark bg-light shadow mb-3" style="max-width: 18rem;">
-                                    <span id="hostlabel2" class="leftlabel red" style="margin-right :0px; z-index: 10; transform: rotate(30deg); margin-top: 2px;">ADMISSION OPEN</span>
+                                    @if (emp.admission_Open_Close == true)
+                                    {
+                                        <span id="hostlabel2" class="leftlabel blue" style="margin-right :0px; z-index: 10; transform: rotate(30deg); margin-top: 2px;">@Admission_message_open</span>
+                                    }
+                                    else
+                                    {
+                                        <span id="hostlabel2" class="leftlabel red" style="margin-right :0px; z-index: 10; transform: rotate(30deg); margin-top: 2px;">@Admission_message_close</span>
+
+                                    }
+
                                     <div class="card-body">
                                         <div class="h4">@emp.Title</div>
                                         <h6 class="card-subtitle mb-2">You are eligible in <b>@emp.Departments </b> Departments</h6>
-                                        @* <span class="product-item--badge">ADMISSION OPEN</span>*@
-                                        
-                                        <button class="btn btn-primary mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" @onclick="e=>DepartmentsDetails(emp.InstituteId,emp.Title)">View Details</button>
+                                        <button class="btn btn-primary mt-2" type="button" @onclick="e=>DepartmentsDetails(emp.InstituteId,emp.Title)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">View Details</button>
 
                                     </div>
                                 </div>
@@ -258,6 +269,11 @@ else
 
     public string? Message { get; set; }
 
+    public string? Admission_message_open { get; set; }
+    public string? Admission_message_close { get; set; }
+
+    public string? testing { get; set; }
+    
     private EntFilter? _ModelFilter { get; set; } = new EntFilter();
 
 
@@ -297,7 +313,8 @@ else
         if (PassingDegreeSGid != "-1" && !string.IsNullOrEmpty(PassingDegreeSGid as string) || cityID != "-1" && !string.IsNullOrEmpty(cityID as string) || perc != "-1" && !string.IsNullOrEmpty(perc as string))
         {
             FilterCitiesList = DalFilter.GetDepartmentsbyID(PassingDegreeSGid, cityID, perc);
-
+            Admission_message_open = "Admission Open";
+            Admission_message_close = "Admission Close";
             if (FilterCitiesList.Count != 0)
             {
                 nullcheck = false;

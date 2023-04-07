@@ -39,6 +39,7 @@ namespace ClassLibraryDAL
                     ee.ProgramDegreeId = sdr["ProgramDegreeId"].ToString();
                     ee.CityId = sdr["CityId"].ToString();
                     ee.CityName = sdr["CityName"].ToString();
+                    
                     FilterList.Add(ee);
 
                 }
@@ -65,6 +66,9 @@ namespace ClassLibraryDAL
                 cmd.Parameters.AddWithValue("@CityId", int.Parse(CityId));
                 cmd.Parameters.AddWithValue("@Percentage", int.Parse(Percentage));
                 cmd.CommandType = CommandType.StoredProcedure;
+                DataTable dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
+                sda.Fill(dt);
                 SqlDataReader sdr = cmd.ExecuteReader();
 
                 while (sdr.Read())
@@ -74,6 +78,7 @@ namespace ClassLibraryDAL
                     ee.Title = sdr["Title"].ToString();
                     ee.InstituteId = sdr["InstituteId"].ToString();
                     ee.Departments = sdr["Departments"].ToString();
+                    ee.admission_Open_Close = (bool?)sdr["admission_open_close"];
 
                     FilterList.Add(ee);
 

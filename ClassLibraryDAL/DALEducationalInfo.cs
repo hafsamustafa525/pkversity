@@ -12,7 +12,7 @@ namespace ClassLibraryDAL
     public class DALEducationalInfo
     {
         public static string? Excep { get; set; }
-        public static List<EntEducationalInfo> GetMatricInfo(string id)
+        public static List<EntEducationalInfo> GetMatricInfo(string? id)
         {
             List<EntEducationalInfo> MatricList = new List<EntEducationalInfo>();
             try
@@ -51,7 +51,7 @@ namespace ClassLibraryDAL
             return MatricList;
         }
 
-        public static EntEducationalInfo GetMatricInfobyID(string id)
+        public static EntEducationalInfo GetMatricInfobyID(string? id)
         {
             List<EntEducationalInfo> MatricList = new List<EntEducationalInfo>();
             EntEducationalInfo ee = new EntEducationalInfo();
@@ -90,7 +90,7 @@ namespace ClassLibraryDAL
             return ee;
         }
 
-        public static List<EntEducationalInfo> GetFscInfo(string id)
+        public static List<EntEducationalInfo> GetFscInfo(string? id)
         {
             List<EntEducationalInfo> FscList = new List<EntEducationalInfo>();
 
@@ -126,7 +126,7 @@ namespace ClassLibraryDAL
             }
             return FscList;
         }
-        public static EntEducationalInfo GetFscInfoByID(string id)
+        public static EntEducationalInfo GetFscInfoByID(string? id)
         {
             List<EntEducationalInfo> FscList = new List<EntEducationalInfo>();
 

@@ -33,7 +33,6 @@ namespace ClassLibraryDAL
                     ee.@Title = sdr["Title"].ToString();
                     ee.@Email = sdr["Email"].ToString();
                     ee.@Phone = sdr["Phone"].ToString();
-                    ee.@Logo = sdr["Logo"].ToString();
                     ee.@UserName = sdr["UserName"].ToString();
                     ee.@Password = sdr["Password"].ToString();
                     ee.@CreatedOn = sdr["CreatedOn"].ToString();
@@ -42,6 +41,7 @@ namespace ClassLibraryDAL
                     ee.@TypeOfId = sdr["TypeOfId"].ToString();
                     ee.@Location = sdr["Location"].ToString();
                     ee.@AdminId = sdr["AdminId"].ToString();
+                    ee.@admission_open_close = (bool?)sdr["admission_open_close"];
                     instituteList.Add(ee);
 
                 }
@@ -56,7 +56,7 @@ namespace ClassLibraryDAL
         }
 
 
-        public static EntInstitutes GetInstituteBtId(string InstituteId)
+        public static EntInstitutes GetInstituteBtId(string? InstituteId)
         {
             EntInstitutes ee = new EntInstitutes();
             try
@@ -76,7 +76,7 @@ namespace ClassLibraryDAL
                     ee.Title = sdr["Title"].ToString();
                     ee.Email = sdr["Email"].ToString();
                     ee.Phone = sdr["Phone"].ToString();
-                    ee.Logo = sdr["Logo"].ToString();
+                    
                     ee.UserName = sdr["UserName"].ToString();
                     ee.Password = sdr["Password"].ToString();
                     ee.CreatedOn = sdr["CreatedOn"].ToString();
@@ -85,6 +85,7 @@ namespace ClassLibraryDAL
                     ee.TypeOfId = sdr["TypeOfId"].ToString();
                     ee.Location = sdr["Location"].ToString();
                     ee.AdminId = sdr["AdminId"].ToString();
+                    ee.admission_open_close = (bool?)sdr["admission_open_close"];
                 }
                 con.Close();
                 
@@ -110,17 +111,14 @@ namespace ClassLibraryDAL
                 cmd.Parameters.AddWithValue("@Title", ee.Title);
                 cmd.Parameters.AddWithValue("@Email", ee.Email);
                 cmd.Parameters.AddWithValue("@Phone", ee.Phone);
-                cmd.Parameters.AddWithValue("@Logo", ee.Logo);
                 cmd.Parameters.AddWithValue("@UserName", ee.UserName);
-
                 cmd.Parameters.AddWithValue("@Password", ee.Password);
-
-
                 cmd.Parameters.AddWithValue("@CityId", ee.CityId);
                 cmd.Parameters.AddWithValue("@TypeOfId", ee.TypeOfId);
                 cmd.Parameters.AddWithValue("@Location", ee.Location);
                 cmd.Parameters.AddWithValue("@AdminId", 1234);
-
+                cmd.Parameters.AddWithValue("@admission_open_close", ee.admission_open_close);
+                
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.ExecuteNonQuery();
                 con.Close();
@@ -132,6 +130,28 @@ namespace ClassLibraryDAL
             }
         }
 
+        public static void SaveAdmissionInfo(bool? value,string? InstituteId)
+        {
+            try
+            {
+
+
+                SqlConnection con = DBHelper.GetConnection();
+                con.Open();
+                          
+                SqlCommand cmd = new SqlCommand("A_SP_SaveAdmissionInfo", con);
+                cmd.Parameters.AddWithValue("@InstituteId", int.Parse(InstituteId));
+                cmd.Parameters.AddWithValue("@admission_open_close", value);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                Excep = ex.Message.ToString() + ex.StackTrace.ToString();
+                DalFilter.GetError(Excep);
+            }
+        }
 
         public static void DeleteInstitutes(string InstituteId)
         {
@@ -167,8 +187,6 @@ namespace ClassLibraryDAL
                 cmd.Parameters.AddWithValue("@Title", ee.Title);
                 cmd.Parameters.AddWithValue("@Email", ee.Email);
                 cmd.Parameters.AddWithValue("@Phone", ee.Phone);
-                cmd.Parameters.AddWithValue("@Logo", ee.Logo);
-
                 cmd.Parameters.AddWithValue("@UserName", ee.UserName);
                 cmd.Parameters.AddWithValue("@Password", ee.Password);
                 cmd.Parameters.AddWithValue("@CreatedOn", ee.CreatedOn);
