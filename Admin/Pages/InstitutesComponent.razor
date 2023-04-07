@@ -13,7 +13,6 @@
                 <th>Title</th>
                 <th>Email </th>
                 <th>Phone</th>
-                <th>Logo</th>
                 <th>UserName</th>
                 <th>Password</th>
                 <th>Created On</th>
@@ -24,6 +23,7 @@
                 <th>AdminId </th>
                 <th>Delete </th>
                 <th>Edit </th>
+                <th>Admission Open/Close</th>
             </tr>
         </thead>
         <tbody>
@@ -35,7 +35,6 @@
                     <td>@emp.Title</td>
                     <td>@emp.Email</td>
                     <td>@emp.Phone</td>
-                    <td>@emp.Logo</td>
                     <td>@emp.UserName</td>
                     <td>@emp.Password</td>
                     <td>@emp.CreatedOn</td>
@@ -53,6 +52,12 @@
                         <a href="institute/@emp.InstituteId" class="btn btn-warning bt-sm">Edit</a>
 
                     </td>
+                    <td>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked="@emp.admission_open_close" @onchange="@(e=>_AdmissionEdit(e, emp.InstituteId))" >
+                        </div>
+
+                    </td>
                 </tr>
 
             }
@@ -60,27 +65,29 @@
     </table>
 </div>
 
-@if (DeleteDialogOpen) {
-    <Modal Title="Are you sure?" FunDel="@(()=>OnDelete(@ID))"   Text="Do you want to delete" OnClose="@OnDeleteDialogClose"></Modal>
+@if (DeleteDialogOpen)
+{
+    <Modal Title="Are you sure?" FunDel="@(()=>OnDelete(@ID))" Text="Do you want to delete" OnClose="@OnDeleteDialogClose"></Modal>
 }
 @code {
 
 
 
 
-    private List<EntInstitutes> instituteList;
+    private List<EntInstitutes>? instituteList;
 
+    public bool? myvalue { get; set; }
 
-    public bool check=true;
+    public bool check = true;
     public string? ID { get; set; }
-    public bool DeleteDialogOpen{ get; set; }
+    public bool DeleteDialogOpen { get; set; }
     private void OnDeleteDialogClose(bool accepted)
     {
         DeleteDialogOpen = false;
         LaodInstitute();
         StateHasChanged();
     }
-    private void OpenDeleteDialog(string Id)
+    private void OpenDeleteDialog(string? Id)
     {
         DeleteDialogOpen = true;
         ID = Id;
@@ -105,4 +112,14 @@
     {
         this.instituteList = DalInstitutes.GetInstitutes();
     }
+
+    private void _AdmissionEdit(ChangeEventArgs e,string InstituteId)
+    {
+        myvalue = (bool?)e.Value;
+        DalInstitutes.SaveAdmissionInfo(myvalue, InstituteId);
+       
+    }
+  
+
+ 
 }

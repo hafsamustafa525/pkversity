@@ -53,7 +53,7 @@
 
 
 @code {
-    private List<EntCities> CitiesList;
+    private List<EntCities>? CitiesList;
     private EntCities? _ModelCity { get; set; }
     private string? title { get; set; }
     private string? message { get; set; }
@@ -107,7 +107,7 @@
     }
 
 
-    private int IfExist(string item, string id)
+    private int IfExist(string? item, string? id)
     {
         CitiesList = DalCities.GetCities();
 

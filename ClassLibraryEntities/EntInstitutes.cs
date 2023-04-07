@@ -8,7 +8,7 @@ namespace ClassLibraryEntities
 {
     public class EntInstitutes
     {
-        public string Role { get; set; } = "University";
+        public string? Role { get; set; } = "University";
         public string? InstituteId { get; set; }
         public string? Title { get; set; }
         public string? Email { get; set; }
@@ -22,6 +22,7 @@ namespace ClassLibraryEntities
         public string? TypeOfId { get; set; }
         public string? Location { get; set; }
         public string? AdminId { get; set; }
+        public bool? admission_open_close { get; set; }
 
     }
 }

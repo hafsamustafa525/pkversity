@@ -41,7 +41,7 @@
     public bool check=true;
     public string? ID { get; set; }
     public bool DeleteDialogOpen{ get; set; }
-    private List<EntCities> CitiesList;
+    private List<EntCities>? CitiesList;
 
     private void OnDeleteDialogClose(bool accepted)
     {
@@ -50,7 +50,7 @@
         StateHasChanged();
 
     }
-    private void OpenDeleteDialog(string Id)
+    private void OpenDeleteDialog(string? Id)
     {
         DeleteDialogOpen = true;
         ID = Id;

@@ -45,7 +45,7 @@ namespace ClassLibraryDAL
         }
 
 
-        public static EntCities GetCityById(string CityId)
+        public static EntCities GetCityById(string? CityId)
         {
             EntCities ee = new EntCities();
             try
@@ -124,7 +124,7 @@ namespace ClassLibraryDAL
         }
 
 
-        public static void UpdateCities(EntCities ee)
+        public static void UpdateCities(EntCities? ee)
         {
             try
             {
