@@ -4,12 +4,16 @@
 @inject AuthenticationStateProvider authStateProvider
 @attribute [Authorize(Roles = "User")]
 
-
+<style>
+    .form-signin {
+        max-width: 456px;
+    }
+</style>
 <div>
     <EditForm Model="_ModelInfo" OnSubmit="SubmitForm">
         <div class="container">
-            <div class="d-flex justify-content-center " style="margin-top:2rem">
-                <div class="shadow-sm pb-5" style="background-color:white; border-radius:1rem; padding:2rem;">
+            <div style="margin-top:2rem">
+                <div class="shadow-sm pb-5 form-signin w-100 m-auto" style="background-color:white; border-radius:1rem; padding:2rem;">
                     <h4 class="text-primary text-center mt-3 pb-2">Educaional Information</h4>
 
                     <div class="mt-3">
@@ -99,7 +103,7 @@
 
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-primary mr-3 mt-3" style="padding-left: 12rem; padding-right: 12rem;">@title</button>
+                        <button type="submit" class="w-100 btn btn-lg btn-primary">@title</button>
 
                     </div>
                 </div>
