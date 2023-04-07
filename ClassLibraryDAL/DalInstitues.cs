@@ -33,7 +33,6 @@ namespace ClassLibraryDAL
                     ee.@Title = sdr["Title"].ToString();
                     ee.@Email = sdr["Email"].ToString();
                     ee.@Phone = sdr["Phone"].ToString();
-                    ee.@Logo = sdr["Logo"].ToString();
                     ee.@UserName = sdr["UserName"].ToString();
                     ee.@Password = sdr["Password"].ToString();
                     ee.@CreatedOn = sdr["CreatedOn"].ToString();
@@ -76,7 +75,6 @@ namespace ClassLibraryDAL
                     ee.Title = sdr["Title"].ToString();
                     ee.Email = sdr["Email"].ToString();
                     ee.Phone = sdr["Phone"].ToString();
-                    ee.Logo = sdr["Logo"].ToString();
                     ee.UserName = sdr["UserName"].ToString();
                     ee.Password = sdr["Password"].ToString();
                     ee.CreatedOn = sdr["CreatedOn"].ToString();
@@ -110,7 +108,7 @@ namespace ClassLibraryDAL
                 cmd.Parameters.AddWithValue("@Title", ee.Title);
                 cmd.Parameters.AddWithValue("@Email", ee.Email);
                 cmd.Parameters.AddWithValue("@Phone", ee.Phone);
-                cmd.Parameters.AddWithValue("@Logo", ee.Logo);
+               
                 cmd.Parameters.AddWithValue("@UserName", ee.UserName);
 
                 cmd.Parameters.AddWithValue("@Password", ee.Password);
@@ -167,7 +165,7 @@ namespace ClassLibraryDAL
                 cmd.Parameters.AddWithValue("@Title", ee.Title);
                 cmd.Parameters.AddWithValue("@Email", ee.Email);
                 cmd.Parameters.AddWithValue("@Phone", ee.Phone);
-                cmd.Parameters.AddWithValue("@Logo", ee.Logo);
+               
 
                 cmd.Parameters.AddWithValue("@UserName", ee.UserName);
                 cmd.Parameters.AddWithValue("@Password", ee.Password);
