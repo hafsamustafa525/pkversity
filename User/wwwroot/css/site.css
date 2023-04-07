@@ -388,6 +388,22 @@ div.b {
     .clients img {
         max-width: 40%;
     }
+    .row {
+        max-width: 65rem;
+    }
+    .btn-search{
+        margin-top:1rem;
+    }
+    .searh-btn {
+        margin: auto;
+    }
+}
+@media (max-width: 434px) {
+
+    .searh-btn {
+        margin: auto;
+        margin-right: 190px;
+    }
 }
 @media (min-width: 1024px) {
     .section-title p {
