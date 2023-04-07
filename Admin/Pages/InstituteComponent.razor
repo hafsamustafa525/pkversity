@@ -2,15 +2,12 @@
 @using ClassLibraryDAL
 @using ClassLibraryEntities
 
-
 @inject NavigationManager nm;
 
 
 <h3>@title</h3>
 
 <h3>Institutes </h3>
-
-
 
 
 @if (check)
@@ -53,15 +50,6 @@
                 <InputText name="Phone" @bind-Value="_ModelInstitute.Phone" required></InputText>
             </td>
         </tr>
-         <tr>
-            <td>
-                Logo
-            </td>
-            <td>
-                <InputText name="Logo" @bind-Value="_ModelInstitute.Logo" required></InputText>
-            </td>
-        </tr>
-
           <tr>
             <td>
                 UserName
@@ -124,8 +112,6 @@
             </td>
         </tr>
 
-
-
         <tr>
             <td>
             </td>
@@ -140,15 +126,15 @@
 
 @code {
 
-    private EntInstitutes _ModelInstitute { get; set; }
-    private List<EntInstitutes> instituteList;
-    private List<EntCities> CitiesList;
-    private List<EntTypes> TypesList;
+    private EntInstitutes? _ModelInstitute { get; set; }
+    private List<EntInstitutes>? instituteList;
+    private List<EntCities>? CitiesList;
+    private List<EntTypes>? TypesList;
     private string? title { get; set; }
     private string? InstEdit { get; set; }
     private string? TypeEdit { get; set; }
 
-    [Parameter] public string insid { get; set; }
+    [Parameter] public string? insid { get; set; }
 
     private int i { get; set; }
     bool check = false;
@@ -156,7 +142,7 @@
     private string? EncPassword { get; set; }
 
 
-    public static string EncodePasswordToBase64(string password)
+    public static string EncodePasswordToBase64(string? password)
     {
         
             byte[] encData_byte = new byte[password.Length];
@@ -233,11 +219,11 @@
                     message = "Select city and typeid";
                 }
 
-                 }
+        }
 
     }
 
-    private int IfExist(string title, string email, string phone, string location)
+    private int IfExist(string? title, string? email, string? phone, string? location)
     {
         instituteList = DalInstitutes.GetInstitutes();
 

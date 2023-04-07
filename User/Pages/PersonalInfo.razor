@@ -1,4 +1,4 @@
-﻿@page "/personalinformation"
+﻿@page "/personalinfo"
 @using ClassLibraryEntities
 @using ClassLibraryDAL
 @inject NavigationManager nm;
@@ -10,13 +10,17 @@
     .form-outline {
         margin-top: 1rem;
     }
+
+    .form-signin {
+        max-width: 456px;
+    }
 </style>
 <div>
     <EditForm Model="_ModelInfo" OnSubmit="SubmitForm">
 
         <div class="container">
-            <div class="d-flex justify-content-center " style="margin-top:2rem">
-                <div class="shadow-sm pb-5" style="background-color:white; border-radius:1rem; padding:2rem;">
+            <div  style="margin-top:2rem">
+                <div class="shadow-sm pb-5 form-signin w-100 m-auto" style="background-color:white; border-radius:1rem; padding:2rem;">
                     <h4 class="text-primary text-center mt-5">Personal Information</h4>
 
                     <div class="form-outline">
@@ -100,11 +104,11 @@
                     </div>
 
                     <div>
-                        <button type="submit" class="btn btn-primary mr-3 mt-3" style="padding-left: 12rem; padding-right: 12rem;">Add</button>
+                        <button type="submit" class="w-100 btn btn-lg btn-primary mt-2">Add</button>
 
                     </div>
                     <div>
-                    <button type="reset" class="btn btn-secondary mr-3 mt-3 " style="padding-left: 12rem; padding-right: 12rem;">Reset</button>
+                        <button type="reset" class="w-100 btn btn-lg btn-secondary mt-2">Reset</button>
                     </div>
 
                 </div>

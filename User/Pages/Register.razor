@@ -8,12 +8,16 @@
 @inject AuthenticationStateProvider authStateProvider
 @inject NavigationManager nm
 
-
+<style>
+    .form-signin {
+        max-width: 456px;
+    }
+</style>
 
 <section class="vh-80 container">
     <div class="container">
-        <div class="d-flex justify-content-center h-100" style="margin-top:2rem">
-            <div class="shadow-sm pb-5" style="background-color:white; border-radius:1rem; padding:2rem;">
+        <div  style="margin-top:2rem">
+            <div class="shadow-sm pb-5 form-signin w-100 m-auto" style="background-color:white; border-radius:1rem; padding:2rem;">
                 <h4 class="text-primary pb-3 text-center">Register</h4>
                 <form>
 
@@ -81,8 +85,8 @@
 
 
                     <div class="text-center  mt-4 pt-2">
-                        <button type="button" class="btn btn-primary btn-lg"
-                                style="padding-left: 12rem; padding-right: 12rem;" @onclick="SignUp">
+                        <button type="button" class="w-100 btn btn-lg btn-primary"
+                                @onclick="SignUp">
                             Register
                         </button>
                         <p class="small fw-bold mt-2 pt-1 mb-0 text-black">
