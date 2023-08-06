@@ -21,8 +21,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore pkversity.sln
+      run: dotnet restore
     - name: Build
-      run: dotnet build pkversity.sln
+      run: dotnet build --restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
