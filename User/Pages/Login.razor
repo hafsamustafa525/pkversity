@@ -40,11 +40,11 @@
 
 
 
-<section class="vh-50">
+<section class="vh-50 " style="min-height:70vh;">
     <div class="container">
         <div class="" style="margin-top:2rem">
-            <div class="shadow-sm pb-5 form-signin w-100 m-auto" style="background-color:white; border-radius:1rem; padding:2rem;">
-                <h4 class="text-primary text-center mt-5">Login</h4>
+            <div class="shadow-lg pb-5 form-signin w-100 m-auto" style="background-color:white; border-radius:1rem; padding:2rem;">
+                <h2 class="text-primary fw-bold fs-3 text-center mt-5">Login</h2>
                 <form>
 
                     <!-- Email input -->
@@ -55,7 +55,7 @@
                     </div>
 
                     <!-- Password input -->
-                    <div class="form-outline mb-3">
+                    <div class="form-outline ">
                         <div class="password-container">
                             <input type="password" @bind="Password" id="InputLoginPassword" class="form-control form-control-lg"
                                    placeholder="Enter password" />
@@ -63,18 +63,18 @@
                             <span class='fa fa-eye-slash' onclick="myFunction2()"> </span>
                         </div>
                     </div>
-
+                    <a class="small fs-6 mb-0  text-decoration-none"
+                       href="forgetpage" style="color:blue;">Forgot Password? </a>
                     <div class="text-center  mt-4 pt-2">
                         <button type="button" class="w-100 btn btn-lg btn-primary"
                                @onclick="Authenticate">
                             Login
                         </button>
-                        <p class="small fw-bold mt-2 pt-1 mb-0 text-black">
-                            Don't have an account? <a href="register"
-                                                      class="link-danger text-decoration-none">Register</a>
+                        <p class="small  mt-2 fs-5 pt-1 mb-0 text-black">
+                            Don't have an account? <a href="register" style="color:blue;"
+                                                      class="text-decoration-none">Register</a>
                         </p>
-                        <a class="small fw-bold mt-2 pt-1 mb-0 text-black"
-                           href="forgetpage">Forgotten Password? </a>
+                        
 
                         @if (check)
                         {
