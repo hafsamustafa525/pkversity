@@ -9,18 +9,14 @@
 
 <PageTitle>Pkversity</PageTitle>
 
+
 <style>
     .label {
         color: #0D6EFD;
     }
 
-    .btn {
-        border-radius: 0;
-    }
 
-    .form-select {
-        border-radius: 0;
-    }
+
 
     .filter {
         margin-bottom: 2rem;
@@ -29,9 +25,7 @@
         border: none;
     }
 
-    .row {
-        --bs-gutter-x: 0;
-    }
+
 
     .color-d {
         background-color: #1a1a97c4;
@@ -50,9 +44,7 @@
     }
 
     .leftlabel {
-       
         font-size: 9px;
-        
         position: absolute;
         padding-left: 5px;
         padding-right: 5px;
@@ -60,8 +52,8 @@
         text-transform: uppercase;
         right: -2px;
         top: 17px;
-        font-weight:bold;
-        border-radius:4px;
+        font-weight: bold;
+        border-radius: 4px;
     }
 
     .red {
@@ -73,129 +65,118 @@
     }
 
 </style>
+<div class="container-xxl bg-white p-0" style="min-height:70vh;">
+    <h1 class="text-center mt-2 mb-2" style=" color: #106eea; font-weight:bold; ">Start your search for your dream university today </h1>
+    <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+        <div class="container">
+            <div class="row g-2">
+                <div class="col-md-10">
+                    <div class="row g-2">
+                        <div class="col-md-3">
+
+
+                            <select @onchange="_DegOption" class="form-select border-0 py-3">
+                                <option value="-1" selected>Select Program Degree</option>
+
+                                @foreach (var emp in @PassingDegreeList)
+                                {
+                                    <option value="@emp.PassingDegreesId">@emp.Title</option>
+                                }
+                            </select>
+
+
+                        </div>
+                        <div class="col-md-3">
+                            <select @bind="@PassingDegreeSGid" class="form-select border-0 py-3">
+                                <option value="-1" selected>Select Passing Groups</option>
+
+                                @foreach (var emp in @PassingDSGroupsList)
+                                {
+                                    if (alpha == emp.PassingDegreeId)
+                                    {
+                                        <option value="@emp.PassingDSGroupsId">@emp.PassingDSGroups</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select @bind="@perc" class="form-select border-0 py-3">
+                                <option value="-1" selected>Select Percentage</option>
+
+                                <option value="50">less than 50 %</option>
+                                <option value="50">50-60 %</option>
+                                <option value="60">55-60 %</option>
+                                <option value="60">60-70 %</option>
+                                <option value="60">80-90 %</option>
+                                <option value="60">above 90 %</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <select @bind="cityID" id="floatingSelect" class="form-select border-0 py-3">
+
+                                <option value="-1">Select City</option>
+
+                                @foreach (var emp in @CitiesList)
+                                {
+
+                                    <option value="@emp.CityId">@emp.CityName</option>
+
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" style="background-color:#FFDE59;" class="btn  border-0 w-100 py-3" @onclick="Submit">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (check)
+    {
+        <div class="container-fluid mt-5 ml-4">
+            <div class="row" style="gap: 2rem;">
+
+                @foreach (var emp in FilterCitiesList)
+                {
+                    <div class="col-md-3 mt-4">
+                        <div class="card text-dark bg-light shadow mb-3" style="max-width: 18rem;">
+                            @if (emp.admission_Open_Close == true)
+                            {
+                                <span id="hostlabel2" class="leftlabel blue" style="margin-right :0px; z-index: 10; transform: rotate(30deg); margin-top: 2px;">@Admission_message_open</span>
+                            }
+                            else
+                            {
+                                <span id="hostlabel2" class="leftlabel red" style="margin-right :0px; z-index: 10; transform: rotate(30deg); margin-top: 2px;">@Admission_message_close</span>
+
+                            }
+
+                            <div class="card-body">
+                                <div class="h4">@emp.Title</div>
+                                <h6 class="card-subtitle mb-2">You are eligible in <b>@emp.Departments </b> Departments</h6>
+                                <button class="btn btn-primary mt-2" type="button" @onclick="e=>DepartmentsDetails(emp.InstituteId,emp.Title)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">View Details</button>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    else if (nullcheck)
+    {
+        <h1 style="text-align:center">Sorry! You are not Eligible in any University .</h1>
+        <h6 style="text-align:center">(According to our Database)</h6>
+    }
+</div>
+
 @if (Loadercheck)
 {
     <div class="loader"></div>
 }
 else
 {
-    <div style="background-color:white;">
-        <div class="box container">
-            <div class="mx-auto ">
-                <div class="pt-4 filter">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-floating">
-                                <select class="form-select" @onchange="_DegOption" id="floatingSelect" aria-label="Floating label select example">
-                                    <option value="-1" selected>Select Program Degree</option>
 
-                                    @foreach (var emp in @PassingDegreeList)
-                                    {
-                                        <option value="@emp.PassingDegreesId">@emp.Title</option>
-                                    }
-                                </select>
-                                <label for="floatingSelect" class="label">Select Last Program Degree</label>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-floating">
-                                <select class="form-select" @bind="@PassingDegreeSGid" id="floatingSelect" aria-label="Floating label select example">
-                                    <option value="-1" selected>Select Passing Groups</option>
-
-                                    @foreach (var emp in @PassingDSGroupsList)
-                                    {
-                                        if (alpha == emp.PassingDegreeId)
-                                        {
-                                            <option value="@emp.PassingDSGroupsId">@emp.PassingDSGroups</option>
-                                        }
-                                    }
-                                </select>
-                                <label for="floatingSelect" class="label">Select Passing Degree Subject Groups</label>
-                            </div>
-
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-floating">
-                                <select class="form-select" @bind="@perc" id="floatingSelect" aria-label="Floating label select example">
-                                    <option value="-1" selected>Select Percentage</option>
-
-                                    <option value="50">less than 50 %</option>
-                                    <option value="50">50-60 %</option>
-                                    <option value="60">55-60 %</option>
-                                    <option value="60">60-70 %</option>
-                                    <option value="60">80-90 %</option>
-                                    <option value="60">above 90 %</option>
-
-                                </select>
-                                <label for="floatingSelect" class="label">Select Percentage of Last Passing Degree</label>
-                            </div>
-
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-floating">
-                                <select @bind="cityID" class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                                    <option value="-1">Select City</option>
-
-                                    @foreach (var emp in @CitiesList)
-                                    {
-
-                                        <option value="@emp.CityId">@emp.CityName</option>
-
-                                    }
-                                </select>
-                                <label for="floatingSelect" class="label">Preferable City for University </label>
-                            </div>
-
-                        </div>
-                        <div class="col-1 searh-btn">
-                            <button type="submit" style="height: 58px" class="btn btn-primary text-white btn-lg btn-search" @onclick="Submit">Search</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            @if (check)
-            {
-                <div class="container-fluid mt-5 ml-4">
-                    <div class="row" style="gap: 2rem;">
-
-                        @foreach (var emp in FilterCitiesList)
-                        {
-                            <div class="col-md-3 mt-4">
-                                <div class="card text-dark bg-light shadow mb-3" style="max-width: 18rem;">
-                                    @if (emp.admission_Open_Close == true)
-                                    {
-                                        <span id="hostlabel2" class="leftlabel blue" style="margin-right :0px; z-index: 10; transform: rotate(30deg); margin-top: 2px;">@Admission_message_open</span>
-                                    }
-                                    else
-                                    {
-                                        <span id="hostlabel2" class="leftlabel red" style="margin-right :0px; z-index: 10; transform: rotate(30deg); margin-top: 2px;">@Admission_message_close</span>
-
-                                    }
-
-                                    <div class="card-body">
-                                        <div class="h4">@emp.Title</div>
-                                        <h6 class="card-subtitle mb-2">You are eligible in <b>@emp.Departments </b> Departments</h6>
-                                        <button class="btn btn-primary mt-2" type="button" @onclick="e=>DepartmentsDetails(emp.InstituteId,emp.Title)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">View Details</button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-            }
-            else if (nullcheck)
-            {
-                <h1 style="text-align:center">Sorry! You are not Eligible in any University .</h1>
-                <h6 style="text-align:center">(According to our Database)</h6>
-            }
-
-        </div>
-
-
-    </div>
 }
 <div class="offcanvas offcanvas-end w-100 canvas-color" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
@@ -262,7 +243,7 @@ else
     public string? Admission_message_close { get; set; }
 
     public string? testing { get; set; }
-    
+
     private EntFilter? _ModelFilter { get; set; } = new EntFilter();
 
 
@@ -330,6 +311,7 @@ else
         await js.InvokeVoidAsync("alert", "Please select all values");
     }
 
+   
 
     private void DepartmentsDetails(string iid, string title)
     {
@@ -338,14 +320,15 @@ else
         if (value1 != null && value1 != "")
         {
 
-
+            
+           
             Title = title;
             FilterDepartmentList = DalFilter.GetDepartmentDetailsbyID(PassingDegreeSGid.ToString(), iid);
             check1 = true;
         }
         else
         {
-            nm.NavigateTo("/login");
+            nm.NavigateTo("/login", forceLoad: true);
 
         }
 

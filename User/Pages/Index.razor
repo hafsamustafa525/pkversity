@@ -8,11 +8,11 @@
 @inject NavigationManager nm
 
 <PageTitle>Pkversity</PageTitle>
-
+//index
 <style>
     /*.navbar{
-                display:none;
-            }*/
+                    display:none;
+                }*/
 
     body {
         background: #fff;
@@ -86,8 +86,8 @@
         }
 
     /*--------------------------------------------------------------
-            # About
-            --------------------------------------------------------------*/
+                # About
+                --------------------------------------------------------------*/
     .about .content h3 {
         font-weight: 600;
         font-size: 26px;
@@ -136,8 +136,8 @@
     }
 
     /*--------------------------------------------------------------
-        # Sections General
-        --------------------------------------------------------------*/
+            # Sections General
+            --------------------------------------------------------------*/
     section {
         padding: 60px 0;
         overflow: hidden;
@@ -182,8 +182,8 @@
 
 
     /*--------------------------------------------------------------
-            # Frequently Asked Questions
-            --------------------------------------------------------------*/
+                # Frequently Asked Questions
+                --------------------------------------------------------------*/
     .faq {
         padding: 60px 0;
     }
@@ -247,8 +247,8 @@
                 }
 
 </style>
-
-
+<Loader isLoading="@isLoading" />
+    
 <section id="hero" class="d-flex align-items-center">
 
 
@@ -260,9 +260,8 @@
         <h2>
             So,hi why wait? Start your search for your dream university today and take the first step towards your academic and professional success.
         </h2>
-        <NavLink class="btn btn-primary btn-lg" href="search" Match="NavLinkMatch.All">
-            <span class="oi oi-home" aria-hidden="true"></span>Get Started
-        </NavLink>
+        <button class="btn btn-primary btn-lg" @onclick="StartLoading">Get Started</button>
+       
 
     </div>
 </section><!-- End Hero -->
@@ -395,5 +394,17 @@
 </section><!-- End Frequently Asked Questions Section -->
 @code {
 
+      bool isLoading = false;
+    async Task StartLoading()
+    {
+        isLoading = true;
 
+        // Simulate a delay before moving to the next page
+
+        await Task.Delay(2000);
+        isLoading = false;
+
+        // Redirect to the next page
+        nm.NavigateTo("/search");
+    }
 }
