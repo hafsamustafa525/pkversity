@@ -1,0 +1,15 @@
+D:\Pkversity_testing\final_pkversity\pkversity\ClassLibraryDAL\obj\Debug\net6.0\ClassLibraryDAL.csproj.AssemblyReference.cache
+D:\Pkversity_testing\final_pkversity\pkversity\ClassLibraryDAL\obj\Debug\net6.0\ClassLibraryDAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Pkversity_testing\final_pkversity\pkversity\ClassLibraryDAL\obj\Debug\net6.0\ClassLibraryDAL.AssemblyInfoInputs.cache
+D:\Pkversity_testing\final_pkversity\pkversity\ClassLibraryDAL\obj\Debug\net6.0\ClassLibraryDAL.AssemblyInfo.cs
+D:\Pkversity_testing\final_pkversity\pkversity\ClassLibraryDAL\obj\Debug\net6.0\ClassLibraryDAL.csproj.CoreCompileInputs.cache
+D:\Pkversity_testing\final_pkversity\pkversity\ClassLibraryDAL\bin\Debug\net6.0\ClassLibraryDAL.deps.json
+D:\Pkversity_testing\final_pkversity\pkversity\ClassLibraryDAL\bin\Debug\net6.0\ClassLibraryDAL.dll
+D:\Pkversity_testing\final_pkversity\pkversity\ClassLibraryDAL\bin\Debug\net6.0\ClassLibraryDAL.pdb
+D:\Pkversity_testing\final_pkversity\pkversity\ClassLibraryDAL\bin\Debug\net6.0\ClassLibraryEntities.dll
+D:\Pkversity_testing\final_pkversity\pkversity\ClassLibraryDAL\bin\Debug\net6.0\ClassLibraryEntities.pdb
+D:\Pkversity_testing\final_pkversity\pkversity\ClassLibraryDAL\obj\Debug\net6.0\ClassLibraryDAL.csproj.CopyComplete
+D:\Pkversity_testing\final_pkversity\pkversity\ClassLibraryDAL\obj\Debug\net6.0\ClassLibraryDAL.dll
+D:\Pkversity_testing\final_pkversity\pkversity\ClassLibraryDAL\obj\Debug\net6.0\refint\ClassLibraryDAL.dll
+D:\Pkversity_testing\final_pkversity\pkversity\ClassLibraryDAL\obj\Debug\net6.0\ClassLibraryDAL.pdb
+D:\Pkversity_testing\final_pkversity\pkversity\ClassLibraryDAL\obj\Debug\net6.0\ref\ClassLibraryDAL.dll
