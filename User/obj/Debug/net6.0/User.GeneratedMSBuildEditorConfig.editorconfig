@@ -1,0 +1,125 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = User
+build_property.RootNamespace = User
+build_property.ProjectDir = D:\Pkversity_testing\final_pkversity\pkversity\User\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Pkversity_testing\final_pkversity\pkversity\User
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/EducationalInfo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWR1Y2F0aW9uYWxJbmZvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/FilterCity.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsdGVyQ2l0eS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/FilterDegrees.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsdGVyRGVncmVlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/FilterInstitutes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmlsdGVySW5zdGl0dXRlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/ForgetPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9yZ2V0UGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/FutureScope.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnV0dXJlU2NvcGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/Institute.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5zdGl0dXRlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/Loader.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9hZGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/MessageComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVzc2FnZUNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/PersonalInfo.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGVyc29uYWxJbmZvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/Search.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VhcmNoLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/SearchCity.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VhcmNoQ2l0eS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/SearchDegrees.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VhcmNoRGVncmVlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/ViewDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld0RldGFpbHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-xt5tcv57nl
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-kkslfj5kt1
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Pkversity_testing/final_pkversity/pkversity/User/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
