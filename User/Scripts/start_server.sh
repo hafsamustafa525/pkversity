@@ -1,7 +1,4 @@
-﻿#!bin/bash
+#!/bin/bash
 
-sudo systemctl enable User 
-
-sudo systemctl daemon-reload 
-
-sudo systemctl start User.service 
+sudo systemctl restart User.service
+sudo systemctl start User.service

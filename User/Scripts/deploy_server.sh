@@ -1,6 +1,5 @@
-﻿#!bin/bash
+#!/bin/bash
 
-chmod 777 service_maker.sh
+sudo chmod 777 /home/ubuntu/pkversity/User/scripts/service_maker.sh
 
-sudo ./service_maker.sh User /home/ubuntu/pkversity/User/bin/Debug/net6.0/publish/ 5000
-
+sudo /home/ubuntu/pkversity/User/scripts/service_maker.sh User /home/ubuntu/pkversity/User/bin/Debug/net6.0/publish/ 5000

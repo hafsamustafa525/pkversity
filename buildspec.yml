@@ -47,7 +47,7 @@ phases:
       - ls
       - dotnet --version
       - dotnet restore pkversity.sln
-      - dotnet build pkversity.sln
+      - dotnet publish pkversity.sln
   #post_build:
     #commands:
       # - command
@@ -63,6 +63,8 @@ phases:
 artifacts:
   files:
      - '**/*'
+
+     
     # - location
   #name: $(date +%Y-%m-%d)
   #discard-paths: yes

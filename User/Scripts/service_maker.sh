@@ -1,6 +1,5 @@
-﻿#!/bin/bash 
+#!/bin/bash
 
-  
 app_name=$1 
 
 code_path=$2 
@@ -42,4 +41,4 @@ sudo systemctl enable "$app_name"
 
 sudo systemctl daemon-reload 
 
-sudo systemctl start "$app_name".service 
+sudo systemctl start "$app_name".service
