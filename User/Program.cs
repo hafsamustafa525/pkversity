@@ -20,7 +20,6 @@ builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStat
 builder.Services.AddSingleton<ClassLibraryDAL.DALUserLogin>();
 builder.Services.AddHttpClient();
 builder.WebHost.UseUrls("http://0.0.0.0:5000 ");
-builder.Services.AddServerSideBlazor().AddCircuitOptions(options => { options.DetailedErrors = true; });
 
 
 var app = builder.Build();
