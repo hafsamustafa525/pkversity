@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ClassLibraryEntities
-build_property.ProjectDir = D:\Pkversity_testing\final_pkversity\pkversity\ClassLibraryEntities\
+build_property.ProjectDir = D:\pkversity\ClassLibraryEntities\

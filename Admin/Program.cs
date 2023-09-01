@@ -11,7 +11,7 @@ builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
 builder.Services.AddServerSideBlazor();
 
-//builder.WebHost.UseUrls("http://0.0.0.0:5001 ");
+builder.WebHost.UseUrls("http://0.0.0.0:5004");
 
 var app = builder.Build();
 

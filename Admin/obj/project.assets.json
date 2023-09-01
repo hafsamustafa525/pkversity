@@ -505,19 +505,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\muham\\.nuget\\packages\\": {}
+    "C:\\Users\\rehan akhtar\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Pkversity_testing\\final_pkversity\\pkversity\\Admin\\Admin.csproj",
+      "projectUniqueName": "D:\\pkversity\\Admin\\Admin.csproj",
       "projectName": "Admin",
-      "projectPath": "D:\\Pkversity_testing\\final_pkversity\\pkversity\\Admin\\Admin.csproj",
-      "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-      "outputPath": "D:\\Pkversity_testing\\final_pkversity\\pkversity\\Admin\\obj\\",
+      "projectPath": "D:\\pkversity\\Admin\\Admin.csproj",
+      "packagesPath": "C:\\Users\\rehan akhtar\\.nuget\\packages\\",
+      "outputPath": "D:\\pkversity\\Admin\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\muham\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rehan akhtar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -531,11 +531,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Pkversity_testing\\final_pkversity\\pkversity\\ClassLibraryDAL\\ClassLibraryDAL.csproj": {
-              "projectPath": "D:\\Pkversity_testing\\final_pkversity\\pkversity\\ClassLibraryDAL\\ClassLibraryDAL.csproj"
+            "D:\\pkversity\\ClassLibraryDAL\\ClassLibraryDAL.csproj": {
+              "projectPath": "D:\\pkversity\\ClassLibraryDAL\\ClassLibraryDAL.csproj"
             },
-            "D:\\Pkversity_testing\\final_pkversity\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj": {
-              "projectPath": "D:\\Pkversity_testing\\final_pkversity\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj"
+            "D:\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj": {
+              "projectPath": "D:\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj"
             }
           }
         }
@@ -568,7 +568,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

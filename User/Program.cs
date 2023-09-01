@@ -19,7 +19,7 @@ builder.Services.AddScoped<ProtectedSessionStorage>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 builder.Services.AddSingleton<ClassLibraryDAL.DALUserLogin>();
 builder.Services.AddHttpClient();
-//builder.WebHost.UseUrls("http://0.0.0.0:5000 ");
+builder.WebHost.UseUrls("http://0.0.0.0:5000 ");
 
 
 var app = builder.Build();

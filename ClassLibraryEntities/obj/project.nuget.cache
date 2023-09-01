@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kquBsqu9M5Jp5jfuEVeNPHKQzAHICKqznGc8OcqQ6lkZklOgJ9LQun62hYtmLhid29nnwdEePtuSvDi3NPV3xQ==",
+  "dgSpecHash": "GQkJ6Ep6p3Rr2k+K4vd9ZhZFruRnJSFypmcznDbyA662i6e5l6G6t2kS6Ir2nhZ9sx6o548OfS92c1mV+qsTmA==",
   "success": true,
-  "projectFilePath": "D:\\Pkversity_testing\\final_pkversity\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj",
+  "projectFilePath": "D:\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
