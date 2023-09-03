@@ -1,5 +1,10 @@
 ﻿﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
+
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -113,9 +118,6 @@ h1:focus {
 
 
 
-
-
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
 
 body {
     font-family: 'Poppins', sans-serif;
