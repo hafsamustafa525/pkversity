@@ -42,12 +42,12 @@
 
                     <div class="form-outline">
                         <label for="exampleFormControlInput1" class="form-label text-black">Gender</label>
-                        <Select @onchange="_EditGender" class="form-select form-select-lg" required>
+                        <select @onchange="_EditGender" class="form-select form-select-lg" required>
                             <option selected>Select Gender</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
 
-                        </Select>
+                        </select>
                     </div>
                     <div class="form-outline">
                         <label for="exampleFormControlInput1" class="form-label text-black">Student CNIC</label>
@@ -61,7 +61,7 @@
                     <div class="form-outline">
 
                         <label for="exampleFormControlInput1" class="form-label text-black">City</label>
-                        <Select @onchange="_EditCity" class="form-select form-select-lg" required>
+                        <select @onchange="_EditCity" class="form-select form-select-lg" required>
                             <option selected>Select City</option>
                             <option value="Islamabad">Islamabad</option>
                             <option value="Multan">Multan</option>
@@ -71,7 +71,7 @@
                             <option value="Quetta">Quetta</option>
 
 
-                        </Select>
+                        </select>
 
                     </div>
 
@@ -247,7 +247,7 @@
 
     private void SubmitForm()
     {
-        _ModelInfo.SID = value1;
+        _ModelInfo!.SID = value1;
         _ModelInfo.Gender = EditGender;
         _ModelInfo.City = EditCity;
         DALStudentInfo.SaveStudentInfo(_ModelInfo);

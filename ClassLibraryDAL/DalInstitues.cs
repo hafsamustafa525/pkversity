@@ -118,7 +118,8 @@ namespace ClassLibraryDAL
                 cmd.Parameters.AddWithValue("@Location", ee.Location);
                 cmd.Parameters.AddWithValue("@AdminId", 1234);
                 cmd.Parameters.AddWithValue("@admission_open_close", ee.admission_open_close);
-                
+                cmd.Parameters.AddWithValue("@logo", ee.Logo);
+
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.ExecuteNonQuery();
                 con.Close();
@@ -195,6 +196,7 @@ namespace ClassLibraryDAL
                 cmd.Parameters.AddWithValue("@TypeOfId", ee.TypeOfId);
                 cmd.Parameters.AddWithValue("@Location", ee.Location);
                 cmd.Parameters.AddWithValue("@AdminId", ee.AdminId);
+                cmd.Parameters.AddWithValue("@logo", ee.Logo);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.ExecuteNonQuery();
                 con.Close();

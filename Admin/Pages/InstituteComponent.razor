@@ -1,7 +1,11 @@
 ﻿@page "/institute/{insid}"
+@using Amazon.S3;
 @using ClassLibraryDAL
 @using ClassLibraryEntities
-
+@using Amazon.S3.Model;
+@using System.IO;
+@using Microsoft.AspNetCore.Components;
+@using Microsoft.AspNetCore.Http;
 @inject NavigationManager nm;
 
 
@@ -111,17 +115,15 @@
                 <InputText name="Location" @bind-Value="_ModelInstitute.Location" required></InputText>
             </td>
         </tr>
-        @*        <tr>
-        <td>
-        Admission Open/Close
-        </td>
-        <td>
-        <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked"  checked="@_ModelInstitute.admission_open_close" @onchange="@(e=>_AdmissionEdit(e))">
-        </div>
-        </td>
+        <tr>
+            <td>
+                Upload file
+            </td>
+            <td>
+                  
+                <InputFile OnChange="UploadImage" />
+            </td>
         </tr>
-        *@
 
         <tr>
             <td>
@@ -135,8 +137,56 @@
 
 </EditForm>
 
-@code {
+@if (imguploading == true)
+{
+    <p>Uploading ......</p>
+    if (imguploading == false)
+    {
+    <p>Sucessfully Uploaded......</p>
+        
+    }
+}
 
+
+@code {
+    private bool? imguploading = false;
+    private string? imageUrl=null;
+
+    private async Task UploadImage(InputFileChangeEventArgs e)
+    {
+        imguploading = true;
+        IBrowserFile browserFile = e.File;
+
+        using (var stream = new MemoryStream())
+        {
+            await browserFile.OpenReadStream().CopyToAsync(stream);
+
+            using (var s3Client = new AmazonS3Client("AKIAYU57GRKTZX3AJ4XA", "RaTLe6Ls1EJPPGLFRXFvBEUkzrmXPtDOXpmdLoOC", Amazon.RegionEndpoint.USEast1)) // Replace with your AWS credentials
+            {
+                var request = new PutObjectRequest
+                    {
+                        BucketName = "pkversity",
+                        Key = browserFile.Name,
+                        InputStream = stream,
+                        ContentType = browserFile.ContentType
+                    };
+
+                await s3Client.PutObjectAsync(request);
+                var urlRequest = new GetPreSignedUrlRequest
+                    {
+                        BucketName = "pkversity",
+                        Key = browserFile.Name,
+                        Expires = DateTime.Now.AddYears(1) // Adjust the expiration time as needed
+                    };
+
+                imageUrl = s3Client.GetPreSignedURL(urlRequest);
+                imguploading = false;
+            }
+        }
+
+        // Now, you can store the S3 link in your SQL database
+        // Add the code to save the link to your database here
+    }
     private EntInstitutes? _ModelInstitute { get; set; }
     private List<EntInstitutes>? instituteList;
     private List<EntCities>? CitiesList;
@@ -198,7 +248,7 @@
                     _ModelInstitute.CityId = InstEdit;
                     _ModelInstitute.TypeOfId = TypeEdit;
                     _ModelInstitute.admission_open_close = myvalue;
-
+                    _ModelInstitute.Logo = imageUrl;
 
                     DalInstitutes.SaveInstitutes(_ModelInstitute);
                     nm.NavigateTo("/institutes");
@@ -225,6 +275,7 @@
                 _ModelInstitute.TypeOfId = TypeEdit;
                 EncPassword = EncodePasswordToBase64(_ModelInstitute.Password);
                 _ModelInstitute.Password = EncPassword;
+                _ModelInstitute.Logo = imageUrl;
                 DalInstitutes.UpdateInstitutes(_ModelInstitute);
                 nm.NavigateTo("/institutes");
             }

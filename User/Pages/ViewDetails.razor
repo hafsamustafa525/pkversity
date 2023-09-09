@@ -16,14 +16,15 @@
 
     <div class="row">
 
-        @foreach (var emp in @FilterDepartmentList)
-        {
-            <div class="col-md-10 mb-4">
+        <Virtualize Items="@FilterDepartmentList" Context="emp" OverscanCount="2" SpacerElement="tr">
+            @* @foreach (var emp in @FilterDepartmentList)
+            {*@
+            <div class="col-md-10 mb-4 offset-lg-1">
                 <div class="card text-dark   shadow-lg " style="background-color:white;">
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-5">
                             <div>
-                                
+
                                 <h3 class="fw-bold ">@emp.DegreeName</h3>
                             </div>
                             <div>
@@ -72,7 +73,8 @@
                 </div>
             </div>
 
-        }
+            }
+        </Virtualize>
     </div>
 </div>
 
@@ -103,6 +105,13 @@
     [Parameter]
     public List<EntProgramDegreeDetails>? FilterDepartmentList { get; set; }
     public List<EntFutureScope>? FutureScopeList { get; set; }
+
+
+    protected override void OnParametersSet()
+    {
+        if (!string.IsNullOrEmpty(PDSGID)) { FilterDepartmentList = DalFilter.GetDepartmentDetailsbyID(PDSGID.ToString(), insid); }
+
+    }
 
 
 }

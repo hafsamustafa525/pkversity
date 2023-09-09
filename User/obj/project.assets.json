@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {
+    "net7.0": {
       "Microsoft.NETCore.Platforms/3.1.0": {
         "type": "package",
         "compile": {
@@ -162,7 +162,7 @@
       },
       "ClassLibraryDAL/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "ClassLibraryEntities": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
@@ -176,7 +176,7 @@
       },
       "ClassLibraryEntities/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/ClassLibraryEntities.dll": {}
         },
@@ -542,44 +542,45 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net6.0": [
+    "net7.0": [
       "ClassLibraryDAL >= 1.0.0",
       "ClassLibraryEntities >= 1.0.0",
-      "Newtonsoft.Json >= 13.0.3"
+      "Newtonsoft.Json >= 13.0.3",
+      "System.Data.SqlClient >= 4.8.5"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rehan akhtar\\.nuget\\packages\\": {}
+    "C:\\Users\\muham\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\pkversity\\User\\User.csproj",
+      "projectUniqueName": "E:\\PKVERSITY\\User\\User.csproj",
       "projectName": "User",
-      "projectPath": "D:\\pkversity\\User\\User.csproj",
-      "packagesPath": "C:\\Users\\rehan akhtar\\.nuget\\packages\\",
-      "outputPath": "D:\\pkversity\\User\\obj\\",
+      "projectPath": "E:\\PKVERSITY\\User\\User.csproj",
+      "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
+      "outputPath": "E:\\PKVERSITY\\User\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\rehan akhtar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\muham\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net6.0"
+        "net7.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\pkversity\\ClassLibraryDAL\\ClassLibraryDAL.csproj": {
-              "projectPath": "D:\\pkversity\\ClassLibraryDAL\\ClassLibraryDAL.csproj"
+            "E:\\PKVERSITY\\ClassLibraryDAL\\ClassLibraryDAL.csproj": {
+              "projectPath": "E:\\PKVERSITY\\ClassLibraryDAL\\ClassLibraryDAL.csproj"
             },
-            "D:\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj": {
-              "projectPath": "D:\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj"
+            "E:\\PKVERSITY\\ClassLibraryEntities\\ClassLibraryEntities.csproj": {
+              "projectPath": "E:\\PKVERSITY\\ClassLibraryEntities\\ClassLibraryEntities.csproj"
             }
           }
         }
@@ -591,12 +592,16 @@
       }
     },
     "frameworks": {
-      "net6.0": {
-        "targetAlias": "net6.0",
+      "net7.0": {
+        "targetAlias": "net7.0",
         "dependencies": {
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.3, )"
+          },
+          "System.Data.SqlClient": {
+            "target": "Package",
+            "version": "[4.8.5, )"
           }
         },
         "imports": [
@@ -618,7 +623,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

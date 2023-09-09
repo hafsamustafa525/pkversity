@@ -1,10 +1,6 @@
 @page "/"
-@using ClassLibraryDAL
-@using ClassLibraryEntities
-@inject IJSRuntime js
 
-@using User.Authentication
-@inject AuthenticationStateProvider authStateProvider
+@inject IPreloadingService PreloadingService
 @inject NavigationManager nm
 
 <PageTitle>Pkversity</PageTitle>
@@ -391,7 +387,7 @@
         </div>
 
     </div>
-</section><!-- End Frequently Asked Questions Section -->
+    </section>
 @code {
 
       bool isLoading = false;
@@ -399,11 +395,11 @@
     {
         isLoading = true;
 
-        // Simulate a delay before moving to the next page
+        //Simulate a delay before moving to the next page
 
+        await PreloadingService.PreloadDataAsync();
         await Task.Delay(2000);
         isLoading = false;
-
         // Redirect to the next page
         nm.NavigateTo("/search");
     }

@@ -14,9 +14,9 @@ namespace ClassLibraryDAL
 
        
 
-        public static List<EntFilter> GetResultByid(string PDSGID)
+        public static List<EntFilterUniversity> GetResultByid(string PDSGID)
         {
-            List<EntFilter> FilterList = new List<EntFilter>();
+            List<EntFilterUniversity> FilterList = new List<EntFilterUniversity>();
             try
             {
 
@@ -30,7 +30,7 @@ namespace ClassLibraryDAL
 
                 while (sdr.Read())
                 {
-                    EntFilter ee = new EntFilter();
+                    EntFilterUniversity ee = new EntFilterUniversity();
                     ee.PassingDegreeGroups = sdr["PassingDegreeGroups"].ToString();
                     ee.Title = sdr["Title"].ToString();
                     ee.InstituteId = sdr["InstituteId"].ToString();
@@ -54,9 +54,9 @@ namespace ClassLibraryDAL
             }
             return FilterList;
         }
-        public static List<EntFilter> GetDepartmentsbyID(string PDSGID, string CityId, string Percentage)
+        public static List<EntFilterUniversity> GetDepartmentsbyID(string PDSGID, string CityId, string Percentage)
         {
-            List<EntFilter> FilterList = new List<EntFilter>();
+            List<EntFilterUniversity> FilterList = new List<EntFilterUniversity>();
             try
             {
                 SqlConnection con = DBHelper.GetConnection();
@@ -73,12 +73,13 @@ namespace ClassLibraryDAL
 
                 while (sdr.Read())
                 {
-                    EntFilter ee = new EntFilter();
+                    EntFilterUniversity ee = new EntFilterUniversity();
 
                     ee.Title = sdr["Title"].ToString();
                     ee.InstituteId = sdr["InstituteId"].ToString();
                     ee.Departments = sdr["Departments"].ToString();
                     ee.admission_Open_Close = (bool?)sdr["admission_open_close"];
+                    ee.logo = sdr["logo"].ToString();
 
                     FilterList.Add(ee);
 
