@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\PKVERSITY\\ClassLibraryEntities\\ClassLibraryEntities.csproj": {}
+    "D:\\Pkversity\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj": {}
   },
   "projects": {
-    "E:\\PKVERSITY\\ClassLibraryEntities\\ClassLibraryEntities.csproj": {
+    "D:\\Pkversity\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\PKVERSITY\\ClassLibraryEntities\\ClassLibraryEntities.csproj",
+        "projectUniqueName": "D:\\Pkversity\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj",
         "projectName": "ClassLibraryEntities",
-        "projectPath": "E:\\PKVERSITY\\ClassLibraryEntities\\ClassLibraryEntities.csproj",
-        "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-        "outputPath": "E:\\PKVERSITY\\ClassLibraryEntities\\obj\\",
+        "projectPath": "D:\\Pkversity\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj",
+        "packagesPath": "C:\\Users\\rehan akhtar\\.nuget\\packages\\",
+        "outputPath": "D:\\Pkversity\\pkversity\\ClassLibraryEntities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\muham\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\rehan akhtar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

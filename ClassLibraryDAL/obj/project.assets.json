@@ -486,19 +486,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\muham\\.nuget\\packages\\": {}
+    "C:\\Users\\rehan akhtar\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\PKVERSITY\\ClassLibraryDAL\\ClassLibraryDAL.csproj",
+      "projectUniqueName": "D:\\Pkversity\\pkversity\\ClassLibraryDAL\\ClassLibraryDAL.csproj",
       "projectName": "ClassLibraryDAL",
-      "projectPath": "E:\\PKVERSITY\\ClassLibraryDAL\\ClassLibraryDAL.csproj",
-      "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-      "outputPath": "E:\\PKVERSITY\\ClassLibraryDAL\\obj\\",
+      "projectPath": "D:\\Pkversity\\pkversity\\ClassLibraryDAL\\ClassLibraryDAL.csproj",
+      "packagesPath": "C:\\Users\\rehan akhtar\\.nuget\\packages\\",
+      "outputPath": "D:\\Pkversity\\pkversity\\ClassLibraryDAL\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\muham\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rehan akhtar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -512,8 +512,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "E:\\PKVERSITY\\ClassLibraryEntities\\ClassLibraryEntities.csproj": {
-              "projectPath": "E:\\PKVERSITY\\ClassLibraryEntities\\ClassLibraryEntities.csproj"
+            "D:\\Pkversity\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj": {
+              "projectPath": "D:\\Pkversity\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj"
             }
           }
         }
@@ -549,7 +549,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
