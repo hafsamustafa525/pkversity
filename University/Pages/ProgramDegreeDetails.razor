@@ -191,10 +191,11 @@
     {
         DisplayGreeting();
 
+        string[] v = value1.Split(',');
         InstList = DalInstitutes.GetInstitutes();
         foreach (var emp in InstList)
         {
-            if (emp.InstituteId == value1)
+            if (emp.InstituteId == v[0])
             {
                 CID = emp.CityId;
             }
