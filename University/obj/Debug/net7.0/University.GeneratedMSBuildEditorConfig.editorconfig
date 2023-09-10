@@ -9,105 +9,105 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = University
 build_property.RootNamespace = University
-build_property.ProjectDir = D:\Pkversity\pkversity\University\
+build_property.ProjectDir = E:\New folder\pkversity\University\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\Pkversity\pkversity\University
+build_property.MSBuildProjectDirectory = E:\New folder\pkversity\University
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Pkversity/pkversity/University/App.razor]
+[E:/New folder/pkversity/University/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Pages/ApprovedBy.razor]
+[E:/New folder/pkversity/University/Pages/ApprovedBy.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwcm92ZWRCeS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Pages/ClosingMerit.razor]
+[E:/New folder/pkversity/University/Pages/ClosingMerit.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xvc2luZ01lcml0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Pages/Duration.razor]
+[E:/New folder/pkversity/University/Pages/Duration.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRHVyYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Pages/EligibilityCritieria.razor]
+[E:/New folder/pkversity/University/Pages/EligibilityCritieria.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWxpZ2liaWxpdHlDcml0aWVyaWEucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Pages/FeeDetails.razor]
+[E:/New folder/pkversity/University/Pages/FeeDetails.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmVlRGV0YWlscy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Pages/Home.razor]
+[E:/New folder/pkversity/University/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Pages/Index.razor]
+[E:/New folder/pkversity/University/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Pages/Login.razor]
+[E:/New folder/pkversity/University/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Pages/LogoComponent.razor]
+[E:/New folder/pkversity/University/Pages/LogoComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb0NvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Pages/MessageComponent.razor]
+[E:/New folder/pkversity/University/Pages/MessageComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVzc2FnZUNvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Pages/Modal.razor]
+[E:/New folder/pkversity/University/Pages/Modal.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9kYWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Pages/PassingGroups.razor]
+[E:/New folder/pkversity/University/Pages/PassingGroups.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFzc2luZ0dyb3Vwcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Pages/ProfileComponent.razor]
+[E:/New folder/pkversity/University/Pages/ProfileComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZmlsZUNvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Pages/ProgramDegreeDetails.razor]
+[E:/New folder/pkversity/University/Pages/ProgramDegreeDetails.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZ3JhbURlZ3JlZURldGFpbHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Pages/Shifts.razor]
+[E:/New folder/pkversity/University/Pages/Shifts.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hpZnRzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Pages/TotalSemesters.razor]
+[E:/New folder/pkversity/University/Pages/TotalSemesters.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVG90YWxTZW1lc3RlcnMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Shared/SurveyPrompt.razor]
+[E:/New folder/pkversity/University/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/_Imports.razor]
+[E:/New folder/pkversity/University/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Shared/MainLayout.razor]
+[E:/New folder/pkversity/University/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-bmyy9px72x
 
-[D:/Pkversity/pkversity/University/Shared/NavMenu.razor]
+[E:/New folder/pkversity/University/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-2n0wzhp9na
 
-[D:/Pkversity/pkversity/University/Pages/Error.cshtml]
+[E:/New folder/pkversity/University/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Pages/_Host.cshtml]
+[E:/New folder/pkversity/University/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Pkversity/pkversity/University/Pages/_Layout.cshtml]
+[E:/New folder/pkversity/University/Pages/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

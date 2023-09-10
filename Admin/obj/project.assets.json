@@ -590,19 +590,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rehan akhtar\\.nuget\\packages\\": {}
+    "C:\\Users\\muham\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Pkversity\\pkversity\\Admin\\Admin.csproj",
+      "projectUniqueName": "E:\\New folder\\pkversity\\Admin\\Admin.csproj",
       "projectName": "Admin",
-      "projectPath": "D:\\Pkversity\\pkversity\\Admin\\Admin.csproj",
-      "packagesPath": "C:\\Users\\rehan akhtar\\.nuget\\packages\\",
-      "outputPath": "D:\\Pkversity\\pkversity\\Admin\\obj\\",
+      "projectPath": "E:\\New folder\\pkversity\\Admin\\Admin.csproj",
+      "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
+      "outputPath": "E:\\New folder\\pkversity\\Admin\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\rehan akhtar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\muham\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -616,11 +616,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\Pkversity\\pkversity\\ClassLibraryDAL\\ClassLibraryDAL.csproj": {
-              "projectPath": "D:\\Pkversity\\pkversity\\ClassLibraryDAL\\ClassLibraryDAL.csproj"
+            "E:\\New folder\\pkversity\\ClassLibraryDAL\\ClassLibraryDAL.csproj": {
+              "projectPath": "E:\\New folder\\pkversity\\ClassLibraryDAL\\ClassLibraryDAL.csproj"
             },
-            "D:\\Pkversity\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj": {
-              "projectPath": "D:\\Pkversity\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj"
+            "E:\\New folder\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj": {
+              "projectPath": "E:\\New folder\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj"
             }
           }
         }
@@ -659,7 +659,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
