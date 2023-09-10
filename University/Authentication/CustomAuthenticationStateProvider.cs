@@ -27,7 +27,7 @@ namespace University.Authentication
                
 
                 var claimsPrincipal = new ClaimsPrincipal(new ClaimsIdentity(new List<Claim>
-                    { new Claim(ClaimTypes.Name, userSession.InstituteId+","+userSession.UserName),
+                    { new Claim(ClaimTypes.Name, userSession.InstituteId+","+userSession.UserName+","+userSession.Logo),
                     new Claim(ClaimTypes.Sid, userSession.UserName),
                        new Claim (ClaimTypes.Role ,userSession.Role)
                     }, "CustomAuth"));
