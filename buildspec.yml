@@ -1,4 +1,4 @@
-version: 0.2
+version: 0.3
 
 #env:
   #variables:
@@ -27,16 +27,8 @@ phases:
       # name: version
       # name: version
     commands:
-       - wget https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb 
-       - sudo dpkg -i packages-microsoft-prod.deb 
-       - sudo apt-get update; sudo apt-get install -y apt-transport-https && sudo apt-get update && sudo apt-get install -y dotnet-sdk-6.0 
-       - sudo apt install aspnetcore-runtime-6.0=6.0.8-1 -y --allow-downgrades
-       - sudo apt install dotnet-apphost-pack-6.0=6.0.8-1 -y --allow-downgrades
-       - sudo apt install dotnet-host=6.0.8-1 -y --allow-downgrades
-       - sudo apt install dotnet-hostfxr-6.0=6.0.8-1 -y --allow-downgrades
-       - sudo apt install dotnet-runtime-6.0=6.0.8-1 -y --allow-downgrades
-       - sudo apt install dotnet-sdk-6.0=6.0.400-1  -y --allow-downgrades
-       - sudo apt install dotnet-targeting-pack-6.0=6.0.8-1 -y --allow-downgrades
+       - sudo apt-get update 
+       - sudo apt-get install -y dotnet-sdk-7.0
   #pre_build:
     #commands:
       # - command
