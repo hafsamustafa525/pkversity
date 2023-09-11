@@ -43,3 +43,18 @@ D:\Pkversity\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.dll
 D:\Pkversity\pkversity\ClassLibraryDAL\obj\Debug\net7.0\refint\ClassLibraryDAL.dll
 D:\Pkversity\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.pdb
 D:\Pkversity\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ref\ClassLibraryDAL.dll
+E:\New folder\pkversity\ClassLibraryDAL\bin\Debug\net7.0\ClassLibraryDAL.deps.json
+E:\New folder\pkversity\ClassLibraryDAL\bin\Debug\net7.0\ClassLibraryDAL.dll
+E:\New folder\pkversity\ClassLibraryDAL\bin\Debug\net7.0\ClassLibraryDAL.pdb
+E:\New folder\pkversity\ClassLibraryDAL\bin\Debug\net7.0\ClassLibraryEntities.dll
+E:\New folder\pkversity\ClassLibraryDAL\bin\Debug\net7.0\ClassLibraryEntities.pdb
+E:\New folder\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.csproj.AssemblyReference.cache
+E:\New folder\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.GeneratedMSBuildEditorConfig.editorconfig
+E:\New folder\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.AssemblyInfoInputs.cache
+E:\New folder\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.AssemblyInfo.cs
+E:\New folder\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.csproj.CoreCompileInputs.cache
+E:\New folder\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.csproj.CopyComplete
+E:\New folder\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.dll
+E:\New folder\pkversity\ClassLibraryDAL\obj\Debug\net7.0\refint\ClassLibraryDAL.dll
+E:\New folder\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.pdb
+E:\New folder\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ref\ClassLibraryDAL.dll

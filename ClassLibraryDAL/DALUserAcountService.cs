@@ -32,7 +32,7 @@ namespace ClassLibraryDAL
                     ee.InstituteId = sdr["InstituteId"].ToString();
                     ee.UserName = sdr["UserName"].ToString();
                     ee.Password = sdr["Password"].ToString();
-
+                    ee.Logo = sdr["Logo"].ToString();
 
                 }
                 con.Close();
