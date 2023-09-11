@@ -15,6 +15,7 @@ builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStat
 //builder.Services.AddSingleton<ClassLibraryDAL.DALUserLogin>();
 builder.Services.AddSingleton<IPreloadingService, PreloadingService>();
 //builder.Services.AddHttpClient();
+builder.WebHost.UseUrls("http://0.0.0.0:5000 ");
 
 var app = builder.Build();
 
