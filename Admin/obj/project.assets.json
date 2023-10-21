@@ -590,19 +590,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\muham\\.nuget\\packages\\": {}
+    "C:\\Users\\dell\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\New folder\\pkversity\\Admin\\Admin.csproj",
+      "projectUniqueName": "D:\\Visual Studio Projects\\pkversity\\Admin\\Admin.csproj",
       "projectName": "Admin",
-      "projectPath": "E:\\New folder\\pkversity\\Admin\\Admin.csproj",
-      "packagesPath": "C:\\Users\\muham\\.nuget\\packages\\",
-      "outputPath": "E:\\New folder\\pkversity\\Admin\\obj\\",
+      "projectPath": "D:\\Visual Studio Projects\\pkversity\\Admin\\Admin.csproj",
+      "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
+      "outputPath": "D:\\Visual Studio Projects\\pkversity\\Admin\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\muham\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -610,17 +615,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "E:\\New folder\\pkversity\\ClassLibraryDAL\\ClassLibraryDAL.csproj": {
-              "projectPath": "E:\\New folder\\pkversity\\ClassLibraryDAL\\ClassLibraryDAL.csproj"
+            "D:\\Visual Studio Projects\\pkversity\\ClassLibraryDAL\\ClassLibraryDAL.csproj": {
+              "projectPath": "D:\\Visual Studio Projects\\pkversity\\ClassLibraryDAL\\ClassLibraryDAL.csproj"
             },
-            "E:\\New folder\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj": {
-              "projectPath": "E:\\New folder\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj"
+            "D:\\Visual Studio Projects\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj": {
+              "projectPath": "D:\\Visual Studio Projects\\pkversity\\ClassLibraryEntities\\ClassLibraryEntities.csproj"
             }
           }
         }
@@ -659,7 +665,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

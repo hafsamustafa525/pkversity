@@ -130,3 +130,47 @@ E:\New folder\pkversity\User\obj\Debug\net7.0\refint\User.dll
 E:\New folder\pkversity\User\obj\Debug\net7.0\User.pdb
 E:\New folder\pkversity\User\obj\Debug\net7.0\User.genruntimeconfig.cache
 E:\New folder\pkversity\User\obj\Debug\net7.0\ref\User.dll
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\appsettings.Development.json
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\appsettings.json
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\User.staticwebassets.runtime.json
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\User.exe
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\User.deps.json
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\User.runtimeconfig.json
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\User.dll
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\User.pdb
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\Newtonsoft.Json.dll
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\System.Data.SqlClient.dll
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\runtimes\win-arm64\native\sni.dll
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\runtimes\win-x64\native\sni.dll
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\runtimes\win-x86\native\sni.dll
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\ClassLibraryDAL.dll
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\ClassLibraryEntities.dll
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\ClassLibraryDAL.pdb
+D:\Visual Studio Projects\pkversity\User\bin\Debug\net7.0\ClassLibraryEntities.pdb
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\User.csproj.AssemblyReference.cache
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\User.GeneratedMSBuildEditorConfig.editorconfig
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\User.AssemblyInfoInputs.cache
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\User.AssemblyInfo.cs
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\User.csproj.CoreCompileInputs.cache
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\User.MvcApplicationPartsAssemblyInfo.cache
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\User.RazorAssemblyInfo.cache
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\User.RazorAssemblyInfo.cs
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\staticwebassets\msbuild.User.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\staticwebassets\msbuild.build.User.props
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.User.props
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.User.props
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\staticwebassets.pack.json
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\staticwebassets.build.json
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\staticwebassets.development.json
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\scopedcss\bundle\User.styles.css
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\scopedcss\projectbundle\User.bundle.scp.css
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\User.csproj.CopyComplete
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\User.dll
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\refint\User.dll
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\User.pdb
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\User.genruntimeconfig.cache
+D:\Visual Studio Projects\pkversity\User\obj\Debug\net7.0\ref\User.dll

@@ -58,3 +58,18 @@ E:\New folder\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.dll
 E:\New folder\pkversity\ClassLibraryDAL\obj\Debug\net7.0\refint\ClassLibraryDAL.dll
 E:\New folder\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.pdb
 E:\New folder\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ref\ClassLibraryDAL.dll
+D:\Visual Studio Projects\pkversity\ClassLibraryDAL\bin\Debug\net7.0\ClassLibraryDAL.deps.json
+D:\Visual Studio Projects\pkversity\ClassLibraryDAL\bin\Debug\net7.0\ClassLibraryDAL.dll
+D:\Visual Studio Projects\pkversity\ClassLibraryDAL\bin\Debug\net7.0\ClassLibraryDAL.pdb
+D:\Visual Studio Projects\pkversity\ClassLibraryDAL\bin\Debug\net7.0\ClassLibraryEntities.dll
+D:\Visual Studio Projects\pkversity\ClassLibraryDAL\bin\Debug\net7.0\ClassLibraryEntities.pdb
+D:\Visual Studio Projects\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.csproj.AssemblyReference.cache
+D:\Visual Studio Projects\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\Visual Studio Projects\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.AssemblyInfoInputs.cache
+D:\Visual Studio Projects\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.AssemblyInfo.cs
+D:\Visual Studio Projects\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.csproj.CoreCompileInputs.cache
+D:\Visual Studio Projects\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.csproj.CopyComplete
+D:\Visual Studio Projects\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.dll
+D:\Visual Studio Projects\pkversity\ClassLibraryDAL\obj\Debug\net7.0\refint\ClassLibraryDAL.dll
+D:\Visual Studio Projects\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ClassLibraryDAL.pdb
+D:\Visual Studio Projects\pkversity\ClassLibraryDAL\obj\Debug\net7.0\ref\ClassLibraryDAL.dll
