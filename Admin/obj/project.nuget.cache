@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "BdvGAre6jTJXOEZikagB2A55Uxfzg0mptQSiqpvCya2iHnjrQwwXPyw71sBoXwAApf9Yc9rphXr0gU+3+CROQg==",
+  "dgSpecHash": "UH4fgQ7LBYagiAxD5mqNoC4no+HzxlDk84i73bLMPQM1Uxo402WhRJamXDRTyA1z8qTwOM+MU7aettpcVdk0Lw==",
   "success": true,
   "projectFilePath": "D:\\Visual Studio Projects\\pkversity\\Admin\\Admin.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dell\\.nuget\\packages\\awssdk.core\\3.7.202.2\\awssdk.core.3.7.202.2.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\awssdk.s3\\3.7.203.8\\awssdk.s3.3.7.203.8.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\dell\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.4\\microsoft.visualstudio.azure.containers.tools.targets.1.19.4.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

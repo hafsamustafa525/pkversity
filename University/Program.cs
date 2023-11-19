@@ -15,7 +15,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<ProtectedSessionStorage>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 builder.Services.AddSingleton< ClassLibraryDAL.DALUserAcountService>();
-builder.WebHost.UseUrls("http://0.0.0.0:5002 ");
+
 
 var app = builder.Build();
 

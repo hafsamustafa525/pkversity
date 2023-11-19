@@ -1,0 +1,43 @@
+version: '3.4' 
+
+  
+
+networks: 
+
+   twotier: 
+
+services: 
+  admin: 
+    container_name: admin 
+    image: ${DOCKER_REGISTRY-}admin 
+    build: 
+      context: . 
+      dockerfile: Admin/Dockerfile 
+    networks: 
+      - twotier 
+    ports:  
+      - 53031:80 
+
+  university: 
+    container_name: university 
+    image: ${DOCKER_REGISTRY-}university 
+    build: 
+      context: . 
+      dockerfile: University/Dockerfile  
+    networks: 
+     - twotier
+    ports:  
+      - 53032:80 
+
+  user: 
+    container_name: user 
+    image: ${DOCKER_REGISTRY-}user 
+    build: 
+      context: . 
+      dockerfile: User/Dockerfile  
+    networks: 
+      - twotier
+    ports:  
+      - 53033:80 
+
+ 

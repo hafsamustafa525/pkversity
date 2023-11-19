@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "9ZKz+FjRWrp1pPQ+3OREoRUWUcXI2kowJ3z3as0k0pA7f/V9NLURSesmRUBVrBkiMgeXXcda/r/ECFLokmx0tw==",
+  "dgSpecHash": "DBz2F+thVV4PPkwIxMdC/J9ZV+9h3ZBYKuY36moecTsZxHEk86oqpIaj+DsJPhwCvD4UaduyS32Z9BaywIv/dQ==",
   "success": true,
   "projectFilePath": "D:\\Visual Studio Projects\\pkversity\\User\\User.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dell\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
+    "C:\\Users\\dell\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.4\\microsoft.visualstudio.azure.containers.tools.targets.1.19.4.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
